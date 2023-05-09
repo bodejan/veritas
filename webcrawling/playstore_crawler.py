@@ -14,7 +14,8 @@ def get_policy(package_id):
     # Start driver and open play store for the given app package name
     url = "https://play.google.com/store/apps/details?id="
     options = Options()
-    options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
+    options.headless = True
+    # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
     driver = webdriver.Firefox(options=options)
     driver.get(f'{url}{package_id}')
 
@@ -37,7 +38,7 @@ def get_policy(package_id):
     button_policy = driver.find_element(By.XPATH, xpath_policy)
     button_policy.click()
 
-    time.sleep(10)
+    time.sleep(5)
 
     # Loop through until we find a new window handle and switch the driver to the new window
     for window_handle in driver.window_handles:
@@ -48,11 +49,18 @@ def get_policy(package_id):
     # Print all text in the body (Todo: Change to something more useful)
     page = driver.find_element(By.TAG_NAME, "body")
     # print(page.text)
-    with open('policy.txt', 'a') as f:
+    with open('webcrawling/policy_export/all_policies.txt', 'a') as f:
         f.write(page.text)
-        f.write('\n#############################################################################\n')
+        f.write('\n\n#############################################################################\n\n')
+
+    export_policy(page, package_id)
 
     # Close the browser with all tabs
     for handle in driver.window_handles:
         driver.switch_to.window(handle)
         driver.close()
+
+
+def export_policy(page, package_id):
+    with open(f'webcrawling/policy_export/{package_id}.txt', 'a') as f:
+        f.write(page.text)
