@@ -1,14 +1,12 @@
 import time
 import re
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC, wait
 
 # androidrank category names and keys
-# TODO add keys for games
+# androidrank currently has issues with the categories: "Transportation" and "Game Family" 
+# both links lead to "All" through no fault of the webcrawler
 categories = {
     "All": "",
     "Paid": "?price=paid",
@@ -44,8 +42,26 @@ categories = {
     "Tools": "?category=TOOLS",
     "Transportation": "?category=TRANSPORTATION",
     "Travel And Local": "?category=TRAVEL_AND_LOCAL",
-    "Video Players": "?category=VIDEO PLAYERS",
+    "Video Players": "?category=VIDEO_PLAYERS",
     "Weather": "?category=WEATHER",
+    "Game Action": "?category=GAME_ACTION",
+    "Game Adventure": "?category=GAME_ADVENTURE",
+    "Game Arcade": "?category=GAME_ARCADE",
+    "Game Board": "?category=GAME_BOARD",
+    "Game Card": "?category=GAME_CARD",
+    "Game Casino": "?category=GAME_CASINO",
+    "Game Casual": "?category=GAME_CASUAL",
+    "Game Educational": "?category=GAME_EDUCATIONAL",
+    "Game Family": "?category=GAME_FAMILY",
+    "Game Music": "?category=GAME_MUSIC",
+    "Game Puzzle": "?category=GAME_PUZZLE",
+    "Game Racing": "?category=GAME_RACING",
+    "Game Role Playing": "?category=GAME_ROLE_PLAYING",
+    "Game Simulation": "?category=GAME_SIMULATION",
+    "Game Sports": "?category=GAME_SPORTS",
+    "Game Strategy": "?category=GAME_STRATEGY",
+    "Game Trivia": "?category=GAME_TRIVIA",
+    "Game Word": "?category=GAME_WORD"
 }
 
 
