@@ -65,7 +65,6 @@ categories = {
 }
 
 
-
 def get_applist(category, number):
     applist = []
     url = "https://androidrank.org/android-most-popular-google-play-apps"
@@ -73,12 +72,11 @@ def get_applist(category, number):
     options.headless = True
     # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
 
-
     driver = webdriver.Firefox(options=options)
     # print(f'{url}{categories[category]}')
     driver.get(f'{url}{categories[category]}')
 
-    while(len(applist)<number):
+    while (len(applist) < number):
         applist = get_apps_on_page(applist, driver, number)
         driver = click_next_page(driver)
 
@@ -95,9 +93,10 @@ def get_apps_on_page(applist, driver, number):
     regex = r'^https://androidrank\.org/application/.+/([^/]+)$'
     for l in links:
         match = re.search(regex, l)
-        if (match and len(applist)<number):
+        if (match and len(applist) < number):
             applist.append(match.group(1))
     return applist
+
 
 def click_next_page(driver):
     # does not work for some reason
@@ -105,7 +104,7 @@ def click_next_page(driver):
 
     # "First" and "Previous" buttons are disabled on the first page resulting in a different XPATH
     if 'start=' in driver.current_url:
-        next_btn =  driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/small/a[3]")
+        next_btn = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/small/a[3]")
     else:
         next_btn = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/small/a[1]")
     time.sleep(2)
