@@ -15,6 +15,7 @@ import NavigationItem from './NavigationItem';
   const useStyles = createStyles((theme) => ({
     navbar: {
       paddingTop: 0,
+      backgroundColor: theme.colors.gray[0]
     },
   
     section: {
@@ -69,7 +70,7 @@ import NavigationItem from './NavigationItem';
   
 
   interface NavigationItemProps {
-    links: { icon: React.ElementType; label: string }[];
+    links: { icon: React.ElementType; label: string, link: string; }[];
   }
 
   export function Navigation({links}: NavigationItemProps) {
@@ -91,7 +92,7 @@ import NavigationItem from './NavigationItem';
           <div className={classes.mainLinks}>
         {
           links.map((link) => (
-            <NavigationItem link={link} />
+                <NavigationItem link={link} />
             ))
         }
         </div>

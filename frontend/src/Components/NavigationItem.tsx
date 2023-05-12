@@ -1,6 +1,6 @@
 import { UnstyledButton, createStyles, rem } from '@mantine/core'
 import React from 'react'
-
+import {BrowserRouter, Link } from 'react-router-dom';
   
 const useStyles = createStyles((theme) => ({
     mainLink: {
@@ -29,20 +29,28 @@ const useStyles = createStyles((theme) => ({
       marginRight: theme.spacing.sm,
       color: theme.colorScheme === 'dark' ? theme.colors.dark[2] : theme.colors.gray[6],
     },
+
+ 
   }));
 
   interface NavigationItemProps {
-    link: { icon: React.ElementType; label: string };
+    link: { icon: React.ElementType; label: string, link: string; };
   }
 
 export default function NavigationItem({link}: NavigationItemProps) {
     const { classes, theme } = useStyles();
+
+
   return (
-    <UnstyledButton key={link.label} className={classes.mainLink}>
-        <div className={classes.mainLinkInner}>
-        <link.icon size={20} className={classes.mainLinkIcon} />
-        <span>{link.label}</span>
-        </div>
-    </UnstyledButton>
+   
+        <Link to={link.link}>
+            <UnstyledButton key={link.label} className={classes.mainLink}>
+                <div className={classes.mainLinkInner}>
+                <link.icon size={20} className={classes.mainLinkIcon} />
+                <span>{link.label}</span>
+                </div>
+            </UnstyledButton>
+        </Link>
+   
   )
 }
