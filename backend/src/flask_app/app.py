@@ -1,13 +1,25 @@
+from flask import Flask
+from flask_cors import CORS
 import random
 from flask import jsonify, request
-from app import app
-# from webcrawling.playstore_crawler import get_policy
-# from backend.src.webcrawling.androidrank_crawler import get_applist
+from webcrawling.playstore_crawler import get_policy
+from webcrawling.androidrank_crawler import get_applist
 
+app = Flask(__name__)
+CORS(app)  # Enable CORS for the Flask app
+
+# Configuration settings
+app.config['DEBUG'] = True
+# app.config['SECRET_KEY'] = 'your_secret_key'
+
+
+def run_app():
+    app.run()
 
 @app.route('/')
 def index():
     data = {"key" : "value"}
+    print(data)
     return jsonify(data), 500
 
 @app.route('/category', methods=['POST'])
@@ -72,9 +84,9 @@ def id():
         }
         return jsonify(error), 500
 
-def is_valid_id(id_value):
+def is_valid_id(id):
     # TODO add your validation criteria here
-    return id_value.isdigit() and len(id_value) == 6
+    return True
 
 
 def get_result_from_id(id):
