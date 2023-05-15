@@ -32,11 +32,11 @@ function App() {
 
      <BrowserRouter>
     <Grid>
-      <Grid.Col span={4} > 
+      <Grid.Col span={4} md={3} > 
         <Navigation links={links}/>
       </Grid.Col>
       
-      <Grid.Col span={8} >
+      <Grid.Col span={8} md={9} >
    
         <ScrollArea  h="90vh" p={40} >
 

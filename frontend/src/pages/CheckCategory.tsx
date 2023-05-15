@@ -9,7 +9,7 @@ type FormData = {
 
 type CategoryProps = {};
 
-export default function Category(props: CategoryProps): ReactElement<CategoryProps> {
+export default function CheckCategory(props: CategoryProps): ReactElement<CategoryProps> {
   const form = useForm<FormData>({
     initialValues: {
       category: '',
