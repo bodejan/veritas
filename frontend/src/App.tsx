@@ -9,7 +9,7 @@ import {
   Checkbox,
 } from 'tabler-icons-react';
 
-import { Grid } from '@mantine/core';
+import { Box, Grid, ScrollArea } from '@mantine/core';
 import AllRoutes from './AllRoutes';
 
 function App() {
@@ -22,28 +22,30 @@ function App() {
 
   const links : NavigationLink[] = [
     { icon: Vocabulary, label: 'Documentation', link: '/documentation'},
-    { icon: Checkbox, label: 'App category', link: '/documentation'},
-    { icon: User, label: 'List of apps', link: '/documentation'},
-    { icon: User, label: 'Name of app', link: '/documentation'},
+    { icon: Checkbox, label: 'App category', link: '/category'},
+    { icon: User, label: 'List of apps', link: '/list'},
+    { icon: User, label: 'Name of app', link: '/name'},
   ];
   
 
   return (
-   <>
+
      <BrowserRouter>
     <Grid>
-      <Grid.Col span={4}> 
+      <Grid.Col span={4} > 
         <Navigation links={links}/>
       </Grid.Col>
       
-      <Grid.Col span={8}>
+      <Grid.Col span={8} >
    
+        <ScrollArea  h="90vh" p={40} >
+
           <AllRoutes />
-      
+        </ScrollArea>
       </Grid.Col>
     </Grid>
     </BrowserRouter>
-   </>
+
   );
 }
 

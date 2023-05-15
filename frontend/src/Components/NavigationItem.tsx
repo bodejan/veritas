@@ -1,6 +1,6 @@
 import { UnstyledButton, createStyles, rem } from '@mantine/core'
 import React from 'react'
-import {BrowserRouter, Link } from 'react-router-dom';
+import {useLocation, Link } from 'react-router-dom';
   
 const useStyles = createStyles((theme) => ({
     mainLink: {
@@ -9,12 +9,14 @@ const useStyles = createStyles((theme) => ({
       width: '100%',
       fontSize: theme.fontSizes.xs,
       padding: `${rem(8)} ${theme.spacing.xs}`,
-      borderRadius: theme.radius.sm,
+
       fontWeight: 500,
       color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+      
   
       '&:hover': {
-        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+        backgroundColor: theme.colors.gray[2],
+        fontWeight: 700,
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
       },
     },
@@ -39,12 +41,13 @@ const useStyles = createStyles((theme) => ({
 
 export default function NavigationItem({link}: NavigationItemProps) {
     const { classes, theme } = useStyles();
-
+    const location = useLocation();
+    const isActive = location.pathname.includes(link.link);
 
   return (
    
-        <Link to={link.link}>
-            <UnstyledButton key={link.label} className={classes.mainLink}>
+        <Link to={link.link} style={{ textDecoration: 'none' }}>
+            <UnstyledButton key={link.label} className={classes.mainLink} sx={isActive ? {backgroundColor : theme.colors.gray[2], fontWeight: 700}: {}}>
                 <div className={classes.mainLinkInner}>
                 <link.icon size={20} className={classes.mainLinkIcon} />
                 <span>{link.label}</span>
