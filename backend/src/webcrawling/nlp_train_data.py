@@ -92,12 +92,12 @@ def get_all_ids():
 def get_all_policies():
     # Import the array from the file
     ids = []
-    with open(f'policy_export/all_ids_batch/all_ids.txt', 'r') as f:
+    with open(f'backend/src/webcrawling/policy_export/all_ids.txt', 'r') as f:
         for line in f:
             ids.append(line.strip())
 
     # Get policy
-    for i in range(10):
+    for i in range(3000):
         id = ids[i]
         start_time = time.time()
         success = get_policy(id)
@@ -111,12 +111,12 @@ def get_all_policies():
         row.append(id)
         row.append(end_time - start_time)
         row.append(success)
-        with open('policy_export/all_policies_metric.csv', 'a', newline='') as f:
+        with open('backend/src/webcrawling/policy_export/all_policies_metric.csv', 'a', newline='') as f:
             writer = csv.writer(f)
             if f.tell() == 0:
                 writer.writerow(['Id', 'Execution Time', 'Success'])
             writer.writerow(row)
 
 # get_all_ids()
-get_all_policies(1)
+get_all_policies()
 

@@ -50,8 +50,8 @@ def get_policy(id):
         # Print all text in the body (Todo: Change to something more useful)
         page = driver.find_element(By.TAG_NAME, "body")
         # print(page.text)
-        with open('policy_export/all_policies.txt', 'a', encoding="utf-8") as f:
-            f.write(id)
+        with open('backend/src/webcrawling/policy_export/all_policies.txt', 'a', encoding="utf-8") as f:
+            f.write(f'{id}\n')
             f.write(page.text)
             f.write(f'\n\n--------------------------------------------------------------\n\n')
 
@@ -70,5 +70,5 @@ def get_policy(id):
 
 
 def export_policy(page, id):
-    with open(f'backend/src/webcrawling/policy_export/all/{id}.txt', 'w', encoding="utf-8") as f:
+    with open(f'backend/src/webcrawling/backend/src/webcrawling/policy_export/all/{id}.txt', 'w', encoding="utf-8") as f:
         f.write(page.text)
