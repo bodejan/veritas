@@ -40,7 +40,7 @@ categories = {
     "Social": "?category=SOCIAL",
     "Sports": "?category=SPORTS",
     "Tools": "?category=TOOLS",
-    "Transportation": "?category=TRANSPORTATION",
+    #"Transportation": "?category=TRANSPORTATION",
     "Travel And Local": "?category=TRAVEL_AND_LOCAL",
     "Video Players": "?category=VIDEO_PLAYERS",
     "Weather": "?category=WEATHER",
@@ -52,7 +52,7 @@ categories = {
     "Game Casino": "?category=GAME_CASINO",
     "Game Casual": "?category=GAME_CASUAL",
     "Game Educational": "?category=GAME_EDUCATIONAL",
-    "Game Family": "?category=GAME_FAMILY",
+    #"Game Family": "?category=GAME_FAMILY",
     "Game Music": "?category=GAME_MUSIC",
     "Game Puzzle": "?category=GAME_PUZZLE",
     "Game Racing": "?category=GAME_RACING",
@@ -71,24 +71,44 @@ def get_applist(category, number):
     options = Options()
     options.headless = True
     # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
-
     driver = webdriver.Firefox(options=options)
-    # print(f'{url}{categories[category]}')
-    driver.get(f'{url}{categories[category]}')
 
-    while (len(applist) < number):
-        applist = get_apps_on_page(applist, driver, number)
-        driver = click_next_page(driver)
+    try:
+        driver.get(f'{url}{categories[category]}')
 
-    time.sleep(2)
-    driver.quit()
+        while (len(applist) < number):
+            applist = get_apps_on_page(applist, driver, number)
+            driver = click_next_page(driver)
+            if driver == None: 
+                print(f'Crawled {len(applist)} out of {number}')
+                break
+            else:
+                time.sleep(4)
+        
+        # Quit driver if successful 
+        if (len(applist) == number): driver.quit()
+        
+    except Exception as e:
+        print(f'Error while crawling top {number} from {category}')
+        print(f'Current url: {driver.current_url}')
+        print(f'Crawled {len(applist)} out of {number}')
+        print(applist)
+        driver.quit()
+    
     return applist
 
 
 def get_apps_on_page(applist, driver, number):
     # get all a tags with links that hold app names from one page
-    links = driver.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'a')
-    links = list(map(lambda x: x.get_attribute("href"), links))
+    try:
+        links = driver.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'a')
+        links = list(map(lambda x: x.get_attribute("href"), links))
+    except Exception as e:
+        print('Error while finding ids')
+        print(f'Current url: {driver.current_url}')
+        print(f'Crawled {len(applist)} out of {number}')
+        print(applist)
+        return applist
     # match id of apps embedded in links and add to applist
     regex = r'^https://androidrank\.org/application/.+/([^/]+)$'
     for l in links:
@@ -101,12 +121,20 @@ def get_apps_on_page(applist, driver, number):
 def click_next_page(driver):
     # does not work for some reason
     # next_btn = driver.find_element(By.XPATH, "//a[@name='Next >']")
-
-    # "First" and "Previous" buttons are disabled on the first page resulting in a different XPATH
-    if 'start=' in driver.current_url:
-        next_btn = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/small/a[3]")
-    else:
-        next_btn = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/small/a[1]")
-    time.sleep(2)
-    next_btn.click()
+    
+    try:
+        # Last page starts has 'start=481' - no need to click next page
+        if 'start=481' not in driver.current_url:
+            # "First" and "Previous" buttons are disabled on the first page resulting in a different XPATH
+            if 'start=' in driver.current_url:
+                next_btn = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/small/a[3]")
+            else:
+                next_btn = driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[1]/small/a[1]")
+            
+            time.sleep(1)
+            next_btn.click()
+    except Exception as e:
+        print(f'Cannot click "next"')
+        print(f'Current url: {driver.current_url}')
+        return None
     return driver
