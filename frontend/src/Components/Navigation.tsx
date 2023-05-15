@@ -68,8 +68,8 @@ import NavigationItem from './NavigationItem';
         <Navbar.Section className={classes.section}>
           <div>
         {
-          links.map((link) => (
-                <NavigationItem link={link} />
+          links.map((link, index) => (
+                <NavigationItem link={link} key={index} />
             ))
         }
         </div>
