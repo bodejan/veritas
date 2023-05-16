@@ -1,10 +1,12 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Documentation from './pages/Documentation';
 import CheckCategory from './pages/CheckCategory';
 import CheckList from './pages/CheckList';
 import Overview from './pages/Statistics/Overview';
 import AppDetail from './pages/Statistics/AppDetail';
+
+import { Breadcrumbs, Anchor } from '@mantine/core';
 
 interface Policy {
   [key: string]: number;
@@ -24,8 +26,39 @@ interface RouteProps{
   setCurrentApp: Dispatch<SetStateAction<PolicyObject>>;
 }
 
+function generatePaths(array: string[]) {
+  let result = [];
+  let path = '';
+  
+  for (let i = 0; i < array.length; i++) {
+    const name = array[i];
+    path += `/${name}`;
+    
+    result.push({
+      name: name,
+      path: path.substring(1)
+    });
+  }
+  
+  return result;
+}
+
 export default function AllRoutes({appData, setAppData, currentApp, setCurrentApp}: RouteProps) {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+
+  const items = generatePaths(location.pathname.split("/").filter(value => value !== "")).map((item, index) => (
+    <Anchor onClick={() => navigate(item.path)} key={index}>
+      {item.name}
+    </Anchor>
+  ));
+  
   return (
+    <>
+    <Breadcrumbs>{items}</Breadcrumbs>
+    
     <Routes>
       <Route path="/documentation" element={<Documentation />} />
       <Route path="/category" element={<CheckCategory setAppData={setAppData} />} />
@@ -38,5 +71,6 @@ export default function AllRoutes({appData, setAppData, currentApp, setCurrentAp
       <Route path="/category/overview/app" element={<AppDetail currentApp={currentApp}  />} />
 
     </Routes>
+    </>
   )
 }

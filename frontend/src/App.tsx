@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import './App.css';
 import { Navigation } from './Components/Navigation';
 import { BrowserRouter } from 'react-router-dom';
 import {Vocabulary,User,Checkbox} from 'tabler-icons-react';
 import { Grid, ScrollArea } from '@mantine/core';
 import AllRoutes from './AllRoutes';
+
 
 function App() {
 
@@ -35,15 +36,9 @@ function App() {
   const [appData, setAppData] = useState<PolicyObject[]>([])
   const [currentApp, setCurrentApp] = useState<PolicyObject>({id: "", name: "", image: "", policies: {}})
 
-  useEffect(() =>{
-    console.log(appData)
-  }, [appData])
-
   return (
-
     <BrowserRouter>
       <Grid>
-
         <Grid.Col span={4} md={3} > 
           <Navigation links={links}/>
         </Grid.Col>
@@ -53,10 +48,8 @@ function App() {
             <AllRoutes appData={appData} setAppData={setAppData} currentApp={currentApp} setCurrentApp={setCurrentApp} />
           </ScrollArea>
         </Grid.Col>
-
       </Grid>
     </BrowserRouter>
-
   );
 }
 

@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles} from '@mantine/core'
-import React, { useState } from 'react'
+import { Box, Button, Grid, Progress, RingProgress, Stack, Text, Title, createStyles} from '@mantine/core'
+import React from 'react'
 import { CircleCheck, CircleX } from 'tabler-icons-react';
 
 
@@ -31,16 +31,6 @@ const useStyles = createStyles((theme) => ({
 export default function AppDetail({currentApp}: OverviewProps) {
     const { classes, theme } = useStyles();
 
-
-      function calculateSumOfPolicies(policies: Policy) {
-        let sum = 0;
-        for (const key in policies) {
-          if (typeof policies[key] === "number") {
-            sum += policies[key];
-          }
-        }
-        return sum;
-      }
 
   return (
     <>

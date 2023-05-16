@@ -24,7 +24,7 @@ interface CheckListProps{
   setAppData: Dispatch<SetStateAction<PolicyObject[]>>,
 }
 
-export default function CheckList({setAppData}: CheckListProps): ReactElement {
+export default function CheckList({setAppData}: CheckListProps): ReactElement<CheckListProps> {
   const navigate = useNavigate();
 
   const [visible, { toggle }] = useDisclosure(false);
@@ -68,7 +68,7 @@ export default function CheckList({setAppData}: CheckListProps): ReactElement {
     {
       "id": "facebook",
       "name": "Facebook",
-      "image": "https://play.google.com/store/apps/details?id=com.facebook.katana",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png",
       "policies": {
         "Data Categories": 0,
         "Processing Purpose": 1,
@@ -92,7 +92,7 @@ export default function CheckList({setAppData}: CheckListProps): ReactElement {
     }
   ]))
 
-  const handleFileUpload = (file: File | null) => {
+  const handleFileUpload = (file: File | null): void => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -106,16 +106,12 @@ export default function CheckList({setAppData}: CheckListProps): ReactElement {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     console.log(appList);
 
     toggle()
 
     setAppData(mockdata)
-
-
-    
-
     setTimeout(() =>{navigate("./overview")}, 7000)
   };
 

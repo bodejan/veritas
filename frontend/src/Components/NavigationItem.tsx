@@ -7,7 +7,7 @@ const useStyles = createStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
       width: '100%',
-      fontSize: theme.fontSizes.xs,
+      fontSize: theme.fontSizes.sm,
       padding: `${rem(8)} ${theme.spacing.xs}`,
 
       fontWeight: 500,

@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles} from '@mantine/core'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { useNavigate } from "react-router-dom";
 
 interface Policy {

@@ -1,10 +1,10 @@
-import { Button, Grid, Input, LoadingOverlay, NativeSelect, NumberInput, Stack, Text, Title } from '@mantine/core'
+import { Button, Grid, LoadingOverlay, NativeSelect, NumberInput, Stack, Text, Title } from '@mantine/core'
 import { useForm } from '@mantine/form';
 import React, { Dispatch, ReactElement, SetStateAction } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { useNavigate } from "react-router-dom";
 
-type FormData = {
+interface FormData  {
   category: string;
   numApps: number;
 };
@@ -30,13 +30,10 @@ export default function CheckCategory({setAppData}: CheckCategoryProps): ReactEl
       category: '',
       numApps: 1,
     },
-
   });
 
   const navigate = useNavigate();
-
   const [visible, { toggle }] = useDisclosure(false);
-
   const { errors, getInputProps } = form;
 
 
@@ -126,7 +123,7 @@ const mockdata: PolicyObject[] = JSON.parse(JSON.stringify([
   {
     "id": "facebook",
     "name": "Facebook",
-    "image": "https://play.google.com/store/apps/details?id=com.facebook.katana",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png",
     "policies": {
       "Data Categories": 0,
       "Processing Purpose": 1,
@@ -150,20 +147,14 @@ const mockdata: PolicyObject[] = JSON.parse(JSON.stringify([
   }
 ]))
 
-  const handleSubmit = () => {
+  function handleSubmit(): void{
     if (form.values.category && form.values.numApps >= 1) {
-
       var categoryObject = {category : form.values.category, number: form.values.numApps}
 
       console.log(categoryObject)
-
-      toggle()
-
-      setAppData(mockdata)
-  
-  
       
-  
+      toggle()
+      setAppData(mockdata)
       setTimeout(() =>{navigate("./overview")}, 7000)
     }
   };
