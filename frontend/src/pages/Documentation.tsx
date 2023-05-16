@@ -5,7 +5,7 @@ export default function Documentation() {
   return (
    <>
 
-          <Stack>
+          <Stack p={20}>
             <section>
               <Title>Documentation</Title>
               <Text>

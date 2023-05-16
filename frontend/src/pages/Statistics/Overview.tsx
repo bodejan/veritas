@@ -20,8 +20,7 @@ interface OverviewProps{
 
 const useStyles = createStyles((theme) => ({
     scollbox: {
-        maxHeight: 300,
-       
+        height: 300,
         padding: 20,
         background: theme.colors.gray[1],
         borderRadius: 8,
@@ -94,7 +93,7 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
                 roundCaps
                 label={
                 <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                    12 / 18
+                    Score
                 </Text>
                 }
             />
@@ -140,7 +139,7 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
                             <Title order={6}>{value.name}</Title>
                         </Grid.Col>
                         <Grid.Col span={5} display="grid" sx={{alignContent: "center"}}>
-                                <Progress value={Object.keys(value.policies).length} size="xl" color={theme.colors.gray[4]}/>
+                                <Progress value={ (calculateSumOfPolicies(value.policies) / Object.keys(value.policies).length) * 100 } size="xl" color={theme.colors.gray[4]}/>
                         </Grid.Col>
                         <Grid.Col span={3}  display="grid" sx={{alignContent: "center"}}>
                             <Title order={6}>{calculateSumOfPolicies(value.policies)} / {Object.keys(value.policies).length} requirements fullfiled</Title>

@@ -1,15 +1,30 @@
-import { Button, Grid, Input, NativeSelect, NumberInput, Stack, Text, Title } from '@mantine/core'
+import { Button, Grid, Input, LoadingOverlay, NativeSelect, NumberInput, Stack, Text, Title } from '@mantine/core'
 import { useForm } from '@mantine/form';
-import React, { ReactElement } from 'react';
+import React, { Dispatch, ReactElement, SetStateAction } from 'react';
+import { useDisclosure } from '@mantine/hooks';
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
   category: string;
   numApps: number;
 };
 
-type CategoryProps = {};
+interface Policy {
+  [key: string]: number;
+}
 
-export default function CheckCategory(props: CategoryProps): ReactElement<CategoryProps> {
+interface PolicyObject {
+  id: string;
+  name: string;
+  image: string;
+  policies: Policy;
+}
+
+interface CheckCategoryProps{
+  setAppData: Dispatch<SetStateAction<PolicyObject[]>>,
+}
+
+export default function CheckCategory({setAppData}: CheckCategoryProps): ReactElement<CheckCategoryProps> {
   const form = useForm<FormData>({
     initialValues: {
       category: '',
@@ -17,6 +32,10 @@ export default function CheckCategory(props: CategoryProps): ReactElement<Catego
     },
 
   });
+
+  const navigate = useNavigate();
+
+  const [visible, { toggle }] = useDisclosure(false);
 
   const { errors, getInputProps } = form;
 
@@ -78,12 +97,74 @@ export default function CheckCategory(props: CategoryProps): ReactElement<Catego
     "Game Word": "?category=GAME_WORD"
 }))
 
+const mockdata: PolicyObject[] = JSON.parse(JSON.stringify([
+  {
+    "id": "com.google.android.youtube",
+    "name": "YouTube",
+    "image": "https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc=s96-rw",
+    "policies": {
+      "Data Categories": 0,
+      "Processing Purpose": 1,
+      "Data Recipients": 0,
+      "Source of Data": 1,
+      "Provision Requirement": 1,
+      "Data Safeguards": 1,
+      "Profiling": 1,
+      "Storage Period": 0,
+      "Adequacy Decision": 0,
+      "Controllers Contact": 1,
+      "DPO Contact": 1,
+      "Withdraw Consent": 1,
+      "Lodge Complaint": 1,
+      "Right to Access": 1,
+      "Right to Erase": 1,
+      "Right to Restrict": 0,
+      "Right to Object": 1,
+      "Right to Data Portability": 0
+    }
+  },
+  {
+    "id": "facebook",
+    "name": "Facebook",
+    "image": "https://play.google.com/store/apps/details?id=com.facebook.katana",
+    "policies": {
+      "Data Categories": 0,
+      "Processing Purpose": 1,
+      "Data Recipients": 0,
+      "Source of Data": 1,
+      "Provision Requirement": 1,
+      "Data Safeguards": 1,
+      "Profiling": 1,
+      "Storage Period": 0,
+      "Adequacy Decision": 0,
+      "Controllers Contact": 1,
+      "DPO Contact": 1,
+      "Withdraw Consent": 0,
+      "Lodge Complaint": 0,
+      "Right to Access": 0,
+      "Right to Erase": 1,
+      "Right to Restrict": 0,
+      "Right to Object": 1,
+      "Right to Data Portability": 0
+    }
+  }
+]))
+
   const handleSubmit = () => {
     if (form.values.category && form.values.numApps >= 1) {
 
       var categoryObject = {category : form.values.category, number: form.values.numApps}
 
       console.log(categoryObject)
+
+      toggle()
+
+      setAppData(mockdata)
+  
+  
+      
+  
+      setTimeout(() =>{navigate("./overview")}, 7000)
     }
   };
 
@@ -97,6 +178,7 @@ export default function CheckCategory(props: CategoryProps): ReactElement<Catego
 
         <section>
           <Grid>
+          <LoadingOverlay visible={visible} overlayBlur={2} />
             <Grid.Col xs={12} lg={6}>
               <NativeSelect
                 {...getInputProps('category')}

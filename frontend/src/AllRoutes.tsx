@@ -28,7 +28,7 @@ export default function AllRoutes({appData, setAppData, currentApp, setCurrentAp
   return (
     <Routes>
       <Route path="/documentation" element={<Documentation />} />
-      <Route path="/category" element={<CheckCategory />} />
+      <Route path="/category" element={<CheckCategory setAppData={setAppData} />} />
       <Route path="/list" element={<CheckList setAppData={setAppData} />} />
 
       <Route path="/list/overview" element={<Overview appData={appData} setCurrentApp={setCurrentApp}/>} />
