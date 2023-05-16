@@ -97,7 +97,7 @@ def get_all_policies():
             ids.append(line.strip())
 
     # Get policy
-    for i in range(3000):
+    for i in range(1002, len(ids)):
         id = ids[i]
         start_time = time.time()
         success = get_policy(id)
