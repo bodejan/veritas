@@ -147,18 +147,35 @@ const mockdata: PolicyObject[] = JSON.parse(JSON.stringify([
   }
 ]))
 
-  function handleSubmit(): void{
-    if (form.values.category && form.values.numApps >= 1) {
-      var categoryObject = {category : form.values.category, number: form.values.numApps}
+function handleSubmit(): void {
+  if (form.values.category && form.values.numApps >= 1) {
+    var categoryObject = { category: form.values.category, number: form.values.numApps };
 
-      console.log(categoryObject)
-      
-      toggle()
-      setAppData(mockdata)
-      setTimeout(() =>{navigate("./overview")}, 7000)
-    }
-  };
+    console.log(categoryObject);
 
+    toggle();
+
+    // Send the POST request
+    fetch('http://127.0.0.1:5000/category', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(categoryObject),
+    })
+      .then(response => response.json())
+      .then(data => {
+        setAppData(data);
+        //setTimeout(() => { navigate("./overview"); }, 7000);
+        navigate("./overview")
+        console.log(data)
+      })
+      .catch(error => {
+        // Handle error if the request fails
+        console.error('Error:', error);
+      });
+  }
+}
   return (
     <>
       <Stack p={20}>
