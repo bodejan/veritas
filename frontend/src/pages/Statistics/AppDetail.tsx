@@ -20,8 +20,6 @@ interface OverviewProps{
 
 const useStyles = createStyles((theme) => ({
     scollbox: {
-        
-       
         padding: 20,
         background: theme.colors.gray[1],
         borderRadius: 8,

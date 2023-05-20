@@ -31,6 +31,10 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
     const { classes, theme } = useStyles();
     const navigate = useNavigate();
 
+    const combinedPolicies = combinePolicies(appData);
+    
+
+      // Function for calculating how many Apps fullfill the each requirement
       function combinePolicies(arr: PolicyObject[]): Policy {
         const combinedPolicies: Policy = {};
       
@@ -53,6 +57,7 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
         return combinedPolicies;
       }
 
+      // calculate the amout of requirements that are checked
       function calculateSumOfPolicies(policies: Policy) {
         let sum = 0;
         for (const key in policies) {
@@ -62,6 +67,11 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
         }
         return sum;
       }
+
+      const getProgressValue = (value: PolicyObject) => {
+        const sumOfPolicies = calculateSumOfPolicies(value.policies);
+        return (sumOfPolicies / Object.keys(value.policies).length) * 100;
+      };
 
   return (
     <>
@@ -101,20 +111,20 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
             <Grid.Col xs={12} lg={9}>
                 <ScrollArea className={classes.scollbox}>
                     <Grid p={10}>
-                    {Object.keys(combinePolicies(appData)).map(value => 
-                    <>
+                    {Object.keys(combinedPolicies).map((value, index) => (
+                    <React.Fragment key={index}>
                     <Grid.Col span={3}>
                             <Title order={6}>{value}</Title>
                         </Grid.Col>
                         <Grid.Col span={7} display="grid" sx={{alignContent: "center"}}>
-                            <Progress value={(combinePolicies(appData)[value] / appData.length) * 100} size="xl" color={theme.colors.gray[4]}/>
+                            <Progress value={(combinedPolicies[value] / appData.length) * 100} size="xl" color={theme.colors.gray[4]}/>
                         </Grid.Col>
                         <Grid.Col span={2}>
-                        <Title order={6}>{combinePolicies(appData)[value]} / {appData.length} Apps</Title>
+                        <Title order={6}>{combinedPolicies[value]} / {appData.length} Apps</Title>
                         </Grid.Col>
                     
-                    </>    
-                    )        
+                    </React.Fragment>    
+                    ))        
                     }
                    
                     </Grid>
@@ -129,7 +139,7 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
             <ScrollArea className={classes.scollbox}>
                 
                 {appData.map((value : PolicyObject) => 
-                <Box p={10} sx={{borderRadius: 8}} bg="white"  mb={20}>
+                <Box p={10} sx={{borderRadius: 8}} bg="white" mb={20} key={value.id}>
                     <Grid>
                         <Grid.Col span={1}  display="grid" sx={{alignContent: "center"}}>
                         <Avatar src={value.image} />
@@ -139,7 +149,7 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
                             <Title order={6}>{value.name}</Title>
                         </Grid.Col>
                         <Grid.Col span={5} display="grid" sx={{alignContent: "center"}}>
-                                <Progress value={ (calculateSumOfPolicies(value.policies) / Object.keys(value.policies).length) * 100 } size="xl" color={theme.colors.gray[4]}/>
+                                <Progress value={ getProgressValue(value) } size="xl" color={theme.colors.gray[4]}/>
                         </Grid.Col>
                         <Grid.Col span={3}  display="grid" sx={{alignContent: "center"}}>
                             <Title order={6}>{calculateSumOfPolicies(value.policies)} / {Object.keys(value.policies).length} requirements fullfiled</Title>

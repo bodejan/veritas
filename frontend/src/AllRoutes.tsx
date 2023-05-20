@@ -26,6 +26,10 @@ interface RouteProps{
   setCurrentApp: Dispatch<SetStateAction<PolicyObject>>;
 }
 
+function capitalizeFirstLetter(s:string):string {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
 function generatePaths(array: string[]) {
   let result = [];
   let path = '';
@@ -35,7 +39,7 @@ function generatePaths(array: string[]) {
     path += `/${name}`;
     
     result.push({
-      name: name,
+      name: capitalizeFirstLetter(name),
       path: path.substring(1)
     });
   }
@@ -49,7 +53,7 @@ export default function AllRoutes({appData, setAppData, currentApp, setCurrentAp
   const navigate = useNavigate();
 
 
-  const items = generatePaths(location.pathname.split("/").filter(value => value !== "")).map((item, index) => (
+  const items = generatePaths(location.pathname.split("/").filter((value:string) => value !== "")).map((item, index) => (
     <Anchor onClick={() => navigate(item.path)} key={index}>
       {item.name}
     </Anchor>
