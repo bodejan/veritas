@@ -97,7 +97,28 @@ def get_result_from_id(id):
     # policy = get_policy(app_name)
     # score = nlp(policy)
     result = {
-            'id': id,
-            'score': round(random.random(), 2)
+        'id': id,
+        'name': id,
+        'image': 'image',
+        'policies': {
+            'Data Categories': random.randint(0, 1),
+            'Processing Purpose': random.randint(0, 1),
+            'Data Recipients': random.randint(0, 1),
+            'Source of Data': random.randint(0, 1),
+            'Provision Requirement': random.randint(0, 1),
+            'Data Safeguards': random.randint(0, 1),
+            'Profiling': random.randint(0, 1),
+            'Storage Period': random.randint(0, 1),
+            'Adequacy Decision': random.randint(0, 1),
+            'Controllers Contact': random.randint(0, 1),
+            'DPO Contact': random.randint(0, 1),
+            'Withdraw Consent': random.randint(0, 1),
+            'Lodge Complaint': random.randint(0, 1),
+            'Right to Access': random.randint(0, 1),
+            'Right to Erase': random.randint(0, 1),
+            'Right to Restrict': random.randint(0, 1),
+            'Right to Object': random.randint(0, 1),
+            'Right to Data Portability': random.randint(0, 1)
+        }
         }
     return result
