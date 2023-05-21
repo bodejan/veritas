@@ -16,11 +16,13 @@ app.config['DEBUG'] = True
 def run_app():
     app.run()
 
+
 @app.route('/')
 def index():
-    data = {"key" : "value"}
+    data = {"key": "value"}
     print(data)
     return jsonify(data), 500
+
 
 @app.route('/category', methods=['POST'])
 def category():
@@ -39,7 +41,6 @@ def category():
             result = get_result_from_id(app_name)
             results.append(result)
 
-
         return jsonify(results)
 
     except ValueError:
@@ -57,25 +58,29 @@ def category():
         }
         return jsonify(error), 500
 
+
 @app.route('/id', methods=['POST'])
 def id():
     print(request)
     data = request.get_json()
     try:
-        id = data.get('id')
-        
-        # Check if the ID value exists and meets your validation criteria
-        if id is None or not is_valid_id(id):
-            error_message = 'Invalid ID.'
-            error = {
-                'error': error_message
-            }
-            return jsonify(error), 400
+        ids = data.get('id')
+        print(ids)
+        results = []
+        for id in ids:
+            # Check if the ID value exists and meets your validation criteria
+            if id is None or not is_valid_id(id):
+                error_message = 'Invalid ID.'
+                error = {
+                    'error': error_message
+                }
+                return jsonify(error), 400
 
-        result = get_result_from_id(id)
-        print(result)
-        return jsonify(result)
-    
+            result = get_result_from_id(id)
+            print(result)
+            results.append(result)
+        return jsonify(results)
+
     except Exception as e:
         error_message = 'An error occurred.'
         error = {
@@ -83,6 +88,7 @@ def id():
             'exception': str(e)
         }
         return jsonify(error), 500
+
 
 def is_valid_id(id):
     # TODO add your validation criteria here
@@ -92,7 +98,7 @@ def is_valid_id(id):
 def get_result_from_id(id):
     print(f'Getting policy for {id}...')
     get_policy(id)
-    print('Success', '\n')
+    print('Success', '\n') # Todo make dependable on succes of get_policy function
     # TODO integrate nlp, define format for result (dict.)
     # policy = get_policy(app_name)
     # score = nlp(policy)
