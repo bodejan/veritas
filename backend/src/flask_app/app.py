@@ -97,8 +97,11 @@ def is_valid_id(id):
 
 def get_result_from_id(id):
     print(f'Getting policy for {id}...')
-    get_policy(id)
-    print('Success', '\n') # Todo make dependable on succes of get_policy function
+    success = get_policy(id)
+    if success:
+        print('Success', '\n')
+    else:
+        print('Fail', '\n')
     # TODO integrate nlp, define format for result (dict.)
     # policy = get_policy(app_name)
     # score = nlp(policy)

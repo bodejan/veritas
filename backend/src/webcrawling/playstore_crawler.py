@@ -14,19 +14,20 @@ def get_policy(id):
         # Start driver and open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
         options = Options()
-        options.headless = True
+        options.headless = False
         # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
         driver = webdriver.Firefox(options=options)
+        driver.set_page_load_timeout(30)
         driver.get(f'{url}{id}')
 
         seconds = 4
-        driver.implicitly_wait(seconds)
+        # driver.implicitly_wait(seconds)
 
         # Expand the developers contact section
         xpath_expand = "/html/body/c-wiz[2]/div/div/div[1]/div[2]/div/div[2]/c-wiz[1]/section/header/div/div[2]/button"
         button_expand = driver.find_element(By.XPATH, xpath_expand)
         button_expand.click()
-        time.sleep(1)
+        driver.implicitly_wait(1)
 
         # Store the ID of the original window
         original_window = driver.current_window_handle
@@ -39,18 +40,28 @@ def get_policy(id):
         button_policy = driver.find_element(By.XPATH, xpath_policy)
         button_policy.click()
 
-        time.sleep(3)
-
         # Loop through until we find a new window handle and switch the driver to the new window
         for window_handle in driver.window_handles:
             if window_handle != original_window:
                 driver.switch_to.window(window_handle)
                 break
 
-        # Print all text in the body (Todo: Change to something more useful)
+        # time.sleep(15)
+        elem = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '/html/body[text() != ""]')))
+
+        # check for forwarding notice
+        if len(driver.find_elements(By.TAG_NAME, "title")) > 0:
+            page_title = driver.find_element(By.TAG_NAME, "title")
+            if page_title.get_attribute('innerHTML') == "Weiterleitungshinweis":
+                link = driver.find_element(By.XPATH, '/html/body/div[2]/a[1]')
+                link.click()
+                driver.implicitly_wait(3)
+
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+        # Write all text in the body to file
         page = driver.find_element(By.TAG_NAME, "body")
-        # print(page.text)
-        with open('backend/src/webcrawling/policy_export/all_policies.txt', 'a', encoding="utf-8") as f:
+        with open('webcrawling/policy_export/all_policies.txt', 'a', encoding="utf-8") as f: # TODO add webcrawling/ again
             f.write(f'{id}\n')
             f.write(page.text)
             f.write(f'\n\n--------------------------------------------------------------\n\n')
@@ -61,14 +72,14 @@ def get_policy(id):
         for handle in driver.window_handles:
             driver.switch_to.window(handle)
             driver.close()
+
         return True
+
     except Exception as e:
         print(e)
         return False
 
 
-
-
 def export_policy(page, id):
-    with open(f'backend/src/webcrawling/backend/src/webcrawling/policy_export/all/{id}.txt', 'w', encoding="utf-8") as f:
+    with open(f'backend/src/webcrawling/policy_export/all/{id}.txt', 'w', encoding="utf-8") as f:
         f.write(page.text)
