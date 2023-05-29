@@ -1,0 +1,6 @@
+gensim==4.3.0
+keras==2.12.0
+keras_preprocessing==1.1.2
+nltk==3.7
+numpy==1.23.5
+pandas==1.5.3
