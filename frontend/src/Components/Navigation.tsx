@@ -43,7 +43,7 @@ import NavigationItem from './NavigationItem';
       <Navbar  p="md" className={classes.navbar}>
         <Navbar.Section className={classes.section} p={10}>
         <Group position="apart">
-            <Title order={1} color={theme.colors.dark[4]} sx={{ fontWeight: 700 }}>Logo</Title>
+            <Title order={1} color={theme.colors.dark[4]} sx={{ fontWeight: 700 }}>Heimdall</Title>
             <Code sx={{ fontWeight: 700 }} color={theme.colors.gray[2]}>v1</Code>
         </Group>
         </Navbar.Section>
