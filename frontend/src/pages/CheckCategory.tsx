@@ -3,6 +3,8 @@ import { useForm } from '@mantine/form';
 import React, { Dispatch, ReactElement, SetStateAction } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { useNavigate } from "react-router-dom";
+import { notifications } from '@mantine/notifications';
+import {X} from 'tabler-icons-react'
 
 interface FormData  {
   category: string;
@@ -30,10 +32,18 @@ export default function CheckCategory({setAppData}: CheckCategoryProps): ReactEl
       category: '',
       numApps: 1,
     },
+
+    validate: {
+      category: (value) => (value === "" ? 'Please select a category' : null),
+      numApps: (value) => (value <= 0 ? 'The amount of apps must be larger then 0' : null)
+    
+    },
+
+
   });
 
   const navigate = useNavigate();
-  const [visible, { toggle }] = useDisclosure(false);
+  const [visible, handlers] = useDisclosure(false);
   const { errors, getInputProps } = form;
 
 
@@ -94,58 +104,6 @@ export default function CheckCategory({setAppData}: CheckCategoryProps): ReactEl
     "Game Word": "?category=GAME_WORD"
 }))
 
-const mockdata: PolicyObject[] = JSON.parse(JSON.stringify([
-  {
-    "id": "com.google.android.youtube",
-    "name": "YouTube",
-    "image": "https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc=s96-rw",
-    "policies": {
-      "Data Categories": 0,
-      "Processing Purpose": 1,
-      "Data Recipients": 0,
-      "Source of Data": 1,
-      "Provision Requirement": 1,
-      "Data Safeguards": 1,
-      "Profiling": 1,
-      "Storage Period": 0,
-      "Adequacy Decision": 0,
-      "Controllers Contact": 1,
-      "DPO Contact": 1,
-      "Withdraw Consent": 1,
-      "Lodge Complaint": 1,
-      "Right to Access": 1,
-      "Right to Erase": 1,
-      "Right to Restrict": 0,
-      "Right to Object": 1,
-      "Right to Data Portability": 0
-    }
-  },
-  {
-    "id": "facebook",
-    "name": "Facebook",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png",
-    "policies": {
-      "Data Categories": 0,
-      "Processing Purpose": 1,
-      "Data Recipients": 0,
-      "Source of Data": 1,
-      "Provision Requirement": 1,
-      "Data Safeguards": 1,
-      "Profiling": 1,
-      "Storage Period": 0,
-      "Adequacy Decision": 0,
-      "Controllers Contact": 1,
-      "DPO Contact": 1,
-      "Withdraw Consent": 0,
-      "Lodge Complaint": 0,
-      "Right to Access": 0,
-      "Right to Erase": 1,
-      "Right to Restrict": 0,
-      "Right to Object": 1,
-      "Right to Data Portability": 0
-    }
-  }
-]))
 
 function handleSubmit(): void {
   if (form.values.category && form.values.numApps >= 1) {
@@ -153,7 +111,7 @@ function handleSubmit(): void {
 
     console.log(categoryObject);
 
-    toggle();
+    handlers.open()
 
     // Send the POST request
     fetch('http://127.0.0.1:5000/category', {
@@ -172,19 +130,42 @@ function handleSubmit(): void {
       })
       .catch(error => {
         // Handle error if the request fails
-        console.error('Error:', error);
+        handlers.close()
+        console.error('Error:', error);   
+
+        notifications.show({
+          title: 'Error',
+          message: 'Could not send the request to the server',
+          autoClose: 5000,
+          color: 'red',
+          icon: <X />,
+        })
       });
   }
 }
   return (
     <>
       <Stack p={20}>
+        
         <section>
           <Title>Check privacy policies by app category</Title>
-          <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </Text>
+          <Text>
+          This page allows you to select an app category and specify the number of apps you want to check. Our system will retrieve and analyze the privacy policies of the selected apps to provide you with valuable insights.
+          <br/>  <br/>
+          To get started, follow these steps:
+          <br/>
+          <ol>
+            <li> Choose an app category from the provided options.</li>
+            <li>Enter the number of apps you would like to check within that category.</li>
+            <li>Click the "Submit" button to initiate the process.</li>
+          </ol>
+         
+          Our application will then collect the necessary data and present you with the results. We aim to help you make informed decisions about the apps you use based on their privacy policies.
+          </Text>
         </section>
 
         <section>
+        <form onSubmit={form.onSubmit((values) => handleSubmit())}>
           <Grid>
           <LoadingOverlay visible={visible} overlayBlur={2} />
             <Grid.Col xs={12} lg={6}>
@@ -193,10 +174,9 @@ function handleSubmit(): void {
                 data={Object.keys(categories)}
                 label="Select category"
                 description="Select a category for apps you want to check"
-                withAsterisk
-                required
+          
               />
-              {errors.category && <div>{errors.category}</div>}
+              
             </Grid.Col>
             <Grid.Col xs={6} lg={4}>
               <NumberInput
@@ -204,18 +184,17 @@ function handleSubmit(): void {
                 label="Amount of Apps"
                 description="How many apps do you want to analyze?"
                 placeholder="1"
-                min={1}
-                withAsterisk
-                required
+            
               />
-              {errors.numApps && <div>{errors.numApps}</div>}
+          
             </Grid.Col>
             <Grid.Col xs={6} lg={2} display="flex" sx={{ alignItems: 'end' }}>
-              <Button color="dark" onClick={handleSubmit}>
+              <Button color="dark" type="submit" >
                 Check policies
               </Button>
             </Grid.Col>
           </Grid>
+          </form>
         </section>
       </Stack>
     </>
