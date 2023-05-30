@@ -51,10 +51,14 @@ def predictor(text):
     """
     result = process_split_words(text)
     # Load the tokenizer
+    # Try abs path if it does not work 
+    #with open('/Users/janbode/IOSL-ST-23/backend/src/NLP/NLPPredictor/tokenizer.pkl', 'rb') as f:
     with open('tokenizer.pkl', 'rb') as f:
         tokenizer = pickle.load(f)
     sequences = tokenizer.texts_to_sequences(result)
     pad_rev = pad_sequences(sequences, maxlen=102, padding='post')
+    # Try abs path if it does not work
+    #lstm_model = keras.models.load_model('/Users/janbode/IOSL-ST-23/backend/src/NLP/NLPPredictor/Bidirectional_LSTM_Model.h5')
     lstm_model = keras.models.load_model('Bidirectional_LSTM_Model.h5')
     preds = lstm_model.predict(pad_rev)
     classes = []

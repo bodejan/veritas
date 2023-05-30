@@ -1,4 +1,4 @@
-import nlp, webcrawling, flask_app
+import NLP, webcrawling, flask_app
 from flask_app.app import run_app
 
 

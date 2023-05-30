@@ -4,6 +4,7 @@ import random
 from flask import jsonify, request
 from webcrawling.playstore_crawler import get_policy
 from webcrawling.androidrank_crawler import get_applist
+from NLP.NLPPredictor.predictor import predictor
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the Flask app
@@ -97,34 +98,20 @@ def is_valid_id(id):
 
 def get_result_from_id(id):
     print(f'Getting policy for {id}...')
-    get_policy(id)
-    print('Success', '\n') # Todo make dependable on succes of get_policy function
-    # TODO integrate nlp, define format for result (dict.)
-    # policy = get_policy(app_name)
-    # score = nlp(policy)
+    success, policy = get_policy(id)
+    if success:
+        print('Success', '\n')
+    else:
+        print('Fail', '\n')
+
+    #print(policy)
+    scores = predictor(policy)
+    #print(scores)
+
     result = {
         'id': id,
         'name': id,
         'image': 'image',
-        'policies': {
-            'Data Categories': random.randint(0, 1),
-            'Processing Purpose': random.randint(0, 1),
-            'Data Recipients': random.randint(0, 1),
-            'Source of Data': random.randint(0, 1),
-            'Provision Requirement': random.randint(0, 1),
-            'Data Safeguards': random.randint(0, 1),
-            'Profiling': random.randint(0, 1),
-            'Storage Period': random.randint(0, 1),
-            'Adequacy Decision': random.randint(0, 1),
-            'Controllers Contact': random.randint(0, 1),
-            'DPO Contact': random.randint(0, 1),
-            'Withdraw Consent': random.randint(0, 1),
-            'Lodge Complaint': random.randint(0, 1),
-            'Right to Access': random.randint(0, 1),
-            'Right to Erase': random.randint(0, 1),
-            'Right to Restrict': random.randint(0, 1),
-            'Right to Object': random.randint(0, 1),
-            'Right to Data Portability': random.randint(0, 1)
-        }
+        'policies': scores
         }
     return result
