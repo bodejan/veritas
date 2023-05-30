@@ -46,38 +46,42 @@ def get_policy(id):
                 driver.switch_to.window(window_handle)
                 break
 
-        # time.sleep(15)
-        elem = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '/html/body[text() != ""]')))
+        time.sleep(3)
+        #elem = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '/html/body[text() != ""]')))
 
         # check for forwarding notice
         if len(driver.find_elements(By.TAG_NAME, "title")) > 0:
             page_title = driver.find_element(By.TAG_NAME, "title")
+            print(page_title.get_attribute('innerHTML'))
             if page_title.get_attribute('innerHTML') == "Weiterleitungshinweis":
-                link = driver.find_element(By.XPATH, '/html/body/div[2]/a[1]')
+                link = driver.find_element(By.TAG_NAME, 'a')
+                print(link.text)
                 link.click()
-                driver.implicitly_wait(3)
+                #driver.implicitly_wait(3)
+                time.sleep(3)
 
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
         # Write all text in the body to file
         page = driver.find_element(By.TAG_NAME, "body")
-        with open('webcrawling/policy_export/all_policies.txt', 'a', encoding="utf-8") as f: # TODO add webcrawling/ again
+        """ with open('webcrawling/policy_export/all_policies.txt', 'a', encoding="utf-8") as f: # TODO add webcrawling/ again
             f.write(f'{id}\n')
             f.write(page.text)
-            f.write(f'\n\n--------------------------------------------------------------\n\n')
+            f.write(f'\n\n--------------------------------------------------------------\n\n') """
 
         # export_policy(page, id)
+        
+        return True, page.text
 
+    except Exception as e:
+        print(e)
+        return False, e
+    
+    finally:
         # Close the browser with all tabs
         for handle in driver.window_handles:
             driver.switch_to.window(handle)
             driver.close()
-
-        return True
-
-    except Exception as e:
-        print(e)
-        return False
 
 
 def export_policy(page, id):

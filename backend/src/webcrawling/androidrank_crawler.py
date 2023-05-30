@@ -69,7 +69,7 @@ def get_applist(category, number):
     applist = []
     url = "https://androidrank.org/android-most-popular-google-play-apps"
     options = Options()
-    options.headless = True
+    options.headless = False
     # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
     driver = webdriver.Firefox(options=options)
 
