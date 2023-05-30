@@ -78,6 +78,7 @@ def get_applist(category, number):
 
         while (len(applist) < number):
             applist = get_apps_on_page(applist, driver, number)
+            if len(applist) == number: break
             driver = click_next_page(driver)
             if driver == None: 
                 print(f'Crawled {len(applist)} out of {number}')
