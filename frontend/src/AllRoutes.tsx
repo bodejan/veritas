@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import Documentation from './pages/Documentation';
 import CheckCategory from './pages/CheckCategory';
 import CheckList from './pages/CheckList';
@@ -52,7 +52,6 @@ export default function AllRoutes({appData, setAppData, currentApp, setCurrentAp
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const items = generatePaths(location.pathname.split("/").filter((value:string) => value !== "")).map((item, index) => (
     <Anchor onClick={() => navigate(item.path)} key={index}>
       {item.name}
@@ -64,6 +63,8 @@ export default function AllRoutes({appData, setAppData, currentApp, setCurrentAp
     <Breadcrumbs>{items}</Breadcrumbs>
     
     <Routes>
+    <Route path="/" element={<Navigate to="/documentation" />}/>
+
       <Route path="/documentation" element={<Documentation />} />
       <Route path="/category" element={<CheckCategory setAppData={setAppData} />} />
       <Route path="/list" element={<CheckList setAppData={setAppData} />} />

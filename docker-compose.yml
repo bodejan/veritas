@@ -4,7 +4,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    image: "git.tu-berlin.de:5000/heimdall/iosl-st-23"
+    image: "git.tu-berlin.de:5000/heimdall/iosl-st-23/frontend"
     container_name: frontend
     command: npm start
     volumes:
