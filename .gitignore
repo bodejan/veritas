@@ -1,0 +1,6 @@
+.DS_Store
+geckodriver.log
+**/__pycache__
+.vscode/settings.json
+/node_modules
+/frontend/node_modules
