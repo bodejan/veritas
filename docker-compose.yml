@@ -3,11 +3,25 @@ version: "3"
 
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: "git.tu-berlin.de:5000/heimdall/iosl-st-23/frontend"
+    container_name: frontend
+    command: npm start
+    volumes:
+      - ./frontend/:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "3000:3000"
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: "git.tu-berlin.de:5000/heimdall/iosl-st-23/backend"
+    container_name: backend
+    volumes:
+      - ./backend/:/usr/src/app
     ports:
       - "8000:8000"
   chrome:
