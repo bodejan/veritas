@@ -72,9 +72,11 @@ export default function AllRoutes({appData, setAppData, currentApp, setCurrentAp
       <Route path="/name" element={<SearchApp setAppData={setAppData} />} />
 
       <Route path="/list/overview" element={<Overview appData={appData} setCurrentApp={setCurrentApp}/>} />
+      <Route path="/name/overview" element={<Overview appData={appData} setCurrentApp={setCurrentApp}/>} />
       <Route path="/category/overview" element={<Overview appData={appData} setCurrentApp={setCurrentApp} />} />
 
       <Route path="/list/overview/app" element={<AppDetail currentApp={currentApp}  />} />
+      <Route path="/name/overview/app" element={<AppDetail currentApp={currentApp}  />} />
       <Route path="/category/overview/app" element={<AppDetail currentApp={currentApp}  />} />
 
     </Routes>

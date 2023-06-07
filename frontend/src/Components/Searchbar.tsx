@@ -1,23 +1,24 @@
-import React, { forwardRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, forwardRef, useState } from 'react';
 import { MultiSelect, Avatar, Group, Text } from '@mantine/core';
+
 
 const data = [
     {
     image: "https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN=w20",
     label: "WhatsApp",
-    value: "WhatsApp",
+    value: "com.whatsapp",
     description: "Messaging and calling app"
     },
     {
     image: "https://img.icons8.com/clouds/256/000000/instagram-new.png",
     label: "Instagram",
-    value: "Instagram",
+    value: "com.instagram.android",
     description: "Social media platform for sharing photos and videos"
     },
     {
     image: "https://img.icons8.com/clouds/256/000000/facebook-new.png",
     label: "Facebook",
-    value: "Facebook",
+    value: "com.facebook.katana",
     description: "Social networking platform"
     },
     {
@@ -41,13 +42,13 @@ const data = [
     {
     image: "https://img.icons8.com/clouds/256/000000/netflix.png",
     label: "Netflix",
-    value: "Netflix",
+    value: "com.netflix.mediaclient",
     description: "Streaming platform for movies and TV shows"
     },
     {
     image: "https://img.icons8.com/clouds/256/000000/uber-app.png",
     label: "Uber",
-    value: "Uber",
+    value: "com.ubercab",
     description: "Ride-sharing and transportation service"
     },
     {
@@ -138,6 +139,10 @@ interface ItemProps {
   description: string;
 }
 
+interface SearchbarProps{
+  setAppList: Dispatch<SetStateAction<string[]>>,
+}
+
 const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
   ({ image, label, description, ...others }: ItemProps, ref) => (
     <div ref={ref} {...others}>
@@ -155,9 +160,7 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
   )
 );
 
-export function Searchbar() {
-
-    const [appList, setApplist] = useState<String[]>([])
+export function Searchbar({setAppList}: SearchbarProps) {
 
 
   return (
@@ -165,7 +168,7 @@ export function Searchbar() {
       label="Search for Apps"
       placeholder="Select apps you want to analyse"
       itemComponent={SelectItem}
-      onChange={(values) => setApplist(values)}
+      onChange={(values) => setAppList(values)}
       data={data}
       searchable
       nothingFound="Nobody here"

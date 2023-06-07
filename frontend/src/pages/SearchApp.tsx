@@ -1,5 +1,7 @@
-import { Button, Flex, Grid, Stack, Text, Title } from '@mantine/core';
-import React, { Dispatch, ReactElement, SetStateAction } from 'react'
+import { Button, Flex, Grid, LoadingOverlay, Stack, Text, Title } from '@mantine/core';
+import React, { Dispatch, ReactElement, SetStateAction, useState } from 'react'
+import { useDisclosure } from '@mantine/hooks';
+import { useNavigate } from "react-router-dom";
 import { Searchbar } from '../Components/Searchbar';
 
 interface Policy {
@@ -17,7 +19,44 @@ interface Policy {
     setAppData: Dispatch<SetStateAction<PolicyObject[]>>,
   }
 
+
+
 export default function SearchApp({setAppData}: SearchAppProps): ReactElement<SearchAppProps> {
+  const navigate = useNavigate();
+
+  const [visible, { toggle }] = useDisclosure(false);
+
+  const [appList, setAppList] = useState<string[]>([]);
+
+  const handleSubmit = (): void => {
+    console.log(appList);
+
+    let list = {id: appList}
+
+    toggle()
+
+        // Send the POST request
+        fetch('http://127.0.0.1:8000/id', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(list),
+        })
+          .then(response => response.json())
+          .then(data => {
+            setAppData(data);
+            //setTimeout(() => { navigate("./overview"); }, 7000);
+            navigate("./overview")
+            console.log(data)
+          })
+          .catch(error => {
+            // Handle error if the request fails
+            console.error('Error:', error);
+          });
+
+  
+  };
   return (
     <>
     <Stack p={20}>
@@ -42,12 +81,13 @@ export default function SearchApp({setAppData}: SearchAppProps): ReactElement<Se
         <section>
         <Grid>
             <Grid.Col span={10}>
-                <Searchbar/>
+            <LoadingOverlay visible={visible} overlayBlur={2} />
+                <Searchbar setAppList={setAppList}/>
             </Grid.Col>
 
             <Grid.Col span={2} display="flex" >
                 <Flex align="end">
-                    <Button color="dark" >
+                    <Button color="dark" onClick={handleSubmit}>
                     Check policies
                     </Button>
                 </Flex>
