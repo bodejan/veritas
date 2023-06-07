@@ -6,6 +6,8 @@ from webcrawling.playstore_crawler import get_policy
 from webcrawling.androidrank_crawler import get_applist
 from NLP.NLPPredictor.predictor import predictor
 
+from backend.src.webcrawling.appname_crawler import refresh_db
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the Flask app
 
@@ -82,6 +84,30 @@ def id():
             results.append(result)
         return jsonify(results)
 
+    except Exception as e:
+        error_message = 'An error occurred.'
+        error = {
+            'error': error_message,
+            'exception': str(e)
+        }
+        return jsonify(error), 500
+
+
+@app.route('/name', methods=['GET'])
+def name():
+    try:
+        with open('backend/src/webcrawling/policy_export/app_data.json', 'r') as file:
+            data = file.read()
+            return jsonify(data), 200
+    except FileNotFoundError:
+        return jsonify({'error': 'File not found'}), 404
+
+
+@app.route('/refresh', methods=['POST'])
+def refresh():
+    try:
+        refresh_db()
+        return jsonify({'message': 'Database refreshed'}), 200
     except Exception as e:
         error_message = 'An error occurred.'
         error = {
