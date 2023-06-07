@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_cors import CORS
 import random
@@ -14,10 +15,6 @@ app.config['DEBUG'] = True
 # app.config['SECRET_KEY'] = 'your_secret_key'
 
 
-def run_app():
-    app.run()
-
-
 @app.route('/')
 def index():
     data = {"key": "value"}
@@ -30,6 +27,7 @@ def category():
     results = []
     data = request.get_json()
     try:
+        print(data)
         category = data.get('category')
         number = int(data.get('number'))
 
@@ -115,3 +113,10 @@ def get_result_from_id(id):
         'policies': scores
         }
     return result
+
+
+#def run_app():
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8000))
+    app.run(debug=True, host='0.0.0.0', port=port)
+    #app.run()

@@ -114,7 +114,7 @@ function handleSubmit(): void {
     handlers.open()
 
     // Send the POST request
-    fetch('http://127.0.0.1:5000/category', {
+    fetch('http://127.0.0.1:8000/category', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
