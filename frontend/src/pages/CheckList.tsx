@@ -33,7 +33,7 @@ export default function CheckList({setAppData}: CheckListProps): ReactElement<Ch
     initialValues: {
       category: '',
       numApps: 1,
-    }
+    },
   });
 
   const { errors, getInputProps } = form;
@@ -121,20 +121,13 @@ export default function CheckList({setAppData}: CheckListProps): ReactElement<Ch
         <section>
           <Title>Check privacy policies by app list</Title>
           <Text>
-          This page allows you to upload a list or CSV file containing the package names of the apps you wish to analyze. Our system will process the data and retrieve the respective privacy policies for analysis.
-          <br/>
-          To use this feature, follow these steps:
-
-          <ol>
-          <li>Prepare a list or CSV file with the package names of the apps you want to check. Each package name should be on a separate line in the file.</li>
-          <li>Click the "Upload" button to select and upload the file containing the package names.</li>
-          <li>Once the file is uploaded, click the "Check policies" button to start the analysis.</li>
-          </ol>
-        
-          Our application will process the provided app list, retrieve the privacy policies for each app, and present you with the results. You will be able to gain insights into the privacy practices of the specified apps.
-          <br/>  <br/>
-          Note: Please ensure that the uploaded file contains valid package names and follows the required format.
-        
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum.
           </Text>
         </section>
 

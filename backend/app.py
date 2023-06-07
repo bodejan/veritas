@@ -5,6 +5,8 @@ import random
 from flask import jsonify, request
 from webcrawling.playstore_crawler import get_policy
 from webcrawling.androidrank_crawler import get_applist
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
 
 app = Flask(__name__)
@@ -26,10 +28,13 @@ def index():
 def category():
     results = []
     data = request.get_json()
+    print(data)
     try:
         print(data)
         category = data.get('category')
         number = int(data.get('number'))
+
+        
 
         # Perform processing or any other operations with the variables
         applist = get_applist(category, number)
@@ -56,6 +61,7 @@ def category():
             'exception': str(e)
         }
         return jsonify(error), 500
+  
 
 
 @app.route('/id', methods=['POST'])
@@ -89,6 +95,21 @@ def id():
         return jsonify(error), 500
 
 
+@app.route('/test', methods=['POST'])
+def test():
+    print(request)
+    # Create a new instance of the Chrome driver
+    driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
+
+    # Navigate to Google
+    driver.get("https://play.google.com/store/apps/details?id=")
+
+    s = driver.page_source
+    print(s)
+    return s
+   
+
+
 def is_valid_id(id):
     # TODO add your validation criteria here
     return True
@@ -104,6 +125,7 @@ def get_result_from_id(id):
 
     #print(policy)
     scores = predictor(policy)
+    #scores = ""
     #print(scores)
 
     result = {
