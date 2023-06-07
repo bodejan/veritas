@@ -1,4 +1,6 @@
 version: "3"
+
+
 services:
   frontend:
     build:
@@ -12,7 +14,24 @@ services:
       - /usr/src/app/node_modules
     ports:
       - "3000:3000"
-    # backend:
-    #   build: ./backend
-    #   ports:
-    #     - "5000:5000"
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: "git.tu-berlin.de:5000/heimdall/iosl-st-23/backend"
+    container_name: backend
+    volumes:
+      - ./backend/:/usr/src/app
+    ports:
+      - "8000:8000"
+  chrome:
+      image: seleniarm/standalone-chromium
+      hostname: chrome
+      ports:
+        - "5900:5900"
+        - "4444:4444"
+      privileged: true
+      shm_size: 2g
+      environment:
+        - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+        - SE_NODE_MAX_SESSIONS=10

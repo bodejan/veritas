@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 def get_policy(id):
@@ -16,7 +17,8 @@ def get_policy(id):
         options = Options()
         options.headless = False
         # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
-        driver = webdriver.Firefox(options=options)
+        #driver = webdriver.Firefox(options=options)
+        driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
         driver.set_page_load_timeout(30)
         driver.get(f'{url}{id}')
 

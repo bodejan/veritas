@@ -97,17 +97,13 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
           <Grid>
             <Grid.Col xs={12} lg={3}>
             <RingProgress
-                sections={[{ value: ((appData.reduce((sum, app) => sum + calculateSumOfPolicies(app.policies), 0) / appData.length) / Object.keys(appData[0].policies).length) * 100, color: theme.colors.teal[7] }]}
+                sections={[{ value: 40, color: theme.colors.teal[7] }]}
                 size={280}
                 thickness={17}
                 roundCaps
                 label={
                 <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                    {Math.floor(appData.reduce((sum, app) => sum + calculateSumOfPolicies(app.policies), 0) /appData.length) }
-                    /
-
-                     {Object.keys(appData[0].policies).length}
-
+                    Score
                 </Text>
                 }
             />
@@ -145,20 +141,20 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
                 {appData.map((value : PolicyObject) => 
                 <Box p={10} sx={{borderRadius: 8}} bg="white" mb={20} key={value.id}>
                     <Grid>
-                        <Grid.Col sm={1} md={1}  display="grid" sx={{alignContent: "center"}}>
+                        <Grid.Col span={1}  display="grid" sx={{alignContent: "center"}}>
                         <Avatar src={value.image} />
                            
                         </Grid.Col>
-                        <Grid.Col sm={4} md={2}  display="grid" sx={{alignContent: "center"}}>
+                        <Grid.Col span={1}  display="grid" sx={{alignContent: "center"}}>
                             <Title order={6}>{value.name}</Title>
                         </Grid.Col>
-                        <Grid.Col sm={6} md={4} display="grid" sx={{alignContent: "center"}}>
+                        <Grid.Col span={5} display="grid" sx={{alignContent: "center"}}>
                                 <Progress value={ getProgressValue(value) } size="xl" color={theme.colors.gray[4]}/>
                         </Grid.Col>
-                        <Grid.Col sm={6} md={3}  display="grid" sx={{alignContent: "center"}}>
+                        <Grid.Col span={3}  display="grid" sx={{alignContent: "center"}}>
                             <Title order={6}>{calculateSumOfPolicies(value.policies)} / {Object.keys(value.policies).length} requirements fullfiled</Title>
                         </Grid.Col>
-                        <Grid.Col sm={4}  md={2}  display="grid" sx={{alignContent: "center"}}>
+                        <Grid.Col span={2}  display="grid" sx={{alignContent: "center"}}>
                             <Button color="dark" variant='outline' onClick={() => {setCurrentApp(value); navigate("./app")}}>More Info</Button>
                         </Grid.Col>
                   
