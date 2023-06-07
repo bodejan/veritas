@@ -1,0 +1,23 @@
+version: "3"
+
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+  chrome:
+      image: seleniarm/standalone-chromium
+      hostname: chrome
+      ports:
+        - "5900:5900"
+        - "4444:4444"
+      privileged: true
+      shm_size: 2g
+      environment:
+        - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+        - SE_NODE_MAX_SESSIONS=10
