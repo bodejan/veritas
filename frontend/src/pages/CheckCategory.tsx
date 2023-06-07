@@ -94,58 +94,6 @@ export default function CheckCategory({setAppData}: CheckCategoryProps): ReactEl
     "Game Word": "?category=GAME_WORD"
 }))
 
-const mockdata: PolicyObject[] = JSON.parse(JSON.stringify([
-  {
-    "id": "com.google.android.youtube",
-    "name": "YouTube",
-    "image": "https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc=s96-rw",
-    "policies": {
-      "Data Categories": 0,
-      "Processing Purpose": 1,
-      "Data Recipients": 0,
-      "Source of Data": 1,
-      "Provision Requirement": 1,
-      "Data Safeguards": 1,
-      "Profiling": 1,
-      "Storage Period": 0,
-      "Adequacy Decision": 0,
-      "Controllers Contact": 1,
-      "DPO Contact": 1,
-      "Withdraw Consent": 1,
-      "Lodge Complaint": 1,
-      "Right to Access": 1,
-      "Right to Erase": 1,
-      "Right to Restrict": 0,
-      "Right to Object": 1,
-      "Right to Data Portability": 0
-    }
-  },
-  {
-    "id": "facebook",
-    "name": "Facebook",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png",
-    "policies": {
-      "Data Categories": 0,
-      "Processing Purpose": 1,
-      "Data Recipients": 0,
-      "Source of Data": 1,
-      "Provision Requirement": 1,
-      "Data Safeguards": 1,
-      "Profiling": 1,
-      "Storage Period": 0,
-      "Adequacy Decision": 0,
-      "Controllers Contact": 1,
-      "DPO Contact": 1,
-      "Withdraw Consent": 0,
-      "Lodge Complaint": 0,
-      "Right to Access": 0,
-      "Right to Erase": 1,
-      "Right to Restrict": 0,
-      "Right to Object": 1,
-      "Right to Data Portability": 0
-    }
-  }
-]))
 
 function handleSubmit(): void {
   if (form.values.category && form.values.numApps >= 1) {
