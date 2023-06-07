@@ -7,6 +7,7 @@ import Overview from './pages/Statistics/Overview';
 import AppDetail from './pages/Statistics/AppDetail';
 
 import { Breadcrumbs, Anchor } from '@mantine/core';
+import SearchApp from './pages/SearchApp';
 
 interface Policy {
   [key: string]: number;
@@ -68,6 +69,7 @@ export default function AllRoutes({appData, setAppData, currentApp, setCurrentAp
       <Route path="/documentation" element={<Documentation />} />
       <Route path="/category" element={<CheckCategory setAppData={setAppData} />} />
       <Route path="/list" element={<CheckList setAppData={setAppData} />} />
+      <Route path="/name" element={<SearchApp setAppData={setAppData} />} />
 
       <Route path="/list/overview" element={<Overview appData={appData} setCurrentApp={setCurrentApp}/>} />
       <Route path="/category/overview" element={<Overview appData={appData} setCurrentApp={setCurrentApp} />} />
