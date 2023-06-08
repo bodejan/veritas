@@ -103,8 +103,8 @@ def name():
         return jsonify({'error': 'File not found'}), 404
 
 
-@app.route('/refresh', methods=['POST'])
-def refresh():
+@app.route('/db_refresh', methods=['POST'])
+def db_refresh():
     try:
         refresh_db()
         return jsonify({'message': 'Database refreshed'}), 200

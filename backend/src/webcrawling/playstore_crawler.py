@@ -14,7 +14,7 @@ def get_policy(id):
         # Start driver and open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
         options = Options()
-        options.headless = False
+        options.headless = True
         # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
         driver = webdriver.Firefox(options=options)
         driver.set_page_load_timeout(30)
@@ -47,7 +47,7 @@ def get_policy(id):
                 break
 
         time.sleep(3)
-        #elem = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '/html/body[text() != ""]')))
+        # elem = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '/html/body[text() != ""]')))
 
         # check for forwarding notice
         if len(driver.find_elements(By.TAG_NAME, "title")) > 0:
@@ -60,7 +60,7 @@ def get_policy(id):
                 #driver.implicitly_wait(3)
                 time.sleep(3)
 
-        #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
         # Write all text in the body to file
         page = driver.find_element(By.TAG_NAME, "body")

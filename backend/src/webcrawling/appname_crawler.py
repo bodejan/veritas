@@ -5,6 +5,8 @@ import re
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC, wait
 
 from backend.src.webcrawling.androidrank_crawler import click_next_page
 
@@ -69,20 +71,22 @@ categories = {
 def refresh_db():
     final_data = []
     # crawl androidrank and get names, ids, and picture links
-    for c in list(categories.keys())[:2]:
+    for c in list(categories.keys())[20:21]:
+        print(c)
         results = get_app_data(c, 500)
         for result in results:
             final_data.append(result)
+        print(c)
 
     # write data to json file
-    with open("policy_export/app_data.json", "a") as outfile:
+    with open("policy_export/app_data.json", "w") as outfile:
         json.dump(final_data, outfile)
 
 
 def get_app_data(category, number):
     url = "https://androidrank.org/android-most-popular-google-play-apps"
     options = Options()
-    options.headless = False
+    options.headless = True
     # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
     driver = webdriver.Firefox(options=options)
     results = []
@@ -90,7 +94,7 @@ def get_app_data(category, number):
     try:
         driver.get(f'{url}{categories[category]}')
 
-        while len(results) < 500:
+        while len(results) < number:
 
             for i in range(2, 22, 2):
                 # crawl androidrank and get id, name and picture_src
@@ -118,19 +122,22 @@ def get_app_data(category, number):
                 results.append(result_even)
 
             # click next page and end driver when all apps crawled
+            print(driver.current_url)
             driver = click_next_page(driver)
+
             if driver == None:
                 print(f'Crawled {len(results)} out of {number}')
                 break
             else:
-                time.sleep(4)
+                # time.sleep(2)
+                elem = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#ranklist > tbody:nth-child(1)')))
 
         # Quit driver if successful
-        driver.quit()
+        if driver != None:
+            driver.quit()
 
     except Exception as e:
         print(f'Error while crawling top {number} from {category}')
-        print(f'Current url: {driver.current_url}')
         driver.quit()
 
     return results
