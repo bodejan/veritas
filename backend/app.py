@@ -9,7 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
 
-from backend.webcrawling.appname_crawler import refresh_db
+from webcrawling.appname_crawler import refresh_db
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the Flask app
