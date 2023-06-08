@@ -2,7 +2,7 @@ import React, {useState } from 'react';
 import './App.css';
 import { Navigation } from './Components/Navigation';
 import { BrowserRouter } from 'react-router-dom';
-import {Vocabulary,User,Checkbox} from 'tabler-icons-react';
+import {Vocabulary, Search, ListCheck, Category} from 'tabler-icons-react';
 import { Grid, ScrollArea } from '@mantine/core';
 import AllRoutes from './AllRoutes';
 
@@ -17,9 +17,9 @@ function App() {
 
   const links : NavigationLink[] = [
     { icon: Vocabulary, label: 'Documentation', link: '/documentation'},
-    { icon: Checkbox, label: 'App category', link: '/category'},
-    { icon: User, label: 'List of apps', link: '/list'},
-    { icon: User, label: 'Name of app', link: '/name'},
+    { icon: Category, label: 'App category', link: '/category'},
+    { icon: ListCheck, label: 'List of apps', link: '/list'},
+    { icon: Search, label: 'Search for app', link: '/name'},
   ];
 
   interface Policy {

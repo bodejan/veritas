@@ -1,9 +1,12 @@
+import os
 from flask import Flask
 from flask_cors import CORS
 import random
 from flask import jsonify, request
 from webcrawling.playstore_crawler import get_policy
 from webcrawling.androidrank_crawler import get_applist
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
 
 from backend.src.webcrawling.appname_crawler import refresh_db
@@ -14,10 +17,6 @@ CORS(app)  # Enable CORS for the Flask app
 # Configuration settings
 app.config['DEBUG'] = True
 # app.config['SECRET_KEY'] = 'your_secret_key'
-
-
-def run_app():
-    app.run()
 
 
 @app.route('/')
@@ -31,9 +30,13 @@ def index():
 def category():
     results = []
     data = request.get_json()
+    print(data)
     try:
+        print(data)
         category = data.get('category')
         number = int(data.get('number'))
+
+
 
         # Perform processing or any other operations with the variables
         applist = get_applist(category, number)
@@ -60,6 +63,7 @@ def category():
             'exception': str(e)
         }
         return jsonify(error), 500
+
 
 
 @app.route('/id', methods=['POST'])
@@ -117,6 +121,21 @@ def db_refresh():
         return jsonify(error), 500
 
 
+@app.route('/test', methods=['POST'])
+def test():
+    print(request)
+    # Create a new instance of the Chrome driver
+    driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
+
+    # Navigate to Google
+    driver.get("https://play.google.com/store/apps/details?id=")
+
+    s = driver.page_source
+    print(s)
+    return s
+
+
+
 def is_valid_id(id):
     # TODO add your validation criteria here
     return True
@@ -132,6 +151,7 @@ def get_result_from_id(id):
 
     #print(policy)
     scores = predictor(policy)
+    #scores = ""
     #print(scores)
 
     result = {
@@ -141,3 +161,10 @@ def get_result_from_id(id):
         'policies': scores
         }
     return result
+
+
+#def run_app():
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8000))
+    app.run(debug=True, host='0.0.0.0', port=port)
+    #app.run()

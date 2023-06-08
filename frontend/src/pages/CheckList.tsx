@@ -28,70 +28,10 @@ export default function CheckList({setAppData}: CheckListProps): ReactElement<Ch
   const navigate = useNavigate();
 
   const [visible, { toggle }] = useDisclosure(false);
-  
-  const form = useForm<FormData>({
-    initialValues: {
-      category: '',
-      numApps: 1,
-    }
-  });
 
-  const { errors, getInputProps } = form;
   const [appList, setAppList] = useState<string[]>([]);
 
-  const mockdata: PolicyObject[] = JSON.parse(JSON.stringify([
-    {
-      "id": "com.google.android.youtube",
-      "name": "YouTube",
-      "image": "https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc=s96-rw",
-      "policies": {
-        "Data Categories": 0,
-        "Processing Purpose": 1,
-        "Data Recipients": 0,
-        "Source of Data": 1,
-        "Provision Requirement": 1,
-        "Data Safeguards": 1,
-        "Profiling": 1,
-        "Storage Period": 0,
-        "Adequacy Decision": 0,
-        "Controllers Contact": 1,
-        "DPO Contact": 1,
-        "Withdraw Consent": 1,
-        "Lodge Complaint": 1,
-        "Right to Access": 1,
-        "Right to Erase": 1,
-        "Right to Restrict": 0,
-        "Right to Object": 1,
-        "Right to Data Portability": 0
-      }
-    },
-    {
-      "id": "facebook",
-      "name": "Facebook",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png",
-      "policies": {
-        "Data Categories": 0,
-        "Processing Purpose": 1,
-        "Data Recipients": 0,
-        "Source of Data": 1,
-        "Provision Requirement": 1,
-        "Data Safeguards": 1,
-        "Profiling": 1,
-        "Storage Period": 0,
-        "Adequacy Decision": 0,
-        "Controllers Contact": 1,
-        "DPO Contact": 1,
-        "Withdraw Consent": 0,
-        "Lodge Complaint": 0,
-        "Right to Access": 0,
-        "Right to Erase": 1,
-        "Right to Restrict": 0,
-        "Right to Object": 1,
-        "Right to Data Portability": 0
-      }
-    }
-  ]))
-
+  
   const handleFileUpload = (file: File | null): void => {
     if (file) {
       const reader = new FileReader();
@@ -109,10 +49,31 @@ export default function CheckList({setAppData}: CheckListProps): ReactElement<Ch
   const handleSubmit = (): void => {
     console.log(appList);
 
+    let list = {"id": appList}
+
     toggle()
 
-    setAppData(mockdata)
-    setTimeout(() =>{navigate("./overview")}, 7000)
+        // Send the POST request
+        fetch('http://127.0.0.1:8000/id', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(list),
+        })
+          .then(response => response.json())
+          .then(data => {
+            setAppData(data);
+            //setTimeout(() => { navigate("./overview"); }, 7000);
+            navigate("./overview")
+            console.log(data)
+          })
+          .catch(error => {
+            // Handle error if the request fails
+            console.error('Error:', error);
+          });
+
+  
   };
 
   return (
@@ -121,20 +82,13 @@ export default function CheckList({setAppData}: CheckListProps): ReactElement<Ch
         <section>
           <Title>Check privacy policies by app list</Title>
           <Text>
-          This page allows you to upload a list or CSV file containing the package names of the apps you wish to analyze. Our system will process the data and retrieve the respective privacy policies for analysis.
-          <br/>
-          To use this feature, follow these steps:
-
-          <ol>
-          <li>Prepare a list or CSV file with the package names of the apps you want to check. Each package name should be on a separate line in the file.</li>
-          <li>Click the "Upload" button to select and upload the file containing the package names.</li>
-          <li>Once the file is uploaded, click the "Check policies" button to start the analysis.</li>
-          </ol>
-        
-          Our application will process the provided app list, retrieve the privacy policies for each app, and present you with the results. You will be able to gain insights into the privacy practices of the specified apps.
-          <br/>  <br/>
-          Note: Please ensure that the uploaded file contains valid package names and follows the required format.
-        
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+            rebum.
           </Text>
         </section>
 
