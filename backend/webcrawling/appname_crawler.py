@@ -71,8 +71,8 @@ categories = {
 def refresh_db():
     final_data = []
     # crawl androidrank and get names, ids, and picture links
-    for c in list(categories.keys())[20:21]:
-        print(c)
+    for c in list(categories.keys()):
+        # print(c)
         results = get_app_data(c, 500)
         for result in results:
             final_data.append(result)
@@ -122,7 +122,7 @@ def get_app_data(category, number):
                 results.append(result_even)
 
             # click next page and end driver when all apps crawled
-            print(driver.current_url)
+            # print(driver.current_url)
             driver = click_next_page(driver)
 
             if driver == None:
