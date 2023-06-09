@@ -9,8 +9,10 @@ from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-def get_policy(id):
-
+def get_policy_by_id(id):
+    name = ''
+    logo_url = ''
+    policy = ''
     try:
         # Start driver and open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
@@ -19,7 +21,7 @@ def get_policy(id):
         driver.set_page_load_timeout(30)
         driver.get(f'{url}{id}')
 
-        seconds = 4
+        # seconds = 4
         # driver.implicitly_wait(seconds)
 
         # Expand the developers contact section

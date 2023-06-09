@@ -109,14 +109,14 @@ def get_app_data(category, number):
                 result_odd = {
                     'id': match_odd.group(1),
                     'name': name_id_odd.get_attribute('innerHTML'),
-                    'image': picture_odd.get_attribute('src')
+                    'logo_url': picture_odd.get_attribute('src')
                 }
                 results.append(result_odd)
 
                 result_even = {
                     'id': match_even.group(1),
                     'name': name_id_even.get_attribute('innerHTML'),
-                    'image': picture_even.get_attribute('src')
+                    'logo_url': picture_even.get_attribute('src')
                 }
                 results.append(result_even)
 

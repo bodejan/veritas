@@ -1,7 +1,7 @@
 import csv
 import time
-from androidrank_crawler import get_applist
-from playstore_crawler import get_policy
+from androidrank_crawler import get_apps_for_category
+from playstore_crawler import get_policy_by_id
 
 categories = {
     "All": "",
@@ -64,7 +64,7 @@ def get_all_ids():
     id_list = []
     for c in categories.keys():
         start_time = time.time()
-        id_list_category = get_applist(c, 500)
+        id_list_category = get_apps_for_category(c, 500)
         
 
         # Export metrics
@@ -100,7 +100,7 @@ def get_all_policies():
     for i in range(1002, len(ids)):
         id = ids[i]
         start_time = time.time()
-        success = get_policy(id)
+        success = get_policy_by_id(id)
         end_time = time.time()
         if success: 
             print(f'{id} crawled successfully in {end_time-start_time}')

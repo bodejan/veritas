@@ -3,12 +3,12 @@ from flask import Flask
 from flask_cors import CORS
 import random
 from flask import jsonify, request
-from webcrawling.playstore_crawler import get_policy
-from webcrawling.androidrank_crawler import get_applist
+from webcrawling.playstore_crawler import get_policy_by_id
+from webcrawling.androidrank_crawler import get_apps_for_category, get_logo_url_by_id
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
-from webcrawling.appname_crawler import refresh_db
+from webcrawling.app_db_crawler import refresh_db
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the Flask app
@@ -38,11 +38,11 @@ def category():
         number = int(data.get('number'))
 
         # Perform processing or any other operations with the variables
-        applist = get_applist(category, number)
+        apps = get_apps_for_category(category, number)
         print(f'Getting top {number} of {category}... ')
-        print(applist, '\n')
+        print(apps, '\n')
 
-        for app_name in applist:
+        for app_name in apps:
             result = get_result_from_id(app_name)
             results.append(result)
 
@@ -147,7 +147,7 @@ def is_valid_id(id):
 
 def get_result_from_id(id):
     print(f'Getting policy for {id}...')
-    success, policy = get_policy(id)
+    success, policy = get_policy_by_id(id)
     if success:
         print('Success', '\n')
     else:
