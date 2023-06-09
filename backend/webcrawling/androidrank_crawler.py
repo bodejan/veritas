@@ -140,13 +140,3 @@ def click_next_page(driver):
         print(f'Current url: {driver.current_url}')
         return None
     return driver
-
-# todo
-def get_logo_url_by_id(id):
-    with open('db.json') as file:
-        db = json.load(file)
-    
-    for app in db:
-        if app['id'] == id:
-            return app['logo_url']
-    return None

@@ -21,6 +21,15 @@ def get_policy_by_id(id):
         driver.set_page_load_timeout(30)
         driver.get(f'{url}{id}')
 
+        # Find the image element using XPath
+        logo_url_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[1]/img[1]')
+        # Retrieve the source URL of the image
+        logo_url = logo_url_element.get_attribute('src')
+
+        # Find the name element using XPath
+        name_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1/span')
+        name = name_element.text
+        
         # seconds = 4
         # driver.implicitly_wait(seconds)
 

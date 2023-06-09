@@ -4,7 +4,7 @@ from flask_cors import CORS
 import random
 from flask import jsonify, request
 from webcrawling.playstore_crawler import get_policy_by_id
-from webcrawling.androidrank_crawler import get_apps_for_category, get_logo_url_by_id
+from webcrawling.androidrank_crawler import get_apps_for_category
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
