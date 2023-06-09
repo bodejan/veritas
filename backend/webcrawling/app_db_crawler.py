@@ -8,7 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
 
-from androidrank_crawler import click_next_page
+from .androidrank_crawler import click_next_page
 
 categories = {
     "All": "",
@@ -85,10 +85,9 @@ def refresh_db():
 
 def get_app_data(category, number):
     url = "https://androidrank.org/android-most-popular-google-play-apps"
-    options = Options()
-    options.headless = True
-    # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
-    driver = webdriver.Firefox(options=options)
+    #driver = webdriver.Firefox(options=options)
+    driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
+    driver.set_page_load_timeout(30)
     results = []
 
     try:

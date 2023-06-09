@@ -14,10 +14,7 @@ def get_policy(id):
     try:
         # Start driver and open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
-        options = Options()
-        options.headless = True
-        # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
-        #driver = webdriver.Firefox(options=options)
+        #driver = webdriver.Firefox()
         driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
         driver.set_page_load_timeout(30)
         driver.get(f'{url}{id}')
