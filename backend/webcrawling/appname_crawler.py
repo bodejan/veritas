@@ -8,7 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
 
-from androidrank_crawler import click_next_page
+from webcrawling.androidrank_crawler import click_next_page
 
 categories = {
     "All": "",
