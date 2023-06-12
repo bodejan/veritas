@@ -11,57 +11,63 @@ categories = CATEGORIES
 
 
 def get_ids_for_category(category, number):
-    apps = []
+    print(f'Getting top {number} ids for {category}')
+    ids = []
     url = "https://androidrank.org/android-most-popular-google-play-apps"
-
-    driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
-
-
-
+    driver = None
+    
     try:
+        driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
         driver.get(f'{url}{categories[category]}')
 
-        while (len(apps) < number):
-            apps = get_apps_on_page(apps, driver, number)
-            if len(apps) == number: break
+        while (len(ids) < number):
+            links = driver.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'a')
+            links = list(map(lambda x: x.get_attribute("href"), links))
+            # match id of apps embedded in links and add to apps
+            regex = r'^https://androidrank\.org/application/.+/([^/]+)$'
+            for l in links:
+                match = re.search(regex, l)
+                if (match and len(ids) < number):
+                    ids.append(match.group(1))
+
+            if len(ids) == number: break
             driver = click_next_page(driver)
-            if driver == None: 
-                print(f'Crawled {len(apps)} out of {number}')
-                break
-            else:
-                time.sleep(4)
-        
-        # Quit driver if successful 
-        if (len(apps) == number): driver.quit()
+            if driver == None: break
+            time.sleep(4)
         
     except Exception as e:
         print(f'Error while crawling top {number} from {category}')
         print(f'Current url: {driver.current_url}')
-        print(f'Crawled {len(apps)} out of {number}')
-        print(apps)
-        driver.quit()
-    print(apps)
-    return apps
+        print(f'Crawled {len(ids)} out of {number}')
+        print(ids)
+
+    finally:
+        if driver is not None:
+            driver.quit()
+    
+    print(f'{len(ids)}/{number} ids crawled: {ids}')
+    return ids
 
 
-def get_apps_on_page(apps, driver, number):
+def get_ids_on_page(ids, driver, number):
     # get all a tags with links that hold app names from one page
     try:
         links = driver.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'a')
         links = list(map(lambda x: x.get_attribute("href"), links))
+        # match id of apps embedded in links and add to apps
+        regex = r'^https://androidrank\.org/application/.+/([^/]+)$'
+        for l in links:
+            match = re.search(regex, l)
+            if (match and len(ids) < number):
+                ids.append(match.group(1))
     except Exception as e:
         print('Error while finding ids')
         print(f'Current url: {driver.current_url}')
-        print(f'Crawled {len(apps)} out of {number}')
-        print(apps)
-        return apps
-    # match id of apps embedded in links and add to apps
-    regex = r'^https://androidrank\.org/application/.+/([^/]+)$'
-    for l in links:
-        match = re.search(regex, l)
-        if (match and len(apps) < number):
-            apps.append(match.group(1))
-    return apps
+        print(f'Crawled {len(ids)} out of {number}')
+        print(ids)
+        return ids
+
+    return ids
 
 
 def click_next_page(driver):
@@ -81,5 +87,7 @@ def click_next_page(driver):
     except Exception as e:
         print(f'Cannot click "next"')
         print(f'Current url: {driver.current_url}')
+        if driver is not None:
+            driver.quit()
         return None
     return driver

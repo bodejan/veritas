@@ -10,9 +10,11 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 def get_name_logo_url_policy_by_id(id):
+    print(f'Getting data for {id}')
     name = ''
     logo_url = ''
     policy = ''
+    driver = None
     try:
         # Start driver and open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
@@ -65,7 +67,6 @@ def get_name_logo_url_policy_by_id(id):
             print(page_title.get_attribute('innerHTML'))
             if page_title.get_attribute('innerHTML') == "Weiterleitungshinweis":
                 link = driver.find_element(By.TAG_NAME, 'a')
-                print(link.text)
                 link.click()
                 #driver.implicitly_wait(3)
                 time.sleep(3)
@@ -81,18 +82,17 @@ def get_name_logo_url_policy_by_id(id):
 
         # export_policy(page, id)
         policy = page.text
-        
+        print(id, name, logo_url, policy[:50])
         return True, name, logo_url, policy
 
     except Exception as e:
         print(e)
-        return False, e
+        print(f'No app data found for {id}')
+        return False
     
     finally:
-        # Close the browser with all tabs
-        for handle in driver.window_handles:
-            driver.switch_to.window(handle)
-            driver.close()
+        if driver is not None:
+            driver.quit()
 
 
 def export_policy(page, id):

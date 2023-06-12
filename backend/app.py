@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 from flask import Flask
@@ -31,23 +32,14 @@ def index():
 
 @app.route('/category', methods=['POST'])
 def category():
-    apps = []
     data = request.get_json()
 
     try:
         category = data.get('category')
         number = int(data.get('number'))
-
         ids = get_ids_for_category(category, number)
-        print(f'Getting top {number} of {category}... ')
-        print(ids, '\n')
-
-        for id in ids:
-            app = get_app_by_id(id)
-            apps.append(app)
-   
-        json_results = json.dumps([app.__dict__ for app in apps])
-        return json_results
+        get_apps_by_ids(ids)
+        return get_apps_by_ids(ids)
 
     except ValueError:
         error_message = 'Invalid number format.'
@@ -67,33 +59,10 @@ def category():
 
 @app.route('/id', methods=['POST'])
 def id():
-    print(request)
     data = request.get_json()
-    try:
-        ids = data.get('id')
-        print(ids)
-        apps = []
-        for id in ids:
-            # Check if the ID value exists and meets your validation criteria
-            if id is None or not is_valid_id(id):
-                error_message = 'Invalid ID.'
-                error = {
-                    'error': error_message
-                }
-                return jsonify(error), 400
+    ids = data.get('id')
 
-            app = get_app_by_id(id)
-            apps.append(app)
-        json_apps = json.dumps([app.__dict__ for app in apps])
-        return json_apps
-
-    except Exception as e:
-        error_message = 'An error occurred.'
-        error = {
-            'error': error_message,
-            'exception': str(e)
-        }
-        return jsonify(error), 500
+    return get_apps_by_ids(ids)
 
 
 @app.route('/name', methods=['GET'])
@@ -145,31 +114,33 @@ def is_valid_id(id):
     # TODO add your validation criteria here
     return True
 
+def get_apps_by_ids(ids):
+    try:
+        apps = []
+        
+        def process_id(id):
+            success, name, logo_url, policy = get_name_logo_url_policy_by_id(id)
+            scores = predictor(policy)
+            app = AndroidApp(name, id, logo_url, policy, scores)
+            return app.__dict__
+        
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(process_id, id) for id in ids]
+            
+            for future in futures:
+                try:
+                    app_dict = future.result()
+                    apps.append(app_dict)
+                except Exception as e:
+                    print(f"An error occurred: {str(e)}")
+        
+        json_apps = json.dumps(apps)
+        return json_apps
+        
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        return str(e)
 
-def get_app_by_id(id):
-    print(f'Getting policy for {id}...')
-    success, name, logo_url, policy = get_name_logo_url_policy_by_id(id)
-    if success:
-        print('Success', '\n')
-    else:
-        print('Fail', '\n')
-
-    # print(policy)
-    scores = predictor(policy)
-    # scores = ""
-    # print(scores)
-
-    result = {
-        'id': id,
-        'name': id,
-        'image': 'image',
-        'policies': scores
-    }
-    app = AndroidApp(name, id, logo_url, policy, scores)
-    json_app = json.dumps(app.__dict__)
-    print(result, '\n', json_app)
-
-    return app
 
 
 # def run_app():
