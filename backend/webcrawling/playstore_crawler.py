@@ -82,7 +82,7 @@ def get_name_logo_url_policy_by_id(id):
 
         # export_policy(page, id)
         policy = page.text
-        print(id, name, logo_url, policy[:50])
+        print('id:', id, 'name:', name, 'logo_url:', logo_url, '\n', 'first 100 chars policy:', policy[:100], '\n')
         return True, name, logo_url, policy
 
     except Exception as e:

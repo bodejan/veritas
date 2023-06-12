@@ -11,7 +11,7 @@ categories = CATEGORIES
 
 
 def get_ids_for_category(category, number):
-    print(f'Getting top {number} ids for {category}')
+    print('\n', f'Getting top {number} ids for {category}')
     ids = []
     url = "https://androidrank.org/android-most-popular-google-play-apps"
     driver = None
@@ -45,7 +45,7 @@ def get_ids_for_category(category, number):
         if driver is not None:
             driver.quit()
     
-    print(f'{len(ids)}/{number} ids crawled: {ids}')
+    print(f'{len(ids)}/{number} ids crawled: {ids}', '\n')
     return ids
 
 

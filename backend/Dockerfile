@@ -10,6 +10,9 @@ COPY requirements.txt .
 # Install the Python dependencies
 RUN pip3 install --no-cache-dir -r requirements.txt
 
+# Download nltk
+RUN python -c "import nltk; nltk.download('punkt', quiet=True)"
+
 # Copy the rest of the application code to the working directory
 COPY . .
 
