@@ -1,11 +1,12 @@
 # TODO change keys, adjust frontend
 class AndroidApp:
-    def __init__(self, name=None, id=None, logo_url=None, policy=None, scores=None):
+    def __init__(self, name=None, id=None, logo_url=None, policy=None, scores=None, status=None):
+        self.status = status
         self.name = name
         self.id = id
-        self.image = logo_url
-        #self.policy = policy
-        self.policies = scores
+        self.logo_url = logo_url
+        self.policy = policy
+        self.scores = scores
 
 # androidrank category names and keys
 # androidrank currently has issues with the categories: "Transportation" and "Game Family" 
