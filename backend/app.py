@@ -1,14 +1,16 @@
+import json
 import os
 from flask import Flask
 from flask_cors import CORS
 import random
 from flask import jsonify, request
-from webcrawling.playstore_crawler import get_policy
-from webcrawling.androidrank_crawler import get_applist
+from webcrawling.playstore_crawler import get_name_logo_url_policy_by_id
+from webcrawling.androidrank_crawler import get_ids_for_category
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
-from webcrawling.appname_crawler import refresh_db
+from webcrawling.app_db_crawler import refresh_db
+from models import AndroidApp
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the Flask app
@@ -29,24 +31,23 @@ def index():
 
 @app.route('/category', methods=['POST'])
 def category():
-    results = []
+    apps = []
     data = request.get_json()
-    print(data)
+
     try:
-        print(data)
         category = data.get('category')
         number = int(data.get('number'))
 
-        # Perform processing or any other operations with the variables
-        applist = get_applist(category, number)
+        ids = get_ids_for_category(category, number)
         print(f'Getting top {number} of {category}... ')
-        print(applist, '\n')
+        print(ids, '\n')
 
-        for app_name in applist:
-            result = get_result_from_id(app_name)
-            results.append(result)
-
-        return jsonify(results)
+        for id in ids:
+            app = get_app_by_id(id)
+            apps.append(app)
+   
+        json_results = json.dumps([app.__dict__ for app in apps])
+        return json_results
 
     except ValueError:
         error_message = 'Invalid number format.'
@@ -71,7 +72,7 @@ def id():
     try:
         ids = data.get('id')
         print(ids)
-        results = []
+        apps = []
         for id in ids:
             # Check if the ID value exists and meets your validation criteria
             if id is None or not is_valid_id(id):
@@ -81,10 +82,10 @@ def id():
                 }
                 return jsonify(error), 400
 
-            result = get_result_from_id(id)
-            print(result)
-            results.append(result)
-        return jsonify(results)
+            app = get_app_by_id(id)
+            apps.append(app)
+        json_apps = json.dumps([app.__dict__ for app in apps])
+        return json_apps
 
     except Exception as e:
         error_message = 'An error occurred.'
@@ -145,9 +146,9 @@ def is_valid_id(id):
     return True
 
 
-def get_result_from_id(id):
+def get_app_by_id(id):
     print(f'Getting policy for {id}...')
-    success, policy = get_policy(id)
+    success, name, logo_url, policy = get_name_logo_url_policy_by_id(id)
     if success:
         print('Success', '\n')
     else:
@@ -164,7 +165,11 @@ def get_result_from_id(id):
         'image': 'image',
         'policies': scores
     }
-    return result
+    app = AndroidApp(name, id, logo_url, policy, scores)
+    json_app = json.dumps(app.__dict__)
+    print(result, '\n', json_app)
+
+    return app
 
 
 # def run_app():

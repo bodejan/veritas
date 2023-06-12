@@ -9,20 +9,28 @@ from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-def get_policy(id):
-
+def get_name_logo_url_policy_by_id(id):
+    name = ''
+    logo_url = ''
+    policy = ''
     try:
         # Start driver and open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
-        options = Options()
-        options.headless = True
-        # options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
-        #driver = webdriver.Firefox(options=options)
+        #driver = webdriver.Firefox()
         driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
         driver.set_page_load_timeout(30)
         driver.get(f'{url}{id}')
 
-        seconds = 4
+        # Find the image element using XPath
+        logo_url_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[1]/img[1]')
+        # Retrieve the source URL of the image
+        logo_url = logo_url_element.get_attribute('src')
+
+        # Find the name element using XPath
+        name_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1/span')
+        name = name_element.text
+        
+        # seconds = 4
         # driver.implicitly_wait(seconds)
 
         # Expand the developers contact section
@@ -72,8 +80,9 @@ def get_policy(id):
             f.write(f'\n\n--------------------------------------------------------------\n\n') """
 
         # export_policy(page, id)
+        policy = page.text
         
-        return True, page.text
+        return True, name, logo_url, policy
 
     except Exception as e:
         print(e)
