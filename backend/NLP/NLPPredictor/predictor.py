@@ -36,7 +36,7 @@ def process_split_words(text):
     :return: array of tokenized words
     """
     result = []
-    nltk.download('punkt')  # Download the necessary tokenizer data
+    #nltk.download('punkt', quiet=True)  # Download the necessary tokenizer data
     sentences = nltk.sent_tokenize(text)
     for sentence in sentences:
         words = sentence.split()
