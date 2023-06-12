@@ -1,70 +1,16 @@
 import csv
 import time
-from androidrank_crawler import get_apps_for_category
-from playstore_crawler import get_policy_by_id
+from androidrank_crawler import get_ids_for_category
+from playstore_crawler import get_name_logo_url_policy_by_id
+from models import CATEGORIES
 
-categories = {
-    "All": "",
-    "Paid": "?price=paid",
-    "Free": "?price=free",
-    "Art And Design": "?category=ART_AND_DESIGN",
-    "Auto And Vehicles": "?category=AUTO_AND_VEHICLES",
-    "Beauty": "?category=BEAUTY",
-    "Books And Reference": "?category=BOOKS_AND_REFERENCE",
-    "Business": "?category=BUSINESS",
-    "Comics": "?category=COMICS",
-    "Communication": "?category=COMMUNICATION",
-    "Dating": "?category=DATING",
-    "Education": "?category=EDUCATION",
-    "Entertainment": "?category=ENTERTAINMENT",
-    "Events": "?category=EVENTS",
-    "Finance": "?category=FINANCE",
-    "Food And Drink": "?category=FOOD_AND_DRINK",
-    "Health And Fitness": "?category=HEALTH_AND_FITNESS",
-    "House And Home": "?category=HOUSE_AND_HOME",
-    "Libraries And Demo": "?category=LIBRARIES_AND_DEMO",
-    "Lifestyle": "?category=LIFESTYLE",
-    "Maps And Navigation": "?category=MAPS_AND_NAVIGATION",
-    "Medical": "?category=MEDICAL",
-    "Music And Audio": "?category=MUSIC_AND_AUDIO",
-    "News And Magazines": "?category=NEWS_AND_MAGAZINES",
-    "Parenting": "?category=PARENTING",
-    "Personalization": "?category=PERSONALIZATION",
-    "Photography": "?category=PHOTOGRAPHY",
-    "Productivity": "?category=PRODUCTIVITY",
-    "Shopping": "?category=SHOPPING",
-    "Social": "?category=SOCIAL",
-    "Sports": "?category=SPORTS",
-    "Tools": "?category=TOOLS",
-    #"Transportation": "?category=TRANSPORTATION",
-    "Travel And Local": "?category=TRAVEL_AND_LOCAL",
-    "Video Players": "?category=VIDEO_PLAYERS",
-    "Weather": "?category=WEATHER",
-    "Game Action": "?category=GAME_ACTION",
-    "Game Adventure": "?category=GAME_ADVENTURE",
-    "Game Arcade": "?category=GAME_ARCADE",
-    "Game Board": "?category=GAME_BOARD",
-    "Game Card": "?category=GAME_CARD",
-    "Game Casino": "?category=GAME_CASINO",
-    "Game Casual": "?category=GAME_CASUAL",
-    "Game Educational": "?category=GAME_EDUCATIONAL",
-    #"Game Family": "?category=GAME_FAMILY",
-    "Game Music": "?category=GAME_MUSIC",
-    "Game Puzzle": "?category=GAME_PUZZLE",
-    "Game Racing": "?category=GAME_RACING",
-    "Game Role Playing": "?category=GAME_ROLE_PLAYING",
-    "Game Simulation": "?category=GAME_SIMULATION",
-    "Game Sports": "?category=GAME_SPORTS",
-    "Game Strategy": "?category=GAME_STRATEGY",
-    "Game Trivia": "?category=GAME_TRIVIA",
-    "Game Word": "?category=GAME_WORD"
-}
+categories = CATEGORIES
 
 def get_all_ids():
     id_list = []
     for c in categories.keys():
         start_time = time.time()
-        id_list_category = get_apps_for_category(c, 500)
+        id_list_category = get_ids_for_category(c, 500)
         
 
         # Export metrics
@@ -100,7 +46,7 @@ def get_all_policies():
     for i in range(1002, len(ids)):
         id = ids[i]
         start_time = time.time()
-        success = get_policy_by_id(id)
+        success = get_name_logo_url_policy_by_id(id)
         end_time = time.time()
         if success: 
             print(f'{id} crawled successfully in {end_time-start_time}')

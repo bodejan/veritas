@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
-def get_policy_by_id(id):
+def get_name_logo_url_policy_by_id(id):
     name = ''
     logo_url = ''
     policy = ''
@@ -80,8 +80,9 @@ def get_policy_by_id(id):
             f.write(f'\n\n--------------------------------------------------------------\n\n') """
 
         # export_policy(page, id)
+        policy = page.text
         
-        return True, page.text
+        return True, name, logo_url, policy
 
     except Exception as e:
         print(e)
