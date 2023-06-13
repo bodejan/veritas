@@ -34,4 +34,4 @@ services:
       shm_size: 2g
       environment:
         - SE_NODE_OVERRIDE_MAX_SESSIONS=true
-        - SE_NODE_MAX_SESSIONS=10
+        - SE_NODE_MAX_SESSIONS=20
