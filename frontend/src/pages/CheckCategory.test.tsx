@@ -27,37 +27,7 @@ describe('CheckCategory', () => {
     expect(screen.getByText(/Check privacy policies by app category/i)).toBeInTheDocument();
   });
 
-  /*
-  test('submits the form and navigates to overview', async () => {
-    const setAppDataMock = jest.fn();
-    const navigateMock = jest.fn();
-    jest.spyOn(useNavigate, 'mockReturnValue').mockReturnValue(navigateMock);
 
-    render(
-      <MemoryRouter>
-        <CheckCategory setAppData={setAppDataMock} />
-      </MemoryRouter>
-    );
-
-    const categorySelect = screen.getByLabelText('Select category');
-    fireEvent.change(categorySelect, { target: { value: 'All' } });
-
-    const numAppsInput = screen.getByLabelText('Amount of Apps');
-    fireEvent.change(numAppsInput, { target: { value: '3' } });
-
-    const submitButton = screen.getByRole('button', { name: 'Check policies' });
-    fireEvent.click(submitButton);
-
-    await waitFor(() => {
-      expect(setAppDataMock).toHaveBeenCalledTimes(1);
-      expect(setAppDataMock).toHaveBeenCalledWith([]);
-
-      expect(navigateMock).toHaveBeenCalledTimes(1);
-      expect(navigateMock).toHaveBeenCalledWith('./overview');
-    });
-  });
-
-  */
 
   test('displays error message and does not submit form if category is not selected', () => {
     const setAppDataMock = jest.fn();
@@ -105,8 +75,6 @@ describe('CheckCategory', () => {
 
     expect(numAppsInput2).toBe(0)
 
-    //expect(setAppDataMock).not.toHaveBeenCalled();
-   // expect(screen.getByText(/The amount of apps must be larger than 0/i)).toBeInTheDocument();
   });
 
 

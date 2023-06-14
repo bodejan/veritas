@@ -15,6 +15,8 @@ interface PolicyObject {
   policies: Policy;
 }
 
+
+
 interface SearchAppProps {
   setAppData: Dispatch<SetStateAction<PolicyObject[]>>;
 }
