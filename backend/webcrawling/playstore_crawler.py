@@ -84,6 +84,8 @@ def get_policy(id):
         for handle in driver.window_handles:
             driver.switch_to.window(handle)
             driver.close()
+        
+        driver.quit()
 
 
 def export_policy(page, id):
