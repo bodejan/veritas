@@ -6,6 +6,7 @@ Keras_Preprocessing==1.1.2
 nltk==3.8.1
 numpy==1.24.2
 pandas==1.5.3
-Requests==2.31.0
 selenium==4.9.1
 tensorflow
+beautifulsoup4==4.11.2
+requests==2.28.2

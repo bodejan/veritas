@@ -10,6 +10,9 @@ COPY requirements.txt .
 # Install the Python dependencies
 RUN pip3 install --no-cache-dir -r requirements.txt
 
+# Download nltk
+RUN python -c "import nltk; nltk.download('punkt', quiet=True)"
+
 # Copy the rest of the application code to the working directory
 COPY . .
 
@@ -25,4 +28,4 @@ EXPOSE 8000
 #CMD ["python", "run.py"]
 ENV FLASK_DEBUG=1
 
-CMD flask run -h 0.0.0.0 -p 8000
+CMD flask run -h 0.0.0.0 -p 8000 --reload
