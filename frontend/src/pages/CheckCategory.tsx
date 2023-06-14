@@ -38,6 +38,7 @@ export default function CheckCategory({setAppData}: CheckCategoryProps): ReactEl
 
 
   const categories = JSON.parse(JSON.stringify({
+    "Select category": "",
     "All": "",
     "Paid": "?price=paid",
     "Free": "?price=free",
