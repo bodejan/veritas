@@ -27,8 +27,8 @@ def get_name_logo_url_policy_by_id(id):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--lang=en-US')  # Set browser language to English
         chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 2})
-        # driver = webdriver.Remote('http://chrome:4444/wd/hub',options=chrome_options)
-        driver = webdriver.Chrome(options=chrome_options)
+        driver = webdriver.Remote('http://chrome:4444/wd/hub',options=chrome_options)
+        # driver = webdriver.Chrome(options=chrome_options)
         driver.set_page_load_timeout(30)
         # driver = start_driver() # Todo fix import statement, so this can be used
 
@@ -38,13 +38,10 @@ def get_name_logo_url_policy_by_id(id):
         driver.get(f'{url}{id}')
 
         # Wait for page to load and find logo_url and app name 
-        wait.until(EC.visibility_of_element_located(
-            (By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[1]/img[1]')))
-        logo_url_element = driver.find_element(By.XPATH,
-                                               '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[1]/img[1]')
+        wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[1]/img[1]')))
+        logo_url_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[1]/img[1]')
         logo_url = logo_url_element.get_attribute('src')
-        name_element = driver.find_element(By.XPATH,
-                                           '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1/span')
+        name_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1/span')
         name = name_element.text
 
         # Expand the developers contact section
@@ -89,8 +86,7 @@ def get_name_logo_url_policy_by_id(id):
 
     except TimeoutException as e:
         print(e)
-        print(
-            "Timeout occurred. The requested element is either not found in the Play Store or the page experienced a timeout while loading.")
+        print(f'Timeout occurred. The requested element {id} is either not found in the Play Store or the page experienced a timeout while loading.')
         return False, name, logo_url, policy
 
     except Exception as e:
