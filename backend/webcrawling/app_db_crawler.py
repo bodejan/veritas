@@ -20,7 +20,7 @@ def refresh_db():
     # crawl androidrank and get names, ids, and picture links
     for c in list(categories.keys()):
         # print(c)
-        results = get_app_data(c, 20)
+        results = get_app_data(c, 500)
         for result in results:
             final_data.append(result)
         print(c)

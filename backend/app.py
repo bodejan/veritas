@@ -38,7 +38,6 @@ def category():
         category = data.get('category')
         number = int(data.get('number'))
         ids = get_ids_for_category(category, number)
-        # get_apps_by_ids(ids)
         return get_apps_by_ids(ids)
 
     except ValueError:
