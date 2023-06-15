@@ -3,25 +3,33 @@ import time
 from bs4 import BeautifulSoup
 import requests
 from selenium import webdriver
+from selenium.common import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+# from webcrawling.driver_config import start_driver
 
 
 def get_name_logo_url_policy_by_id(id):
     print(f'Getting data for {id}')
-    name = ''
+    name = id
     logo_url = ''
-    policy = ''
+    policy = 'Error'  # has to stay because empty policy will throw an error (Todo: talk to NLP team about fixing)
     driver = None
     try:
-        # Start driver and open play store for the given app package name
-        url = "https://play.google.com/store/apps/details?id="
-        driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
+        # Start driver
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--lang=en-US')  # Set browser language to English
+        chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 2})
+        driver = webdriver.Remote('http://chrome:4444/wd/hub',options=chrome_options)
         driver.set_page_load_timeout(30)
+        # driver = start_driver() # Todo fix import statement, so this can be used
+
+        # Open play store for the given app package name
+        url = "https://play.google.com/store/apps/details?id="
         wait = WebDriverWait(driver, 10)
         driver.get(f'{url}{id}')
 
@@ -73,10 +81,15 @@ def get_name_logo_url_policy_by_id(id):
         print('id:', id, 'name:', name, 'logo_url:', logo_url, '\n', policy[:100])
         return True, name, logo_url, policy
 
+    except TimeoutException as e:
+        print(e)
+        print("Timeout occurred. The requested element is either not found in the Play Store or the page experienced a timeout while loading.")
+        return False, name, logo_url, policy
+
     except Exception as e:
         print(e)
         print(f'No app data found for {id}')
-        return False
+        return False, name, logo_url, policy
     
     finally:
         if driver is not None:
