@@ -15,6 +15,9 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 # from webcrawling.driver_config import start_driver
 
+# Custom exception class
+class PDFFileException(Exception):
+    pass
 
 def get_name_logo_url_policy_by_id(id):
     print(f'Getting data for {id}')
@@ -43,6 +46,7 @@ def get_name_logo_url_policy_by_id(id):
         logo_url = logo_url_element.get_attribute('src')
         name_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1/span')
         name = name_element.text
+        name = slice_app_name(name)
 
         # Expand the developers contact section
         xpath_expand = "/html/body/c-wiz[2]/div/div/div[1]/div[2]/div/div[2]/c-wiz[1]/section/header/div/div[2]/button"
@@ -67,7 +71,11 @@ def get_name_logo_url_policy_by_id(id):
                 driver.switch_to.window(window_handle)
                 break
 
-        # TODO check if actually html or e.g., pdf
+        # Handle pdf policies
+        is_pdf = driver.current_url.endswith(".pdf")
+        if is_pdf:
+            raise PDFFileException
+
         # Wait for next page to load
         wait.until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
 
@@ -84,12 +92,21 @@ def get_name_logo_url_policy_by_id(id):
         print('id:', id, 'name:', name, 'logo_url:', logo_url, '\n', policy[:100])
         return True, name, logo_url, policy
 
+
+    except PDFFileException as e:
+        # Handle the custom exception
+        policy = 'Error'
+        print("The webpage is a PDF file.")
+        return False, name, logo_url, policy
+
     except TimeoutException as e:
+        policy = 'Error'
         print(e)
         print(f'Timeout occurred. The requested element {id} is either not found in the Play Store or the page experienced a timeout while loading.')
         return False, name, logo_url, policy
 
     except Exception as e:
+        policy = 'Error'
         print(e)
         print(f'No app data found for {id}')
         return False, name, logo_url, policy
@@ -141,6 +158,15 @@ def handle_pdf_file(pdf_url):
     with open('downloaded.pdf', 'wb') as file:
         file.write(response.content)
 
+
+def slice_app_name(name):
+    sliced_name = name
+    delimiters = ['.', ',', '-', ':', '(']
+    for delimiter in delimiters:
+        if delimiter in name:
+            sliced_name = name.split(delimiter)[0].strip()
+    print(name, "-->", sliced_name)
+    return sliced_name
 
 if __name__ == "__main__":
     id = 'com.badoo.mobile'
