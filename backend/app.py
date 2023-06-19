@@ -94,6 +94,20 @@ def db_refresh():
             'exception': str(e)
         }
         return jsonify(error), 500
+    
+@app.route('/get_db', methods=['GET'])
+def get_db():
+    try:
+        with open("db.json", "r") as file:
+            data = json.load(file)
+        return jsonify(data)
+    except Exception as e:
+        error_message = 'An error occurred while retrieving the database.'
+        error = {
+            'error': error_message,
+            'exception': str(e)
+        }
+        return jsonify(error), 500
 
 
 @app.route('/test', methods=['POST'])

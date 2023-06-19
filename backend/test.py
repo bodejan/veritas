@@ -53,6 +53,18 @@ def test_db_refresh():
     except requests.exceptions.RequestException as e:
         print('An error occurred while making the request:', e)
 
+def test_get_db():
+    url = 'http://127.0.0.1:8000/get_db'
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        # Perform assertions or validations on the data
+        print(data)
+    else:
+        print('Error:', response.status_code)
+
 if __name__ == '__main__':
-    test_db_refresh()
+    #test_db_refresh()
+    test_get_db()
 
