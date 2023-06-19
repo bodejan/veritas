@@ -40,7 +40,19 @@ def test_category_route():
     # Print the response content
     print(response.json())
 
+def test_db_refresh():
+    url = 'http://127.0.0.1:8000/db_refresh'
+    try:
+        response = requests.post(url)
+        if response.status_code == 200:
+            print('Database refreshed successfully.')
+        else:
+            print('An error occurred while refreshing the database.')
+            print('Status code:', response.status_code)
+            print('Error message:', response.json())
+    except requests.exceptions.RequestException as e:
+        print('An error occurred while making the request:', e)
 
-# test_index_route()
-test_id_route()
-# test_category_route()
+if __name__ == '__main__':
+    test_db_refresh()
+
