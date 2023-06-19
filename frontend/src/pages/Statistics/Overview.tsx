@@ -75,6 +75,23 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
         return (sumOfPolicies / Object.keys(value.scores).length) * 100;
       };
 
+ // Function to calculate the average of the average scores for all apps
+ function calculateAverageScore(appData: PolicyObject[], decimalPlaces: number): number {
+  let totalSum = 0;
+  let totalCount = 0;
+
+  for (let i = 0; i < appData.length; i++) {
+    const sumOfPolicies = calculateSumOfPolicies(appData[i].scores);
+    const policyCount = Object.keys(appData[i].scores).length;
+
+    totalSum += sumOfPolicies;
+    totalCount += policyCount;
+  }
+
+  const averageScore = totalCount > 0 ? totalSum / totalCount : 0;
+  return Number(averageScore.toFixed(decimalPlaces));
+}
+
   return (
     <>
       <Stack p={20}>
@@ -99,13 +116,13 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
           <Grid>
             <Grid.Col xs={12} lg={3}>
             <RingProgress
-                sections={[{ value: 40, color: theme.colors.teal[7] }]}
+                sections={[{ value: calculateAverageScore(appData, 2)*100, color: theme.colors.teal[7] }]}
                 size={280}
                 thickness={17}
                 roundCaps
                 label={
                 <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                    Score
+                    {calculateAverageScore(appData, 2)}
                 </Text>
                 }
             />

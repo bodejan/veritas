@@ -45,20 +45,24 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
 export function Searchbar({ setAppList }: SearchbarProps) {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
+      const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:8000/name');
-        const convdata = (await response.json()).map(mapDataToItemProps);
+        //const convdata = (await response.json()).map(mapDataToItemProps);
 
-        console.log(convdata);
-        setData(convdata);
+       return await response.json()
+        //setData(convdata);
       } catch (error) {
         console.error('Error:', error);
       }
     };
 
-    fetchData();
+  useEffect(() => {
+    fetchData().then(item => {
+      const convdata = JSON.parse(item).map(mapDataToItemProps);
+      setData(convdata);
+      console.log(item)
+    })
   }, []);
 
   return (

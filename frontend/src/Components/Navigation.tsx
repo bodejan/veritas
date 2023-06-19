@@ -40,12 +40,12 @@ export function Navigation({links}: NavigationItemProps) {
   const { classes, theme } = useStyles();
 
   return (
-    <Navbar p="md" className={classes.navbar}>
+    <Navbar p="md" className={classes.navbar}  width={{ base: 250 }}>
       {/* Logo and Version section */}
       <Navbar.Section className={classes.section} p={10}>
         <Group position="apart">
           {/* Logo */}
-          <Title order={1} color={theme.colors.dark[4]} sx={{ fontWeight: 700 }}>Logo</Title>
+          <Title order={1} color={theme.colors.dark[4]} sx={{ fontWeight: 700 }}>Heimdall</Title>
           {/* Version */}
           <Code sx={{ fontWeight: 700 }} color={theme.colors.gray[2]}>v1</Code>
         </Group>

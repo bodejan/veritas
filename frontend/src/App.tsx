@@ -53,12 +53,12 @@ function App() {
     <BrowserRouter>
       <Grid>
         {/* Navigation component */}
-        <Grid.Col span={4} md={3}>
+        <Grid.Col span={5} sm={3} lg={2}>
           <Navigation links={links} />
         </Grid.Col>
 
         {/* Main content */}
-        <Grid.Col span={8} md={9}>
+        <Grid.Col span={7} sm={9} lg={10}>
           <ScrollArea h="90vh" p={40}>
             {/* Render all the routes */}
             <AllRoutes
