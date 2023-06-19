@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Progress, RingProgress, Stack, Text, Title, createStyles} from '@mantine/core'
+import { Box, Button, Flex, Grid, Progress, RingProgress, Stack, Text, Title, createStyles} from '@mantine/core'
 import React from 'react'
 import { CircleCheck, CircleX } from 'tabler-icons-react';
 
@@ -31,6 +31,13 @@ const useStyles = createStyles((theme) => ({
 export default function AppDetail({currentApp}: OverviewProps) {
     const { classes, theme } = useStyles();
 
+    const calculateScoreAverage = (scores: Policy): number => {
+        const scoreValues = Object.values(scores);
+        const sum = scoreValues.reduce((acc, score) => acc + score, 0);
+        const average = sum / scoreValues.length;
+
+      return average;
+      };
 
   return (
     <>
@@ -54,61 +61,58 @@ export default function AppDetail({currentApp}: OverviewProps) {
 
         <section>
           <Grid>
-            <Grid.Col xs={12} lg={3}>
-            <RingProgress
-                sections={[{ value: 40, color: theme.colors.teal[7] }]}
-                size={280}
-                thickness={17}
-                roundCaps
-                label={
-                <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                    12 / 18
-                </Text>
-                }
-            />
-            </Grid.Col>
-            <Grid.Col xs={12} lg={9}>
-                <Box className={classes.scollbox}>
+            <Grid.Col xs={12} lg={5}>
+
+              <Flex justify="center">
+                <RingProgress
+                    sections={[{ value: (calculateScoreAverage(currentApp.scores) * 100), color: theme.colors.teal[7] }]}
+                    size={280}
+                    thickness={17}
+                    roundCaps
+                    label={
+                    <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
+                        {calculateScoreAverage(currentApp.scores).toFixed(2)} 
+                    </Text>
+                    }
+                />
+              </Flex>
+
+            <Box className={classes.scollbox}>
                 <Grid p={10}>
-                    <Grid.Col span={3} display="grid" sx={{alignContent: "center",justifyContent: "center"}}>
-                            <Title order={6}>Category</Title>
+                      <Grid.Col span={6} display="grid" sx={{alignContent: "center",justifyContent: "center"}}>
+                         <Title order={6}>Category</Title>
                         </Grid.Col>
-                        <Grid.Col span={2} display="grid" sx={{alignContent: "center",justifyContent: "center"}}>
-                        <Title order={6}>Result</Title>
-                            
-                        </Grid.Col>
-                        <Grid.Col span={7} display="grid" sx={{alignContent: "center", justifyContent: "center"}}>
-                        <Title order={6}>Confidence</Title>
-                        </Grid.Col>
-                    </Grid>
+                        <Grid.Col span={6} display="grid" sx={{alignContent: "center",justifyContent: "center"}}>
+                          <Title order={6}>Result</Title>
+                      </Grid.Col>
+                </Grid>
 
                 <Grid p={10}>
                     {Object.keys(currentApp.scores).map(value => 
                     <>
-                    <Grid.Col span={3}>
+                        <Grid.Col span={6} display="grid">
                             <Text>{value}</Text>
                         </Grid.Col>
-                        <Grid.Col span={2} display="grid" sx={{alignContent: "center", justifyContent: "center"}}>
+                        <Grid.Col span={6} display="grid" sx={{alignContent: "center", justifyContent: "center"}}>
                           {(currentApp.scores[value]) ? <CircleCheck color={theme.colors.green[6]} /> : <CircleX  color={theme.colors.red[6]}/> }
                             
-                        </Grid.Col>
-                        <Grid.Col span={6}>
-                        <Progress value={80} size="xl" color={theme.colors.gray[4]}/>
-                        </Grid.Col>
-
-                        <Grid.Col span={1}>
-                        90%
-                        </Grid.Col>
-                    
+                        </Grid.Col>                    
                     </>    
                     )        
                     }
                    
-                    </Grid>
+                </Grid>
                 </Box>
+ 
 
             </Grid.Col>
-
+            <Grid.Col xs={12} lg={7}>
+            <Box className={classes.scollbox}>
+              <Title order={4}>Privacy policy of <i>"{currentApp.name}"</i></Title>
+             {currentApp.policy}
+            </Box>
+                
+            </Grid.Col>
           </Grid>
         </section>
       </Stack>
