@@ -38,7 +38,6 @@ def category():
         category = data.get('category')
         number = int(data.get('number'))
         ids = get_ids_for_category(category, number)
-        get_apps_by_ids(ids)
         return get_apps_by_ids(ids)
 
     except ValueError:
@@ -114,6 +113,7 @@ def is_valid_id(id):
     # TODO add your validation criteria here
     return True
 
+
 def get_apps_by_ids(ids):
     try:
         apps = []
@@ -140,7 +140,6 @@ def get_apps_by_ids(ids):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
         return str(e)
-
 
 
 # def run_app():

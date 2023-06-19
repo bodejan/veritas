@@ -20,10 +20,16 @@ def get_ids_for_category(category, number):
     driver = None
     
     try:
-        driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
+        # Start driver and open androidrank
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--lang=en-US')  # Set browser language to English
+        chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 2})
+        driver = webdriver.Remote('http://chrome:4444/wd/hub', options=chrome_options)
+        driver.set_page_load_timeout(30)
+        # driver = start_driver() # Todo fix import statement, so this can be used
         driver.get(f'{url}{categories[category]}')
 
-
+        # Get ids from androidrank
         while (len(ids) < number):
             wait = WebDriverWait(driver, 10)
             wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'tbody')))

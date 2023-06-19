@@ -13,8 +13,10 @@ interface Policy {
 interface PolicyObject {
   id: string;
   name: string;
-  image: string;
-  policies: Policy;
+  logo_url: string;
+  policy: string;
+  scores: Policy;
+  status: string;
 }
 
 // Define props for the CheckList component

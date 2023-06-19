@@ -42,5 +42,5 @@ def test_category_route():
 
 
 # test_index_route()
-# test_id_route()
+test_id_route()
 # test_category_route()
