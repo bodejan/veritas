@@ -8,7 +8,8 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
 
-from webcrawling.androidrank_crawler import click_next_page
+from webcrawling.driver_config import start_driver
+from .androidrank_crawler import click_next_page
 from models import CATEGORIES
 
 categories = CATEGORIES
@@ -31,9 +32,14 @@ def refresh_db():
 
 def get_app_data(category, number):
     url = "https://androidrank.org/android-most-popular-google-play-apps"
-    #driver = webdriver.Firefox(options=options)
-    driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
+    # Start driver
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--lang=en-US')  # Set browser language to English
+    chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 2})
+    driver = webdriver.Remote('http://chrome:4444/wd/hub', options=chrome_options)
     driver.set_page_load_timeout(30)
+    # driver = start_driver() # Todo fix import statement, so this can be used
+
     results = []
 
     try:
