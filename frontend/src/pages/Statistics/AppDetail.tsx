@@ -10,8 +10,10 @@ interface Policy {
 interface PolicyObject {
   id: string;
   name: string;
-  image: string;
-  policies: Policy;
+  logo_url: string;
+  policy: string;
+  scores: Policy;
+  status: string;
 }
 
 interface OverviewProps{
@@ -34,7 +36,7 @@ export default function AppDetail({currentApp}: OverviewProps) {
     <>
       <Stack p={20}>
         <section>
-          <Title>Check privacy policies of {currentApp.name}</Title>
+          <Title>Check privacy policy of {currentApp.name}</Title>
           <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </Text>
         </section>
 
@@ -81,13 +83,13 @@ export default function AppDetail({currentApp}: OverviewProps) {
                     </Grid>
 
                 <Grid p={10}>
-                    {Object.keys(currentApp.policies).map(value => 
+                    {Object.keys(currentApp.scores).map(value => 
                     <>
                     <Grid.Col span={3}>
                             <Text>{value}</Text>
                         </Grid.Col>
                         <Grid.Col span={2} display="grid" sx={{alignContent: "center", justifyContent: "center"}}>
-                          {(currentApp.policies[value]) ? <CircleCheck color={theme.colors.green[6]} /> : <CircleX  color={theme.colors.red[6]}/> }
+                          {(currentApp.scores[value]) ? <CircleCheck color={theme.colors.green[6]} /> : <CircleX  color={theme.colors.red[6]}/> }
                             
                         </Grid.Col>
                         <Grid.Col span={6}>
