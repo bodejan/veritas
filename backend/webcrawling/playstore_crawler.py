@@ -1,8 +1,10 @@
 import os
 import time
+import re
 from bs4 import BeautifulSoup
 import requests
 from selenium import webdriver
+from selenium.common import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
@@ -11,17 +13,27 @@ from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
+# from webcrawling.driver_config import start_driver
+
+
 def get_name_logo_url_policy_by_id(id):
     print(f'Getting data for {id}')
-    name = ''
+    name = id
     logo_url = ''
-    policy = ''
+    policy = 'Error'  # has to stay because empty policy will throw an error (Todo: talk to NLP team about fixing)
     driver = None
     try:
-        # Start driver and open play store for the given app package name
-        url = "https://play.google.com/store/apps/details?id="
-        driver = webdriver.Remote('http://chrome:4444/wd/hub',options=webdriver.ChromeOptions())
+        # Start driver
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--lang=en-US')  # Set browser language to English
+        chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 2})
+        driver = webdriver.Remote('http://chrome:4444/wd/hub',options=chrome_options)
+        # driver = webdriver.Chrome(options=chrome_options)
         driver.set_page_load_timeout(30)
+        # driver = start_driver() # Todo fix import statement, so this can be used
+
+        # Open play store for the given app package name
+        url = "https://play.google.com/store/apps/details?id="
         wait = WebDriverWait(driver, 10)
         driver.get(f'{url}{id}')
 
@@ -68,16 +80,20 @@ def get_name_logo_url_policy_by_id(id):
                 # Wait for next page to load
                 wait.until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
 
-        page = driver.find_element(By.TAG_NAME, "body")
-        policy = page.text
+        policy = extract_policy_from_page(driver.page_source)
         print('id:', id, 'name:', name, 'logo_url:', logo_url, '\n', policy[:100])
         return True, name, logo_url, policy
+
+    except TimeoutException as e:
+        print(e)
+        print(f'Timeout occurred. The requested element {id} is either not found in the Play Store or the page experienced a timeout while loading.')
+        return False, name, logo_url, policy
 
     except Exception as e:
         print(e)
         print(f'No app data found for {id}')
-        return False
-    
+        return False, name, logo_url, policy
+
     finally:
         if driver is not None:
             driver.quit()
@@ -88,12 +104,45 @@ def export_policy(page, id):
     with open(f'backend/src/webcrawling/policy_export/all/{id}.txt', 'w', encoding="utf-8") as f:
         f.write(page.text)
 
+
 def extract_policy_from_page(page_source):
-    # TODO exclude navbar impressum etc.
     soup = BeautifulSoup(page_source, 'html.parser')
+
+    # remove header tags
+    header = soup.find('header')
+    if header is not None:
+        header.decompose()
+
+    # remove Navigation bar tags
+    nav = soup.find('nav')
+    if nav is not None:
+        nav.decompose()
+
+    # remove footer tags
+    footer = soup.find('footer')
+    if footer is not None:
+        footer.decompose()
+
+    # remove all tags that have classnames or ids matching the search-strings
+    searchstrings = ['.*nav.*', '.*header.*', '.*footer.*']
+    for searchstring in searchstrings:
+        regex = re.compile(searchstring)
+        for eachClass in soup.find_all("div", {"class": regex}):
+            eachClass.decompose()
+        for eachId in soup.find_all('div', id=regex):
+            eachId.decompose()
+
+    body = soup.find('body')
+    return body.text
+
 
 def handle_pdf_file(pdf_url):
     response = requests.get(pdf_url)
     # Save the downloaded PDF file to disk
     with open('downloaded.pdf', 'wb') as file:
         file.write(response.content)
+
+
+if __name__ == "__main__":
+    id = 'com.badoo.mobile'
+    get_name_logo_url_policy_by_id(id)
