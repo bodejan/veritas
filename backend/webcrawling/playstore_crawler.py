@@ -165,7 +165,8 @@ def slice_app_name(name):
     delimiters = ['.', ',', '-', ':', '(']
     for delimiter in delimiters:
         if delimiter in name:
-            sliced_name = name.split(delimiter)[0].strip()
+            sliced_name = name.split(delimiter, 1)[0].strip()
+            break  # Add break statement to stop after the first delimiter
     print(name, "-->", sliced_name)
     return sliced_name
 
