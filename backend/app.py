@@ -67,7 +67,7 @@ def id():
 @app.route('/name', methods=['GET'])
 def name():
     try:
-        with open('backend/src/webcrawling/policy_export/app_data.json', 'r') as file:
+        with open('/app/webcrawling/app_data.json', 'r') as file:
             data = file.read()
             return jsonify(data), 200
     except FileNotFoundError:

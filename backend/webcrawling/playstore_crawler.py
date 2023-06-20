@@ -116,6 +116,7 @@ def get_name_logo_url_policy_by_id(id):
             driver.quit()
 
 
+
 def export_policy(page, id):
     with open(f'backend/src/webcrawling/policy_export/all/{id}.txt', 'w', encoding="utf-8") as f:
         f.write(page.text)

@@ -16,8 +16,10 @@ interface Policy {
 interface PolicyObject {
   id: string;
   name: string;
-  image: string;
-  policies: Policy;
+  logo_url: string;
+  policy: string;
+  scores: Policy;
+  status: string;
 }
 
 interface CheckCategoryProps{
@@ -38,6 +40,7 @@ export default function CheckCategory({setAppData}: CheckCategoryProps): ReactEl
 
 
   const categories = JSON.parse(JSON.stringify({
+    "Select category": "",
     "All": "",
     "Paid": "?price=paid",
     "Free": "?price=free",

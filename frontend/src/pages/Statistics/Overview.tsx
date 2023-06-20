@@ -9,8 +9,10 @@ interface Policy {
 interface PolicyObject {
   id: string;
   name: string;
-  image: string;
-  policies: Policy;
+  logo_url: string;
+  policy: string;
+  scores: Policy;
+  status: string;
 }
 
 interface OverviewProps{
@@ -39,12 +41,12 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
         const combinedPolicies: Policy = {};
       
         for (let i = 0; i < arr.length; i++) {
-          const policies = arr[i].policies;
-          const policyKeys = Object.keys(policies);
+          const scores = arr[i].scores;
+          const policyKeys = Object.keys(scores);
       
           for (let j = 0; j < policyKeys.length; j++) {
             const key = policyKeys[j];
-            const value = policies[key];
+            const value = scores[key];
       
             if (combinedPolicies.hasOwnProperty(key)) {
               combinedPolicies[key] += value;
@@ -58,20 +60,37 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
       }
 
       // calculate the amout of requirements that are checked
-      function calculateSumOfPolicies(policies: Policy) {
+      function calculateSumOfPolicies(scores: Policy) {
         let sum = 0;
-        for (const key in policies) {
-          if (typeof policies[key] === "number") {
-            sum += policies[key];
+        for (const key in scores) {
+          if (typeof scores[key] === "number") {
+            sum += scores[key];
           }
         }
         return sum;
       }
 
       const getProgressValue = (value: PolicyObject) => {
-        const sumOfPolicies = calculateSumOfPolicies(value.policies);
-        return (sumOfPolicies / Object.keys(value.policies).length) * 100;
+        const sumOfPolicies = calculateSumOfPolicies(value.scores);
+        return (sumOfPolicies / Object.keys(value.scores).length) * 100;
       };
+
+ // Function to calculate the average of the average scores for all apps
+ function calculateAverageScore(appData: PolicyObject[], decimalPlaces: number): number {
+  let totalSum = 0;
+  let totalCount = 0;
+
+  for (let i = 0; i < appData.length; i++) {
+    const sumOfPolicies = calculateSumOfPolicies(appData[i].scores);
+    const policyCount = Object.keys(appData[i].scores).length;
+
+    totalSum += sumOfPolicies;
+    totalCount += policyCount;
+  }
+
+  const averageScore = totalCount > 0 ? totalSum / totalCount : 0;
+  return Number(averageScore.toFixed(decimalPlaces));
+}
 
   return (
     <>
@@ -97,13 +116,13 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
           <Grid>
             <Grid.Col xs={12} lg={3}>
             <RingProgress
-                sections={[{ value: 40, color: theme.colors.teal[7] }]}
+                sections={[{ value: calculateAverageScore(appData, 2)*100, color: theme.colors.teal[7] }]}
                 size={280}
                 thickness={17}
                 roundCaps
                 label={
                 <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                    Score
+                    {calculateAverageScore(appData, 2)}
                 </Text>
                 }
             />
@@ -142,7 +161,7 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
                 <Box p={10} sx={{borderRadius: 8}} bg="white" mb={20} key={value.id}>
                     <Grid>
                         <Grid.Col span={1}  display="grid" sx={{alignContent: "center"}}>
-                        <Avatar src={value.image} />
+                        <Avatar src={value.logo_url} />
                            
                         </Grid.Col>
                         <Grid.Col span={1}  display="grid" sx={{alignContent: "center"}}>
@@ -152,7 +171,7 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
                                 <Progress value={ getProgressValue(value) } size="xl" color={theme.colors.gray[4]}/>
                         </Grid.Col>
                         <Grid.Col span={3}  display="grid" sx={{alignContent: "center"}}>
-                            <Title order={6}>{calculateSumOfPolicies(value.policies)} / {Object.keys(value.policies).length} requirements fullfiled</Title>
+                            <Title order={6}>{calculateSumOfPolicies(value.scores)} / {Object.keys(value.scores).length} requirements fullfiled</Title>
                         </Grid.Col>
                         <Grid.Col span={2}  display="grid" sx={{alignContent: "center"}}>
                             <Button color="dark" variant='outline' onClick={() => {setCurrentApp(value); navigate("./app")}}>More Info</Button>
