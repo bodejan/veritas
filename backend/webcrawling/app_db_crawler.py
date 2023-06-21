@@ -19,7 +19,6 @@ categories = CATEGORIES
 
 def crawl_and_export_data():
     final_data = []
-    unique_ids = set()  # Set to store unique IDs
     with ThreadPoolExecutor() as executor:
         futures = [executor.submit(refresh_db, c) for c in categories.keys()]
 
@@ -27,12 +26,7 @@ def crawl_and_export_data():
             result = future.result()
             final_data.extend(result)
 
-        # Check for duplicates and append unique results to final_data
-        for app in result:
-            app_id = app['id']
-            if app_id not in unique_ids:
-                final_data.append(app)
-                unique_ids.add(app_id)  
+    final_data = remove_duplicates(final_data)
 
     # write data to a temporary file
     temp_file_path = "temp_db.json"
@@ -56,6 +50,11 @@ def crawl_and_export_data():
         print("Error:", str(e))
         if os.path.exists(temp_file_path):
             os.remove(temp_file_path)
+
+def remove_duplicates(arr):
+    unique_dicts = {tuple(d.items()) for d in arr}
+    unique_arr = [dict(item) for item in unique_dicts]
+    return unique_arr
 
 def refresh_db(category):
     results = get_app_data(category, 250)

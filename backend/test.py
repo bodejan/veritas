@@ -65,6 +65,6 @@ def test_get_db():
         print('Error:', response.status_code)
 
 if __name__ == '__main__':
-    #test_db_refresh()
-    test_get_db()
+    test_db_refresh()
+    #test_get_db()
 

@@ -64,10 +64,10 @@ def id():
     return get_apps_by_ids(ids)
 
 
-@app.route('/name', methods=['GET'])
+@app.route('/get_db', methods=['GET'])
 def name():
     try:
-        with open('/app/webcrawling/app_data.json', 'r') as file:
+        with open('/app/db.json', 'r') as file:
             data = file.read()
             return jsonify(data), 200
     except FileNotFoundError:
@@ -95,10 +95,10 @@ def db_refresh():
         }
         return jsonify(error), 500
     
-@app.route('/get_db', methods=['GET'])
+@app.route('/get_db_old', methods=['GET'])
 def get_db():
     try:
-        with open("db.json", "r") as file:
+        with open("/app/db.json", "r") as file:
             data = json.load(file)
         return jsonify(data)
     except Exception as e:
