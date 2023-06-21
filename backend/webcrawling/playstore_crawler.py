@@ -39,6 +39,7 @@ def get_name_logo_url_policy_by_id(id):
         driver = webdriver.Remote('http://chrome:4444/wd/hub',options=chrome_options)
         # driver = webdriver.Chrome(options=chrome_options)
         driver.set_page_load_timeout(30)
+        driver.implicitly_wait(30)
         # driver = start_driver() # Todo fix import statement, so this can be used
 
         # Open play store for the given app package name
@@ -48,7 +49,7 @@ def get_name_logo_url_policy_by_id(id):
 
         # Wait for page to load and find logo_url and app name 
         wait = WebDriverWait(driver, 10)
-        wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body")))
         name, logo_url = extract_name_logo_url_from_page(driver.page_source, id)
 
         # Expand the developers contact section
@@ -79,20 +80,18 @@ def get_name_logo_url_policy_by_id(id):
         if is_pdf: raise PDFFileException
 
         # Wait for next page to load
-        wait.until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
+        wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
 
         # Check for forwarding notice
-        if len(driver.find_elements(By.TAG_NAME, "title")) > 0:
-            page_title = driver.find_element(By.TAG_NAME, "title")
-            #print(driver.page_source)
-            if page_title.get_attribute('innerHTML') == "Weiterleitungshinweis":
-                print('Weiterleitungshinweis')
-                link = driver.find_element(By.TAG_NAME, 'a')
-                link.click()
-                # Wait for next page to load
-                wait.until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
-
-        policy = extract_policy_from_page(driver.page_source)
+        if forwarding_notice_present(driver.page_source):
+            link = driver.find_element(By.TAG_NAME, 'a')
+            driver.get(link.text)
+            # Wait for next page to load
+            wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
+        
+        time.sleep(0.5) # Necessary as some content takes longer to load even after 'body' is visible
+        page = driver.page_source
+        policy = extract_policy_from_page(page)
         if detect_language(policy) != 'en': raise LanguageException
         print('id:', id, 'name:', name, 'logo_url:', logo_url, '\n', policy[:100])
         return True, name, logo_url, policy
@@ -200,6 +199,17 @@ def slice_app_name(name):
 def detect_language(text):
     language = detect(text)
     return language
+
+
+def forwarding_notice_present(page_source):
+    soup = BeautifulSoup(page_source, 'html.parser')
+    forwarding_notice = soup.find('div', class_='aXgaGb')
+    if forwarding_notice: 
+        print(forwarding_notice.text)
+        return True
+    else:
+        return False
+    
 
 if __name__ == "__main__":
     id = 'com.badoo.mobile'
