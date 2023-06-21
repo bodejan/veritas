@@ -11,7 +11,7 @@ from webcrawling.androidrank_crawler import get_ids_for_category
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
-from models import AndroidApp
+from models import AndroidApp, ZERO_SCORES
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the Flask app
@@ -135,7 +135,8 @@ def get_apps_by_ids(ids):
         
         def process_id(id):
             success, name, logo_url, policy = get_name_logo_url_policy_by_id(id)
-            scores = predictor(policy)
+            if success: scores = predictor(policy)
+            else: scores = ZERO_SCORES
             app = AndroidApp(name, id, logo_url, policy, scores)
             return app.__dict__
         

@@ -11,12 +11,16 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from langdetect import detect
 
 
 # from webcrawling.driver_config import start_driver
 
 # Custom exception class
 class PDFFileException(Exception):
+    pass
+
+class LanguageException(Exception):
     pass
 
 def get_name_logo_url_policy_by_id(id):
@@ -30,6 +34,8 @@ def get_name_logo_url_policy_by_id(id):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--lang=en-US')  # Set browser language to English
         chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 2})
+        # Set the Accept-Language header
+        chrome_options.add_argument("--accept-language=en,*")  # Set Accept-Language to accept all English languages
         driver = webdriver.Remote('http://chrome:4444/wd/hub',options=chrome_options)
         # driver = webdriver.Chrome(options=chrome_options)
         driver.set_page_load_timeout(30)
@@ -70,8 +76,7 @@ def get_name_logo_url_policy_by_id(id):
 
         # Handle pdf policies
         is_pdf = driver.current_url.endswith(".pdf")
-        if is_pdf:
-            raise PDFFileException
+        if is_pdf: raise PDFFileException
 
         # Wait for next page to load
         wait.until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
@@ -79,16 +84,25 @@ def get_name_logo_url_policy_by_id(id):
         # Check for forwarding notice
         if len(driver.find_elements(By.TAG_NAME, "title")) > 0:
             page_title = driver.find_element(By.TAG_NAME, "title")
+            #print(driver.page_source)
             if page_title.get_attribute('innerHTML') == "Weiterleitungshinweis":
+                print('Weiterleitungshinweis')
                 link = driver.find_element(By.TAG_NAME, 'a')
                 link.click()
                 # Wait for next page to load
                 wait.until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
 
         policy = extract_policy_from_page(driver.page_source)
+        if detect_language(policy) != 'en': raise LanguageException
         print('id:', id, 'name:', name, 'logo_url:', logo_url, '\n', policy[:100])
         return True, name, logo_url, policy
 
+
+    except LanguageException as e:
+        # Handle the custom exception
+        policy = f'The requested policy is not in English, consequently it receives a score of 0 in all categories. Please visit https://play.google.com/store/apps/details?id={id} for more information.' '\n' + policy
+        print(f"The policy is not English, id: {id}")
+        return False, name, logo_url, policy
 
     except PDFFileException as e:
         # Handle the custom exception
@@ -181,6 +195,11 @@ def slice_app_name(name):
             sliced_name = name.split(delimiter, 1)[0].strip()
     print(name, "-->", sliced_name)
     return sliced_name
+
+
+def detect_language(text):
+    language = detect(text)
+    return language
 
 if __name__ == "__main__":
     id = 'com.badoo.mobile'
