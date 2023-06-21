@@ -109,7 +109,8 @@ export default function AppDetail({currentApp}: OverviewProps) {
             <Grid.Col xs={12} lg={7}>
             <Box className={classes.scollbox}>
               <Title order={4}>Privacy policy of <i>"{currentApp.name}"</i></Title>
-             {currentApp.policy}
+              <div dangerouslySetInnerHTML={{ __html: currentApp.policy }} />
+       
             </Box>
                 
             </Grid.Col>
