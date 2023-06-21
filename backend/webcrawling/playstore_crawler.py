@@ -41,15 +41,12 @@ def get_name_logo_url_policy_by_id(id):
         driver.get(f'{url}{id}')
 
         # Wait for page to load and find logo_url and app name 
-        wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[1]/img[1]')))
-        logo_url_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[1]/img[1]')
-        logo_url = logo_url_element.get_attribute('src')
-        name_element = driver.find_element(By.XPATH, '//*[@id="yDmH0d"]/c-wiz[2]/div/div/div[1]/div[1]/div/div/c-wiz/div[2]/div[1]/div/h1/span')
-        name = name_element.text
-        name = slice_app_name(name)
+        wait = WebDriverWait(driver, 10)
+        wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+        name, logo_url = extract_name_logo_url_from_page(driver.page_source, id)
 
         # Expand the developers contact section
-        xpath_expand = "/html/body/c-wiz[2]/div/div/div[1]/div[2]/div/div[2]/c-wiz[1]/section/header/div/div[2]/button"
+        xpath_expand = '//*[@id="developer-contacts-heading"]/div[2]/button'
         button_expand = driver.find_element(By.XPATH, xpath_expand)
         button_expand.click()
 
@@ -60,7 +57,7 @@ def get_name_logo_url_policy_by_id(id):
         assert len(driver.window_handles) == 1
 
         # Click the link which opens in a new window
-        xpath_policy = "/html/body/c-wiz[2]/div/div/div[1]/div[2]/div/div[2]/c-wiz[1]/section/div/div/div[last()]/div/a"
+        xpath_policy = '//*[@id="developer-contacts"]/div/div[last()]/div/a'
         wait.until(EC.visibility_of_element_located((By.XPATH, xpath_policy)))
         button_policy = driver.find_element(By.XPATH, xpath_policy)
         button_policy.click()
@@ -95,18 +92,18 @@ def get_name_logo_url_policy_by_id(id):
 
     except PDFFileException as e:
         # Handle the custom exception
-        policy = 'Error'
-        print("The webpage is a PDF file.")
+        policy = f'A PDFFileException occurred. Unfortunately we were unable to find the privacy policy. Please visit https://play.google.com/store/apps/details?id={id} for more information.'
+        print(f"The webpage is a PDF file, id: {id}")
         return False, name, logo_url, policy
 
     except TimeoutException as e:
-        policy = 'Error'
+        policy = f'A timeout occurred. Unfortunately we were unable to find the privacy policy. Please visit https://play.google.com/store/apps/details?id={id} for more information.'
         print(e)
         print(f'Timeout occurred. The requested element {id} is either not found in the Play Store or the page experienced a timeout while loading.')
         return False, name, logo_url, policy
 
     except Exception as e:
-        policy = 'Error'
+        policy = f'An exception occurred. Unfortunately we were unable to find the privacy policy. Please visit https://play.google.com/store/apps/details?id={id} for more information.'
         print(e)
         print(f'No app data found for {id}')
         return False, name, logo_url, policy
@@ -153,6 +150,22 @@ def extract_policy_from_page(page_source):
     return body.text
 
 
+def extract_name_logo_url_from_page(page_source, id):
+    soup = BeautifulSoup(page_source, 'html.parser')
+
+    # Find the element using XPath
+    element = soup.find('h1', itemprop='name')
+    # Extract the name from the element
+    name = slice_app_name(element.text) if element else id
+
+    # Find the element using XPath
+    element = soup.find('img', alt='Icon image', itemprop='image', class_='T75of cN0oRe fFmL2e')
+    # Extract the logo URL from the 'src' attribute of the element
+    logo_url = element['src'] if element and 'src' in element.attrs else ''
+
+    return name, logo_url
+
+
 def handle_pdf_file(pdf_url):
     response = requests.get(pdf_url)
     # Save the downloaded PDF file to disk
@@ -166,7 +179,6 @@ def slice_app_name(name):
     for delimiter in delimiters:
         if delimiter in name:
             sliced_name = name.split(delimiter, 1)[0].strip()
-            break  # Add break statement to stop after the first delimiter
     print(name, "-->", sliced_name)
     return sliced_name
 
