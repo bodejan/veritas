@@ -17,6 +17,25 @@ interface PolicyObject {
   status: string;
 }
 
+interface ItemProps {
+  image: string;
+  label: string;
+  value: string;
+  description: string;
+}
+
+function mapDataToItemProps(data: {
+  id: string;
+  name: string;
+  logo_url: string;
+}): ItemProps {
+  return {
+    image: data.logo_url,
+    label: data.name,
+    value: data.id,
+    description: data.name,
+  };
+}
 
 
 interface SearchAppProps {
@@ -57,6 +76,33 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
       });
   };
 
+
+  const refresh = () => {
+    fetch('http://localhost:8000/db_refresh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+        console.log(response)
+
+        fetch('http://localhost:8000/name')
+        .then(response => response.json())
+        .then(data => {
+          const convdata = JSON.parse(data).map(mapDataToItemProps);
+          setAppList(convdata);
+          console.log(convdata)
+        }).catch(error => {
+          // Handling error if the request fails
+          console.error('Error:', error);
+        });
+    })
+    .catch(error => {
+      // Handling error if the request fails
+      console.error('Error:', error);
+    });
+  }
+
   return (
     <>
       <Stack p={20}>
@@ -92,6 +138,10 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
               </Flex>
             </Grid.Col>
           </Grid>
+        </section>
+
+        <section>
+          <Button color="teal" variant="outline" onClick={() => refresh()}>Refresh database</Button>
         </section>
       </Stack>
     </>
