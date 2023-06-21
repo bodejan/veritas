@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles} from '@mantine/core'
+import { Avatar, Box, Button, Flex, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles} from '@mantine/core'
 import React, { Dispatch, SetStateAction } from 'react'
 import { useNavigate } from "react-router-dom";
 
@@ -114,20 +114,22 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
 
         <section>
           <Grid>
-            <Grid.Col xs={12} lg={3}>
-            <RingProgress
-                sections={[{ value: calculateAverageScore(appData, 2)*100, color: theme.colors.teal[7] }]}
-                size={280}
-                thickness={17}
-                roundCaps
-                label={
-                <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                    {calculateAverageScore(appData, 2)}
-                </Text>
-                }
-            />
+            <Grid.Col xs={12} md={4}>
+              <Flex justify="center" align="center">
+                <RingProgress
+                    sections={[{ value: calculateAverageScore(appData, 2)*100, color: theme.colors.teal[7] }]}
+                    size={280}
+                    thickness={17}
+                    roundCaps
+                    label={
+                    <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
+                        {calculateAverageScore(appData, 2)}
+                    </Text>
+                    }
+                />
+              </Flex>
             </Grid.Col>
-            <Grid.Col xs={12} lg={9}>
+            <Grid.Col xs={12} md={8}>
                 <ScrollArea className={classes.scollbox}>
                     <Grid p={10}>
                     {Object.keys(combinedPolicies).map((value, index) => (
@@ -164,15 +166,20 @@ export default function Overview({appData, setCurrentApp}: OverviewProps) {
                         <Avatar src={value.logo_url} />
                            
                         </Grid.Col>
-                        <Grid.Col span={1}  display="grid" sx={{alignContent: "center"}}>
+                        <Grid.Col span={2}  display="grid" sx={{alignContent: "center"}}>
                             <Title order={6}>{value.name}</Title>
                         </Grid.Col>
-                        <Grid.Col span={5} display="grid" sx={{alignContent: "center"}}>
+                        <Grid.Col span={3} display="grid" sx={{alignContent: "center"}}>
                                 <Progress value={ getProgressValue(value) } size="xl" color={theme.colors.gray[4]}/>
                         </Grid.Col>
-                        <Grid.Col span={3}  display="grid" sx={{alignContent: "center"}}>
+                        <Grid.Col span={2}  display="grid" sx={{alignContent: "center"}}>
                             <Title order={6}>{calculateSumOfPolicies(value.scores)} / {Object.keys(value.scores).length} requirements fullfiled</Title>
                         </Grid.Col>
+
+                        <Grid.Col span={2}  display="grid" sx={{alignContent: "center"}}>
+                            <Title order={6}>Status: {value.status}</Title>
+                        </Grid.Col>
+
                         <Grid.Col span={2}  display="grid" sx={{alignContent: "center"}}>
                             <Button color="dark" variant='outline' onClick={() => {setCurrentApp(value); navigate("./app")}}>More Info</Button>
                         </Grid.Col>
