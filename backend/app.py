@@ -5,13 +5,13 @@ from flask import Flask
 from flask_cors import CORS
 import random
 from flask import jsonify, request
+from webcrawling.app_db_crawler import crawl_and_export_data
 from webcrawling.playstore_crawler import get_name_logo_url_policy_by_id
 from webcrawling.androidrank_crawler import get_ids_for_category
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
-from webcrawling.app_db_crawler import refresh_db
-from models import AndroidApp
+from models import AndroidApp, ZERO_SCORES
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the Flask app
@@ -64,10 +64,10 @@ def id():
     return get_apps_by_ids(ids)
 
 
-@app.route('/name', methods=['GET'])
+@app.route('/get_db', methods=['GET'])
 def name():
     try:
-        with open('/app/webcrawling/app_data.json', 'r') as file:
+        with open('/app/db.json', 'r') as file:
             data = file.read()
             return jsonify(data), 200
     except FileNotFoundError:
@@ -84,10 +84,25 @@ def name():
 @app.route('/db_refresh', methods=['POST'])
 def db_refresh():
     try:
-        refresh_db()
+        #refresh_db()
+        crawl_and_export_data()
         return jsonify({'message': 'Database refreshed'}), 200
     except Exception as e:
         error_message = 'An error occurred.'
+        error = {
+            'error': error_message,
+            'exception': str(e)
+        }
+        return jsonify(error), 500
+    
+@app.route('/get_db_old', methods=['GET'])
+def get_db():
+    try:
+        with open("/app/db.json", "r") as file:
+            data = json.load(file)
+        return jsonify(data)
+    except Exception as e:
+        error_message = 'An error occurred while retrieving the database.'
         error = {
             'error': error_message,
             'exception': str(e)
@@ -120,7 +135,8 @@ def get_apps_by_ids(ids):
         
         def process_id(id):
             success, name, logo_url, policy = get_name_logo_url_policy_by_id(id)
-            scores = predictor(policy)
+            if success: scores = predictor(policy)
+            else: scores = ZERO_SCORES
             app = AndroidApp(name, id, logo_url, policy, scores)
             return app.__dict__
         

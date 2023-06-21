@@ -47,7 +47,7 @@ export function Searchbar({ setAppList }: SearchbarProps) {
 
       const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/name');
+        const response = await fetch('http://localhost:8000/get_db');
         //const convdata = (await response.json()).map(mapDataToItemProps);
 
        return await response.json()

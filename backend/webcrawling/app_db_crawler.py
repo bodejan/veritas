@@ -1,5 +1,6 @@
 import csv
 import json
+import os
 import time
 import re
 from selenium import webdriver
@@ -7,27 +8,58 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from webcrawling.driver_config import start_driver
-from .androidrank_crawler import click_next_page
+from webcrawling.androidrank_crawler import click_next_page
 from models import CATEGORIES
 
 categories = CATEGORIES
 
 
-def refresh_db():
+def crawl_and_export_data():
     final_data = []
-    # crawl androidrank and get names, ids, and picture links
-    for c in list(categories.keys()):
-        # print(c)
-        results = get_app_data(c, 500)
-        for result in results:
-            final_data.append(result)
-        print(c)
+    with ThreadPoolExecutor() as executor:
+        futures = [executor.submit(refresh_db, c) for c in categories.keys()]
 
-    # write data to json file
-    with open("policy_export/app_data.json", "w") as outfile:
+        for future in as_completed(futures):
+            result = future.result()
+            final_data.extend(result)
+
+    final_data = remove_duplicates(final_data)
+
+    # write data to a temporary file
+    temp_file_path = "temp_db.json"
+    with open(temp_file_path, "w") as outfile:
         json.dump(final_data, outfile)
+
+    print(len(final_data))
+    
+    # replace the existing file with the new data only if successful
+    try:
+        # delete the existing "db.json" file if it exists
+        if os.path.exists("db.json"):
+            os.remove("db.json")
+
+        # rename the temporary file to "db.json"
+        os.rename(temp_file_path, "db.json")
+
+        print("Database refreshed successfully.")
+    except Exception as e:
+        print("An error occurred while refreshing the database.")
+        print("Error:", str(e))
+        if os.path.exists(temp_file_path):
+            os.remove(temp_file_path)
+
+def remove_duplicates(arr):
+    unique_dicts = {tuple(d.items()) for d in arr}
+    unique_arr = [dict(item) for item in unique_dicts]
+    return unique_arr
+
+def refresh_db(category):
+    results = get_app_data(category, 250)
+    #print(category)
+    return results
 
 
 def get_app_data(category, number):
@@ -48,7 +80,7 @@ def get_app_data(category, number):
         while len(results) < number:
 
             for i in range(2, 22, 2):
-                # crawl androidrank and get id, name and picture_src
+                # crawl androidrank and get id, name, and picture_src
                 name_id_odd = driver.find_element(By.CSS_SELECTOR, f'tr.odd:nth-child({i}) > td:nth-child(2) > a:nth-child(1)')
                 picture_odd = driver.find_element(By.CSS_SELECTOR, f'tr.odd:nth-child({i}) > td:nth-child(3) > img:nth-child(1)')
                 name_id_even = driver.find_element(By.CSS_SELECTOR, f'tr.even:nth-child({i+1}) > td:nth-child(2) > a:nth-child(1)')
@@ -72,11 +104,11 @@ def get_app_data(category, number):
                 }
                 results.append(result_even)
 
-            # click next page and end driver when all apps crawled
+            # click next page and end driver when all apps are crawled
             # print(driver.current_url)
             driver = click_next_page(driver)
 
-            if driver == None:
+            if driver is None:
                 print(f'Crawled {len(results)} out of {number}')
                 break
             else:
@@ -84,7 +116,7 @@ def get_app_data(category, number):
                 elem = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#ranklist > tbody:nth-child(1)')))
 
         # Quit driver if successful
-        if driver != None:
+        if driver is not None:
             driver.quit()
 
     except Exception as e:
@@ -94,5 +126,5 @@ def get_app_data(category, number):
     return results
 
 
-if __name__ == "__main__":
-    refresh_db()
+#if __name__ == "__main__":
+    #crawl_and_export_data()
