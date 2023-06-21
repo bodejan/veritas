@@ -67,3 +67,24 @@ CATEGORIES = {
     "Game Trivia": "?category=GAME_TRIVIA",
     "Game Word": "?category=GAME_WORD"
 }
+
+ZERO_SCORES = {
+    'Data Recipients': 0,
+    'Safeguards Copy': 0,
+    'Processing Purpose': 0,
+    'Data Categories': 0,
+    'Source of Data': 0,
+    'Right to Erase': 0,
+    'Right to Restrict': 0,
+    'Right to Access': 0,
+    'Right to Object': 0,
+    'Withdraw Consent': 0,
+    'Right to Portability': 0,
+    'Profiling': 0,
+    'Controller Contact': 0,
+    'Provision Requirement': 0,
+    'Storage Period': 0,
+    'Lodge Complaint': 0,
+    'DPO Contact': 0,
+    'Adequacy Decision': 0
+}
