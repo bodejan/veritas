@@ -46,11 +46,17 @@ export default function CheckList({ setAppData }: CheckListProps): ReactElement<
     }
   };
 
+ 
+
   // Handle form submission
   const handleSubmit = (): void => {
     console.log(appList);
 
-    let list = {"id": appList} // Creating a list object with appList as its "id" property
+    const apps = appList.filter(item => item !== "") // remove empty items
+
+    let list = {"id": apps} // Creating a list object with appList as its "id" property
+
+    
 
     toggle(); // Toggling the loading overlay
 
