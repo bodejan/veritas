@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Flex, Grid, Progress, RingProgress, Stack, Text, Title, createStyles } from '@mantine/core';
+import { Box, Button, Flex, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles } from '@mantine/core';
 import { CircleCheck, CircleX } from 'tabler-icons-react';
 
 interface Policy {
@@ -127,7 +127,7 @@ export default function AppDetail({ currentApp }: OverviewProps) {
             <Grid.Col xs={12} lg={7}>
               <Box className={classes.scollbox}>
                 <Title order={4}>Privacy policy of "{currentApp.name}"</Title>
-                <div dangerouslySetInnerHTML={{ __html: currentApp.policy }} />
+                <div dangerouslySetInnerHTML={{ __html: currentApp.policy }}  style={{overflow: "scroll"}} />
               </Box>
             </Grid.Col>
           </Grid>
