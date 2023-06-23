@@ -33,7 +33,8 @@ def get_name_logo_url_policy_by_id(id):
         # Start driver
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--lang=en-US')  # Set browser language to English
-        chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 2})
+        chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 0})
+        chrome_options.add_argument("--enable-javascript")
         # Set the Accept-Language header
         chrome_options.add_argument("--accept-language=en,*")  # Set Accept-Language to accept all English languages
         driver = webdriver.Remote('http://chrome:4444/wd/hub',options=chrome_options)
