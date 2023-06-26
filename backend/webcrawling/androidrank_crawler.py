@@ -14,7 +14,18 @@ categories = CATEGORIES
 
 
 def get_ids_for_category(category, number):
-    print(f'Getting top {number} ids for {category}')
+    """
+    Get the top app IDs for a given category.
+
+    Args:
+        category (str): The category for which to retrieve app IDs.
+        number (int): The number of app IDs to retrieve.
+
+    Returns:
+        list: The list of app IDs.
+
+    """
+    print(f'Getting top {number} IDs for {category}')
     ids = []
     url = "https://androidrank.org/android-most-popular-google-play-apps"
     driver = None
@@ -28,22 +39,24 @@ def get_ids_for_category(category, number):
         driver.set_page_load_timeout(30)
         driver.get(f'{url}{categories[category]}')
 
-        # Get ids from androidrank
-        while (len(ids) < number):
+        # Get IDs from androidrank
+        while len(ids) < number:
             wait = WebDriverWait(driver, 10)
             wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'tbody')))
             links = driver.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'a')
             links = list(map(lambda x: x.get_attribute("href"), links))
-            # Match id of apps embedded in links and add to apps
+            # Match IDs of apps embedded in links and add to IDs
             regex = r'^https://androidrank\.org/application/.+/([^/]+)$'
             for l in links:
                 match = re.search(regex, l)
-                if (match and len(ids) < number):
+                if match and len(ids) < number:
                     ids.append(match.group(1))
 
-            if len(ids) == number: break
+            if len(ids) == number:
+                break
             driver = click_next_page(driver)
-            if driver == None: break
+            if driver is None:
+                break
         
     except Exception as e:
         print(e)
@@ -55,24 +68,36 @@ def get_ids_for_category(category, number):
         if driver is not None:
             driver.quit()
     
-    print(f'{len(ids)}/{number} ids crawled: {ids}', '\n')
+    print(f'{len(ids)}/{number} IDs crawled: {ids}', '\n')
     return ids
 
 
 def get_ids_on_page(ids, driver, number):
-    # get all a tags with links that hold app names from one page
+    """
+    Get the app IDs on the current page.
+
+    Args:
+        ids (list): The existing list of app IDs.
+        driver (webdriver): The WebDriver instance.
+        number (int): The max number of app IDs to retrieve.
+
+    Returns:
+        list: The updated list of app IDs.
+
+    """
+    # Get all 'a' tags with links that hold app names from one page
     try:
         links = driver.find_element(By.TAG_NAME, 'tbody').find_elements(By.TAG_NAME, 'a')
         links = list(map(lambda x: x.get_attribute("href"), links))
-        # match id of apps embedded in links and add to apps
+        # Match IDs of apps embedded in links and add to IDs
         regex = r'^https://androidrank\.org/application/.+/([^/]+)$'
         for l in links:
             match = re.search(regex, l)
-            if (match and len(ids) < number):
+            if match and len(ids) < number:
                 ids.append(match.group(1))
     except Exception as e:
-        print('Error while finding ids')
-        print(f'Current url: {driver.current_url}')
+        print('Error while finding IDs')
+        print(f'Current URL: {driver.current_url}')
         print(f'Crawled {len(ids)} out of {number}')
         print(ids)
         if driver is not None:
@@ -83,10 +108,16 @@ def get_ids_on_page(ids, driver, number):
 
 
 def click_next_page(driver):
-    # does not work for some reason
-    # next_btn = driver.find_element(By.XPATH, "//a[@name='Next >']")
-    # neither does
-    # next_btn = driver.find_element(By.XPATH, '//*[@id="content"]/small/a[1||3]')    
+    """
+    Click the "Next" button to navigate to the next page.
+
+    Args:
+        driver (webdriver): The WebDriver instance.
+
+    Returns:
+        webdriver or None: The updated WebDriver instance if successful, None otherwise.
+
+    """
     try:
         # Last page starts has 'start=481' - no need to click next page
         if 'start=481' not in driver.current_url:
@@ -110,7 +141,7 @@ def click_next_page(driver):
     except Exception as e:
         print(e)
         print(f'Cannot click "next"')
-        print(f'Current url: {driver.current_url}')
+        print(f'Current URL: {driver.current_url}')
         print(f'Trying to click: {href}')
 
         if driver is not None:
