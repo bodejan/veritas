@@ -1,6 +1,28 @@
-# TODO change keys, adjust frontend
 class AndroidApp:
+    """
+    Represents an Android app.
+
+    Attributes:
+        name (str): The name of the app.
+        id (str): The ID of the app.
+        logo_url (str): The URL of the app's logo.
+        policy (str): The policy text of the app.
+        scores (dict): The scores associated with the app's policy.
+        status (str): The status of the app.
+    """
+
     def __init__(self, name=None, id=None, logo_url=None, policy=None, scores=None, status=None):
+        """
+        Initializes an instance of the AndroidApp class.
+
+        Args:
+            name (str): The name of the app.
+            id (str): The ID of the app.
+            logo_url (str): The URL of the app's logo.
+            policy (str): The policy text of the app.
+            scores (dict): The scores associated with the app's policy.
+            status (str): The status of the app.
+        """
         self.status = status
         self.name = name
         self.id = id
@@ -8,9 +30,7 @@ class AndroidApp:
         self.policy = policy
         self.scores = scores
 
-# androidrank category names and keys
-# androidrank currently has issues with the categories: "Transportation" and "Game Family" 
-# both links lead to "All" through no fault of the webcrawler   
+
 CATEGORIES = {
     "All": "",
     "Paid": "?price=paid",
@@ -44,7 +64,6 @@ CATEGORIES = {
     "Social": "?category=SOCIAL",
     "Sports": "?category=SPORTS",
     "Tools": "?category=TOOLS",
-    # "Transportation": "?category=TRANSPORTATION",
     "Travel And Local": "?category=TRAVEL_AND_LOCAL",
     "Video Players": "?category=VIDEO_PLAYERS",
     "Weather": "?category=WEATHER",
@@ -56,7 +75,6 @@ CATEGORIES = {
     "Game Casino": "?category=GAME_CASINO",
     "Game Casual": "?category=GAME_CASUAL",
     "Game Educational": "?category=GAME_EDUCATIONAL",
-    # "Game Family": "?category=GAME_FAMILY",
     "Game Music": "?category=GAME_MUSIC",
     "Game Puzzle": "?category=GAME_PUZZLE",
     "Game Racing": "?category=GAME_RACING",
