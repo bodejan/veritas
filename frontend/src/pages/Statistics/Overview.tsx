@@ -1,5 +1,6 @@
-import { Avatar, Box, Button, Flex, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles } from '@mantine/core';
-import React, { Dispatch, SetStateAction } from 'react';
+import { Avatar, Box, Button, Checkbox, Flex, Grid, Modal, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface Policy {
@@ -33,6 +34,11 @@ const useStyles = createStyles((theme) => ({
 export default function Overview({ appData, setCurrentApp }: OverviewProps) {
   const { classes, theme } = useStyles();
   const navigate = useNavigate();
+
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const [selectedHeaders, setSelectedHeaders] = useState<string[]>(['id', 'name', 'logo_url', ...Object.keys(appData[0].scores), 'status', 'policy']);
+
 
   const combinedPolicies = combinePolicies(appData);
 
@@ -75,6 +81,17 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     return (sumOfPolicies / Object.keys(value.scores).length) * 100;
   };
 
+  function handleHeaderToggle(header: string) {
+    setSelectedHeaders((prevSelectedHeaders) => {
+      if (prevSelectedHeaders.includes(header)) {
+        return prevSelectedHeaders.filter((selectedHeader) => selectedHeader !== header);
+      } else {
+        return [...prevSelectedHeaders, header];
+      }
+    });
+  }
+
+  
   function downloadCSV() {
     const csvData = convertToCSV(appData);
     const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
@@ -86,13 +103,15 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     link.click();
     document.body.removeChild(link);
   }
+  
 
   function convertToCSV(data: PolicyObject[]): string {
-    const headers = ['id', 'name', 'logo_url', ...Object.keys(data[0].scores), 'status'];
     const csvRows = [];
   
+    const headers = ['id', 'name', 'logo_url', ...Object.keys(data[0].scores), 'status', 'policy'];
+
     // Add headers
-    csvRows.push(headers.join(';'));
+    csvRows.push(selectedHeaders.join(';'));
   
     // Add data rows
     for (const row of data) {
@@ -101,13 +120,19 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
         row.name,
         row.logo_url,
         ...Object.values(row.scores),
-        row.status
+        row.status,
+        row.policy.replace(/\n|\r/g, '').replaceAll(';', '|'),
       ].map((value) => String(value)); // Cast the value to string
-      csvRows.push(values.join(';'));
+  
+      // Filter selected values based on selected headers
+      const filteredValues = values.filter((_, index) => selectedHeaders.includes(headers[index]));
+  
+      csvRows.push(filteredValues.join(';'));
     }
   
     return csvRows.join('\n');
   }
+  
   
 
   // Function to calculate the average of the average scores for all apps
@@ -144,11 +169,44 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
         <Grid>
           <Grid.Col span={9}></Grid.Col>
           <Grid.Col span={3} sx={{ justifyContent: 'end', display: 'flex' }}>
-            <Button color="dark" onClick={downloadCSV}>
+            <Button color="dark" onClick={() => open()}>
               Export data
             </Button>
           </Grid.Col>
         </Grid>
+
+        <Modal
+          opened={opened} 
+          onClose={close}
+         
+          title="Select Headers"
+        >
+          <Flex     
+            gap="md"
+            justify="flex-start"
+            align="flex-start"
+            direction="column"
+            wrap="wrap">
+            
+  
+            {['id', 'name', 'logo_url', ...Object.keys(appData[0].scores), 'status', 'policy'].map((header) => (
+    
+             <Checkbox
+                key={header}
+                label={header}
+                checked={selectedHeaders.includes(header)}
+                onChange={() => handleHeaderToggle(header)}
+              >
+               
+              </Checkbox>
+            
+            ))}
+          </Flex>
+          <Button color="teal" mt="md" onClick={() => downloadCSV()}>
+            Export
+          </Button>
+        </Modal>
+
 
         <section>
           <Grid>

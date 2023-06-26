@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Button, Flex, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles } from '@mantine/core';
+import { Box, Button, Checkbox, Flex, Grid, Modal, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles } from '@mantine/core';
 import { CircleCheck, CircleX } from 'tabler-icons-react';
+import { useDisclosure } from '@mantine/hooks';
 
 interface Policy {
   [key: string]: number;
@@ -30,6 +31,11 @@ const useStyles = createStyles((theme) => ({
 export default function AppDetail({ currentApp }: OverviewProps) {
   const { classes, theme } = useStyles();
 
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const [selectedHeaders, setSelectedHeaders] = useState<string[]>(['id', 'name', 'logo_url', ...Object.keys(currentApp.scores), 'status', 'policy']);
+
+
   const calculateScoreAverage = (scores: Policy): number => {
     const scoreValues = Object.values(scores);
     const sum = scoreValues.reduce((acc, score) => acc + score, 0);
@@ -55,6 +61,58 @@ export default function AppDetail({ currentApp }: OverviewProps) {
     document.body.removeChild(link);
   };
 
+  function handleHeaderToggle(header: string) {
+    setSelectedHeaders((prevSelectedHeaders) => {
+      if (prevSelectedHeaders.includes(header)) {
+        return prevSelectedHeaders.filter((selectedHeader) => selectedHeader !== header);
+      } else {
+        return [...prevSelectedHeaders, header];
+      }
+    });
+  }
+
+  
+  function downloadCSV() {
+    const csvData = convertToCSV([currentApp]);
+    const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.setAttribute('href', URL.createObjectURL(blob));
+    link.setAttribute('download', 'appData.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+  
+
+  function convertToCSV(data: PolicyObject[]): string {
+    const csvRows = [];
+  
+    const headers = ['id', 'name', 'logo_url', ...Object.keys(currentApp.scores), 'status', 'policy'];
+
+    // Add headers
+    csvRows.push(selectedHeaders.join(';'));
+  
+    // Add data rows
+    for (const row of data) {
+      const values = [
+        row.id,
+        row.name,
+        row.logo_url,
+        ...Object.values(row.scores),
+        row.status,
+        row.policy.replace(/\n|\r/g, '').replaceAll(';', '|'),
+      ].map((value) => String(value)); // Cast the value to string
+  
+      // Filter selected values based on selected headers
+      const filteredValues = values.filter((_, index) => selectedHeaders.includes(headers[index]));
+  
+      csvRows.push(filteredValues.join(';'));
+    }
+  
+    return csvRows.join('\n');
+  }
+
   return (
     <>
       <Stack p={20}>
@@ -72,12 +130,43 @@ export default function AppDetail({ currentApp }: OverviewProps) {
         <Grid>
           <Grid.Col span={9}></Grid.Col>
           <Grid.Col span={3} sx={{ justifyContent: 'end', display: 'flex' }}>
-            <Button color="dark" onClick={handleExport}>
+            <Button color="dark" onClick={() => open()}>
               Export data
             </Button>
           </Grid.Col>
         </Grid>
 
+        <Modal
+          opened={opened} 
+          onClose={close}
+         
+          title="Select Headers"
+        >
+          <Flex     
+            gap="md"
+            justify="flex-start"
+            align="flex-start"
+            direction="column"
+            wrap="wrap">
+            
+  
+            {['id', 'name', 'logo_url', ...Object.keys(currentApp.scores), 'status', 'policy'].map((header) => (
+    
+             <Checkbox
+                key={header}
+                label={header}
+                checked={selectedHeaders.includes(header)}
+                onChange={() => handleHeaderToggle(header)}
+              >
+               
+              </Checkbox>
+            
+            ))}
+          </Flex>
+          <Button color="teal" mt="md" onClick={() => downloadCSV()}>
+            Export
+          </Button>
+        </Modal>
 
         <section>
           <Grid>
