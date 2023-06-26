@@ -26,7 +26,6 @@ def get_ids_for_category(category, number):
         chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 2})
         driver = webdriver.Remote('http://chrome:4444/wd/hub', options=chrome_options)
         driver.set_page_load_timeout(30)
-        # driver = start_driver() # Todo fix import statement, so this can be used
         driver.get(f'{url}{categories[category]}')
 
         # Get ids from androidrank

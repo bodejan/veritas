@@ -11,11 +11,10 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from langdetect import detect
 
 
-# from webcrawling.driver_config import start_driver
 
 # Custom exception class
 class PDFFileException(Exception):
@@ -30,6 +29,11 @@ class NotInPlayStoreException(Exception):
 class EmptyPolicyException(Exception):
     pass
 
+class AccessDeniedException(Exception):
+    pass
+
+class NoPolicyException(Exception):
+    pass
 
 def get_name_logo_url_policy_by_id(id):
     print(f'Getting data for {id}')
@@ -50,7 +54,6 @@ def get_name_logo_url_policy_by_id(id):
         # driver = webdriver.Chrome(options=chrome_options)
         driver.set_page_load_timeout(30)
         driver.implicitly_wait(30)
-        # driver = start_driver() # Todo fix import statement, so this can be used
 
         # Open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
@@ -76,7 +79,11 @@ def get_name_logo_url_policy_by_id(id):
         xpath_policy = '//*[@id="developer-contacts"]/div/div[last()]/div/a'
         wait.until(EC.visibility_of_element_located((By.XPATH, xpath_policy)))
         button_policy = driver.find_element(By.XPATH, xpath_policy)
-        button_policy.click()
+        # Check if developer provides a policy, else throw exception
+        if 'Privacy policy' in button_policy.text:
+            button_policy.click()
+        else:
+            raise NoPolicyException
 
         # Loop through until we find a new window handle and switch the driver to the new window
         for window_handle in driver.window_handles:
@@ -102,14 +109,39 @@ def get_name_logo_url_policy_by_id(id):
         
         
         page = driver.page_source
-        policy = extract_policy_from_page(page)
+        policy_bs4 = extract_policy_from_page_bs4(page)
+        if policy_bs4:
+            policy = policy_bs4
+        else:
+            print('Fallback to driver body extractor')
+            time.sleep(2)
+            policy = extract_policy_from_driver(driver)
         if policy == '': raise EmptyPolicyException
         if detect_language(policy) != 'en': raise LanguageException
         if "We're sorry, the requested URL was not found on this server." in page: raise NotInPlayStoreException
+        if "Access denied" in page: raise AccessDeniedException
         policy = add_playstore_link_to_policy(policy,id)
         print('id:', id, 'name:', name, 'logo_url:', logo_url, 'status:', status)
         return name, logo_url, policy, status
 
+
+    except AccessDeniedException as e:
+        # Handle the custom exception
+        error_type = 'AccessDeniedException'
+        error_description = 'The developers website refused to respond; access denied.'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
+    
+    except NoPolicyException as e:
+        # Handle the custom exception
+        error_type = 'NoPolicyException.'
+        error_description = 'The developer does not provide a privacy policy'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
 
     except NotInPlayStoreException as e:
         # Handle the custom exception
@@ -148,7 +180,15 @@ def get_name_logo_url_policy_by_id(id):
     
     except NoSuchElementException as e:
         error_type = 'NoSuchElementException'
-        error_description = 'Could not extract text from the providers website.'
+        error_description = 'Could not extract text from the developers website.'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
+    
+    except WebDriverException as e:
+        error_type = 'WebDriverException'
+        error_description = 'Cannot determine loading status from developers website.'
         policy = create_error_message(error_type, error_description, id, policy)
         print(error_type, error_description, id,  '\n', e)
         status = error_type
@@ -156,7 +196,7 @@ def get_name_logo_url_policy_by_id(id):
     
     except EmptyPolicyException as e:
         error_type = 'EmptyPolicyException'
-        error_description = 'Could not extract text from the providers website. Website is empty.'
+        error_description = 'Could not extract text from the developers website. Website is empty.'
         policy = create_error_message(error_type, error_description, id, policy)
         print(error_type, error_description, id,  '\n', e)
         status = error_type
@@ -164,17 +204,41 @@ def get_name_logo_url_policy_by_id(id):
 
     except Exception as e:
         error_type = 'UnknownException'
-        error_description = f'A unknown exception occurred. Error log: {e}'
+        error_description = f'A unknown exception occurred: ({type(e)}). Error log: {e}'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id)
+        print(type(e), error_type, error_description, id)
         status = error_type
-        #export_policy_txt(policy, id)
-        #export_policy_html(driver.page_source, id)
+        export_policy_txt(policy, id)
+        export_policy_html(driver.page_source, id)
         return name, logo_url, policy, status
 
     finally:
         if driver is not None:
             driver.quit()
+
+def extract_policy_from_driver(driver):
+    # Fallback function in case of WebDriverException
+    try:
+        body_element = driver.find_element(By.TAG_NAME, "body")
+
+        # Extract all text from the body element
+        body_text = body_element.text
+
+        return body_text
+    
+    except Exception as e:
+        print(e)
+        return None
+
+def export_policy_txt(policy, id):
+    with open(f'policy_{id}.txt', 'w') as file:
+        file.write(policy)
+
+
+def export_policy_html(page_source, id):
+    with open(f'page_source_{id}.html', 'w') as file:
+        file.write(page_source)
+
 
 def add_playstore_link_to_policy(policy, id):
     policy = '<br>Visit <a href="https://play.google.com/store/apps/details?id=' + id + '">https://play.google.com/store/apps/details?id=' + id + '</a> for more information.<br><br>' + policy
@@ -186,35 +250,42 @@ def create_error_message(error_type, error_description, id, policy):
     error_message = head + error_description + '<br><br>    ' + links + policy
     return error_message
 
-def extract_policy_from_page(page_source):
-    soup = BeautifulSoup(page_source, 'html.parser')
+def extract_policy_from_page_bs4(page_source):
+    try:
+        soup = BeautifulSoup(page_source, 'html.parser')
 
-    # remove header tags
-    header = soup.find('header')
-    if header is not None:
-        header.decompose()
+        # remove header tags
+        header = soup.find('header')
+        if header is not None:
+            header.decompose()
 
-    # remove Navigation bar tags
-    nav = soup.find('nav')
-    if nav is not None:
-        nav.decompose()
+        # remove Navigation bar tags
+        nav = soup.find('nav')
+        if nav is not None:
+            nav.decompose()
 
-    # remove footer tags
-    footer = soup.find('footer')
-    if footer is not None:
-        footer.decompose()
+        # remove footer tags
+        footer = soup.find('footer')
+        if footer is not None:
+            footer.decompose()
 
-    # remove all tags that have classnames or ids matching the search-strings
-    searchstrings = ['.*nav.*', '.*header.*', '.*footer.*']
-    for searchstring in searchstrings:
-        regex = re.compile(searchstring)
-        for eachClass in soup.find_all("div", {"class": regex}):
-            eachClass.decompose()
-        for eachId in soup.find_all('div', id=regex):
-            eachId.decompose()
+        # remove all tags that have classnames or ids matching the search-strings
+        searchstrings = ['.*nav.*', '.*header.*', '.*footer.*']
+        for searchstring in searchstrings:
+            regex = re.compile(searchstring)
+            for eachClass in soup.find_all("div", {"class": regex}):
+                eachClass.decompose()
+            for eachId in soup.find_all('div', id=regex):
+                eachId.decompose()
 
-    body = soup.find('body')
-    return body.text
+        body = soup.find('body')
+        body_text = body.text.strip()
+        if body_text == '': raise Exception
+        return body.text
+    except Exception as e:
+        print(f'An error occurred while extracting policy from text via bs4: {type(e)}')
+        print(e)
+        return None
 
 
 def extract_name_logo_url_from_page(page_source, id):
@@ -246,13 +317,17 @@ def slice_app_name(name):
     for delimiter in delimiters:
         if delimiter in name:
             sliced_name = name.split(delimiter, 1)[0].strip()
-    print(name, "-->", sliced_name)
+    #print(name, "-->", sliced_name)
     return sliced_name
 
 
 def detect_language(text):
-    language = detect(text)
-    return language
+    try:
+        language = detect(text)
+        return language
+    except Exception as e:
+        print(e)
+        return None
 
 
 def forwarding_notice_present(page_source):

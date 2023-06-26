@@ -110,11 +110,6 @@ def test():
     return s
 
 
-def is_valid_id(id):
-    # TODO add your validation criteria here
-    return True
-
-
 def get_apps_by_ids(ids):
     try:
         apps = []
