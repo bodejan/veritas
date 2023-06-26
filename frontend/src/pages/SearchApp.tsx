@@ -1,8 +1,8 @@
-import { Button, Flex, Grid, LoadingOverlay, Stack, Text, Title } from '@mantine/core'; // Importing components from @mantine/core library
-import React, { Dispatch, ReactElement, SetStateAction, useState } from 'react'; // Importing React-related dependencies
-import { useDisclosure } from '@mantine/hooks'; // Importing a hook from @mantine/hooks library
-import { useNavigate } from "react-router-dom"; // Importing a hook from react-router-dom library
-import { Searchbar } from '../Components/Searchbar'; // Importing the Searchbar component
+import { Button, Flex, Grid, Group, LoadingOverlay, Modal, Stack, Text, Title } from '@mantine/core';
+import React, { Dispatch, ReactElement, SetStateAction, useState } from 'react';
+import { useDisclosure } from '@mantine/hooks';
+import { useNavigate } from "react-router-dom";
+import { Searchbar } from '../Components/Searchbar';
 
 interface Policy {
   [key: string]: number;
@@ -37,26 +37,23 @@ function mapDataToItemProps(data: {
   };
 }
 
-
 interface SearchAppProps {
   setAppData: Dispatch<SetStateAction<PolicyObject[]>>;
 }
 
 export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<SearchAppProps> {
-  const navigate = useNavigate(); // Initializing the useNavigate hook for programmatic navigation
-
-  const [visible, { toggle }] = useDisclosure(false); // Initializing the useDisclosure hook to manage the visibility of a loading overlay
-
-  const [appList, setAppList] = useState<string[]>([]); // Initializing state for the list of apps
+  const navigate = useNavigate();
+  const [visible, { toggle }] = useDisclosure(false);
+  const [appList, setAppList] = useState<string[]>([]);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = (): void => {
     console.log(appList);
 
-    let list = { id: appList }; // Creating a list object with appList as its "id" property
+    let list = { id: appList };
 
-    toggle(); // Toggling the loading overlay
+    toggle();
 
-    // Sending a POST request to a specified URL with the list object
     fetch('http://127.0.0.1:8000/id', {
       method: 'POST',
       headers: {
@@ -66,42 +63,46 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
     })
       .then(response => response.json())
       .then(data => {
-        setAppData(data); // Updating the app data state with the received data
-        navigate("./overview"); // Navigating to the "./overview" route
+        setAppData(data);
+        navigate("./overview");
         console.log(data);
       })
       .catch(error => {
-        // Handling error if the request fails
         console.error('Error:', error);
       });
   };
 
-
   const refresh = () => {
+    setShowModal(false)
+    toggle()
+
     fetch('http://localhost:8000/db_refresh', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-    }).then(response => {
-        console.log(response)
-
-        fetch('http://localhost:8000/name')
-        .then(response => response.json())
-        .then(data => {
-          const convdata = JSON.parse(data).map(mapDataToItemProps);
-          setAppList(convdata);
-          console.log(convdata)
-        }).catch(error => {
-          // Handling error if the request fails
-          console.error('Error:', error);
-        });
     })
-    .catch(error => {
-      // Handling error if the request fails
-      console.error('Error:', error);
-    });
-  }
+      .then((response) => {
+        console.log(response);
+
+        fetch('http://localhost:8000/get_db')
+          .then((response) => response.json())
+          .then((data) => {
+            const convdata = JSON.parse(data).map(mapDataToItemProps);
+            setAppList(convdata);
+            console.log(convdata);
+            toggle()
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+            toggle()
+          });
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        toggle()
+      });
+  };
 
   return (
     <>
@@ -126,8 +127,8 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
         <section>
           <Grid>
             <Grid.Col span={10}>
-              <LoadingOverlay visible={visible} overlayBlur={2} /> {/* Rendering the loading overlay */}
-              <Searchbar setAppList={setAppList} /> {/* Rendering the Searchbar component */}
+              <LoadingOverlay visible={visible} overlayBlur={2} />
+              <Searchbar setAppList={setAppList} />
             </Grid.Col>
 
             <Grid.Col span={2} display="flex">
@@ -141,9 +142,44 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
         </section>
 
         <section>
-          <Button color="teal" variant="outline" onClick={() => refresh()}>Refresh database</Button>
+          <Button color="teal" variant="outline" onClick={() => setShowModal(true)}>
+            Refresh database
+          </Button>
         </section>
       </Stack>
+
+      <Modal
+        opened={showModal}
+        onClose={() => setShowModal(false)}
+        title="Refresh Warning"
+        size="md"
+    
+      >
+        
+          <Text>
+            Refreshing the database may take a long time. Are you sure you want to proceed?
+          </Text>
+
+   
+
+          <Group mt="xl" position="center">
+          <Button
+            color="red"
+            variant="filled"
+            onClick={() => setShowModal(false)}
+     
+          >
+            Cancel
+          </Button>
+          <Button
+            color="dark"
+            variant="filled"
+            onClick={refresh}
+          >
+            Proceed
+          </Button>
+        </Group>
+      </Modal>
     </>
   );
 }
