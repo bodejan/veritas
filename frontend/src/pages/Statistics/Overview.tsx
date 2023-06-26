@@ -1,12 +1,14 @@
-import { Avatar, Box, Button, Checkbox, Flex, Grid, Modal, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import { Avatar, Box, Button, Flex, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles } from '@mantine/core';
+import React, { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ExportData from './ExportData';
 
+// Interface for defining the structure of the policy scores
 interface Policy {
   [key: string]: number;
 }
 
+// Interface for defining the structure of a policy object
 interface PolicyObject {
   id: string;
   name: string;
@@ -14,9 +16,9 @@ interface PolicyObject {
   policy: string;
   scores: Policy;
   status: string;
-  //[key: string]: string | Policy; // Add index signature
 }
 
+// Props interface for the Overview component
 interface OverviewProps {
   appData: PolicyObject[];
   setCurrentApp: Dispatch<SetStateAction<PolicyObject>>;
@@ -34,15 +36,9 @@ const useStyles = createStyles((theme) => ({
 export default function Overview({ appData, setCurrentApp }: OverviewProps) {
   const { classes, theme } = useStyles();
   const navigate = useNavigate();
-
-  const [opened, { open, close }] = useDisclosure(false);
-
-  const [selectedHeaders, setSelectedHeaders] = useState<string[]>(['id', 'name', 'logo_url', ...Object.keys(appData[0].scores), 'status', 'policy']);
-
-
   const combinedPolicies = combinePolicies(appData);
 
-  // Function for calculating how many Apps fulfill each requirement
+  // Function for combining the policy scores of all apps
   function combinePolicies(arr: PolicyObject[]): Policy {
     const combinedPolicies: Policy = {};
 
@@ -54,9 +50,12 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
         const key = policyKeys[j];
         const value = scores[key];
 
+        // Check if the combinedPolicies object already has the policy key
         if (combinedPolicies.hasOwnProperty(key)) {
+          // If it exists, add the value to the existing score
           combinedPolicies[key] += value;
         } else {
+          // If it doesn't exist, initialize it with the value
           combinedPolicies[key] = value;
         }
       }
@@ -65,7 +64,7 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     return combinedPolicies;
   }
 
-  // calculate the amount of requirements that are checked
+  // Function to calculate the sum of policy scores
   function calculateSumOfPolicies(scores: Policy) {
     let sum = 0;
     for (const key in scores) {
@@ -76,66 +75,13 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     return sum;
   }
 
+  // Function to calculate the progress value for an app
   const getProgressValue = (value: PolicyObject) => {
     const sumOfPolicies = calculateSumOfPolicies(value.scores);
     return (sumOfPolicies / Object.keys(value.scores).length) * 100;
   };
 
-  function handleHeaderToggle(header: string) {
-    setSelectedHeaders((prevSelectedHeaders) => {
-      if (prevSelectedHeaders.includes(header)) {
-        return prevSelectedHeaders.filter((selectedHeader) => selectedHeader !== header);
-      } else {
-        return [...prevSelectedHeaders, header];
-      }
-    });
-  }
-
-  
-  function downloadCSV() {
-    const csvData = convertToCSV(appData);
-    const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    link.setAttribute('href', URL.createObjectURL(blob));
-    link.setAttribute('download', 'appData.csv');
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-  
-
-  function convertToCSV(data: PolicyObject[]): string {
-    const csvRows = [];
-  
-    const headers = ['id', 'name', 'logo_url', ...Object.keys(data[0].scores), 'status', 'policy'];
-
-    // Add headers
-    csvRows.push(selectedHeaders.join(';'));
-  
-    // Add data rows
-    for (const row of data) {
-      const values = [
-        row.id,
-        row.name,
-        row.logo_url,
-        ...Object.values(row.scores),
-        row.status,
-        row.policy.replace(/\n|\r/g, '').replaceAll(';', '|'),
-      ].map((value) => String(value)); // Cast the value to string
-  
-      // Filter selected values based on selected headers
-      const filteredValues = values.filter((_, index) => selectedHeaders.includes(headers[index]));
-  
-      csvRows.push(filteredValues.join(';'));
-    }
-  
-    return csvRows.join('\n');
-  }
-  
-  
-
-  // Function to calculate the average of the average scores for all apps
+  // Function to calculate the average score of all apps
   function calculateAverageScore(appData: PolicyObject[], decimalPlaces: number): number {
     let totalSum = 0;
     let totalCount = 0;
@@ -166,52 +112,13 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
           </Text>
         </section>
 
-        <Grid>
-          <Grid.Col span={9}></Grid.Col>
-          <Grid.Col span={3} sx={{ justifyContent: 'end', display: 'flex' }}>
-            <Button color="dark" onClick={() => open()}>
-              Export data
-            </Button>
-          </Grid.Col>
-        </Grid>
-
-        <Modal
-          opened={opened} 
-          onClose={close}
-         
-          title="Select Headers"
-        >
-          <Flex     
-            gap="md"
-            justify="flex-start"
-            align="flex-start"
-            direction="column"
-            wrap="wrap">
-            
-  
-            {['id', 'name', 'logo_url', ...Object.keys(appData[0].scores), 'status', 'policy'].map((header) => (
-    
-             <Checkbox
-                key={header}
-                label={header}
-                checked={selectedHeaders.includes(header)}
-                onChange={() => handleHeaderToggle(header)}
-              >
-               
-              </Checkbox>
-            
-            ))}
-          </Flex>
-          <Button color="teal" mt="md" onClick={() => downloadCSV()}>
-            Export
-          </Button>
-        </Modal>
-
+        <ExportData appData={appData} />
 
         <section>
           <Grid>
             <Grid.Col xs={12} md={4}>
               <Flex justify="center" align="center">
+                {/* Display the average score as a ring progress */}
                 <RingProgress
                   sections={[{ value: calculateAverageScore(appData, 2) * 100, color: theme.colors.teal[7] }]}
                   size={280}
@@ -219,7 +126,7 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
                   roundCaps
                   label={
                     <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                      {calculateAverageScore(appData, 2)}
+                      {calculateAverageScore(appData, 2) * 100} %
                     </Text>
                   }
                 />
@@ -231,9 +138,11 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
                   {Object.keys(combinedPolicies).map((value, index) => (
                     <React.Fragment key={index}>
                       <Grid.Col span={3}>
+                        {/* Display the policy name */}
                         <Title order={6}>{value}</Title>
                       </Grid.Col>
                       <Grid.Col span={7} display="grid" sx={{ alignContent: 'center' }}>
+                        {/* Display the progress bar indicating the percentage of apps fulfilling the policy */}
                         <Progress
                           value={(combinedPolicies[value] / appData.length) * 100}
                           size="xl"
@@ -241,6 +150,7 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
                         />
                       </Grid.Col>
                       <Grid.Col span={2}>
+                        {/* Display the count of apps fulfilling the policy */}
                         <Title order={6}>
                           {combinedPolicies[value]} / {appData.length} Apps
                         </Title>
@@ -255,29 +165,34 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
 
         <section>
           <ScrollArea className={classes.scollbox}>
+            {/* Render the list of app data */}
             {appData.map((value: PolicyObject) => (
               <Box p={10} sx={{ borderRadius: 8 }} bg="white" mb={20} key={value.id}>
                 <Grid>
                   <Grid.Col span={1} display="grid" sx={{ alignContent: 'center' }}>
+                    {/* Display the app logo */}
                     <Avatar src={value.logo_url} />
                   </Grid.Col>
                   <Grid.Col span={2} display="grid" sx={{ alignContent: 'center' }}>
+                    {/* Display the app name */}
                     <Title order={6}>{value.name}</Title>
                   </Grid.Col>
                   <Grid.Col span={3} display="grid" sx={{ alignContent: 'center' }}>
+                    {/* Display the progress bar indicating the percentage of policies fulfilled by the app */}
                     <Progress value={getProgressValue(value)} size="xl" color={theme.colors.gray[4]} />
                   </Grid.Col>
                   <Grid.Col span={2} display="grid" sx={{ alignContent: 'center' }}>
+                    {/* Display the count of requirements fulfilled by the app */}
                     <Title order={6}>
                       {calculateSumOfPolicies(value.scores)} / {Object.keys(value.scores).length} requirements fulfilled
                     </Title>
                   </Grid.Col>
-
                   <Grid.Col span={2} display="grid" sx={{ alignContent: 'center' }}>
+                    {/* Display the app status */}
                     <Title order={6}>Status: {value.status}</Title>
                   </Grid.Col>
-
                   <Grid.Col span={2} display="grid" sx={{ alignContent: 'center' }}>
+                    {/* Button to view more information about the app */}
                     <Button
                       color="dark"
                       variant="outline"
