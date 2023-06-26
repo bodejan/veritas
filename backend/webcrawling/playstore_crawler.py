@@ -220,8 +220,8 @@ def get_name_logo_url_policy_by_id(id, retries=0):
         policy = create_error_message(error_type, error_description, id, policy)
         print(type(e), error_type, error_description, id)
         status = error_type
-        export_policy_txt(policy, id)
-        export_policy_html(driver.page_source, id)
+        #export_policy_txt(policy, id)
+        #export_policy_html(driver.page_source, id)
         return name, logo_url, policy, status
 
     finally:
@@ -339,7 +339,7 @@ def detect_language(text):
         return language
     except Exception as e:
         print(e)
-        return None
+        raise EmptyPolicyException
 
 
 def forwarding_notice_present(page_source):
