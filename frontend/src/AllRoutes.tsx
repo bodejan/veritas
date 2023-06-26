@@ -113,6 +113,9 @@ export default function AllRoutes({appData, setAppData, currentApp, setCurrentAp
           path="/category/overview/app"
           element={<AppDetail currentApp={currentApp} />}
         />
+        
+        {/* Redirection for non existing routes*/}
+        <Route path="*" element={<Navigate to="/documentation" />} />   
       </Routes>
     </>
   );
