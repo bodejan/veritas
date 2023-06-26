@@ -130,9 +130,21 @@ function handleSubmit(): void {
   return (
     <>
       <Stack p={20}>
-        <section>
+      <section>
           <Title>Check privacy policies by app category</Title>
-          <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </Text>
+          <Text>
+          This page allows you to select an app category and specify the number of apps you want to check. Our system will retrieve and analyze the privacy policies of the selected apps to provide you with valuable insights.
+          <br/>  <br/>
+          To get started, follow these steps:
+          <br/>
+          <ol>
+            <li> Choose an app category from the provided options.</li>
+            <li>Enter the number of apps you would like to check within that category.</li>
+            <li>Click the "Submit" button to initiate the process.</li>
+          </ol>
+         
+          Our application will then collect the necessary data and present you with the results. We aim to help you make informed decisions about the apps you use based on their privacy policies.
+          </Text>
         </section>
 
         <section>

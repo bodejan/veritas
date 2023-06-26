@@ -108,19 +108,23 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
     <>
       <Stack p={20}>
         <section>
-          <Title>Check privacy policies by app category</Title>
+          <Title>Check privacy policies by app name</Title>
           <Text>
-            This page allows you to select an app category and specify the number of apps you want to check. Our system will retrieve and analyze the privacy policies of the selected apps to provide you with valuable insights.
+            This page allows you to search for an app inside of our database by providing th app names you want to check. Our system will retrieve and analyze the privacy policies of the selected apps to provide you with valuable insights.
             <br/><br/>
             To get started, follow these steps:
             <br/>
             <ol>
-              <li>Choose an app category from the provided options.</li>
-              <li>Enter the number of apps you would like to check within that category.</li>
-              <li>Click the "Submit" button to initiate the process.</li>
+              <li>Search for Apps.</li>
+              <li>Click the "Check policies" button to initiate the process.</li>
             </ol>
-          
             Our application will then collect the necessary data and present you with the results. We aim to help you make informed decisions about the apps you use based on their privacy policies.
+
+            <br/><br/>
+            <i>If you want to update the database, you can click on the "Refresh database" button. Attention: The refresh process might take some time!</i>
+            <br/>
+          
+           
           </Text>
         </section>
 
