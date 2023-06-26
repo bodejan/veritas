@@ -35,7 +35,7 @@ class AccessDeniedException(Exception):
 class NoPolicyException(Exception):
     pass
 
-def get_name_logo_url_policy_by_id(id):
+def get_name_logo_url_policy_by_id(id, retries=0):
     print(f'Getting data for {id}')
     name = id
     logo_url = ''
@@ -171,6 +171,12 @@ def get_name_logo_url_policy_by_id(id):
         return name, logo_url, policy, status
 
     except TimeoutException as e:
+        if retries < 2:
+            retries += 1
+            print(f'Retrying id {id}')
+            return get_name_logo_url_policy_by_id(id, retries=retries)
+        else:
+            print('Retries exhausted.')
         error_type = 'TimeoutException'
         error_description = 'A timeout occurred while loading the privacy policy.'
         policy = create_error_message(error_type, error_description, id, policy)
@@ -187,6 +193,12 @@ def get_name_logo_url_policy_by_id(id):
         return name, logo_url, policy, status
     
     except WebDriverException as e:
+        if retries < 2:
+            retries += 1
+            print(f'Retrying id {id}')
+            return get_name_logo_url_policy_by_id(id, retries=retries)
+        else:
+            print('Retries exhausted.')
         error_type = 'WebDriverException'
         error_description = 'Cannot determine loading status from developers website.'
         policy = create_error_message(error_type, error_description, id, policy)
