@@ -120,10 +120,10 @@ def get_apps_by_ids(ids):
         apps = []
         
         def process_id(id):
-            success, name, logo_url, policy = get_name_logo_url_policy_by_id(id)
-            if success: scores = predictor(policy)
+            name, logo_url, policy, status = get_name_logo_url_policy_by_id(id)
+            if status=='Success': scores = predictor(policy)
             else: scores = ZERO_SCORES
-            app = AndroidApp(name, id, logo_url, policy, scores)
+            app = AndroidApp(name, id, logo_url, policy, scores, status)
             return app.__dict__
         
         with ThreadPoolExecutor() as executor:

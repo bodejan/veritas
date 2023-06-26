@@ -11,6 +11,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC, wait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.common.exceptions import NoSuchElementException
 from langdetect import detect
 
 
@@ -26,12 +27,17 @@ class LanguageException(Exception):
 class NotInPlayStoreException(Exception):
     pass
 
+class EmptyPolicyException(Exception):
+    pass
+
+
 def get_name_logo_url_policy_by_id(id):
     print(f'Getting data for {id}')
     name = id
     logo_url = ''
-    policy = 'Error'  # has to stay because empty policy will throw an error (Todo: talk to NLP team about fixing)
+    policy = ''
     driver = None
+    status = 'Success'
     try:
         # Start driver
         chrome_options = webdriver.ChromeOptions()
@@ -48,11 +54,10 @@ def get_name_logo_url_policy_by_id(id):
 
         # Open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, 30)
         driver.get(f'{url}{id}')
 
         # Wait for page to load and find logo_url and app name 
-        wait = WebDriverWait(driver, 10)
         wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body")))
         name, logo_url = extract_name_logo_url_from_page(driver.page_source, id)
 
@@ -85,6 +90,7 @@ def get_name_logo_url_policy_by_id(id):
 
         # Wait for next page to load
         wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
+        time.sleep(0.5) # Necessary as some content takes longer to load even after 'body' is visible
 
         # Check for forwarding notice
         if forwarding_notice_present(driver.page_source):
@@ -92,14 +98,17 @@ def get_name_logo_url_policy_by_id(id):
             driver.get(link.text)
             # Wait for next page to load
             wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
+            time.sleep(0.5) # Necessary as some content takes longer to load even after 'body' is visible
         
-        time.sleep(0.5) # Necessary as some content takes longer to load even after 'body' is visible
+        
         page = driver.page_source
         policy = extract_policy_from_page(page)
+        if policy == '': raise EmptyPolicyException
         if detect_language(policy) != 'en': raise LanguageException
         if "We're sorry, the requested URL was not found on this server." in page: raise NotInPlayStoreException
-        print('id:', id, 'name:', name, 'logo_url:', logo_url, '\n', policy[:100])
-        return True, name, logo_url, policy
+        policy = add_playstore_link_to_policy(policy,id)
+        print('id:', id, 'name:', name, 'logo_url:', logo_url, 'status:', status)
+        return name, logo_url, policy, status
 
 
     except NotInPlayStoreException as e:
@@ -107,52 +116,75 @@ def get_name_logo_url_policy_by_id(id):
         error_type = 'NotInPlayStoreException'
         error_description = 'The requested policy could not be found in the Google Play Store.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(policy, 'n', e)
-        return False, name, logo_url, policy
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
 
     except LanguageException as e:
         # Handle the custom exception
         error_type = 'LanguageException'
         error_description = 'The requested policy is not in English, therefore it receives a score of 0 across all categories.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(policy, 'n', e)
-        return False, name, logo_url, policy
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
 
     except PDFFileException as e:
         # Handle the custom exception
         error_type = 'PDFFileException'
         error_description = 'The requested policy is a pdf file. Unfortunately, we cannot handle pdf files.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(policy, 'n', e)
-        return False, name, logo_url, policy
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
 
     except TimeoutException as e:
         error_type = 'TimeoutException'
         error_description = 'A timeout occurred while loading the privacy policy.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(policy, 'n', e)
-        return False, name, logo_url, policy
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
+    
+    except NoSuchElementException as e:
+        error_type = 'NoSuchElementException'
+        error_description = 'Could not extract text from the providers website.'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
+    
+    except EmptyPolicyException as e:
+        error_type = 'EmptyPolicyException'
+        error_description = 'Could not extract text from the providers website. Website is empty.'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  '\n', e)
+        status = error_type
+        return name, logo_url, policy, status
 
     except Exception as e:
         error_type = 'UnknownException'
         error_description = f'A unknown exception occurred. Error log: {e}'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(policy)
-        return False, name, logo_url, policy
+        print(error_type, error_description, id)
+        status = error_type
+        #export_policy_txt(policy, id)
+        #export_policy_html(driver.page_source, id)
+        return name, logo_url, policy, status
 
     finally:
         if driver is not None:
             driver.quit()
 
-def create_error_message(error_type, error_description, id, policy):
-    head = f'<strong>WARNING:</strong> An error occurred during the crawling process.<br>Type: {error_type}. <br><br>'
-    links = 'Please visit <a href="https://play.google.com/store/apps/details?id=' + id + '">https://play.google.com/store/apps/details?id=' + id + '</a> for more information.<br><br><br>'
-    error_message = head + error_description + '<br>' + links + policy
-    return error_message
-def export_policy(page, id):
-    with open(f'backend/src/webcrawling/policy_export/all/{id}.txt', 'w', encoding="utf-8") as f:
-        f.write(page.text)
+def add_playstore_link_to_policy(policy, id):
+    policy = '<br>Visit <a href="https://play.google.com/store/apps/details?id=' + id + '">https://play.google.com/store/apps/details?id=' + id + '</a> for more information.<br><br>' + policy
+    return policy
 
+def create_error_message(error_type, error_description, id, policy):
+    head = f'<br><strong>WARNING:</strong> An error occurred during the crawling process.<br>Type: {error_type}. <br><br>'
+    links = 'Please visit <a href="https://play.google.com/store/apps/details?id=' + id + '">https://play.google.com/store/apps/details?id=' + id + '</a> for more information.<br><br><br>'
+    error_message = head + error_description + '<br><br>    ' + links + policy
+    return error_message
 
 def extract_policy_from_page(page_source):
     soup = BeautifulSoup(page_source, 'html.parser')
