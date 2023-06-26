@@ -1,15 +1,12 @@
 from concurrent.futures import ThreadPoolExecutor
 import json
 import os
-from flask import Flask
+from flask import Flask, jsonify, request
 from flask_cors import CORS
-import random
-from flask import jsonify, request
+from selenium import webdriver
 from webcrawling.app_db_crawler import crawl_and_export_data
 from webcrawling.playstore_crawler import get_name_logo_url_policy_by_id
 from webcrawling.androidrank_crawler import get_ids_for_category
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from NLP.NLPPredictor.predictor import predictor
 from models import AndroidApp, ZERO_SCORES
 
@@ -20,11 +17,9 @@ CORS(app)  # Enable CORS for the Flask app
 app.config['DEBUG'] = True
 
 
-# app.config['SECRET_KEY'] = 'your_secret_key'
-
-
 @app.route('/')
 def index():
+    """API endpoint for the root URL."""
     data = {"key": "value"}
     print(data)
     return jsonify(data), 500
@@ -32,6 +27,20 @@ def index():
 
 @app.route('/category', methods=['POST'])
 def category():
+    """
+    API endpoint for getting apps by category.
+
+    Args:
+        request (flask.Request): The HTTP request object containing the JSON payload.
+
+    Returns:
+        str: JSON string containing the app information.
+
+    Raises:
+        ValueError: If the 'number' field in the request payload is not a valid integer.
+        Exception: If an error occurs during the process.
+
+    """
     data = request.get_json()
 
     try:
@@ -58,6 +67,16 @@ def category():
 
 @app.route('/id', methods=['POST'])
 def id():
+    """
+    API endpoint for getting apps by IDs.
+
+    Args:
+        request (flask.Request): The HTTP request object containing the JSON payload.
+
+    Returns:
+        str: JSON string containing the app information.
+
+    """
     data = request.get_json()
     ids = data.get('id')
 
@@ -65,7 +84,18 @@ def id():
 
 
 @app.route('/get_db', methods=['GET'])
-def name():
+def get_db():
+    """
+    API endpoint for getting the database file.
+
+    Returns:
+        str: JSON string containing the database file contents.
+
+    Raises:
+        FileNotFoundError: If the database file is not found.
+        Exception: If an error occurs during the process.
+
+    """
     try:
         with open('/app/db.json', 'r') as file:
             data = file.read()
@@ -83,8 +113,17 @@ def name():
 
 @app.route('/db_refresh', methods=['POST'])
 def db_refresh():
+    """
+    API endpoint for refreshing the database.
+
+    Returns:
+        str: JSON string with a success message.
+
+    Raises:
+        Exception: If an error occurs during the process.
+
+    """
     try:
-        #refresh_db()
         crawl_and_export_data()
         return jsonify({'message': 'Database refreshed'}), 200
     except Exception as e:
@@ -98,6 +137,13 @@ def db_refresh():
 
 @app.route('/test', methods=['POST'])
 def test():
+    """
+    API endpoint for testing purposes.
+
+    Returns:
+        str: The page source of the test URL.
+
+    """
     print(request)
     # Create a new instance of the Chrome driver
     driver = webdriver.Remote('http://chrome:4444/wd/hub', options=webdriver.ChromeOptions())
@@ -111,36 +157,46 @@ def test():
 
 
 def get_apps_by_ids(ids):
+    """
+    Retrieve app information for the given IDs.
+
+    Args:
+        ids (list): List of app IDs.
+
+    Returns:
+        str: JSON string containing the app information.
+
+    """
     try:
         apps = []
-        
+
         def process_id(id):
             name, logo_url, policy, status = get_name_logo_url_policy_by_id(id)
-            if status=='Success': scores = predictor(policy)
-            else: scores = ZERO_SCORES
+            if status == 'Success':
+                scores = predictor(policy)
+            else:
+                scores = ZERO_SCORES
             app = AndroidApp(name, id, logo_url, policy, scores, status)
             return app.__dict__
-        
+
         with ThreadPoolExecutor() as executor:
             futures = [executor.submit(process_id, id) for id in ids]
-            
+
             for future in futures:
                 try:
                     app_dict = future.result()
                     apps.append(app_dict)
                 except Exception as e:
                     print(f"An error occurred: {str(e)}")
-        
+
         json_apps = json.dumps(apps)
         return json_apps
-        
+
     except Exception as e:
         print(f"An error occurred: {str(e)}")
         return str(e)
 
 
-# def run_app():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8000))
     app.run(debug=True, host='0.0.0.0', port=port)
-    # app.run()
