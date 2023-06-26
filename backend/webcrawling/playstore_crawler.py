@@ -23,6 +23,9 @@ class PDFFileException(Exception):
 class LanguageException(Exception):
     pass
 
+class NotInPlayStoreException(Exception):
+    pass
+
 def get_name_logo_url_policy_by_id(id):
     print(f'Getting data for {id}')
     name = id
@@ -94,40 +97,58 @@ def get_name_logo_url_policy_by_id(id):
         page = driver.page_source
         policy = extract_policy_from_page(page)
         if detect_language(policy) != 'en': raise LanguageException
+        if "We're sorry, the requested URL was not found on this server." in page: raise NotInPlayStoreException
         print('id:', id, 'name:', name, 'logo_url:', logo_url, '\n', policy[:100])
         return True, name, logo_url, policy
 
 
+    except NotInPlayStoreException as e:
+        # Handle the custom exception
+        error_type = 'NotInPlayStoreException'
+        error_description = 'The requested policy could not be found in the Google Play Store.'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(policy, 'n', e)
+        return False, name, logo_url, policy
+
     except LanguageException as e:
         # Handle the custom exception
-        policy = f'The requested policy is not in English, consequently it receives a score of 0 in all categories. Please visit https://play.google.com/store/apps/details?id={id} for more information.' '\n' + policy
-        print(f"The policy is not English, id: {id}")
+        error_type = 'LanguageException'
+        error_description = 'The requested policy is not in English, therefore it receives a score of 0 across all categories.'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(policy, 'n', e)
         return False, name, logo_url, policy
 
     except PDFFileException as e:
         # Handle the custom exception
-        policy = f'A PDFFileException occurred. Unfortunately we were unable to find the privacy policy. Please visit https://play.google.com/store/apps/details?id={id} for more information.'
-        print(f"The webpage is a PDF file, id: {id}")
+        error_type = 'PDFFileException'
+        error_description = 'The requested policy is a pdf file. Unfortunately, we cannot handle pdf files.'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(policy, 'n', e)
         return False, name, logo_url, policy
 
     except TimeoutException as e:
-        policy = f'A timeout occurred. Unfortunately we were unable to find the privacy policy. Please visit https://play.google.com/store/apps/details?id={id} for more information.'
-        print(e)
-        print(f'Timeout occurred. The requested element {id} is either not found in the Play Store or the page experienced a timeout while loading.')
+        error_type = 'TimeoutException'
+        error_description = 'A timeout occurred while loading the privacy policy.'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(policy, 'n', e)
         return False, name, logo_url, policy
 
     except Exception as e:
-        policy = f'An exception occurred. Unfortunately we were unable to find the privacy policy. Please visit https://play.google.com/store/apps/details?id={id} for more information.'
-        print(e)
-        print(f'No app data found for {id}')
+        error_type = 'UnknownException'
+        error_description = f'A unknown exception occurred. Error log: {e}'
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(policy)
         return False, name, logo_url, policy
 
     finally:
         if driver is not None:
             driver.quit()
 
-
-
+def create_error_message(error_type, error_description, id, policy):
+    head = f'<strong>WARNING:</strong> An error occurred during the crawling process.<br>Type: {error_type}. <br><br>'
+    links = 'Please visit <a href="https://play.google.com/store/apps/details?id=' + id + '">https://play.google.com/store/apps/details?id=' + id + '</a> for more information.<br><br><br>'
+    error_message = head + error_description + '<br>' + links + policy
+    return error_message
 def export_policy(page, id):
     with open(f'backend/src/webcrawling/policy_export/all/{id}.txt', 'w', encoding="utf-8") as f:
         f.write(page.text)

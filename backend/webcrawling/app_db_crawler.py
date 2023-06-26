@@ -27,6 +27,7 @@ def crawl_and_export_data():
             final_data.extend(result)
 
     final_data = remove_duplicates(final_data)
+    final_data.sort(key=lambda x: x['name'])  # Sort the final_data list alphabetically
 
     # write data to a temporary file
     temp_file_path = "temp_db.json"
