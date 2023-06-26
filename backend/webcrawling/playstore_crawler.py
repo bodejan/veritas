@@ -121,8 +121,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
             driver.get(link.text)
             # Wait for next page to load
             wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
-            time.sleep(0.5)  # Necessary as some content takes longer to load even after 'body' is visible
 
+        time.sleep(2)  # Necessary as some content takes longer to load even after 'body' is visible
         page = driver.page_source
         policy_bs4 = extract_policy_from_page_bs4(page)
         if policy_bs4:
