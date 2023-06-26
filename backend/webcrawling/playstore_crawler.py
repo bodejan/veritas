@@ -426,7 +426,7 @@ def detect_language(text):
         return language
     except Exception as e:
         print(e)
-        raise EmptyPolicyException
+        raise Exception
 
 def forwarding_notice_present(page_source):
     """
