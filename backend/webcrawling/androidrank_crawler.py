@@ -134,7 +134,7 @@ def click_next_page(driver):
 
             # Open next page
             driver.get(href)
-            time.sleep(2)
+            time.sleep(1)
 
     except Exception as e:
         print(e)

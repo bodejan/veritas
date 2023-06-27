@@ -1,7 +1,7 @@
 import json
 import os
 import re
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -12,27 +12,31 @@ from webcrawling.androidrank_crawler import click_next_page
 from models import CATEGORIES
 
 categories = CATEGORIES
+number_apps_per_category = 20
 
-
-def crawl_and_export_data():
+def crawl_db():
     """
-    Crawl app data for all categories, export the data to a JSON file, and refresh the database.
+    Refresh the app data for all categories, export the data to a JSON file, and refresh the database.
     """
     final_data = []
 
-    with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(refresh_db, c) for c in categories.keys()]
-
-        for future in as_completed(futures):
-            result = future.result()
-            final_data.extend(result)
-
+    for category in categories.keys():
+        results = get_app_data(category, number_apps_per_category)
+        print(f'Crawled {len(results)} out of {number_apps_per_category} for {category}')
+        final_data.extend(results)
+    print(f'CRAWL_DB_RESULT: Crawled {len(final_data)} out of {len(CATEGORIES)*number_apps_per_category}')
+    # Indication that an error occurred during the crawling process 
+    # Allow 25% of the crawling to fail, as db has no claim to completeness
+    # E.g., due to network connectivity issues during the crawling process
+    if len(final_data) < len(CATEGORIES)*number_apps_per_category*0.75:
+        raise Exception
     final_data = remove_duplicates(final_data)
-    final_data.sort(key=lambda x: x['name'])  # Sort the final_data list alphabetically
+    # Sort the array alphabetically by the "name" key, putting numbers after "z"
+    final_data.sort(key=lambda x: (x['name'][0].isdigit(), x['name'][0].isalpha(), x['name']))
 
     temp_file_path = "temp_db.json"
     with open(temp_file_path, "w") as outfile:
-        json.dump(final_data, outfile)
+        json.dump(final_data, outfile, indent=4)
 
     try:
         if os.path.exists("db.json"):
@@ -59,20 +63,6 @@ def remove_duplicates(arr):
     unique_dicts = {tuple(d.items()) for d in arr}
     unique_arr = [dict(item) for item in unique_dicts]
     return unique_arr
-
-
-def refresh_db(category):
-    """
-    Refresh the app data for the given category.
-
-    Args:
-        category (str): The category for which to refresh the app data.
-
-    Returns:
-        list: The list of app data for the category.
-    """
-    results = get_app_data(category, 250)
-    return results
 
 
 def get_app_data(category, number):
@@ -124,19 +114,19 @@ def get_app_data(category, number):
                 results.append(result_even)
 
             driver = click_next_page(driver)
+            time.sleep(0.5)
 
             if driver is None:
                 print(f'Crawled {len(results)} out of {number}')
                 break
             else:
-                elem = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#ranklist > tbody:nth-child(1)')))
+                WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#ranklist > tbody:nth-child(1)')))
 
         if driver is not None:
             driver.quit()
 
     except Exception as e:
-        print(f'Error while crawling top {number} from {category}')
+        print(f'Error while crawling top {number} from {category}', e)
         driver.quit()
 
     return results
-

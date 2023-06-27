@@ -4,7 +4,7 @@ import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from selenium import webdriver
-from webcrawling.app_db_crawler import crawl_and_export_data
+from webcrawling.app_db_crawler import crawl_db
 from webcrawling.playstore_crawler import get_name_logo_url_policy_by_id
 from webcrawling.androidrank_crawler import get_ids_for_category
 from NLP.NLPPredictor.predictor import predictor
@@ -124,7 +124,7 @@ def db_refresh():
 
     """
     try:
-        crawl_and_export_data()
+        crawl_db()
         return jsonify({'message': 'Database refreshed'}), 200
     except Exception as e:
         error_message = 'An error occurred.'
