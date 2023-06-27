@@ -1,10 +1,7 @@
-import json
-import time
 import re
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -137,6 +134,7 @@ def click_next_page(driver):
 
             # Open next page
             driver.get(href)
+            time.sleep(2)
 
     except Exception as e:
         print(e)
