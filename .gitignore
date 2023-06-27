@@ -5,3 +5,5 @@ geckodriver.log
 /node_modules
 /frontend/node_modules
 backend/webcrawling/eval/**
+/frontend/junit.xml
+junit.xml
