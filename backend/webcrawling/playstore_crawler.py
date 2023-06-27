@@ -121,8 +121,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
             driver.get(link.text)
             # Wait for next page to load
             wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
-            time.sleep(0.5)  # Necessary as some content takes longer to load even after 'body' is visible
 
+        time.sleep(2)  # Necessary as some content takes longer to load even after 'body' is visible
         page = driver.page_source
         policy_bs4 = extract_policy_from_page_bs4(page)
         if policy_bs4:
@@ -133,7 +133,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
             policy = extract_policy_from_driver(driver)
         if policy == '':
             raise EmptyPolicyException
-        if detect_language(policy) != 'en':
+        language = detect_language(policy)
+        if language != 'en':
             raise LanguageException
         if "We're sorry, the requested URL was not found on this server." in page:
             raise NotInPlayStoreException
@@ -173,7 +174,7 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
     except LanguageException as e:
         # Handle the custom exception
         error_type = 'LanguageException'
-        error_description = 'The requested policy is not in English, therefore it receives a score of 0 across all categories.'
+        error_description = f'The requested policy is not in English, therefore it receives a score of 0 across all categories.<br>Detected language: {language}.'
         policy = create_error_message(error_type, error_description, id, policy)
         print(error_type, error_description, id,  '\n', e)
         status = error_type
