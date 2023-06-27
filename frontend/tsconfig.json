@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "tests/CheckCategory.test.tsx", "tests/CheckList.test.tsx"  ]
 }

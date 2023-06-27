@@ -1,7 +1,7 @@
 
 import '@testing-library/jest-dom/extend-expect'; 
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import CheckList from './CheckList';
+import CheckList from '../src/pages/CheckList';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 
 jest.mock('react-router-dom', () => ({
