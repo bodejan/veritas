@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from langdetect import detect
 
+from models import LANGUAGE_DICT as language_dict
 
 
 # Custom exception classes
@@ -133,8 +134,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
             policy = extract_policy_from_driver(driver)
         if policy == '':
             raise EmptyPolicyException
-        language = detect_language(policy)
-        if language != 'en':
+        language_code = detect_language(policy)
+        if language_code != 'en':
             raise LanguageException
         if "We're sorry, the requested URL was not found on this server." in page:
             raise NotInPlayStoreException
@@ -174,7 +175,7 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
     except LanguageException as e:
         # Handle the custom exception
         error_type = 'LanguageException'
-        error_description = f'The requested policy is not in English, therefore it receives a score of 0 across all categories.<br>Detected language: {language}.'
+        error_description = f'The requested policy is not in English, therefore it receives a score of 0 across all categories.<br>Detected language: {language_dict[language_code]}.'
         policy = create_error_message(error_type, error_description, id, policy)
         print(error_type, error_description, id,  '\n', e)
         status = error_type
@@ -423,8 +424,8 @@ def detect_language(text):
         str: The detected language code.
     """
     try:
-        language = detect(text)
-        return language
+        language_code = detect(text)
+        return language_code
     except Exception as e:
         print(e)
         raise Exception
