@@ -11,3 +11,4 @@ tensorflow
 beautifulsoup4==4.11.2
 requests==2.28.2
 langdetect==1.0.9
+pdoc3

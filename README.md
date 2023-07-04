@@ -89,7 +89,18 @@ docker-compose up --build
 
 This will start the Frontend and Backend services as defined in the `docker-compose.yml` file.
 
+## Documentation
 
+### Frontend
+
+### Backend
+The documentation for the backend is automatically created based on docstrings using [pdoc3](https://github.com/pdoc3/pdoc) (see [backend docs](backend/docs/src/index.html)).
+
+To update the documentation run in the backend container:
+
+```bash
+pdoc --html --output-dir docs --force src
+```
 
 
 ## Usage

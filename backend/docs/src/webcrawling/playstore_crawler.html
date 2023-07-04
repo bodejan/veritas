@@ -1,0 +1,1335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src.webcrawling.playstore_crawler API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.webcrawling.playstore_crawler</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import time
+import re
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.common import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from langdetect import detect
+
+from src.models import LANGUAGE_DICT as language_dict
+
+
+# Custom exception classes
+class PDFFileException(Exception):
+    pass
+
+class LanguageException(Exception):
+    pass
+
+class NotInPlayStoreException(Exception):
+    pass
+
+class EmptyPolicyException(Exception):
+    pass
+
+class AccessDeniedException(Exception):
+    pass
+
+class NoPolicyException(Exception):
+    pass
+
+def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -&gt; tuple[str, str, str, str]:
+    &#34;&#34;&#34;Get the app name, logo URL, and privacy policy text for the given app ID.
+
+    Args:
+        id (str): The app ID.
+        retries (int, optional): The number of times to retry in case of timeouts or exceptions. Defaults to 0.
+
+    Returns:
+        tuple[str, str, str, str]: A tuple containing the app name, logo URL, privacy policy text, and status.
+
+    Raises:
+        AccessDeniedException: If the developer&#39;s website refuses to respond.
+        NoPolicyException: If the developer does not provide a privacy policy.
+        NotInPlayStoreException: If the policy is not found in the Google Play Store.
+        LanguageException: If the policy is not in English.
+        PDFFileException: If the policy file is a PDF.
+        TimeoutException: If a timeout occurs while loading the privacy policy.
+        NoSuchElementException: If text extraction from the developer&#39;s website fails.
+        WebDriverException: If determining the loading status from the developer&#39;s website fails.
+        EmptyPolicyException: If no text can be extracted from the developer&#39;s website.
+        Exception: If an unknown exception occurs.
+    &#34;&#34;&#34;
+    print(f&#39;Getting data for {id}&#39;)
+    name = id
+    logo_url = &#39;&#39;
+    policy = &#39;&#39;
+    driver = None
+    status = &#39;Success&#39;
+    try:
+        # Start driver
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument(&#39;--lang=en-US&#39;)  # Set browser language to English
+        chrome_options.add_experimental_option(&#39;prefs&#39;, {&#39;profile.default_content_setting_values.cookies&#39;: 0})
+        chrome_options.add_argument(&#34;--enable-javascript&#34;)
+        # Set the Accept-Language header
+        chrome_options.add_argument(&#34;--accept-language=en,*&#34;)  # Set Accept-Language to accept all English languages
+        driver = webdriver.Remote(&#39;http://chrome:4444/wd/hub&#39;,options=chrome_options)
+        driver.set_page_load_timeout(30)
+        driver.implicitly_wait(30)
+
+        # Open play store for the given app package name
+        url = &#34;https://play.google.com/store/apps/details?id=&#34;
+        wait = WebDriverWait(driver, 30)
+        driver.get(f&#39;{url}{id}&#39;)
+
+        # Wait for page to load and find logo_url and app name 
+        wait.until(EC.visibility_of_element_located((By.TAG_NAME, &#34;body&#34;)))
+        name, logo_url = extract_name_logo_url_from_page(driver.page_source, id)
+
+        # Expand the developers contact section
+        xpath_expand = &#39;//*[@id=&#34;developer-contacts-heading&#34;]/div[2]/button&#39;
+        button_expand = driver.find_element(By.XPATH, xpath_expand)
+        button_expand.click()
+
+        # Store the ID of the original window
+        original_window = driver.current_window_handle
+
+        # Check we don&#39;t have other windows open already
+        assert len(driver.window_handles) == 1
+
+        # Click the link which opens in a new window
+        xpath_policy = &#39;//*[@id=&#34;developer-contacts&#34;]/div/div[last()]/div/a&#39;
+        wait.until(EC.visibility_of_element_located((By.XPATH, xpath_policy)))
+        button_policy = driver.find_element(By.XPATH, xpath_policy)
+        # Check if developer provides a policy, else throw exception
+        if &#39;Privacy policy&#39; in button_policy.text:
+            button_policy.click()
+        else:
+            raise NoPolicyException
+
+        # Loop through until we find a new window handle and switch the driver to the new window
+        for window_handle in driver.window_handles:
+            if window_handle != original_window:
+                driver.switch_to.window(window_handle)
+                break
+
+        # Handle pdf policies
+        is_pdf = driver.current_url.endswith(&#34;.pdf&#34;)
+        if is_pdf:
+            raise PDFFileException
+
+        # Wait for next page to load
+        wait.until(EC.visibility_of_element_located((By.TAG_NAME, &#39;body&#39;)))
+        time.sleep(0.5)  # Necessary as some content takes longer to load even after &#39;body&#39; is visible
+
+        # Check for forwarding notice
+        if forwarding_notice_present(driver.page_source):
+            link = driver.find_element(By.TAG_NAME, &#39;a&#39;)
+            driver.get(link.text)
+            # Wait for next page to load
+            wait.until(EC.visibility_of_element_located((By.TAG_NAME, &#39;body&#39;)))
+
+        time.sleep(2)  # Necessary as some content takes longer to load even after &#39;body&#39; is visible
+        page = driver.page_source
+        policy_bs4 = extract_policy_from_page_bs4(page)
+        if policy_bs4:
+            policy = policy_bs4
+        else:
+            print(&#39;Fallback to driver body extractor&#39;)
+            time.sleep(2)
+            policy = extract_policy_from_driver(driver)
+        if policy == &#39;&#39;:
+            raise EmptyPolicyException
+        language_code = detect_language(policy)
+        if language_code != &#39;en&#39;:
+            raise LanguageException
+        if &#34;We&#39;re sorry, the requested URL was not found on this server.&#34; in page:
+            raise NotInPlayStoreException
+        if &#34;Access denied&#34; in page:
+            raise AccessDeniedException
+        policy = add_playstore_link_to_policy(policy, id)
+        print(&#39;id:&#39;, id, &#39;name:&#39;, name, &#39;logo_url:&#39;, logo_url, &#39;status:&#39;, status)
+        return name, logo_url, policy, status
+
+    except AccessDeniedException as e:
+        # Handle the custom exception
+        error_type = &#39;AccessDeniedException&#39;
+        error_description = &#39;The developer\&#39;s website refused to respond; access denied.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except NoPolicyException as e:
+        # Handle the custom exception
+        error_type = &#39;NoPolicyException.&#39;
+        error_description = &#39;The developer does not provide a privacy policy.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except NotInPlayStoreException as e:
+        # Handle the custom exception
+        error_type = &#39;NotInPlayStoreException&#39;
+        error_description = &#39;The requested policy could not be found in the Google Play Store.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except LanguageException as e:
+        # Handle the custom exception
+        error_type = &#39;LanguageException&#39;
+        error_description = f&#39;The requested policy is not in English, therefore it receives a score of 0 across all categories.&lt;br&gt;Detected language: {language_dict[language_code]}.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except PDFFileException as e:
+        # Handle the custom exception
+        error_type = &#39;PDFFileException&#39;
+        error_description = &#39;The requested policy is a PDF file. Unfortunately, we cannot handle PDF files.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except TimeoutException as e:
+        if retries &lt; 2:
+            retries += 1
+            print(f&#39;Retrying id {id}&#39;)
+            return get_name_logo_url_policy_by_id(id, retries=retries)
+        else:
+            print(&#39;Retries exhausted.&#39;)
+        error_type = &#39;TimeoutException&#39;
+        error_description = &#39;A timeout occurred while loading the privacy policy.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except NoSuchElementException as e:
+        error_type = &#39;NoSuchElementException&#39;
+        error_description = &#39;Could not extract text from the developer\&#39;s website.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except WebDriverException as e:
+        if retries &lt; 2:
+            retries += 1
+            print(f&#39;Retrying id {id}&#39;)
+            return get_name_logo_url_policy_by_id(id, retries=retries)
+        else:
+            print(&#39;Retries exhausted.&#39;)
+        error_type = &#39;WebDriverException&#39;
+        error_description = &#39;Cannot determine loading status from the developer\&#39;s website.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except EmptyPolicyException as e:
+        error_type = &#39;EmptyPolicyException&#39;
+        error_description = &#39;Could not extract text from the developer\&#39;s website. The website is empty.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except Exception as e:
+        error_type = &#39;UnknownException&#39;
+        error_description = f&#39;An unknown exception occurred: ({type(e)}). Error log: {e}&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(type(e), error_type, error_description, id)
+        status = error_type
+        return name, logo_url, policy, status
+
+    finally:
+        if driver is not None:
+            driver.quit()
+
+def extract_policy_from_driver(driver):
+    &#34;&#34;&#34;
+    Extract the policy text from the driver&#39;s current page.
+
+    Args:
+        driver (WebDriver): The Selenium WebDriver instance.
+
+    Returns:
+        str: The extracted policy text.
+    &#34;&#34;&#34;
+    try:
+        body_element = driver.find_element(By.TAG_NAME, &#34;body&#34;)
+        body_text = body_element.text
+        return body_text
+    except Exception as e:
+        print(e)
+        return None
+
+def export_policy_txt(policy, id):
+    &#34;&#34;&#34;
+    Export the policy text to a text file.
+
+    Args:
+        policy (str): The policy text.
+        id (str): The app ID.
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    with open(f&#39;policy_{id}.txt&#39;, &#39;w&#39;) as file:
+        file.write(policy)
+
+def export_policy_html(page_source, id):
+    &#34;&#34;&#34;
+    Export the page source to an HTML file.
+
+    Args:
+        page_source (str): The HTML source of the page.
+        id (str): The app ID.
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    with open(f&#39;page_source_{id}.html&#39;, &#39;w&#39;) as file:
+        file.write(page_source)
+
+def add_playstore_link_to_policy(policy, id):
+    &#34;&#34;&#34;
+    Add the Google Play Store link to the policy text.
+
+    Args:
+        policy (str): The policy text.
+        id (str): The app ID.
+
+    Returns:
+        str: The policy text with the Play Store link.
+    &#34;&#34;&#34;
+    policy = &#39;&lt;br&gt;Visit &lt;a href=&#34;https://play.google.com/store/apps/details?id=&#39; + id + &#39;&#34;&gt;https://play.google.com/store/apps/details?id=&#39; + id + &#39;&lt;/a&gt; for more information.&lt;br&gt;&lt;br&gt;&#39; + policy
+    return policy
+
+def create_error_message(error_type, error_description, id, policy):
+    &#34;&#34;&#34;
+    Create an error message with the given error type, description, app ID, and policy.
+
+    Args:
+        error_type (str): The type of error.
+        error_description (str): The description of the error.
+        id (str): The app ID.
+        policy (str): The policy text.
+
+    Returns:
+        str: The error message.
+    &#34;&#34;&#34;
+    head = f&#39;&lt;br&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; An error occurred during the crawling process.&lt;br&gt;Type: {error_type}. &lt;br&gt;&lt;br&gt;&#39;
+    links = &#39;Please visit &lt;a href=&#34;https://play.google.com/store/apps/details?id=&#39; + id + &#39;&#34;&gt;https://play.google.com/store/apps/details?id=&#39; + id + &#39;&lt;/a&gt; for more information.&lt;br&gt;&lt;br&gt;&lt;br&gt;&#39;
+    error_message = head + error_description + &#39;&lt;br&gt;&lt;br&gt;    &#39; + links + policy
+    return error_message
+
+def extract_policy_from_page_bs4(page_source):
+    &#34;&#34;&#34;
+    Extract the policy text from the page source using BeautifulSoup.
+
+    Args:
+        page_source (str): The HTML source of the page.
+
+    Returns:
+        str: The extracted policy text.
+    &#34;&#34;&#34;
+    try:
+        soup = BeautifulSoup(page_source, &#39;html.parser&#39;)
+
+        # remove header tags
+        header = soup.find(&#39;header&#39;)
+        if header is not None:
+            header.decompose()
+
+        # remove Navigation bar tags
+        nav = soup.find(&#39;nav&#39;)
+        if nav is not None:
+            nav.decompose()
+
+        # remove footer tags
+        footer = soup.find(&#39;footer&#39;)
+        if footer is not None:
+            footer.decompose()
+
+        # remove all tags that have classnames or ids matching the search-strings
+        searchstrings = [&#39;.*nav.*&#39;, &#39;.*header.*&#39;, &#39;.*footer.*&#39;]
+        for searchstring in searchstrings:
+            regex = re.compile(searchstring)
+            for eachClass in soup.find_all(&#34;div&#34;, {&#34;class&#34;: regex}):
+                eachClass.decompose()
+            for eachId in soup.find_all(&#39;div&#39;, id=regex):
+                eachId.decompose()
+
+        body = soup.find(&#39;body&#39;)
+        body_text = body.text.strip()
+        if body_text == &#39;&#39;:
+            raise Exception
+        return body.text
+    except Exception as e:
+        print(f&#39;An error occurred while extracting policy from text via bs4: {type(e)}&#39;)
+        print(e)
+        return None
+
+def extract_name_logo_url_from_page(page_source, id):
+    &#34;&#34;&#34;
+    Extract the app name and logo URL from the page source.
+
+    Args:
+        page_source (str): The HTML source of the page.
+        id (str): The app ID.
+
+    Returns:
+        tuple[str, str]: A tuple containing the app name and logo URL.
+    &#34;&#34;&#34;
+    soup = BeautifulSoup(page_source, &#39;html.parser&#39;)
+
+    # Find the element using XPath
+    element = soup.find(&#39;h1&#39;, itemprop=&#39;name&#39;)
+    # Extract the name from the element
+    name = slice_app_name(element.text) if element else id
+
+    # Find the element using XPath
+    element = soup.find(&#39;img&#39;, alt=&#39;Icon image&#39;, itemprop=&#39;image&#39;, class_=&#39;T75of cN0oRe fFmL2e&#39;)
+    # Extract the logo URL from the &#39;src&#39; attribute of the element
+    logo_url = element[&#39;src&#39;] if element and &#39;src&#39; in element.attrs else &#39;&#39;
+
+    return name, logo_url
+
+def slice_app_name(name):
+    &#34;&#34;&#34;
+    Slice the app name to remove unnecessary parts.
+
+    Args:
+        name (str): The original app name.
+
+    Returns:
+        str: The sliced app name.
+    &#34;&#34;&#34;
+    sliced_name = name
+    delimiters = [&#39;.&#39;, &#39;,&#39;, &#39;-&#39;, &#39;:&#39;, &#39;(&#39;]
+    for delimiter in delimiters:
+        if delimiter in name:
+            sliced_name = name.split(delimiter, 1)[0].strip()
+    return sliced_name
+
+def detect_language(text):
+    &#34;&#34;&#34;
+    Detect the language of the given text.
+
+    Args:
+        text (str): The text to analyze.
+
+    Returns:
+        str: The detected language code.
+    &#34;&#34;&#34;
+    try:
+        language_code = detect(text)
+        return language_code
+    except Exception as e:
+        print(e)
+        raise Exception
+
+def forwarding_notice_present(page_source):
+    &#34;&#34;&#34;
+    Check if a forwarding notice is present on the page.
+
+    Args:
+        page_source (str): The HTML source of the page.
+
+    Returns:
+        bool: True if a forwarding notice is present, False otherwise.
+    &#34;&#34;&#34;
+    soup = BeautifulSoup(page_source, &#39;html.parser&#39;)
+    forwarding_notice = soup.find(&#39;div&#39;, class_=&#39;aXgaGb&#39;)
+    if forwarding_notice:
+        print(forwarding_notice.text)
+        return True
+    else:
+        return False
+    </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.webcrawling.playstore_crawler.add_playstore_link_to_policy"><code class="name flex">
+<span>def <span class="ident">add_playstore_link_to_policy</span></span>(<span>policy, id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add the Google Play Store link to the policy text.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>policy</code></strong> :&ensp;<code>str</code></dt>
+<dd>The policy text.</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The app ID.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The policy text with the Play Store link.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_playstore_link_to_policy(policy, id):
+    &#34;&#34;&#34;
+    Add the Google Play Store link to the policy text.
+
+    Args:
+        policy (str): The policy text.
+        id (str): The app ID.
+
+    Returns:
+        str: The policy text with the Play Store link.
+    &#34;&#34;&#34;
+    policy = &#39;&lt;br&gt;Visit &lt;a href=&#34;https://play.google.com/store/apps/details?id=&#39; + id + &#39;&#34;&gt;https://play.google.com/store/apps/details?id=&#39; + id + &#39;&lt;/a&gt; for more information.&lt;br&gt;&lt;br&gt;&#39; + policy
+    return policy</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.create_error_message"><code class="name flex">
+<span>def <span class="ident">create_error_message</span></span>(<span>error_type, error_description, id, policy)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create an error message with the given error type, description, app ID, and policy.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>error_type</code></strong> :&ensp;<code>str</code></dt>
+<dd>The type of error.</dd>
+<dt><strong><code>error_description</code></strong> :&ensp;<code>str</code></dt>
+<dd>The description of the error.</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The app ID.</dd>
+<dt><strong><code>policy</code></strong> :&ensp;<code>str</code></dt>
+<dd>The policy text.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The error message.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_error_message(error_type, error_description, id, policy):
+    &#34;&#34;&#34;
+    Create an error message with the given error type, description, app ID, and policy.
+
+    Args:
+        error_type (str): The type of error.
+        error_description (str): The description of the error.
+        id (str): The app ID.
+        policy (str): The policy text.
+
+    Returns:
+        str: The error message.
+    &#34;&#34;&#34;
+    head = f&#39;&lt;br&gt;&lt;strong&gt;WARNING:&lt;/strong&gt; An error occurred during the crawling process.&lt;br&gt;Type: {error_type}. &lt;br&gt;&lt;br&gt;&#39;
+    links = &#39;Please visit &lt;a href=&#34;https://play.google.com/store/apps/details?id=&#39; + id + &#39;&#34;&gt;https://play.google.com/store/apps/details?id=&#39; + id + &#39;&lt;/a&gt; for more information.&lt;br&gt;&lt;br&gt;&lt;br&gt;&#39;
+    error_message = head + error_description + &#39;&lt;br&gt;&lt;br&gt;    &#39; + links + policy
+    return error_message</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.detect_language"><code class="name flex">
+<span>def <span class="ident">detect_language</span></span>(<span>text)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Detect the language of the given text.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>text</code></strong> :&ensp;<code>str</code></dt>
+<dd>The text to analyze.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The detected language code.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def detect_language(text):
+    &#34;&#34;&#34;
+    Detect the language of the given text.
+
+    Args:
+        text (str): The text to analyze.
+
+    Returns:
+        str: The detected language code.
+    &#34;&#34;&#34;
+    try:
+        language_code = detect(text)
+        return language_code
+    except Exception as e:
+        print(e)
+        raise Exception</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.export_policy_html"><code class="name flex">
+<span>def <span class="ident">export_policy_html</span></span>(<span>page_source, id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export the page source to an HTML file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>page_source</code></strong> :&ensp;<code>str</code></dt>
+<dd>The HTML source of the page.</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The app ID.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export_policy_html(page_source, id):
+    &#34;&#34;&#34;
+    Export the page source to an HTML file.
+
+    Args:
+        page_source (str): The HTML source of the page.
+        id (str): The app ID.
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    with open(f&#39;page_source_{id}.html&#39;, &#39;w&#39;) as file:
+        file.write(page_source)</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.export_policy_txt"><code class="name flex">
+<span>def <span class="ident">export_policy_txt</span></span>(<span>policy, id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export the policy text to a text file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>policy</code></strong> :&ensp;<code>str</code></dt>
+<dd>The policy text.</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The app ID.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export_policy_txt(policy, id):
+    &#34;&#34;&#34;
+    Export the policy text to a text file.
+
+    Args:
+        policy (str): The policy text.
+        id (str): The app ID.
+
+    Returns:
+        None
+    &#34;&#34;&#34;
+    with open(f&#39;policy_{id}.txt&#39;, &#39;w&#39;) as file:
+        file.write(policy)</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.extract_name_logo_url_from_page"><code class="name flex">
+<span>def <span class="ident">extract_name_logo_url_from_page</span></span>(<span>page_source, id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract the app name and logo URL from the page source.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>page_source</code></strong> :&ensp;<code>str</code></dt>
+<dd>The HTML source of the page.</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The app ID.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[str, str]</code></dt>
+<dd>A tuple containing the app name and logo URL.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_name_logo_url_from_page(page_source, id):
+    &#34;&#34;&#34;
+    Extract the app name and logo URL from the page source.
+
+    Args:
+        page_source (str): The HTML source of the page.
+        id (str): The app ID.
+
+    Returns:
+        tuple[str, str]: A tuple containing the app name and logo URL.
+    &#34;&#34;&#34;
+    soup = BeautifulSoup(page_source, &#39;html.parser&#39;)
+
+    # Find the element using XPath
+    element = soup.find(&#39;h1&#39;, itemprop=&#39;name&#39;)
+    # Extract the name from the element
+    name = slice_app_name(element.text) if element else id
+
+    # Find the element using XPath
+    element = soup.find(&#39;img&#39;, alt=&#39;Icon image&#39;, itemprop=&#39;image&#39;, class_=&#39;T75of cN0oRe fFmL2e&#39;)
+    # Extract the logo URL from the &#39;src&#39; attribute of the element
+    logo_url = element[&#39;src&#39;] if element and &#39;src&#39; in element.attrs else &#39;&#39;
+
+    return name, logo_url</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.extract_policy_from_driver"><code class="name flex">
+<span>def <span class="ident">extract_policy_from_driver</span></span>(<span>driver)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract the policy text from the driver's current page.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>driver</code></strong> :&ensp;<code>WebDriver</code></dt>
+<dd>The Selenium WebDriver instance.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The extracted policy text.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_policy_from_driver(driver):
+    &#34;&#34;&#34;
+    Extract the policy text from the driver&#39;s current page.
+
+    Args:
+        driver (WebDriver): The Selenium WebDriver instance.
+
+    Returns:
+        str: The extracted policy text.
+    &#34;&#34;&#34;
+    try:
+        body_element = driver.find_element(By.TAG_NAME, &#34;body&#34;)
+        body_text = body_element.text
+        return body_text
+    except Exception as e:
+        print(e)
+        return None</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.extract_policy_from_page_bs4"><code class="name flex">
+<span>def <span class="ident">extract_policy_from_page_bs4</span></span>(<span>page_source)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract the policy text from the page source using BeautifulSoup.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>page_source</code></strong> :&ensp;<code>str</code></dt>
+<dd>The HTML source of the page.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The extracted policy text.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_policy_from_page_bs4(page_source):
+    &#34;&#34;&#34;
+    Extract the policy text from the page source using BeautifulSoup.
+
+    Args:
+        page_source (str): The HTML source of the page.
+
+    Returns:
+        str: The extracted policy text.
+    &#34;&#34;&#34;
+    try:
+        soup = BeautifulSoup(page_source, &#39;html.parser&#39;)
+
+        # remove header tags
+        header = soup.find(&#39;header&#39;)
+        if header is not None:
+            header.decompose()
+
+        # remove Navigation bar tags
+        nav = soup.find(&#39;nav&#39;)
+        if nav is not None:
+            nav.decompose()
+
+        # remove footer tags
+        footer = soup.find(&#39;footer&#39;)
+        if footer is not None:
+            footer.decompose()
+
+        # remove all tags that have classnames or ids matching the search-strings
+        searchstrings = [&#39;.*nav.*&#39;, &#39;.*header.*&#39;, &#39;.*footer.*&#39;]
+        for searchstring in searchstrings:
+            regex = re.compile(searchstring)
+            for eachClass in soup.find_all(&#34;div&#34;, {&#34;class&#34;: regex}):
+                eachClass.decompose()
+            for eachId in soup.find_all(&#39;div&#39;, id=regex):
+                eachId.decompose()
+
+        body = soup.find(&#39;body&#39;)
+        body_text = body.text.strip()
+        if body_text == &#39;&#39;:
+            raise Exception
+        return body.text
+    except Exception as e:
+        print(f&#39;An error occurred while extracting policy from text via bs4: {type(e)}&#39;)
+        print(e)
+        return None</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.forwarding_notice_present"><code class="name flex">
+<span>def <span class="ident">forwarding_notice_present</span></span>(<span>page_source)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if a forwarding notice is present on the page.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>page_source</code></strong> :&ensp;<code>str</code></dt>
+<dd>The HTML source of the page.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True if a forwarding notice is present, False otherwise.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forwarding_notice_present(page_source):
+    &#34;&#34;&#34;
+    Check if a forwarding notice is present on the page.
+
+    Args:
+        page_source (str): The HTML source of the page.
+
+    Returns:
+        bool: True if a forwarding notice is present, False otherwise.
+    &#34;&#34;&#34;
+    soup = BeautifulSoup(page_source, &#39;html.parser&#39;)
+    forwarding_notice = soup.find(&#39;div&#39;, class_=&#39;aXgaGb&#39;)
+    if forwarding_notice:
+        print(forwarding_notice.text)
+        return True
+    else:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.get_name_logo_url_policy_by_id"><code class="name flex">
+<span>def <span class="ident">get_name_logo_url_policy_by_id</span></span>(<span>id: str, retries: int = 0) ‑> tuple[str, str, str, str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the app name, logo URL, and privacy policy text for the given app ID.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The app ID.</dd>
+<dt><strong><code>retries</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>The number of times to retry in case of timeouts or exceptions. Defaults to 0.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[str, str, str, str]</code></dt>
+<dd>A tuple containing the app name, logo URL, privacy policy text, and status.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="src.webcrawling.playstore_crawler.AccessDeniedException" href="#src.webcrawling.playstore_crawler.AccessDeniedException">AccessDeniedException</a></code></dt>
+<dd>If the developer's website refuses to respond.</dd>
+<dt><code><a title="src.webcrawling.playstore_crawler.NoPolicyException" href="#src.webcrawling.playstore_crawler.NoPolicyException">NoPolicyException</a></code></dt>
+<dd>If the developer does not provide a privacy policy.</dd>
+<dt><code><a title="src.webcrawling.playstore_crawler.NotInPlayStoreException" href="#src.webcrawling.playstore_crawler.NotInPlayStoreException">NotInPlayStoreException</a></code></dt>
+<dd>If the policy is not found in the Google Play Store.</dd>
+<dt><code><a title="src.webcrawling.playstore_crawler.LanguageException" href="#src.webcrawling.playstore_crawler.LanguageException">LanguageException</a></code></dt>
+<dd>If the policy is not in English.</dd>
+<dt><code><a title="src.webcrawling.playstore_crawler.PDFFileException" href="#src.webcrawling.playstore_crawler.PDFFileException">PDFFileException</a></code></dt>
+<dd>If the policy file is a PDF.</dd>
+<dt><code>TimeoutException</code></dt>
+<dd>If a timeout occurs while loading the privacy policy.</dd>
+<dt><code>NoSuchElementException</code></dt>
+<dd>If text extraction from the developer's website fails.</dd>
+<dt><code>WebDriverException</code></dt>
+<dd>If determining the loading status from the developer's website fails.</dd>
+<dt><code><a title="src.webcrawling.playstore_crawler.EmptyPolicyException" href="#src.webcrawling.playstore_crawler.EmptyPolicyException">EmptyPolicyException</a></code></dt>
+<dd>If no text can be extracted from the developer's website.</dd>
+<dt><code>Exception</code></dt>
+<dd>If an unknown exception occurs.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -&gt; tuple[str, str, str, str]:
+    &#34;&#34;&#34;Get the app name, logo URL, and privacy policy text for the given app ID.
+
+    Args:
+        id (str): The app ID.
+        retries (int, optional): The number of times to retry in case of timeouts or exceptions. Defaults to 0.
+
+    Returns:
+        tuple[str, str, str, str]: A tuple containing the app name, logo URL, privacy policy text, and status.
+
+    Raises:
+        AccessDeniedException: If the developer&#39;s website refuses to respond.
+        NoPolicyException: If the developer does not provide a privacy policy.
+        NotInPlayStoreException: If the policy is not found in the Google Play Store.
+        LanguageException: If the policy is not in English.
+        PDFFileException: If the policy file is a PDF.
+        TimeoutException: If a timeout occurs while loading the privacy policy.
+        NoSuchElementException: If text extraction from the developer&#39;s website fails.
+        WebDriverException: If determining the loading status from the developer&#39;s website fails.
+        EmptyPolicyException: If no text can be extracted from the developer&#39;s website.
+        Exception: If an unknown exception occurs.
+    &#34;&#34;&#34;
+    print(f&#39;Getting data for {id}&#39;)
+    name = id
+    logo_url = &#39;&#39;
+    policy = &#39;&#39;
+    driver = None
+    status = &#39;Success&#39;
+    try:
+        # Start driver
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument(&#39;--lang=en-US&#39;)  # Set browser language to English
+        chrome_options.add_experimental_option(&#39;prefs&#39;, {&#39;profile.default_content_setting_values.cookies&#39;: 0})
+        chrome_options.add_argument(&#34;--enable-javascript&#34;)
+        # Set the Accept-Language header
+        chrome_options.add_argument(&#34;--accept-language=en,*&#34;)  # Set Accept-Language to accept all English languages
+        driver = webdriver.Remote(&#39;http://chrome:4444/wd/hub&#39;,options=chrome_options)
+        driver.set_page_load_timeout(30)
+        driver.implicitly_wait(30)
+
+        # Open play store for the given app package name
+        url = &#34;https://play.google.com/store/apps/details?id=&#34;
+        wait = WebDriverWait(driver, 30)
+        driver.get(f&#39;{url}{id}&#39;)
+
+        # Wait for page to load and find logo_url and app name 
+        wait.until(EC.visibility_of_element_located((By.TAG_NAME, &#34;body&#34;)))
+        name, logo_url = extract_name_logo_url_from_page(driver.page_source, id)
+
+        # Expand the developers contact section
+        xpath_expand = &#39;//*[@id=&#34;developer-contacts-heading&#34;]/div[2]/button&#39;
+        button_expand = driver.find_element(By.XPATH, xpath_expand)
+        button_expand.click()
+
+        # Store the ID of the original window
+        original_window = driver.current_window_handle
+
+        # Check we don&#39;t have other windows open already
+        assert len(driver.window_handles) == 1
+
+        # Click the link which opens in a new window
+        xpath_policy = &#39;//*[@id=&#34;developer-contacts&#34;]/div/div[last()]/div/a&#39;
+        wait.until(EC.visibility_of_element_located((By.XPATH, xpath_policy)))
+        button_policy = driver.find_element(By.XPATH, xpath_policy)
+        # Check if developer provides a policy, else throw exception
+        if &#39;Privacy policy&#39; in button_policy.text:
+            button_policy.click()
+        else:
+            raise NoPolicyException
+
+        # Loop through until we find a new window handle and switch the driver to the new window
+        for window_handle in driver.window_handles:
+            if window_handle != original_window:
+                driver.switch_to.window(window_handle)
+                break
+
+        # Handle pdf policies
+        is_pdf = driver.current_url.endswith(&#34;.pdf&#34;)
+        if is_pdf:
+            raise PDFFileException
+
+        # Wait for next page to load
+        wait.until(EC.visibility_of_element_located((By.TAG_NAME, &#39;body&#39;)))
+        time.sleep(0.5)  # Necessary as some content takes longer to load even after &#39;body&#39; is visible
+
+        # Check for forwarding notice
+        if forwarding_notice_present(driver.page_source):
+            link = driver.find_element(By.TAG_NAME, &#39;a&#39;)
+            driver.get(link.text)
+            # Wait for next page to load
+            wait.until(EC.visibility_of_element_located((By.TAG_NAME, &#39;body&#39;)))
+
+        time.sleep(2)  # Necessary as some content takes longer to load even after &#39;body&#39; is visible
+        page = driver.page_source
+        policy_bs4 = extract_policy_from_page_bs4(page)
+        if policy_bs4:
+            policy = policy_bs4
+        else:
+            print(&#39;Fallback to driver body extractor&#39;)
+            time.sleep(2)
+            policy = extract_policy_from_driver(driver)
+        if policy == &#39;&#39;:
+            raise EmptyPolicyException
+        language_code = detect_language(policy)
+        if language_code != &#39;en&#39;:
+            raise LanguageException
+        if &#34;We&#39;re sorry, the requested URL was not found on this server.&#34; in page:
+            raise NotInPlayStoreException
+        if &#34;Access denied&#34; in page:
+            raise AccessDeniedException
+        policy = add_playstore_link_to_policy(policy, id)
+        print(&#39;id:&#39;, id, &#39;name:&#39;, name, &#39;logo_url:&#39;, logo_url, &#39;status:&#39;, status)
+        return name, logo_url, policy, status
+
+    except AccessDeniedException as e:
+        # Handle the custom exception
+        error_type = &#39;AccessDeniedException&#39;
+        error_description = &#39;The developer\&#39;s website refused to respond; access denied.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except NoPolicyException as e:
+        # Handle the custom exception
+        error_type = &#39;NoPolicyException.&#39;
+        error_description = &#39;The developer does not provide a privacy policy.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except NotInPlayStoreException as e:
+        # Handle the custom exception
+        error_type = &#39;NotInPlayStoreException&#39;
+        error_description = &#39;The requested policy could not be found in the Google Play Store.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except LanguageException as e:
+        # Handle the custom exception
+        error_type = &#39;LanguageException&#39;
+        error_description = f&#39;The requested policy is not in English, therefore it receives a score of 0 across all categories.&lt;br&gt;Detected language: {language_dict[language_code]}.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except PDFFileException as e:
+        # Handle the custom exception
+        error_type = &#39;PDFFileException&#39;
+        error_description = &#39;The requested policy is a PDF file. Unfortunately, we cannot handle PDF files.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except TimeoutException as e:
+        if retries &lt; 2:
+            retries += 1
+            print(f&#39;Retrying id {id}&#39;)
+            return get_name_logo_url_policy_by_id(id, retries=retries)
+        else:
+            print(&#39;Retries exhausted.&#39;)
+        error_type = &#39;TimeoutException&#39;
+        error_description = &#39;A timeout occurred while loading the privacy policy.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except NoSuchElementException as e:
+        error_type = &#39;NoSuchElementException&#39;
+        error_description = &#39;Could not extract text from the developer\&#39;s website.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except WebDriverException as e:
+        if retries &lt; 2:
+            retries += 1
+            print(f&#39;Retrying id {id}&#39;)
+            return get_name_logo_url_policy_by_id(id, retries=retries)
+        else:
+            print(&#39;Retries exhausted.&#39;)
+        error_type = &#39;WebDriverException&#39;
+        error_description = &#39;Cannot determine loading status from the developer\&#39;s website.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except EmptyPolicyException as e:
+        error_type = &#39;EmptyPolicyException&#39;
+        error_description = &#39;Could not extract text from the developer\&#39;s website. The website is empty.&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(error_type, error_description, id,  &#39;\n&#39;, e)
+        status = error_type
+        return name, logo_url, policy, status
+
+    except Exception as e:
+        error_type = &#39;UnknownException&#39;
+        error_description = f&#39;An unknown exception occurred: ({type(e)}). Error log: {e}&#39;
+        policy = create_error_message(error_type, error_description, id, policy)
+        print(type(e), error_type, error_description, id)
+        status = error_type
+        return name, logo_url, policy, status
+
+    finally:
+        if driver is not None:
+            driver.quit()</code></pre>
+</details>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.slice_app_name"><code class="name flex">
+<span>def <span class="ident">slice_app_name</span></span>(<span>name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Slice the app name to remove unnecessary parts.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The original app name.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The sliced app name.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def slice_app_name(name):
+    &#34;&#34;&#34;
+    Slice the app name to remove unnecessary parts.
+
+    Args:
+        name (str): The original app name.
+
+    Returns:
+        str: The sliced app name.
+    &#34;&#34;&#34;
+    sliced_name = name
+    delimiters = [&#39;.&#39;, &#39;,&#39;, &#39;-&#39;, &#39;:&#39;, &#39;(&#39;]
+    for delimiter in delimiters:
+        if delimiter in name:
+            sliced_name = name.split(delimiter, 1)[0].strip()
+    return sliced_name</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.webcrawling.playstore_crawler.AccessDeniedException"><code class="flex name class">
+<span>class <span class="ident">AccessDeniedException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AccessDeniedException(Exception):
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.EmptyPolicyException"><code class="flex name class">
+<span>class <span class="ident">EmptyPolicyException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EmptyPolicyException(Exception):
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.LanguageException"><code class="flex name class">
+<span>class <span class="ident">LanguageException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LanguageException(Exception):
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.NoPolicyException"><code class="flex name class">
+<span>class <span class="ident">NoPolicyException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NoPolicyException(Exception):
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.NotInPlayStoreException"><code class="flex name class">
+<span>class <span class="ident">NotInPlayStoreException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NotInPlayStoreException(Exception):
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="src.webcrawling.playstore_crawler.PDFFileException"><code class="flex name class">
+<span>class <span class="ident">PDFFileException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PDFFileException(Exception):
+    pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.webcrawling" href="index.html">src.webcrawling</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.webcrawling.playstore_crawler.add_playstore_link_to_policy" href="#src.webcrawling.playstore_crawler.add_playstore_link_to_policy">add_playstore_link_to_policy</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.create_error_message" href="#src.webcrawling.playstore_crawler.create_error_message">create_error_message</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.detect_language" href="#src.webcrawling.playstore_crawler.detect_language">detect_language</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.export_policy_html" href="#src.webcrawling.playstore_crawler.export_policy_html">export_policy_html</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.export_policy_txt" href="#src.webcrawling.playstore_crawler.export_policy_txt">export_policy_txt</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.extract_name_logo_url_from_page" href="#src.webcrawling.playstore_crawler.extract_name_logo_url_from_page">extract_name_logo_url_from_page</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.extract_policy_from_driver" href="#src.webcrawling.playstore_crawler.extract_policy_from_driver">extract_policy_from_driver</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.extract_policy_from_page_bs4" href="#src.webcrawling.playstore_crawler.extract_policy_from_page_bs4">extract_policy_from_page_bs4</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.forwarding_notice_present" href="#src.webcrawling.playstore_crawler.forwarding_notice_present">forwarding_notice_present</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.get_name_logo_url_policy_by_id" href="#src.webcrawling.playstore_crawler.get_name_logo_url_policy_by_id">get_name_logo_url_policy_by_id</a></code></li>
+<li><code><a title="src.webcrawling.playstore_crawler.slice_app_name" href="#src.webcrawling.playstore_crawler.slice_app_name">slice_app_name</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.webcrawling.playstore_crawler.AccessDeniedException" href="#src.webcrawling.playstore_crawler.AccessDeniedException">AccessDeniedException</a></code></h4>
+</li>
+<li>
+<h4><code><a title="src.webcrawling.playstore_crawler.EmptyPolicyException" href="#src.webcrawling.playstore_crawler.EmptyPolicyException">EmptyPolicyException</a></code></h4>
+</li>
+<li>
+<h4><code><a title="src.webcrawling.playstore_crawler.LanguageException" href="#src.webcrawling.playstore_crawler.LanguageException">LanguageException</a></code></h4>
+</li>
+<li>
+<h4><code><a title="src.webcrawling.playstore_crawler.NoPolicyException" href="#src.webcrawling.playstore_crawler.NoPolicyException">NoPolicyException</a></code></h4>
+</li>
+<li>
+<h4><code><a title="src.webcrawling.playstore_crawler.NotInPlayStoreException" href="#src.webcrawling.playstore_crawler.NotInPlayStoreException">NotInPlayStoreException</a></code></h4>
+</li>
+<li>
+<h4><code><a title="src.webcrawling.playstore_crawler.PDFFileException" href="#src.webcrawling.playstore_crawler.PDFFileException">PDFFileException</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

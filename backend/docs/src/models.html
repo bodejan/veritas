@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src.models API documentation</title>
+<meta name="description" content="This file contains classes and functions for managing Android apps and constant values stored in dictionaries." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.models</code></h1>
+</header>
+<section id="section-intro">
+<p>This file contains classes and functions for managing Android apps and constant values stored in dictionaries.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+This file contains classes and functions for managing Android apps and constant values stored in dictionaries.
+&#34;&#34;&#34;
+
+class AndroidApp:
+    &#34;&#34;&#34;
+    Represents an Android app.
+
+    Attributes:
+        name (str): The name of the app.
+        id (str): The ID of the app.
+        logo_url (str): The URL of the app&#39;s logo.
+        policy (str): The policy text of the app.
+        scores (dict): The scores associated with the app&#39;s policy.
+        status (str): The status of the app.
+    &#34;&#34;&#34;
+
+    def __init__(self, name=None, id=None, logo_url=None, policy=None, scores=None, status=None):
+        &#34;&#34;&#34;
+        Initializes an instance of the AndroidApp class.
+
+        Args:
+            name (str): The name of the app.
+            id (str): The ID of the app.
+            logo_url (str): The URL of the app&#39;s logo.
+            policy (str): The policy text of the app.
+            scores (dict): The scores associated with the app&#39;s policy.
+            status (str): The status of the app.
+        &#34;&#34;&#34;
+        self.status = status
+        self.name = name
+        self.id = id
+        self.logo_url = logo_url
+        self.policy = policy
+        self.scores = scores
+
+
+CATEGORIES = {
+    &#34;All&#34;: &#34;&#34;,
+    &#34;Paid&#34;: &#34;?price=paid&#34;,
+    &#34;Free&#34;: &#34;?price=free&#34;,
+    &#34;Art And Design&#34;: &#34;?category=ART_AND_DESIGN&#34;,
+    &#34;Auto And Vehicles&#34;: &#34;?category=AUTO_AND_VEHICLES&#34;,
+    &#34;Beauty&#34;: &#34;?category=BEAUTY&#34;,
+    &#34;Books And Reference&#34;: &#34;?category=BOOKS_AND_REFERENCE&#34;,
+    &#34;Business&#34;: &#34;?category=BUSINESS&#34;,
+    &#34;Comics&#34;: &#34;?category=COMICS&#34;,
+    &#34;Communication&#34;: &#34;?category=COMMUNICATION&#34;,
+    &#34;Dating&#34;: &#34;?category=DATING&#34;,
+    &#34;Education&#34;: &#34;?category=EDUCATION&#34;,
+    &#34;Entertainment&#34;: &#34;?category=ENTERTAINMENT&#34;,
+    &#34;Events&#34;: &#34;?category=EVENTS&#34;,
+    &#34;Finance&#34;: &#34;?category=FINANCE&#34;,
+    &#34;Food And Drink&#34;: &#34;?category=FOOD_AND_DRINK&#34;,
+    &#34;Health And Fitness&#34;: &#34;?category=HEALTH_AND_FITNESS&#34;,
+    &#34;House And Home&#34;: &#34;?category=HOUSE_AND_HOME&#34;,
+    &#34;Libraries And Demo&#34;: &#34;?category=LIBRARIES_AND_DEMO&#34;,
+    &#34;Lifestyle&#34;: &#34;?category=LIFESTYLE&#34;,
+    &#34;Maps And Navigation&#34;: &#34;?category=MAPS_AND_NAVIGATION&#34;,
+    &#34;Medical&#34;: &#34;?category=MEDICAL&#34;,
+    &#34;Music And Audio&#34;: &#34;?category=MUSIC_AND_AUDIO&#34;,
+    &#34;News And Magazines&#34;: &#34;?category=NEWS_AND_MAGAZINES&#34;,
+    &#34;Parenting&#34;: &#34;?category=PARENTING&#34;,
+    &#34;Personalization&#34;: &#34;?category=PERSONALIZATION&#34;,
+    &#34;Photography&#34;: &#34;?category=PHOTOGRAPHY&#34;,
+    &#34;Productivity&#34;: &#34;?category=PRODUCTIVITY&#34;,
+    &#34;Shopping&#34;: &#34;?category=SHOPPING&#34;,
+    &#34;Social&#34;: &#34;?category=SOCIAL&#34;,
+    &#34;Sports&#34;: &#34;?category=SPORTS&#34;,
+    &#34;Tools&#34;: &#34;?category=TOOLS&#34;,
+    &#34;Travel And Local&#34;: &#34;?category=TRAVEL_AND_LOCAL&#34;,
+    &#34;Video Players&#34;: &#34;?category=VIDEO_PLAYERS&#34;,
+    &#34;Weather&#34;: &#34;?category=WEATHER&#34;,
+    &#34;Game Action&#34;: &#34;?category=GAME_ACTION&#34;,
+    &#34;Game Adventure&#34;: &#34;?category=GAME_ADVENTURE&#34;,
+    &#34;Game Arcade&#34;: &#34;?category=GAME_ARCADE&#34;,
+    &#34;Game Board&#34;: &#34;?category=GAME_BOARD&#34;,
+    &#34;Game Card&#34;: &#34;?category=GAME_CARD&#34;,
+    &#34;Game Casino&#34;: &#34;?category=GAME_CASINO&#34;,
+    &#34;Game Casual&#34;: &#34;?category=GAME_CASUAL&#34;,
+    &#34;Game Educational&#34;: &#34;?category=GAME_EDUCATIONAL&#34;,
+    &#34;Game Music&#34;: &#34;?category=GAME_MUSIC&#34;,
+    &#34;Game Puzzle&#34;: &#34;?category=GAME_PUZZLE&#34;,
+    &#34;Game Racing&#34;: &#34;?category=GAME_RACING&#34;,
+    &#34;Game Role Playing&#34;: &#34;?category=GAME_ROLE_PLAYING&#34;,
+    &#34;Game Simulation&#34;: &#34;?category=GAME_SIMULATION&#34;,
+    &#34;Game Sports&#34;: &#34;?category=GAME_SPORTS&#34;,
+    &#34;Game Strategy&#34;: &#34;?category=GAME_STRATEGY&#34;,
+    &#34;Game Trivia&#34;: &#34;?category=GAME_TRIVIA&#34;,
+    &#34;Game Word&#34;: &#34;?category=GAME_WORD&#34;
+}
+&#34;&#34;&#34;
+Dictionary mapping category keys to query parameters for androidrank.com.
+
+This constant provides a mapping between category keys and their corresponding query parameters for the androidrank.com website.
+Each key-value pair in this dictionary represents a category key and its corresponding query parameter.
+
+The query parameter is used to filter the apps on the website based on the specified category.
+
+&#34;&#34;&#34;
+
+ZERO_SCORES = {
+    &#39;Data Recipients&#39;: 0,
+    &#39;Safeguards Copy&#39;: 0,
+    &#39;Processing Purpose&#39;: 0,
+    &#39;Data Categories&#39;: 0,
+    &#39;Source of Data&#39;: 0,
+    &#39;Right to Erase&#39;: 0,
+    &#39;Right to Restrict&#39;: 0,
+    &#39;Right to Access&#39;: 0,
+    &#39;Right to Object&#39;: 0,
+    &#39;Withdraw Consent&#39;: 0,
+    &#39;Right to Portability&#39;: 0,
+    &#39;Profiling&#39;: 0,
+    &#39;Controller Contact&#39;: 0,
+    &#39;Provision Requirement&#39;: 0,
+    &#39;Storage Period&#39;: 0,
+    &#39;Lodge Complaint&#39;: 0,
+    &#39;DPO Contact&#39;: 0,
+    &#39;Adequacy Decision&#39;: 0
+}
+&#34;&#34;&#34;
+Dictionary representing zero scores for all privacy categories.
+
+This constant contains key-value pairs where the keys represent different categories
+and the values represent the corresponding zero scores. These scores are associated
+with a privacy policy.
+
+The categories included in this dictionary are:
+- Data Recipients
+- Safeguards Copy
+- Processing Purpose
+- Data Categories
+- Source of Data
+- Right to Erase
+- Right to Restrict
+- Right to Access
+- Right to Object
+- Withdraw Consent
+- Right to Portability
+- Profiling
+- Controller Contact
+- Provision Requirement
+- Storage Period
+- Lodge Complaint
+- DPO Contact
+- Adequacy Decision
+
+&#34;&#34;&#34;
+
+LANGUAGE_DICT = {
+    &#39;af&#39;: &#39;Afrikaans&#39;,
+    &#39;ar&#39;: &#39;Arabic&#39;,
+    &#39;bg&#39;: &#39;Bulgarian&#39;,
+    &#39;bn&#39;: &#39;Bengali&#39;,
+    &#39;ca&#39;: &#39;Catalan&#39;,
+    &#39;cs&#39;: &#39;Czech&#39;,
+    &#39;cy&#39;: &#39;Welsh&#39;,
+    &#39;da&#39;: &#39;Danish&#39;,
+    &#39;de&#39;: &#39;German&#39;,
+    &#39;el&#39;: &#39;Greek&#39;,
+    &#39;en&#39;: &#39;English&#39;,
+    &#39;es&#39;: &#39;Spanish&#39;,
+    &#39;et&#39;: &#39;Estonian&#39;,
+    &#39;fa&#39;: &#39;Persian&#39;,
+    &#39;fi&#39;: &#39;Finnish&#39;,
+    &#39;fr&#39;: &#39;French&#39;,
+    &#39;gu&#39;: &#39;Gujarati&#39;,
+    &#39;he&#39;: &#39;Hebrew&#39;,
+    &#39;hi&#39;: &#39;Hindi&#39;,
+    &#39;hr&#39;: &#39;Croatian&#39;,
+    &#39;hu&#39;: &#39;Hungarian&#39;,
+    &#39;id&#39;: &#39;Indonesian&#39;,
+    &#39;it&#39;: &#39;Italian&#39;,
+    &#39;ja&#39;: &#39;Japanese&#39;,
+    &#39;kn&#39;: &#39;Kannada&#39;,
+    &#39;ko&#39;: &#39;Korean&#39;,
+    &#39;lt&#39;: &#39;Lithuanian&#39;,
+    &#39;lv&#39;: &#39;Latvian&#39;,
+    &#39;mk&#39;: &#39;Macedonian&#39;,
+    &#39;ml&#39;: &#39;Malayalam&#39;,
+    &#39;mr&#39;: &#39;Marathi&#39;,
+    &#39;ne&#39;: &#39;Nepali&#39;,
+    &#39;nl&#39;: &#39;Dutch&#39;,
+    &#39;no&#39;: &#39;Norwegian&#39;,
+    &#39;pa&#39;: &#39;Punjabi&#39;,
+    &#39;pl&#39;: &#39;Polish&#39;,
+    &#39;pt&#39;: &#39;Portuguese&#39;,
+    &#39;ro&#39;: &#39;Romanian&#39;,
+    &#39;ru&#39;: &#39;Russian&#39;,
+    &#39;sk&#39;: &#39;Slovak&#39;,
+    &#39;sl&#39;: &#39;Slovenian&#39;,
+    &#39;so&#39;: &#39;Somali&#39;,
+    &#39;sq&#39;: &#39;Albanian&#39;,
+    &#39;sv&#39;: &#39;Swedish&#39;,
+    &#39;sw&#39;: &#39;Swahili&#39;,
+    &#39;ta&#39;: &#39;Tamil&#39;,
+    &#39;te&#39;: &#39;Telugu&#39;,
+    &#39;th&#39;: &#39;Thai&#39;,
+    &#39;tl&#39;: &#39;Tagalog&#39;,
+    &#39;tr&#39;: &#39;Turkish&#39;,
+    &#39;uk&#39;: &#39;Ukrainian&#39;,
+    &#39;ur&#39;: &#39;Urdu&#39;,
+    &#39;vi&#39;: &#39;Vietnamese&#39;,
+    &#39;zh-cn&#39;: &#39;Chinese (Simplified)&#39;,
+    &#39;zh-tw&#39;: &#39;Chinese (Traditional)&#39;
+}
+&#34;&#34;&#34;
+Dictionary mapping language codes to language names.
+
+This constant provides a mapping between language codes and their corresponding language names.
+It is primarily used by the langdetect library for identifying the language based on the language code.
+
+Each key-value pair in this dictionary represents a language code and its corresponding language name.
+
+&#34;&#34;&#34;</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-variables">Global variables</h2>
+<dl>
+<dt id="src.models.CATEGORIES"><code class="name">var <span class="ident">CATEGORIES</span></code></dt>
+<dd>
+<div class="desc"><p>Dictionary mapping category keys to query parameters for androidrank.com.</p>
+<p>This constant provides a mapping between category keys and their corresponding query parameters for the androidrank.com website.
+Each key-value pair in this dictionary represents a category key and its corresponding query parameter.</p>
+<p>The query parameter is used to filter the apps on the website based on the specified category.</p></div>
+</dd>
+<dt id="src.models.LANGUAGE_DICT"><code class="name">var <span class="ident">LANGUAGE_DICT</span></code></dt>
+<dd>
+<div class="desc"><p>Dictionary mapping language codes to language names.</p>
+<p>This constant provides a mapping between language codes and their corresponding language names.
+It is primarily used by the langdetect library for identifying the language based on the language code.</p>
+<p>Each key-value pair in this dictionary represents a language code and its corresponding language name.</p></div>
+</dd>
+<dt id="src.models.ZERO_SCORES"><code class="name">var <span class="ident">ZERO_SCORES</span></code></dt>
+<dd>
+<div class="desc"><p>Dictionary representing zero scores for all privacy categories.</p>
+<p>This constant contains key-value pairs where the keys represent different categories
+and the values represent the corresponding zero scores. These scores are associated
+with a privacy policy.</p>
+<p>The categories included in this dictionary are:
+- Data Recipients
+- Safeguards Copy
+- Processing Purpose
+- Data Categories
+- Source of Data
+- Right to Erase
+- Right to Restrict
+- Right to Access
+- Right to Object
+- Withdraw Consent
+- Right to Portability
+- Profiling
+- Controller Contact
+- Provision Requirement
+- Storage Period
+- Lodge Complaint
+- DPO Contact
+- Adequacy Decision</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.models.AndroidApp"><code class="flex name class">
+<span>class <span class="ident">AndroidApp</span></span>
+<span>(</span><span>name=None, id=None, logo_url=None, policy=None, scores=None, status=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents an Android app.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the app.</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The ID of the app.</dd>
+<dt><strong><code>logo_url</code></strong> :&ensp;<code>str</code></dt>
+<dd>The URL of the app's logo.</dd>
+<dt><strong><code>policy</code></strong> :&ensp;<code>str</code></dt>
+<dd>The policy text of the app.</dd>
+<dt><strong><code>scores</code></strong> :&ensp;<code>dict</code></dt>
+<dd>The scores associated with the app's policy.</dd>
+<dt><strong><code>status</code></strong> :&ensp;<code>str</code></dt>
+<dd>The status of the app.</dd>
+</dl>
+<p>Initializes an instance of the AndroidApp class.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the app.</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The ID of the app.</dd>
+<dt><strong><code>logo_url</code></strong> :&ensp;<code>str</code></dt>
+<dd>The URL of the app's logo.</dd>
+<dt><strong><code>policy</code></strong> :&ensp;<code>str</code></dt>
+<dd>The policy text of the app.</dd>
+<dt><strong><code>scores</code></strong> :&ensp;<code>dict</code></dt>
+<dd>The scores associated with the app's policy.</dd>
+<dt><strong><code>status</code></strong> :&ensp;<code>str</code></dt>
+<dd>The status of the app.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AndroidApp:
+    &#34;&#34;&#34;
+    Represents an Android app.
+
+    Attributes:
+        name (str): The name of the app.
+        id (str): The ID of the app.
+        logo_url (str): The URL of the app&#39;s logo.
+        policy (str): The policy text of the app.
+        scores (dict): The scores associated with the app&#39;s policy.
+        status (str): The status of the app.
+    &#34;&#34;&#34;
+
+    def __init__(self, name=None, id=None, logo_url=None, policy=None, scores=None, status=None):
+        &#34;&#34;&#34;
+        Initializes an instance of the AndroidApp class.
+
+        Args:
+            name (str): The name of the app.
+            id (str): The ID of the app.
+            logo_url (str): The URL of the app&#39;s logo.
+            policy (str): The policy text of the app.
+            scores (dict): The scores associated with the app&#39;s policy.
+            status (str): The status of the app.
+        &#34;&#34;&#34;
+        self.status = status
+        self.name = name
+        self.id = id
+        self.logo_url = logo_url
+        self.policy = policy
+        self.scores = scores</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-variables">Global variables</a></h3>
+<ul class="">
+<li><code><a title="src.models.CATEGORIES" href="#src.models.CATEGORIES">CATEGORIES</a></code></li>
+<li><code><a title="src.models.LANGUAGE_DICT" href="#src.models.LANGUAGE_DICT">LANGUAGE_DICT</a></code></li>
+<li><code><a title="src.models.ZERO_SCORES" href="#src.models.ZERO_SCORES">ZERO_SCORES</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.models.AndroidApp" href="#src.models.AndroidApp">AndroidApp</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

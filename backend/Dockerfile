@@ -12,6 +12,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Download nltk
 RUN python -c "import nltk; nltk.download('punkt', quiet=True)"
+RUN python -c "import nltk; nltk.download('stopwords', quiet=True)"
 
 # Copy the rest of the application code to the working directory
 COPY . .
