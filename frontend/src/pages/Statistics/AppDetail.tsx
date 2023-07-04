@@ -48,8 +48,8 @@ export default function AppDetail({ currentApp }: OverviewProps) {
     return average;
   };
 
-  const score = (Number(calculateScoreAverage(currentApp.scores).toFixed(2))).toString().replace(/^(0.)+/, '')
-
+  //const score = (Number(calculateScoreAverage(currentApp.scores).toFixed(2))).toString().replace(/^(0.)+/, '')
+  const score = (calculateScoreAverage(currentApp.scores) * 100).toFixed(2)
   // Render component
   return (
     <>

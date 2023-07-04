@@ -82,7 +82,7 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
   };
 
   // Function to calculate the average score of all apps
-  function calculateAverageScore(appData: PolicyObject[], decimalPlaces: number): number {
+  function calculateAverageScore(appData: PolicyObject[]): number {
     let totalSum = 0;
     let totalCount = 0;
 
@@ -95,10 +95,12 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     }
 
     const averageScore = totalCount > 0 ? totalSum / totalCount : 0;
-    return Number(averageScore.toFixed(decimalPlaces));
+    return averageScore;
   }
 
-  const score = calculateAverageScore(appData, 2).toString().replace(/^(0.)+/, '')
+  const score = (calculateAverageScore(appData) * 100).toFixed(2)
+
+  //.toFixed(2)
 
   return (
     <>
