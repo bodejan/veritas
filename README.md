@@ -96,12 +96,21 @@ This will start the Frontend and Backend services as defined in the `docker-comp
 ### Backend
 The documentation for the backend is automatically created based on docstrings using [pdoc3](https://github.com/pdoc3/pdoc) (see [backend docs](backend/docs/src/index.html)).
 
-To update the documentation run in the backend container:
+To update the documentation using pdoc3:
+
+1. Navigate to the Backend directory:
+
+```bash
+cd ../backend
+```
+
+2. Run pdoc3
 
 ```bash
 pdoc --html --output-dir docs --force src
 ```
 
+Docs will be created/updates in ```/backend/docs/src```.
 
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
