@@ -43,7 +43,7 @@ interface SearchAppProps {
 
 export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<SearchAppProps> {
   const navigate = useNavigate();
-  const [visible, { toggle }] = useDisclosure(false);
+  const [loadingState, toggle] = useState(false);
   const [appList, setAppList] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
 
@@ -52,7 +52,7 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
 
     let list = { id: appList };
 
-    toggle();
+    toggle(true)
 
     fetch('http://127.0.0.1:8000/id', {
       method: 'POST',
@@ -74,7 +74,8 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
 
   const refresh = () => {
     setShowModal(false)
-    toggle()
+    toggle(true)
+    
 
     fetch('http://localhost:8000/db_refresh', {
       method: 'POST',
@@ -83,25 +84,29 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
       },
     })
       .then((response) => {
-        console.log(response);
-
+    
         fetch('http://localhost:8000/get_db')
           .then((response) => response.json())
           .then((data) => {
             const convdata = JSON.parse(data).map(mapDataToItemProps);
             setAppList(convdata);
+            console.log("success2")
             console.log(convdata);
-            toggle()
+      
           })
           .catch((error) => {
             console.error('Error:', error);
-            toggle()
+        
           });
       })
       .catch((error) => {
         console.error('Error:', error);
-        toggle()
-      });
+     
+      })
+      .finally(() => {
+        toggle(false)
+        console.log("close")
+      })
   };
 
   return (
@@ -131,7 +136,7 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
         <section>
           <Grid>
             <Grid.Col span={10}>
-              <LoadingOverlay visible={visible} overlayBlur={2} />
+              <LoadingOverlay visible={loadingState} overlayBlur={2} />
               <Searchbar setAppList={setAppList} />
             </Grid.Col>
 
@@ -161,7 +166,7 @@ export default function SearchApp({ setAppData }: SearchAppProps): ReactElement<
       >
         
           <Text>
-            Refreshing the database may take a long time. Are you sure you want to proceed?
+            Refreshing the database may take a long time (about 10 minutes). Are you sure you want to proceed?
           </Text>
 
    
