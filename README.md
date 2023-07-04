@@ -115,24 +115,32 @@ pdoc --html --output-dir docs --force src
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Troubleshooting
+1. Recreate the frontend and backend container using the installation guide.
+2. Check your internet connection. The web-crawler heavily rely on a stable internet connection to access webpages from androidrank and the google play store.
+3. Analyze the logs within the docker container.
+4. Check if the structure or links of web-pages has changed. To do so, inspect the ```driver.find_element()``` functions in the source code. 
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+For contributions please open a pull-request. Future features may include: 
+1. Multi-class prediction of privacy policy categories.
+2. Text highlighting and matching of sentences with the privacy policies and their corresponding categories.
+3. Crawler robustness improvements e.g., creation of variables for crucial html elements for better maintainability. 
+4. ...
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Authors and Acknowledgment
+The tool has been developed by master students at TU Berlin at School IV - Electrical Engineering and Computer Science: Department of Telecommunication Systems (Chair of Service-centric Networking).
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+The following authors contributed to this project:
+* [Ahmet Sevim](https://www.linkedin.com/in/sevimahmet/)
+* [Daria Seita](https://www.linkedin.com/in/daria-seita-b346b7187/)
+* [Furat Hamdan](https://www.linkedin.com/in/furat-hamdan-9b77b8256/)
+* [Heyi Li]()
+* [Jan Bode](https://www.linkedin.com/in/bode-jan/), and 
+* [Richard Detlefs]().
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+The project was closely supervised and evaluated by Thomas Cory and Prof. Dr. Axel Küpper.
 
 ## License
-For open source projects, say how it is licensed.
+MIT.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
