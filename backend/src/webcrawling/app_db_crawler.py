@@ -1,3 +1,15 @@
+"""
+This script contains functions to crawl app data from the AndroidRank website, export the data to a JSON file, and refresh the database.
+
+The main functions in this script are:
+- crawl_db: Refreshes the app data for all categories, exports the data to a JSON file, and refreshes the database.
+- remove_duplicates: Removes duplicate dictionaries from a given list of dictionaries.
+- get_app_data: Retrieves the app data for a given category.
+
+Note: This script requires the Selenium library and a running Selenium WebDriver server.
+
+"""
+
 import json
 import os
 import re
@@ -8,15 +20,18 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from webcrawling.androidrank_crawler import click_next_page
-from models import CATEGORIES
+from src.webcrawling.androidrank_crawler import click_next_page
+from src.models import CATEGORIES
 
 categories = CATEGORIES
 number_apps_per_category = 20
 
 def crawl_db():
     """
-    Refresh the app data for all categories, export the data to a JSON file, and refresh the database.
+    Refreshes the app data for all categories, exports the data to a JSON file, and refreshes the database.
+
+    Raises:
+        Exception: If less than 75% of the expected app data is crawled.
     """
     final_data = []
 
@@ -34,14 +49,14 @@ def crawl_db():
     # Sort the array alphabetically by the "name" key, putting numbers after "z"
     final_data.sort(key=lambda x: (x['name'][0].isdigit(), x['name'][0].isalpha(), x['name']))
 
-    temp_file_path = "temp_db.json"
+    temp_file_path = "src/temp_db.json"
     with open(temp_file_path, "w") as outfile:
         json.dump(final_data, outfile, indent=4)
 
     try:
-        if os.path.exists("db.json"):
-            os.remove("db.json")
-        os.rename(temp_file_path, "db.json")
+        if os.path.exists("src/db.json"):
+            os.remove("src/db.json")
+        os.rename(temp_file_path, "src/db.json")
         print("Database refreshed successfully.")
     except Exception as e:
         print("An error occurred while refreshing the database.")
@@ -52,7 +67,7 @@ def crawl_db():
 
 def remove_duplicates(arr):
     """
-    Remove duplicate dictionaries from the given list of dictionaries.
+    Removes duplicate dictionaries from the given list of dictionaries.
 
     Args:
         arr (list): The list of dictionaries.
@@ -67,7 +82,7 @@ def remove_duplicates(arr):
 
 def get_app_data(category, number):
     """
-    Get the app data for the given category.
+    Retrieves the app data for the given category.
 
     Args:
         category (str): The category for which to retrieve the app data.

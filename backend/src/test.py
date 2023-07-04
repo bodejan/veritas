@@ -1,3 +1,13 @@
+"""
+This script contains test cases for the Flask application.
+
+The script sends HTTP requests to different routes of the Flask application and prints the response data or error
+information. It is used for testing the functionality and correctness of the application's API endpoints.
+
+Note: The Flask application should be running before executing the test cases.
+
+"""
+
 import requests
 
 url = 'http://127.0.0.1:5000'
@@ -10,6 +20,9 @@ def test_index_route():
 
     Sends a GET request to the index route and checks the response status code.
 
+    Returns:
+        None
+
     """
     response = requests.get(url, headers=headers)
     assert response.status_code == 500
@@ -21,6 +34,9 @@ def test_id_route():
     Test the ID route of the Flask application.
 
     Sends a POST request to the ID route with example ID values and prints the response status code and content.
+
+    Returns:
+        None
 
     """
     # Example ID value
@@ -39,6 +55,9 @@ def test_category_route():
 
     Sends a POST request to the category route with a category and number parameters,
     and prints the response content.
+
+    Returns:
+        None
 
     """
     # Set the category and number parameters
@@ -63,6 +82,9 @@ def test_db_refresh():
 
     Sends a POST request to the database refresh route and prints the success message or error information.
 
+    Returns:
+        None
+
     """
     url = 'http://127.0.0.1:8000/db_refresh'
     try:
@@ -82,6 +104,9 @@ def test_get_db():
     Test the get database route of the Flask application.
 
     Sends a GET request to the get database route and prints the response data or error information.
+
+    Returns:
+        None
 
     """
     url = 'http://127.0.0.1:8000/get_db'

@@ -1,0 +1,499 @@
+id;name;logo_url;Data Recipients;Safeguards Copy;Processing Purpose;Data Categories;Source of Data;Right to Erase;Right to Restrict;Right to Access;Right to Object;Withdraw Consent;Right to Portability;Profiling;Controller Contact;Provision Requirement;Storage Period;Lodge Complaint;DPO Contact;Adequacy Decision;status
+com.whatsapp;WhatsApp Messenger;https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN=w240-h480-rw;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.youtube;YouTube;https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.instagram.android;Instagram;https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-rckwYW7yp1fMrYZqnEFpk0IoVP4LM=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;0;1;1;1;1;1;1;1;Success
+com.facebook.katana;Facebook;https://play-lh.googleusercontent.com/ccWDU4A7fX1R24v-vvT480ySh26AYp97g1VrIB_FIdjRcuQB2JP2WdY7h_wVVAeSpg=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;0;1;1;1;1;1;1;1;Success
+com.dts.freefireth;Free Fire;https://play-lh.googleusercontent.com/9zACfwWC3nLgQls-vt4lpz8N0Vv4zWMUXtcFth3oBT5789vmsTktH_fCNXHsGdmtOw4=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;0;1;1;1;0;1;1;Success
+com.facebook.orca;Messenger;https://play-lh.googleusercontent.com/ldcQMpP7OaVmglCF6kGas9cY_K0PsJzSSosx2saw9KF1m3RHaEXpH_9mwBWaYnkmctk=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;0;1;1;1;1;1;1;1;Success
+com.supercell.clashofclans;Clash of Clans;https://play-lh.googleusercontent.com/LByrur1mTmPeNr0ljI-uAUcct1rzmTve5Esau1SwoAzjBXQUby6uHIfHbF9TAT51mgHm=w240-h480-rw;1;1;1;1;0;0;1;1;1;1;1;0;1;0;1;0;1;1;Success
+com.zhiliaoapp.musically;TikTok;https://play-lh.googleusercontent.com/dl42FLLV8o9mP-NOubtR-2rDzQkc4mqx6ctumDfqmhmvVeOTcxLQlCDvjQsm84Z2Ig=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;Success
+com.google.android.apps.photos;Google Photos;https://play-lh.googleusercontent.com/ZyWNGIfzUyoajtFcD7NhMksHEZh37f-MkHVGr5Yfefa-IX7yj9SMfI82Z7a2wpdKCA=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.tencent.ig;PUBG MOBILE;https://play-lh.googleusercontent.com/JRd05pyBH41qjgsJuWduRJpDeZG0Hnb0yjf2nWqO7VaGKL10-G5UIygxED-WNOc3pg=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.flipkart.android;Flipkart Online Shopping App;https://play-lh.googleusercontent.com/q8hxnbpJCYfHipSOG_5tZe5jK_89T6QIsqrEklvGpMFKH8b98pDHJf2tPcn2bxEN96ON=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;1;0;Success
+com.android.chrome;Google Chrome;https://play-lh.googleusercontent.com/KwUBNPbMTk9jDXYS2AeX3illtVRTkrKVh5xR1Mg4WHd0CG2tV4mrh1z3kXi5z_warlk=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;0;0;0;1;Success
+com.google.android.gms;Google Play services;https://play-lh.googleusercontent.com/f6ZSUJrtL5uniwWCTp1OeJj8MdoDaSTqi2XFyy9A0yPv6DpBo2giisRKDpXD9qk66KE=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.kiloo.subwaysurf;Subway Surfers;https://play-lh.googleusercontent.com/mDhB9ehWSRe0ms9FtLTSdgch4vmbmCCsBEr8ojLbf6Tg62QHF1mPyAwHx1lYBlZbtkY=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;0;0;1;Success
+com.king.candycrushsaga;Candy Crush Saga;https://play-lh.googleusercontent.com/gU9NKwpgLDYA6LIYK4dnkAkVyqNHUfTIqklEiNuO4oZ2OCpWQhQdqhnDh8Yb9B8SWIM=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;Success
+com.supercell.clashroyale;Clash Royale;https://play-lh.googleusercontent.com/D_KblLmWmgxRo07tVpTVj1ysGhJuJ3n5Rv_FC6xO5h3E9Pwmv6v7x6kYWztqX9VsAklR=w240-h480-rw;1;1;1;1;0;0;1;1;1;1;1;0;1;0;1;0;1;1;Success
+com.roblox.client;Roblox;https://play-lh.googleusercontent.com/WNWZaxi9RdJKe2GQM3vqXIAkk69mnIl4Cc8EyZcir2SKlVOxeUv9tZGfNTmNaLC717Ht=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.mobile.legends;Mobile Legends;https://play-lh.googleusercontent.com/UELcKakJhwKhdDJIwpdvd1RjE3ClRXiG0nhChs69fBv-nn5ZkgSp2EkkRTnJYFtYoZyu=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.snapchat.android;Snapchat;https://play-lh.googleusercontent.com/KxeSAjPTKliCErbivNiXrd6cTwfbqUJcbSRPe_IBVK_YmwckfMRS1VIHz-5cgT09yMo=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;0;0;Success
+com.spotify.music;Spotify;https://play-lh.googleusercontent.com/cShys-AmJ93dB0SV8kE6Fl5eSaf4-qMMZdwEDKI5VEmKAXfzOqbiaeAsqqrEBCTdIEs=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.google.android.googlequicksearchbox;Google;https://play-lh.googleusercontent.com/aFWiT2lTa9CYBpyPjfgfNHd0r5puwKRGj2rHpdPTNrz2N9LXgN_MbLjePd1OTc0E8Rl1=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.miniclip.eightballpool;8 Ball Pool;https://play-lh.googleusercontent.com/bPz1guJ6FHF3oIOEy3KqwpaDDKO-hLRaZoyzmM8bLFLN8fWm6L0_EuUnkwv9iqPo3Ag=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.facebook.lite;Facebook Lite;https://play-lh.googleusercontent.com/J--_O-bAdNwLKs8XXsm9dTbt4B19wHXq6qGr5eCAJEagPrdC86aB8RieIkRdqKtSbNM=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;0;1;1;1;1;1;1;1;Success
+com.jio.myjio;MyJio;https://play-lh.googleusercontent.com/W6-GRr_DiVmMphLSzsH2Z2fGMdlM8ZLjNhKS93ALvLO3Dkfl6RejtMqlARBoA2dCw0Y=w240-h480-rw;1;1;1;1;1;1;0;1;0;1;1;0;1;0;1;0;1;1;Success
+com.lazada.android;Lazada;https://play-lh.googleusercontent.com/hLH2YWJEdUlO8xb1ST2JUhundp1vSsMPVTaFUT57wOaiFzxGuEJwa6snSlkwjtKRUxlF=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.supercell.brawlstars;Brawl Stars;https://play-lh.googleusercontent.com/EiElcSrd6-o-19roiswSx0AZPzsq6qF3hUGHsSWDl5UVtj7G23DHkneM8ucwqyOmEg=w240-h480-rw;1;1;1;1;0;0;1;1;1;1;1;0;1;0;1;0;1;1;Success
+com.UCMobile.intl;UC Browser;https://play-lh.googleusercontent.com/cQpfXdySmZ0kXlUS3ifFvNHwLgeeJi545UudvNiyp5P8oLpI8dS-d3FAu4O4OUDGqQ=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;1;0;0;Success
+com.twitter.android;Twitter;https://play-lh.googleusercontent.com/wIf3HtczQDjHzHuu7vezhqNs0zXAG85F7VmP7nhsTxO3OHegrVXlqIh_DWBYi86FTIGk=w240-h480-rw;1;1;1;1;1;0;1;1;0;0;0;0;1;0;1;1;1;0;Success
+com.google.android.dialer;Phone by Google;https://play-lh.googleusercontent.com/bk3e0glVbvRC4Z0uEZ5Oso5wjS89r1P_X5e-k3N_UBkTPXZLhGv50rRy7LAuDzzC9w=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.truecaller;Truecaller;https://play-lh.googleusercontent.com/64ap3L-g_bp4j3Abt3fsY_N1K8J6zbhUIlYfeUNgIrV9JSRwU5D7VJ-PUjST-rd84g=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;0;0;1;1;0;0;0;1;Success
+com.camerasideas.instashot;Video Editor & Maker;https://play-lh.googleusercontent.com/mjmbWruxfo8oYHsBNI7b76KLj1AEJQo7hXwlmi05EvfFwubOjo8nQJrVEHRe4Vbgpo8=w240-h480-rw;1;1;1;1;0;1;1;1;0;0;1;1;1;1;0;0;0;0;Success
+com.lenovo.anyshare.gps;SHAREit;https://play-lh.googleusercontent.com/VaKjVtEoXm0ErtmaHwH5Ni-EpaBoJcTmoY_Bs5JeIOVOQx8z_jBWMaxB6QdYPxX-OA7l=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;0;0;1;1;1;1;1;1;Success
+com.outfit7.mytalkingtomfree;My Talking Tom;https://play-lh.googleusercontent.com/aikcFU98JDbgQLxoKSOXJ7kC4qNFf2fFSo9di7S2y8qccKbB3ceAmwQaAjIli34HbA=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;0;1;1;1;0;1;1;Success
+com.dts.freefiremax;Free Fire MAX;https://play-lh.googleusercontent.com/2jW_YF6fpW0R_-oyJz-6pixV6n_-CdkXGrGeaISIDGbDomZs2ulrnEdBX09L5oDTTvM=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;0;1;1;1;0;1;1;Success
+com.ss.android.ugc.trill;TikTok;https://play-lh.googleusercontent.com/Ui_-OW6UJI147ySDX9guWWDiCPSq1vtxoC-xG17BU2FpU0Fi6qkWwuLdpddmT9fqrA=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;Success
+com.google.android.apps.maps;Google Maps;https://play-lh.googleusercontent.com/Kf8WTct65hFJxBUDm5E-EpYsiDoLQiGGbnuyP6HBNax43YShXti9THPon1YKB6zPYpA=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+net.one97.paytm;Paytm;https://play-lh.googleusercontent.com/6_Qan3RBgpJUj0C2ct4l0rKKVdiJgF6vy0ctfWyQ7aN0lBjs78M-1cQUONQSVeo2jfs=w240-h480-rw;1;1;1;1;0;0;1;1;0;0;0;0;1;0;1;0;1;0;Success
+com.mercadolibre;Mercado Libre;https://play-lh.googleusercontent.com/lO0-UT9yyZ55shpgJVKcBxYGd1MWwdsxoK1GjNcd9FkcYHX4yjjj5OqktP0O1rVoTwU=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;1;1;1;1;1;1;1;Success
+com.viber.voip;Viber;https://play-lh.googleusercontent.com/lB6Ro6pjPw17G8HnTvv_qerC2yMGlvjVpryNXoeKfxyglyB8Ljk1HUxmegKU85acTmQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.nekki.shadowfight;Shadow Fight 2;https://play-lh.googleusercontent.com/VhwlwQOnf_lUrhCUoTcKP8O1dMecYxOhpa1FimQryAIL723NjAhzz0GeH7RB70GKgQ=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;0;1;1;Success
+com.fungames.sniper3d;Sniper 3D：Gun Shooting Games;https://play-lh.googleusercontent.com/zOf8iqTfrHk_phRcVNlRzjg7EIUpUuHFBDPW69MHnhjqUkBsPDJ4qxjCk3i6V7UhQ0g=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;0;1;1;1;1;0;1;Success
+com.activision.callofduty.shooter;Call of Duty Mobile Season 5;https://play-lh.googleusercontent.com/WjXoRzJKWHJ_x52qWYA6ECM70bq3x0vwwYiBhzLXdOIHCo-obdUTztPbskEn0K8_wBs=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.nianticlabs.pokemongo;Pokémon GO;https://play-lh.googleusercontent.com/0vpq7Mu6ZEloYsC6kJFJRRHidRQzZf9loRcOcBh03GT2DNQiX_Z-uS9tyYuaHZIDKCI=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;1;1;1;Success
+com.duolingo;Duolingo;https://play-lh.googleusercontent.com/hSyebBlYwtE2aMjzSIHasUO9cQv9HgNAw9owy6ADO0szOKYO3rDk60r7jcyXu82Fbq1M=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;1;1;1;Success
+com.contextlogic.wish;Wish;https://play-lh.googleusercontent.com/NbRBDbkI5qt5YkQJoeRME55f3YzewJmEpRkyvTJ7jMgKio1iYdgDPGoFTCOwTuX_vA=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;1;1;1;Success
+com.netflix.mediaclient;Netflix;https://play-lh.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;0;1;1;1;1;1;1;Success
+com.alibaba.aliexpresshd;AliExpress;https://play-lh.googleusercontent.com/8XePOjdAbTm12TJ4Cu3-DnQxT7kG-ptsu6yqXMusO5nbCs1s9GeVPwDMqMAMi4rxTYSV=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.outfit7.mytalkingangelafree;My Talking Angela;https://play-lh.googleusercontent.com/TaAOZDqVY_YyFDP8SG8pGOL6FfWWegXOcSzZd7h3p3268In4X-4Xy6jbuEz7YSMfdS8T=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;0;1;1;1;0;1;1;Success
+jp.naver.line.android;LINE;https://play-lh.googleusercontent.com/74iMObG1vsR3Kfm82RjERFhf99QFMNIY211oMvN636_gULghbRBMjpVFTjOK36oxCbs=w240-h480-rw;1;1;1;1;0;1;1;1;1;1;0;0;1;1;1;0;1;1;Success
+com.innersloth.spacemafia;Among Us;https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;0;1;Success
+com.ea.gp.fifamobile;FIFA Soccer;https://play-lh.googleusercontent.com/MUc561H_AeA4lUfUzyo0-6ZgikC6xrblMMPcbOTNC61iXb9hbfV9guj5IKiXAMfpumJw=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;1;1;Success
+com.google.android.play.games;Google Play Games;https://play-lh.googleusercontent.com/wpRQkfqbkPztp1US6HDr8E41We8GyY-B4CG1PMmWI3WKDk9OeYh4ehXwKIfZB7dm-sc=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.supercell.hayday;Hay Day;https://play-lh.googleusercontent.com/Za8u0ChNK-3mZ3rnLcBirRBTzLYTdqaaAn63Ha9qKZiDp_bF_5u7OGfvWb1dg88WttKw=w240-h480-rw;1;1;1;1;0;0;1;1;1;1;1;0;1;0;1;0;1;1;Success
+com.google.android.inputmethod.latin;Gboard;https://play-lh.googleusercontent.com/X64En0aW6jkvDnd5kr16u-YuUsoJ1W2cBzJab3CQ5lObLeQ3T61DpB7AwIoZ7uqgCn4=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+net.zedge.android;ZEDGE™ Wallpapers & Ringtones;https://play-lh.googleusercontent.com/zDG7AlPAZfb0CYsYqRoGZkNbxshIpz2-tDktvoGC6pbVZakxXc7qpwM3VgOOZ6KpLl5l=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;1;1;0;1;1;1;1;Success
+com.quvideo.xiaoying;VivaVideo;https://play-lh.googleusercontent.com/RxE4n7k1Z2I5qQo8tDj8QotCtTzinaXeLhiX5J6UKTsuGkG2pAmvqVH73Mlki8sH0A=w240-h480-rw;1;1;1;1;1;0;0;0;0;0;0;0;1;0;1;0;0;0;Success
+org.telegram.messenger;Telegram;https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;0;1;Success
+com.canva.editor;Canva;https://play-lh.googleusercontent.com/0veNjzwyZPn6kM6zFWFpf9qc_Z4f_8gTzrdK1AecSFaIEeFKAFaep47RGxffgoFt1w=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;1;1;1;Success
+com.google.android.gm;Gmail;https://play-lh.googleusercontent.com/KSuaRLiI_FlDP8cM4MzJ23ml3og5Hxb9AapaGTMZ2GgR103mvJ3AAnoOFz1yheeQBBI=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.mxtech.videoplayer.ad;MX Player;https://play-lh.googleusercontent.com/e_rNLzyR9i3wwy8BwEsIS4uz0fFu29p5RoXoNZt2L0Ef7cJ2QhAcw1x_K51A19HpzQ=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.playrix.homescapes;Homescapes;https://play-lh.googleusercontent.com/cb7FFnDCsn3mV-LNCAvixT4TLBupTsxdvTLotYZB2B8JzwsHDbxtJ1MZE851Pa6ubMQ=w240-h480-rw;1;1;1;1;1;1;0;1;1;1;0;1;1;0;1;0;0;1;Success
+com.shopee.id;7;https://play-lh.googleusercontent.com/5ns3zBBibWxSZaHZQ-EqCTAJK00yME7rpg-xiZp2qDFTKMenmWpf5dqByfL8ETadQ2E=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;EmptyPolicyException
+me.pou.app;Pou;https://play-lh.googleusercontent.com/xToRFw-mqA18HtizgutV0K1IouakfR8iJ3PW75u-1n1oxbP7hVfBMlgHWIwuUYKKS_s=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.playrix.gardenscapes;Gardenscapes;https://play-lh.googleusercontent.com/bBcTnHOQz3yim_TVw-M21BDvUECT1fZWJHryApg5QXpBS6gw0YE6vjqkXw6wJdA7DIE=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.ubercab;com.ubercab;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+br.com.brainweb.ifood;br.com.brainweb.ifood;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.picsart.studio;com.picsart.studio;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+video.like;video.like;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+jp.konami.pesam;jp.konami.pesam;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.skype.raider;com.skype.raider;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+in.startv.hotstar;in.startv.hotstar;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.grabtaxi.passenger;com.grabtaxi.passenger;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.whatsapp.w4b;WhatsApp Business;https://play-lh.googleusercontent.com/ebs6ftYUkOKlDY0M174OpvargwbDyHUVAnO_G5aE0dL5GBQKCtfh3adN5H3ZMThXogDi=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.gameloft.android.ANMP.GloftA8HM;com.gameloft.android.ANMP.GloftA8HM;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.fingersoft.hillclimb;com.fingersoft.hillclimb;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.gameloft.android.ANMP.GloftDMHM;Minion Rush;https://play-lh.googleusercontent.com/03aa6F5TGsCREOEtNT6xMy1rP8RHqc-TNDjFoFQ4TNLHMb1T9RcTx0A6YXzUaTng2A=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.kwai.video;com.kwai.video;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.playrix.township;com.playrix.township;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.google.android.apps.tachyon;com.google.android.apps.tachyon;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.google.android.apps.messaging;Messages by Google;https://play-lh.googleusercontent.com/9AZOTXU_CpreTFAXUPAmJNkm8VGCb1C90fjJ9pHGcVmpGMDSTq3cUbaQJdBT9Tdp9A=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.imangi.templerun2;com.imangi.templerun2;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.phonepe.app;PhonePe UPI;https://play-lh.googleusercontent.com/6iyA2zVz5PyyMjK5SIxdUhrb7oh9cYVXJ93q6DZkmx07Er1o90PXYeo6mzL4VC2Gj9s=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.pinterest;com.pinterest;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.king.farmheroessaga;Farm Heroes Saga;https://play-lh.googleusercontent.com/Qo3Jy9A83gs9us1p8zpPVV8xkFZycw8P8iLQZUgZY76lfdNRTYz1Ax1xwQjhHxnsVLG3=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.apps.docs;com.google.android.apps.docs;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+es.socialpoint.DragonCity;Dragon City Mobile;https://play-lh.googleusercontent.com/V6UAtFByWU5Bjo1IlN0gG6_nh06ZdeHBRwhhdmHgMm6WAyVEavtZMNF2Czkq6amBB2I=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.axlebolt.standoff2;com.axlebolt.standoff2;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.ludo.king;com.ludo.king;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.telkomsel.telkomselcm;com.telkomsel.telkomselcm;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.google.android.apps.nbu.paisa.user;com.google.android.apps.nbu.paisa.user;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+in.amazon.mShop.android.shopping;Amazon India Shop;https://play-lh.googleusercontent.com/-bKVv7znUY-sU5fTgDLa8XSGa-G7YWNOdYUsxoeFKH1BUF7PYGB2sYS1oTFKmEbXtpdM=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.king.candycrushsodasaga;com.king.candycrushsodasaga;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.shazam.android;Shazam;https://play-lh.googleusercontent.com/mwTU9-4NX-_QlATb6lILSinKI47wAtOM38GjPYRPQSsQOG2hVRY4h9OfEhDxpf8ADQ=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.microsoft.office.outlook;Microsoft Outlook;https://play-lh.googleusercontent.com/Zk9elS0eGXDr0L4W6-Ey7YwHbRNjkyezHC8iCc8rWp64lNIjlByS8TDF9qDSZbiEWY4=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.google.android.apps.translate;com.google.android.apps.translate;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.vkontakte.android;com.vkontakte.android;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.moonactive.coinmaster;Coin Master;https://play-lh.googleusercontent.com/Gpp87vMy7HMftEnl8GkTJrWPf2g6lIbNR0asWPtFBNSduXxfdzuky2fK1itlx4pfjaU=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.waze;com.waze;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.firsttouchgames.dls7;Dream League Soccer 2023;https://play-lh.googleusercontent.com/KySaXgSo9QpI1YAdwx11RamOXeJqtz71cBUuRJvtpcdh0gVnfNOmDrZ-8gm16MDjJv4=w240-h480-rw;0;1;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.opera.mini.native;Opera Mini;https://play-lh.googleusercontent.com/OMqej9WONG1l8CXOgFH58XV1cGRgTcJxeffDiEXmkjkfLPK-g680lkzXGhJ7VMTmII4=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.skgames.trafficrider;Traffic Rider;https://play-lh.googleusercontent.com/590AflDt-hW2t85Cit_ODJPJdRiMMRn2cSF0vYNfsBpjm895x1zDy0npbD7IlDCvmNvI=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;1;1;0;1;1;1;1;Success
+com.kwai.bulldog;SnackVideo;https://play-lh.googleusercontent.com/OU6pqjbF8-KL_nt4s4kv6GP9bRieD1SPAYrN88JdjbnB5gnqFx3XLWp29StRmxhYmeM=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;1;1;1;1;0;1;1;Success
+com.tencent.iglite;PUBG MOBILE LITE;https://play-lh.googleusercontent.com/FDRKka66TQRZjlR1_StX3x9Gxs6UtWEF5rfdNJEs_rDci28TOUrsNxYqxXzL5KrITQ=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.igg.android.lordsmobile;Lords Mobile;https://play-lh.googleusercontent.com/oFz-KTIgL6yAuuA5XeHapTQLDcoBVgA9JXCTiID70rPcJBGAT9DdiqNDjNLxcYaG6W3W=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.google.android.webview;Android System WebView;https://play-lh.googleusercontent.com/-s7qEc5rMxbFyKzjQjYXiPfit1oGLF3Q-3i9D1onMHsIZOUTx-zVr14a9J3s6uiKEd4=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.pure.indosat.care;myIM3;https://play-lh.googleusercontent.com/5r57kpSo2SoBx0m6t014UPI9-m6mcop34p5z-thY-iVelpsGmct9VsNGn5JYzq376w=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.microsoft.office.word;Microsoft Word;https://play-lh.googleusercontent.com/9kABykeGovHPy-dN19lRxxnCp8IZK3Pkl8qLFNxrEe-hhKVZeiyhTBEIRUt6t-vhxQ=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.imo.android.imoim;imo;https://play-lh.googleusercontent.com/0IdG4GLN7T73OrfRWwb3M1dyuFPmuAftPepnHS6p8qoTGvXXeHKHQY54-B8OXEbAZGI=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.application.zomato;Zomato;https://play-lh.googleusercontent.com/AJCitwuXIAqauTL7ccZ-FlnO1_18DbYiYo9lk25TNOdlV7_hLz-ogqUMnOPDYyAeX-0=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.etermax.preguntados.lite;Trivia Crack;https://play-lh.googleusercontent.com/flNnD5C6VBbITdFM8gGnqLoFiSrEP4Et5e3P0gdQl3T7o0znQdoNQruLF3TzZqneEzE=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;Success
+ru.yandex.taxi;Yandex Go — taxi and delivery;https://play-lh.googleusercontent.com/OHQ4EKBXtp99QHmxKP17rq5ACNddPukcMt_wnRSx4c5QfOqUg5hAJfbtUay8X4CD7OS3=w240-h480-rw;1;1;1;1;0;1;1;1;1;1;1;1;1;0;1;1;1;1;Success
+free.vpn.unblock.proxy.turbovpn;Turbo VPN;https://play-lh.googleusercontent.com/G7AkY7FY1XZQU8Xp_h5OGGovDxySJ2tLSlPxNRfl9E3lKDzyqY-2QYByz3CHovWRcg=w240-h480-rw;0;1;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.antivirus;AVG AntiVirus & Security;https://play-lh.googleusercontent.com/PswC2KgmdzkJGZe0ctXIHwQ7hoi9YpZzy-kFeUHmA9qR8GQJgDu2v19pHzT-8wCvaJ8=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.gau.go.launcherex;GO Launcher;https://play-lh.googleusercontent.com/cxplNHG1vLmqm3vccaY6Xn1SUx6mxbnu9Nb1xD4PDxqz7pMrPpYQbVIjeG5TPsLr9B6Y=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;0;0;1;1;1;0;Success
+com.fgol.HungrySharkEvolution;Hungry Shark Evolution;https://play-lh.googleusercontent.com/6Ij3BrGOfLbkwxdB_SSX8gEvOx68QQC9IPzhmZLddxbklr1yzblPj8MYEf2XUR7n9A=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.ea.game.pvz2_row;Plants vs Zombies™ 2;https://play-lh.googleusercontent.com/Kjm7bfXlruSyCCkqyol_ReHq5vy7SKxZ4fE_kgQsPnrtLbrAfrCoxtKWMLH2O_5l0rQ=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.linecorp.b612.android;B612 AI Photo&Video Editor;https://play-lh.googleusercontent.com/MZQJwhOkgsXWeR-5-dey7Ckras4a9xx2JN8ZfQ_Twz0otjKwUcT6qkPWo8OheOShWeg=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;1;0;1;Success
+com.robtopx.geometryjumplite;Geometry Dash Lite;https://play-lh.googleusercontent.com/p7kWbWBFxQIrzolEqiV5uSvctLeyssZvBV7UBOX29wzZI52IdcSs4qCB_zsQJL1mt9A=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;0;0;1;0;0;0;0;0;Success
+com.avast.android.mobilesecurity;Avast Antivirus & Security;https://play-lh.googleusercontent.com/ma7-o27RKC5TIsV_gfiUAhjCIjENCOvTzYqgnzow8b_ObRY-n-BiDxM1nwY4kiB-gO4=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.google.android.apps.nbu.files;Files by Google;https://play-lh.googleusercontent.com/1nfAdJs2Ep2q1skM7QwJ1uHooWSbpFkbIBHhAX6EmdzEKmtk42713TiTU28mWlkcFKPA=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.ea.games.r3_row;Real Racing  3;https://play-lh.googleusercontent.com/O7Lkr9Nsj0EYrafa59aeFpEygciu-GuI3MRdi3qHZOvCgLgm8exzNLE8usDEdNP2B7HJ=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.yahoo.mobile.client.android.mail;Yahoo Mail – Organized Email;https://play-lh.googleusercontent.com/YtGn2T9ADy5Hs4cKVoDgGb7fPuMkdXVcszVE1oiozfE4AxhDNq0RkwajYs1FxcrMDpw=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;Success
+com.firsttouchgames.story;Score! Hero;https://play-lh.googleusercontent.com/oI6YVn3SZgzda6RsYLjxbH-o9bY9EHEr4-iD2Tg9X97rUi2GbWROY6Gu2efwxQhZksE=w240-h480-rw;0;1;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+in.swiggy.android;Swiggy Food & Grocery Delivery;https://play-lh.googleusercontent.com/A8jF58KO1y2uHPBUaaHbs9zSvPHoS1FrMdrg8jooV9ftDidkOhnKNWacfPhjKae1IA=w240-h480-rw;1;1;1;1;1;0;1;1;0;1;0;0;1;1;0;0;1;0;Success
+com.flipkart.shopsy;Shopsy Shopping App;https://play-lh.googleusercontent.com/w9MFC_aCmIRsbdS3YQGvp1SvUMm8l6h9AcHbZdQnZH6W6A19OuICx-8oCPsvA_XcMAU=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;1;0;Success
+com.myairtelapp;Airtel Thanks – Recharge & UPI;https://play-lh.googleusercontent.com/MEDyPtE2OFyPqXh2m_K5iQT3jvzIC93vdlRQC5O8kjr5_GAkFeNbmroPVrpbJT8bocM=w240-h480-rw;1;1;1;1;1;0;1;1;0;1;0;0;1;0;0;0;0;0;Success
+com.gameloft.android.ANMP.GloftGGHM;Gangstar Vegas;https://play-lh.googleusercontent.com/9F8Yup4O0--LddTf4mk56ybuaK-M89J18nDd-e5PLpX7r58GA3Klm5SNZPxvbKjuPhg=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+air.com.hypah.io.slither;slither;https://play-lh.googleusercontent.com/oObkhKfUXOY5yzheKe9w1Y1pXZBgdiSksMeNmT0BijoQ8J75maTCIW2TA7-6pA6EMA=w240-h480-rw;1;0;0;1;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.microsoft.teams;Microsoft Teams;https://play-lh.googleusercontent.com/jKU64njy8urP89V1O63eJxMtvWjDGETPlHVIhDv9WZAYzsSxRWyWZkUlBJZj_HbkHA=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.tokopedia.tkpd;Tokopedia;https://play-lh.googleusercontent.com/O0WblfhrxTuAQsz-C25yUpCrr98mbWY3IQTvsx_UHG01jAa2QeWEzadoaumpPammhTD0=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.lemon.lvoverseas;CapCut;https://play-lh.googleusercontent.com/Pfck8XXM4wRBgUbDnkXl3CZMWCdqZ7tEgKrhTp95OfawYCMSVpLYTNDKLWlC7E_jmQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.ansangha.drdriving;Dr;https://play-lh.googleusercontent.com/_NajhNZ75NZN_CuQ7O1HMvD9BOPZEX8FmwtQaAC1RqRaAnl8geTYodi02U8hcfbnwMs=w240-h480-rw;1;1;1;1;0;1;1;1;0;0;0;0;1;1;0;0;1;0;Success
+com.unicostudio.braintest;Brain Test;https://play-lh.googleusercontent.com/L4-Oa6O8GV4I23JTmo-xKSjfyjowc0d2uGGfdScYkCTMk6ftxTwGowdAjgh2nOrJlEmI=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;Success
+com.camerasideas.trimmer;YouCut;https://play-lh.googleusercontent.com/XA0DE6B2bRn9qgzR5altWtSGzealGjI-f-nqZV7gQMBWdWu4X89k27S71_RL8W-Ya9w=w240-h480-rw;1;1;1;1;0;1;1;1;0;1;1;1;1;1;0;0;0;0;Success
+videoeditor.videorecorder.screenrecorder;Screen Recorder;https://play-lh.googleusercontent.com/RX8RBGnnxFgncaU649msEAdLpQmXiSlzAZrjOtdSnvyptB16wWlQNFdRrMWNSdkIQ2tn=w240-h480-rw;1;1;1;1;1;0;0;0;0;0;0;0;1;0;0;0;0;0;Success
+com.soundcloud.android;SoundCloud;https://play-lh.googleusercontent.com/8mD-WdBsvf6XYO1NkRLaer1nGlzRPabicsPcx1gSStfA0kC39SAn-0nEZmaU_96YiH0=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.google.android.apps.plus;Currents;https://play-lh.googleusercontent.com/XmiAY8lW8WYSutAr6OsIMeHmXQ2NNyYWEAwycPhCM62qKm8wjQnzloxyaiICsqdEc8Bl=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.tencent.ibg.joox;JOOX Music;https://play-lh.googleusercontent.com/ERcaEpGkbIUMqLHESvFLkl6-g0Tz9g27HxY67ksipw2a5F4fa8YHewLm8xwkzs-FDw=w240-h480-rw;1;1;1;1;0;1;1;1;1;1;1;0;0;1;1;1;1;1;Success
+com.yy.hiyo;Hago;https://play-lh.googleusercontent.com/X2WMHHw_y9TO1wvJaEAFtsUvYtPdHrUdreSMqxMom1OTJN6QB0y4HSsiHjLoiiQGJms=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+eu.nordeus.topeleven.android;Top Eleven Be a Soccer Manager;https://play-lh.googleusercontent.com/TZOcXpJHXo593F5u6rqYJ60bqGtm5NjLzTQM9Cgv7Msni3ZftGPf-m568qdaSRZieg=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.skgames.trafficracer;Traffic Racer;https://play-lh.googleusercontent.com/2uTOewaztiOuJsDPyMXSlBkeQq2sM5netXJUpi2Nk_e06XU9cqIfaK6l02vRYkumsQI=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;1;1;0;1;1;1;1;Success
+com.supercell.boombeach;Boom Beach;https://play-lh.googleusercontent.com/y_Dr51TrM3NfJO-bFECbGVXsjfFYo-6YjiJfIQwyNBX6VdBW8H8eSEZzpCXcGKKByyw=w240-h480-rw;1;1;1;1;0;0;1;1;1;1;1;0;1;0;1;0;1;1;Success
+com.sega.sonicdash;Sonic Dash;https://play-lh.googleusercontent.com/4F-WwVKAs56rT6DGSfu1-9sW4MqSjenlIUqWS1K_8iB25ktsHKXXScAwJonvwo7DuMA=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.badoo.mobile;com.badoo.mobile;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.venticake.retrica;Retrica;https://play-lh.googleusercontent.com/1eEcGxRg7GmB7dW0F_tABKOAhNVgDyOvB2eZUTwL0OOm3-qR3GKfy1sPUISk3_DwaeU=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.tencent.mm;WeChat;https://play-lh.googleusercontent.com/eOXYfM4C_CJc6hJ9Yxa0q0Xf-O8u03T5af6NdC5vnuYKLnrgsIjEaM4lUK3Mj7gNn7Y=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.rovio.baba;Angry Birds 2;https://play-lh.googleusercontent.com/nDXdk5wKKYXgqyGYAOn-RlL71bFoIEI2PlVKfi1-7A3n5p89FqRGpVXjFWBbDKoP-A=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;Success
+net.mobigame.zombietsunami;Zombie Tsunami;https://play-lh.googleusercontent.com/y2v9w4KjUe4djmd3yYgj2_XrDIt_D9JO2c2NkYdxtYyE6cGl21JgU4aMqTEcoQzQorLD=w240-h480-rw;1;1;1;1;0;0;0;0;0;1;0;0;0;0;0;0;0;0;Success
+com.mercadopago.wallet;Mercado Pago;https://play-lh.googleusercontent.com/4hN-UTy-2_Ma1Ouye5FpN2Issj73Oms62hokLp5OZR6zdt2yzkEpGSpK0v47RK8Oc8Q=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;1;1;1;1;1;1;1;Success
+com.psafe.msuite;dfndr security;https://play-lh.googleusercontent.com/xO85hcnf9Ew-PpHCY1Zv2mhXH-N1L3ddcDXgLPEM3nzcQxKMehjN1kvF7Zu6BXmZkp_0=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;0;1;0;Success
+com.playrix.fishdomdd.gplay;Fishdom;https://play-lh.googleusercontent.com/m7jW3O5FH4SHCaD8k_xrNazDhNO0A_sYhYcrOb5gybOv1IauyUMle3lbQkE6bF6WMx0u=w240-h480-rw;1;1;1;1;1;1;0;1;1;1;0;1;1;0;1;0;0;1;Success
+com.zzkko;SHEIN;https://play-lh.googleusercontent.com/e9FXWFNT_9cL6yPiITu38t3wNLXd5lxohnq1tQQGJhvqsWw-pf4FnDX9zhod5R1jag=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.zhiliaoapp.musically.go;com.zhiliaoapp.musically.go;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.xvideostudio.videoeditor;com.xvideostudio.videoeditor;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.apusapps.launcher;APUS Launcher;https://play-lh.googleusercontent.com/OGuy-yTp4B0gURn-bDMQkvpX_5bXVeX5cWS3ib8pNfVFKJY9LUiq1dlgM2LTmoDX8YQ=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.garena.game.kgvn;Garena Liên Quân Mobile;https://play-lh.googleusercontent.com/S3GPwY1-mc5876ZnMk65-VrG3Xlh1R8zgK-Q_LlnbjZ7llyyv0ZGWIlNnBM7LckMMzYy=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+br.com.bb.android;Banco do Brasil;https://play-lh.googleusercontent.com/1-aNhsSPNqiVluwNGZar_7F5PbQ4u1zteuJ1jumnArhe8bfYHHaVwu4aVOF5-NAmLaA=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.tinder;Tinder Dating app;https://play-lh.googleusercontent.com/fDpoqIbZ884ylRnMK8Lx9Fu4DsLQk5yt4f9WkxeOAPpGnzc9BTi_YKkMsLvoMdx7Uzg=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;Success
+com.pixel.gun3d;Pixel Gun 3D;https://play-lh.googleusercontent.com/CtZkfSAJl3oWErQWzJ1sZIfQE1u9E0hr1q4ZL5TkXlaC7T2_z79ge1Gqgb3zxV3U7eU=w240-h480-rw;0;1;0;1;0;0;0;1;0;0;0;0;1;0;0;0;0;0;Success
+com.outfit7.talkingtomgoldrun;Talking Tom Gold Run;https://play-lh.googleusercontent.com/gXHJLOPxbvDkx6pD8VYxwDpqiOsfQKq-kJOCdRiaBdmX0CaAARy_WV4fJjQKT7KG0uI=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;0;1;1;1;0;1;1;Success
+com.ea.games.simsfreeplay_row;The Sims™ FreePlay;https://play-lh.googleusercontent.com/TFPeHxtr4LUNcMxbt5GE27IL__yucGJ7Z-w2eS-wVAkZLeLgHbVoPFI7C0VJxcEffg=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;1;1;Success
+com.mind.quiz.brain.out;Brain Out;https://play-lh.googleusercontent.com/cIZT8s6NiS_Ez_t0EbD_zoMgvdUsUIP8dgArn4iWcWynE4HYSsYdG7xJTuwkl-vZ3lE=w240-h480-rw;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.samsung.android.app.notes;Samsung Notes;https://play-lh.googleusercontent.com/YtLBM6IPz0ZWno6QCLJVqASU0E8OLFmxd-eepUSpAEmFIQzZrq7to1VJ20s-A5iMFA=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.rovio.angrybirds;Angry Birds Classic;https://play-lh.googleusercontent.com/iOi6YJxQwMenT5UQWGPWTrFMQFm68IC4uKlFtARveZzVD5lTZ7fC47_rnnF7Tk48DpY=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;Success
+com.sec.android.app.sbrowser;Samsung Internet Browser;https://play-lh.googleusercontent.com/wFAmWrV_t9YT75C6Vbyl1UupslTlq_lm7AcEPamSvWbqumIqKYfTpV_Ro_iC0fAjAQU=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;0;0;1;0;Success
+com.ea.game.pvzfree_row;Plants vs;https://play-lh.googleusercontent.com/hO7716hh7NCcFauJedDclX-R3Zh9JmbSs8AUU6TP2edGVILlZM7gmyt_8WPCZELiPQA=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;1;1;Success
+sinet.startup.inDriver;inDrive;https://play-lh.googleusercontent.com/xCJ6Mf_zjRLSzLfnHj0xe8gcdSLvE0LcszosTsCNzprlf0oLfPr4Ikewq1CcGBpisfo=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;0;1;Success
+com.halfbrick.fruitninjafree;Fruit Ninja®;https://play-lh.googleusercontent.com/eJ9OJnbRer1jjg5ZeNAnTXKcGd2B_NEqxCp2UsefcCABeFBaj_pNl_WKYBjup2GVGGc=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;0;0;1;1;0;0;1;0;Success
+sg.bigo.live;Bigo Live–Live Stream;https://play-lh.googleusercontent.com/CydApfJP6lqM_No4g7V8e59RscTGDMz0ADV3NGvrCZPxPtTixAuYi7iU8DeSGgQT2Oc=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;Success
+com.nexstreaming.app.kinemasterfree;KineMaster;https://play-lh.googleusercontent.com/Jaw57u6LQJNeqKfjJER9MM5On66ZXopBk3rrShag1BBZrX6cZdxxIMGf8nYA_Av0meA=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.ea.game.simcitymobile_row;com.ea.game.simcitymobile_row;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.gojek.app;com.gojek.app;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.adobe.reader;Adobe Acrobat Reader;https://play-lh.googleusercontent.com/nufRXPpDI9XP8mPdAvOoJULuBIH_OK4YbZZVu8i_-eDPulZpgb-Xp-EmI8Z53AlXHpqX=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.sirma.mobile.bible.android;YouVersion Bible App + Audio;https://play-lh.googleusercontent.com/03u7ovx5WUvmOWJDIxlNYaQY60hgcNzyRKQ5Bugex_zl-UXrxxXY4ROHEm179xly9OFr=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;1;1;1;1;0;0;1;Success
+com.jio.media.jiobeats;JioSaavn;https://play-lh.googleusercontent.com/gUR8xEKvCngapSZGkZUgoNETAYuhhkCr0Npza-lPSjbRCM55zdS0SK_KxBj1tg2RoQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;1;1;1;Success
+com.discord;Discord;https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.outfit7.mytalkingtom2;My Talking Tom 2;https://play-lh.googleusercontent.com/PrIoGyApKd4-rKJd0QyL300Apz1HBykTeyk04ZCNpLluByLB4DwZa0iatcM_D4eQkQJS=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;0;1;1;1;0;1;1;Success
+com.imangi.templerun;Temple Run;https://play-lh.googleusercontent.com/onlNBInQHIZtB2rY24BwrEsUUKwE753ao1BAvvhOw2ePEN1IHIUjaR3gvlGd3jyKTdg=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;0;1;1;Success
+com.miniclip.carrom;com.miniclip.carrom;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.playit.videoplayer;PLAYit;https://play-lh.googleusercontent.com/XyRQ3Jjq4pSaAv0XtVnLcUPfkPDrRULoAhRUeOxR53xgxrGVR1Lde2UcnJgZvRFodyN4=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+tv.twitch.android.app;tv.twitch.android.app;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+br.gov.caixa.tem;br.gov.caixa.tem;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.bsbportal.music;com.bsbportal.music;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.igg.castleclash;Castle Clash;https://play-lh.googleusercontent.com/IUXizkhlyVLOA4lvVUSfhGxFjRMrv_qfCO3Lpxa0P12nvuzv9kIbWSsCAbJAE_ypqA=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.gaana;com.gaana;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.tocaboca.tocalifeworld;com.tocaboca.tocalifeworld;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.ubercab.eats;Uber Eats;https://play-lh.googleusercontent.com/tYRirzPrNIJd6rw48wFf2caJBUTEXaKvlMn7JOm1ALQ2NM7GYwzpMClT_L18bl_MF_mL=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.utorrent.client;µTorrent®;https://play-lh.googleusercontent.com/YuU5xeZhfjY8kfsxvXSabAxZ2-Quutlj8QByfDiefsOPrygokAPF9jSU74dV6d2-3g=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.pubg.imobile;Battlegrounds Mobile India;https://play-lh.googleusercontent.com/DYXNS7NyuIgbCk5ElbK2Ch7dNuUnnCJ2ToDsV0QK0Q-MiGWQR7oDl9w8VXGinA5ureA=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+vStudio.Android.Camera360;Camera360;https://play-lh.googleusercontent.com/PRaSdJB5Rdiyqec66UW86NagVA-M8KiH7mO26bztmf4DEBaekM6hfpndU6qkjyZlWyM=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.lbe.parallel.intl;com.lbe.parallel.intl;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.kitkagames.fallbuddies;Stumble Guys;https://play-lh.googleusercontent.com/WIxz11upokgjG0ktYCTM7XmWOF7w8sIfcHBfcyFdYU1Qy_rucdjpRlZ6aS3dy3-8Jg=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.ea.game.nfs14_row;com.ea.game.nfs14_row;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+org.mozilla.firefox;Firefox Fast & Private Browser;https://play-lh.googleusercontent.com/zqsuwFUBwKRcGOSBinKQCL3JgfvOW49vJphq0ZF32aDgfqmuDyl-fEpx4Lxm4pRr7A=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.halfbrick.jetpackjoyride;com.halfbrick.jetpackjoyride;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.fdgentertainment.bananakong;com.fdgentertainment.bananakong;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.nordcurrent.canteenhd;Cooking Fever;https://play-lh.googleusercontent.com/vjIOR6a_64Kbb1yazqkAVftF8P7zcBl3NIQ-cGvkodhCbl7zZJWNRQI2I9PL8vM95ssE=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.commsource.beautyplus;BeautyPlus;https://play-lh.googleusercontent.com/lJIY_V549AX4TSWEROysSgnrJ7IUrBM6fGD_agVfSMKIqYHWSUlKsE76TuHt9CESSYM=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.naturalmotion.customstreetracer2;CSR 2 Realistic Drag Racing;https://play-lh.googleusercontent.com/dXHAPuotkFlTQlLtrwstPxj4MvbUgKHUKTWGN4Zy_CgiPm7TiNj4jJYN1NOlj6MCDCI=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;0;0;1;Success
+io.faceapp;FaceApp;https://play-lh.googleusercontent.com/wy7PeVendA2m-DZnkSZepPYA9BaYydp35NhUwiw-BWkqh7BwvTAYMnlox118MmE2mQ=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;1;1;1;Success
+com.movile.playkids.pkxd;PK XD;https://play-lh.googleusercontent.com/MJqA-o7gT6b8KOvpG1v5kJhHtaT1UKE_dSBko-6oLP_TP2t9eiGjDPQdYBVxm4VoV3I=w240-h480-rw;1;1;1;1;0;1;0;1;1;1;0;1;1;1;1;0;0;1;Success
+com.pixonic.wwr;War Robots Multiplayer Battles;https://play-lh.googleusercontent.com/67AtnAZEKOR_bm1MAYaapEyMFsKyLQzPMoyg6dmk-x8GzfmhEhcvDWSsHJLP_bkMAPE=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.apps.youtube.music;YouTube Music;https://play-lh.googleusercontent.com/GnYnNfKBr2nysHBYgYRCQtcv_RRNN0Sosn47F5ArKJu89DMR3_jHRAazoIVsPUoaMg=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.music;YouTube Music;https://play-lh.googleusercontent.com/GnYnNfKBr2nysHBYgYRCQtcv_RRNN0Sosn47F5ArKJu89DMR3_jHRAazoIVsPUoaMg=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+wp.wattpad;Wattpad;https://play-lh.googleusercontent.com/hXzUJqlB3e2-o--OEdziNHQxSql98xxQXeFI2uS-kZx2RVSBHtf3X-IS7x-39ovx=w240-h480-rw;1;1;1;1;1;0;1;1;0;0;0;0;1;1;0;0;1;0;Success
+com.fluffyfairygames.idleminertycoon;Idle Miner Tycoon;https://play-lh.googleusercontent.com/6zrk743ruy7eEfEPrs2S4WmyIGzVRSI-rvpnQzXtb2pPolXJNzB1jcfJhOTA2vWCKUQ=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.mediocre.smashhit;Smash Hit;https://play-lh.googleusercontent.com/Fjkmw0dBQ47oRI89hn8-rdkqpM4oKJ5_ht5tmye99msvCMd-Xz25fs5zQCiqJoINIZg=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.neptune.domino;Higgs Domino Island;https://play-lh.googleusercontent.com/Fx0NDO3ZlqxtwW9QpsiSOTNGpFrX3tQXnmrDfIbwKPWPl0uUUJUDvlkZiQg-_AXl4d8_=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;Success
+cn.wps.moffice_eng;WPS Office;https://play-lh.googleusercontent.com/DUohbTj-FKR_48Dav1c-1QZTSo6D0CzVNSO28RYhC2AH8_3B93AO3lTF3S2PKPQHeQY=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;0;1;1;1;1;0;1;Success
+br.gov.meugovbr;gov;https://play-lh.googleusercontent.com/qn6t9aaqbxUJDl9SMRlBkgG6SArPRfk_g_m5lyG6SjhpUfiW1PsHuJ6jSuL9GVDqnA=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+zombie.survival.craft.z;Last Day on Earth;https://play-lh.googleusercontent.com/1NJaEmZal-WWfNTcpQkpO0Z0U4SbLMcit2K3DDW2_BQ7OJkyn1at4zDAgBGCfZLLubDd=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.ebay.mobile;eBay;https://play-lh.googleusercontent.com/31-mJUIynIfQBizOn-w1yWLKHBxVeRKA3gz348_E3K-TnuEaqCjn_-Fr9j0yQ6i0y5E=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.yodo1.crossyroad;Crossy Road;https://play-lh.googleusercontent.com/2yH_JCxn7D9FttXZViPhmvIEDfRhio5qdLdWJLxcIfh8PjIkVeBgt_Gj7q21dIRp97g=w240-h480-rw;0;1;0;1;0;0;0;1;0;0;0;0;1;0;0;0;0;0;Success
+com.fingersoft.hcr2;com.fingersoft.hcr2;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.indeed.android.jobsearch;Indeed Job Search;https://play-lh.googleusercontent.com/_sJ-ST-crO8lxIzTv44xv_hiZvA6X7X2-8jSjhha2RfYcGSgACRod38yA6dfmcJHy_M=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.microsoft.skydrive;Microsoft OneDrive;https://play-lh.googleusercontent.com/6AWr-qrhGT0ohjw0koq3bM8GHEFg1gTurald4FjCDg2RulTp4y_VVsYWUtw7Fo6lsQo=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.wb.goog.mkx;Mortal Kombat;https://play-lh.googleusercontent.com/FHyo-8OuAN3P6_wJi21bayf8KltZ_ZWpE7n6M5lROrl-U3QeSjvbgi8clOhdaY_M5jY=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.melesta.coffeeshop;My Cafe — Restaurant Game;https://play-lh.googleusercontent.com/xbD-55r6LCOSXfm_m-s9F_74ca5xNMb0cnU6NtEwlR2qm4rDOq-mz3oP4PdYGIl8NQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+ee.mtakso.client;Bolt;https://play-lh.googleusercontent.com/TRCKh9Uk5mME5lVDZBAVmBMyBEiumHw4Ef9MTAnRqgcK8MEr4M8jqqBDGX_pKVBffpo=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;0;Success
+com.aim.racing;Extreme Car Driving Simulator;https://play-lh.googleusercontent.com/JZ3HjlDCO4f0f4Zmm1tak0YqX5Ux2bevEGM6QfxvYTPDUXiojHWSNb0NcRtWbud_Mg=w240-h480-rw;1;0;1;1;0;0;1;0;0;0;0;0;1;1;1;0;0;0;Success
+com.intsig.camscanner;CamScanner;https://play-lh.googleusercontent.com/eWYNxjXiub6-HqtwoS2d4bl-NkqcKgOHansSnXXqje8-K9XLRwflOgEYwSzPMicdAA=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;1;0;1;1;1;0;1;1;Success
+com.opera.browser;Opera browser with AI;https://play-lh.googleusercontent.com/arHjD1CpUMbdhSFv5FXN2ckVcYMD4_49Mv80TBDx1YLKLZ36g4MM07zz8Q3r2Eyi2pd2=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;Success
+com.prettysimple.criminalcaseandroid;Criminal Case;https://play-lh.googleusercontent.com/SBiKTwZOvN5W903jCmndHVx1EmDK7zZKk8MDo4DGaHTYisSxXuITLI42N4eyF94cghg=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;0;1;Success
+com.popularapp.periodcalendar;Period Calendar Period Tracker;https://play-lh.googleusercontent.com/3T6je2roer04CrMNWfJ1CT3VWuAWOo_qadovMi667wJ8W0DXyDflloB5aT7H9laqXvE=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+net.wargaming.wot.blitz;World of Tanks Blitz;https://play-lh.googleusercontent.com/bTRLfN4iVC5TqBSbzPmqzaK-EDtzeMko-p3nRQRyvEJo7Hfrt8kNbKfdeHna5R_3cKI=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.microsoft.office.excel;Microsoft Excel;https://play-lh.googleusercontent.com/37EzETO6gZyKmCg2kBIFX1e9gkubxZrVa5fHJ6yOaa7VvEShHjKv2RdtwnZt9Sk258s=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.devuni.flashlight;Tiny Flashlight + LED;https://play-lh.googleusercontent.com/aFo5TwJieEcGiqFOAAEznv1V22YPPOLSyeGc2w4_YpUKztu_wBNB1ghw0wCcZQWMlIPJ=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.sgiggle.production;Tango;https://play-lh.googleusercontent.com/mW4r8L0HliW2ccxPfO8JEnf3gmwgbLQBqrWz8Jb9U3abbZdp_PRn_YGTOllsI2BCiw=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.h8games.helixjump;Helix Jump;https://play-lh.googleusercontent.com/NiGittnMXob1uswaHeZRLf_xtpqOuUs67gqYC4N7KK6RJCjoulc0Tp_N3uSCwP-Q1Aw=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.digidust.elokence.akinator.freemium;Akinator;https://play-lh.googleusercontent.com/rjX8LZCV-MaY3o927R59GkEwDOIRLGCXFphaOTeFFzNiYY6SQ4a-B_5t7eUPlGANrcw=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.miniclip.agar.io;Agar;https://play-lh.googleusercontent.com/Vcje9CX1tdzivjyvaKqkyLXFWbDWt8IK2lU0c0VfkvHoTStv3BXc20jcqjGQoEC7A_U=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.ismaker.android.simsimi;SimSimi;https://play-lh.googleusercontent.com/FbuCjMk_VFWlmTGeAdgkIs8l5JkqWGJAmTgMJfVS_8IG1F7R6NtSUtVCXSGSYkvJfF4=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;1;1;1;Success
+com.cyberlink.youcammakeup;YouCam Makeup;https://play-lh.googleusercontent.com/WbljTZlJao8SRfSOU91yzujvji9z2Ae4N5Cl1U0c5w5cwjTDTQa4pCT1yzbc_kM9j0A=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;0;0;1;Success
+com.miHoYo.GenshinImpact;Genshin Impact;https://play-lh.googleusercontent.com/vRd2gg6XmC3TRTM5wZZ8qwEc5LMUROh4whycLuiCSPB40tIxDYLT6V0BdCn486XiKQ0=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.smule.singandroid;Smule;https://play-lh.googleusercontent.com/OfoqvtjnJN1BMezCZHJVVedsHrosIH_YoCUj28Sdhl3ch9tVFFGQgwnXByOR8t_6V58=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;0;0;0;Success
+com.ea.game.simpsons4_row;The Simpsons™;https://play-lh.googleusercontent.com/zyD5faSzRb3bYNrH021u-Vn84qZ30FdvNBf_d5CkSBdFnKArki0YxoDR-VnaC7K5hbBW=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;1;1;Success
+us.zoom.videomeetings;Zoom;https://play-lh.googleusercontent.com/yZsmiNjmji3ZoOuLthoVvptLB9cZ0vCmitcky4OUXNcEFV3IEQkrBD2uu5kuWRF5_ERA=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;0;1;1;1;1;1;1;1;Success
+com.myntra.android;Myntra;https://play-lh.googleusercontent.com/wpnNPYIrdHC3Q_bcFXGpwoMvFvvvQnZJHmFKzumq5ZTRZKIzfxURAUGOMqhPhVxnggY=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;0;1;0;Success
+com.episodeinteractive.android.catalog;Episode;https://play-lh.googleusercontent.com/jdk2h_1cOzHaRT81fPlGMNmZR215bYta6RV2mzz1f7VzmBEI-1PswAO2ZDa_UsbTYQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;1;1;0;1;0;0;1;Success
+com.kms.free;Kaspersky Antivirus & VPN;https://play-lh.googleusercontent.com/7ItyRpUiKSiYpolKVkrIu8DCc2WMCFllJjNa2v6MUuHdHQy4-pohJ3Q55_zEbwDDK2u8=w240-h480-rw;0;1;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.glu.deerhunt2;DEER HUNTER CLASSIC;https://play-lh.googleusercontent.com/uNJb66hzPfri1cgsLrd5hDnakD-5GSe5tSPc1l1PBDbGmjkUbXRX3C7wSwdn148cge4=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;0;0;1;1;1;1;0;1;Success
+com.ril.ajio;AJIO Online Shopping App;https://play-lh.googleusercontent.com/ODwuO86g8lbgiWbhRLclRnEstD0WAhlXYW9Me2rY2huXr7H0NYMAKUtwami7uyREN9Q=w240-h480-rw;1;1;1;1;1;0;1;1;1;1;0;0;1;1;0;0;1;0;Success
+com.nekki.shadowfight3;Shadow Fight 3;https://play-lh.googleusercontent.com/00V2zEGGgwdtx2Wegw-ZCL0t0n4nOGXDVq-weJxslZ-j_qFWrBeHgUzDqL9TAC3M3Ic=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;0;1;1;Success
+com.gameloft.android.ANMP.GloftM5HM;Modern Combat 5;https://play-lh.googleusercontent.com/N5OhX0Em8Uuu5B4JaXKZmwzy-0UUfGiF3OjDxdGic1m49DJyNujFgPFZSa0AJf4hiIKP=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.shopee.br;Shopee;https://play-lh.googleusercontent.com/W4UiQwLU-8Sjz7OKrURbAYvi0Eh3pZLzEP_SjQdNtlCj4WGbDtLSC3G1XMRQhWdEJEc=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;EmptyPolicyException
+com.amazon.avod.thirdpartyclient;Amazon Prime Video;https://play-lh.googleusercontent.com/1UlHhbCR2jpkXM3ErjfPQZ30Lq79bwqqbmwffOwh2mEI7l3QtreC7dDkx87gEz9TyA=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;0;0;1;1;0;0;0;0;Success
+com.dvloper.granny;Granny;https://play-lh.googleusercontent.com/yT_LBq_tyKeIDohKDsqN_Qt18jGIPUYIxY2C-1-E2YA9Qd60uZW08pua17qBmIiDPA=w240-h480-rw;1;1;1;1;0;0;1;1;0;0;0;0;1;0;0;0;0;0;Success
+com.ForgeGames.SpecialForcesGroup2;Special Forces Group 2;https://play-lh.googleusercontent.com/GR2lZuHq4IbY74vnPZ1dg7gdDYwYrpmJDFayNImeHaBDYx4XDLlEN_lcbPM8BAxlTKU=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.touchtype.swiftkey;Microsoft SwiftKey AI Keyboard;https://play-lh.googleusercontent.com/-T9LWvUtdAT4faOMnIOy0oInlZNPYquWJLFE1P0kL_R-WQvCK3nIdkqtZMkiHdCk9seW=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.mi.android.globalFileexplorer;File Manager;https://play-lh.googleusercontent.com/CsKUzyo8C47ZO10jX6tTvDRoGlqVTxWU8pwnBMbs6DMkjuDbDO78a_OYPj77tVxbI5Q=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.rovio.angrybirdsgo;Angry Birds Go!;https://play-lh.googleusercontent.com/4TyI9HMIuIUUEk70cyOHJJSC-DIqZYkPCkCnnN2byzxLwsBg6D8I9Dag6XLU_Q-nag=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;Success
+com.jio.jioplay.tv;JioTV;https://play-lh.googleusercontent.com/88vtAgV84YY8gq8JSEYez_4XVxFKtVdmHBWVkcNMSJoAK1KxnEZ-v2nuuSLV_H4uIn8=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;Success
+com.miniclip.plagueinc;Plague Inc;https://play-lh.googleusercontent.com/AhhhI8JGijtKuO8xOP_qUzOvIk7R7xBIKALKW_P7DV7jzWtvo2LrfC0081XMc85NGeBK=w240-h480-rw;1;1;1;1;1;0;0;1;1;1;1;1;1;1;1;0;0;0;Success
+air.com.lunime.gachalife;Gacha Life;https://play-lh.googleusercontent.com/Yma8Znj3IENI76qh6VC2cFgzoUwFdt4c2xXMYfK2VUaRZArjqsicFj4zCpUIZRwbdJ_b=w240-h480-rw;1;1;1;1;1;0;1;1;0;1;0;0;1;1;0;0;0;1;Success
+com.booking;Booking.com;https://play-lh.googleusercontent.com/OSr8skhGVmspz4WJQgjGcaFy1OkIJrd_Afr_X6a9Z4tAAtq4bDdOmxlCbSznf0UFxnai=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;1;1;1;0;1;1;Success
+com.transsion.phoenix;Phoenix Browser;https://play-lh.googleusercontent.com/kYv7AERFN3BIeIRYZnqnud7eU_11p7Ly46y99-EcoOHGxfWEbQWpAgyscMGUhPw4opNe=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+photo.editor.photoeditor.photoeditorpro;Photo Editor Pro;https://play-lh.googleusercontent.com/fNL2p8frW7OohneKTg-PO6ahEDGrxntbEZhT-s7jONrpSaIaonPmVLfMeSRdwhjDBXE4=w240-h480-rw;1;0;1;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;Success
+com.whereismytrain.android;Where is my Train;https://play-lh.googleusercontent.com/i-AHt0Jfx4dUNm6r2qBhDEzYle7H7nplhLgo4itmpYvmqCOcCKxUkVoqWIYeWaaVqtQ=w240-h480-rw;1;1;1;1;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.tumblr;Tumblr—Fandom;https://play-lh.googleusercontent.com/-qFbK9eTPT6I5rtvtIbf-wTtPmg-j0gT_fctrKOCLyFbBxmJeAVZ0oMRXcTYClRW08A=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;Success
+vsin.t16_funny_photo;Photo Lab Picture Editor & Art;https://play-lh.googleusercontent.com/VTQNSYHRK1DX_ykSQrvIenbpqRq01T-Z7ejttjKujlp7EQeQwsJ7sy6yf8ERYCK2KKjD=w240-h480-rw;1;1;1;1;1;0;1;1;0;0;0;0;1;1;0;0;0;0;Success
+com.appsomniacs.da2;Mini Militia;https://play-lh.googleusercontent.com/SXaV56IeGN04h6Mu-BwumPczseKuqTKOaV9zI6360ycaA4aS18F9BqSuIoldrxyjvZ4=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+cn.xender;Xender;https://play-lh.googleusercontent.com/y-jJBrUkvzwB2FsovKYjPl1TTIQ8eNl7__w3Waony71rjKqWmy1WxGZK47KuafZygQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;0;1;Success
+br.com.gabba.Caixa;CAIXA;https://play-lh.googleusercontent.com/ubV0x2kGJIEe10shxuFnH9Cy21OgHARwVUZ89nyE0YOZN9c25ov_dyHdk1rMgbPvoDI=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+in.mohalla.sharechat;ShareChat;https://play-lh.googleusercontent.com/cZU60RYPAhcEUhKx3tiJJg83U24qp16pWJuIpP_6Qxv37OXuYctdjS2eg8zNrv3jV5o=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;1;0;Success
+com.socialnmobile.dictapps.notepad.color.note;ColorNote Notepad Notes;https://play-lh.googleusercontent.com/IDOtRhsZLSG3EFxWxmWREMPa42_SNQvl9-x4FBu5dn9aJMjpVtMx_GoNdnQwEIp_7gsV=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;UnknownException
+com.moonvideo.android.resso;Resso Music;https://play-lh.googleusercontent.com/cMcuN96sR7PTgkmoOm3FA4t3qW44axRlp4JoTpMqQUlZk_KY-tz6yocw6sLfwex7R1I=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;0;0;1;Success
+com.bitstrips.imoji;Bitmoji;https://play-lh.googleusercontent.com/TdM1HpnaHHY3MIGHt_gEzrP85nTdCcWxfqG4S5223aslDu8IzksaDOs72ISMyHRi6V8=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;0;0;Success
+com.nekki.vector;Vector;https://play-lh.googleusercontent.com/3uxM8azaGvT5VLoRwH66VU9vqF5BjzBvAZ1ZUlZ_ILykIXODAdcrc6o6901BqZ5hlJE=w240-h480-rw;0;1;0;1;0;0;0;1;0;0;0;0;1;0;0;0;0;0;Success
+com.google.android.projection.gearhead;Android Auto;https://play-lh.googleusercontent.com/drnkC46hMwqPTdRLLLufhKgy_dRhA7uNTN14-tq2NxtI3deDakYOAR_4zeHcqbGg4Q=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.tts;Speech Services by Google;https://play-lh.googleusercontent.com/NqWvryDAnkEWLTq36xlrdx0CJ9rzxc3jfYJmIcrlxuJ_0X0QAG7Ojch8mX8_vFRauIvH=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.playgendary.kickthebuddy;Kick the Buddy;https://play-lh.googleusercontent.com/Pp_E-QbhIEbD4suP7XphQELzp85ef5nh7DoxFQgB9Rxfs2ZMFn0BCCgyNntBV50Mhrqh=w240-h480-rw;1;1;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.joeware.android.gpulumera;Candy Camera;https://play-lh.googleusercontent.com/LCNVdoh63fF6H8orYYmLGCptRZ4r-bvu0BHXrSRBAVJbn5LOfymKCwosXNn5fuDpHnw=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;Success
+com.joom;Joom;https://play-lh.googleusercontent.com/5d_xnYVgy22qIZRaLvWd9EaSBEpwpVAjtZJtvT98T2LDjXpS090ceQokC8IUrqVXSw=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;0;1;1;Success
+com.king.petrescuesaga;Pet Rescue Saga;https://play-lh.googleusercontent.com/THuUK2GRboYvvLsvxUbbzHnYdnUb978gxehcp2Kaq3idYJyxa6grUp8oZw6duWiGwg=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;Success
+com.google.android.marvin.talkback;Android Accessibility Suite;https://play-lh.googleusercontent.com/xBFTJQCPqUh0i97AwiPo-tPBndyn9GWwAqeoxPgKEPLdFcCaRsqcBpr6SC4uYgJ6Ew=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.starmakerinteractive.starmaker;StarMaker;https://play-lh.googleusercontent.com/93H1tf40Tq_4rn9waqWa6Wm2wx_YBMfPuOsxbzovvrahm3ndyk6hdUzBzetmWTulsw7e=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;1;1;1;1;1;1;1;Success
+com.ubercab.driver;Uber - Driver;https://play-lh.googleusercontent.com/u4PW84G_8dSNVtBadRA3JsmBRxFjO6UNeHtdOnV1k6bFXl8qmbeXIXE2Je8on-D6Vg=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.billiards.city.pool.nation.club;com.billiards.city.pool.nation.club;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.outfit7.talkingtom2free;com.outfit7.talkingtom2free;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.pandora.android;com.pandora.android;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.lockwoodpublishing.avakinlife;Avakin Life;https://play-lh.googleusercontent.com/IKojMLaL02W2OzXOCv5zkWIjrFGSGGrHohN3_SJ_Ldj80Uz6ORO1mKAL-5EJpiP1GA=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.whatsapp.wallpaper;WhatsApp Wallpaper;https://play-lh.googleusercontent.com/7jfcnc_BKw-oGhC-aFOCQoO6cgAHXi5daP85zSzvOBGGv7FHCHL4f7oJjgswVCoXqsRp=w240-h480-rw;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.rsupport.mvagent;com.rsupport.mvagent;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.amazon.mShop.android.shopping;Amazon Shopping;https://play-lh.googleusercontent.com/7nPCXIJ5I2KZCPdPH12SFIoYM6GF_tIGy3bIEGPB6kC8NV03MkaOzBaPIb6wesANuls=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;0;0;1;1;0;0;0;0;Success
+com.outfit7.mytalkingtomfriends;My Talking Tom Friends;https://play-lh.googleusercontent.com/yXVB9nmPzMZuJFqcXtBmu6eZ2zr5_FB6YcC2oLwnS-ri9cfuFyGV0fl-zVq_wO26=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.jrzheng.supervpnfree;SuperVPN Fast VPN Client;https://play-lh.googleusercontent.com/dQMtsDSpDh9JzPQAxoYyWNQACqyagOUMe-l17uOgzXsU6fYkfGKKRSMTK4Rnz6ybavA=w240-h480-rw;1;1;1;1;0;0;1;1;0;0;0;0;0;0;0;0;0;0;Success
+com.meesho.supply;Meesho;https://play-lh.googleusercontent.com/8F-0kIQuTleN9DD43WlxIz-4mqmPJ3-978fr1vYF0q_QoZRrlaD3znctc4kWguHdhUCU=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.mventus.selfcare.activity;Vi;https://play-lh.googleusercontent.com/eKCOzBC2g9En7mu91a9Iye7TE6rVcZhJcEYKFNlIzMfONEYEHr2zXWjotBKZ_FuGEQaO=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;1;1;1;1;0;1;0;Success
+com.os.airforce;1945 Air Force;https://play-lh.googleusercontent.com/OU2hCZUnoTuzXECIsyEncU0eiW8E0_6QDQxggppwp5iRxOZs_T2jyricqLanGIgaqt0=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.amanotes.beathopper;Tiles Hop;https://play-lh.googleusercontent.com/uA2SPkUUN4feau4S-JtJrxjTfjQ7s5_9vTA2dj1ECSPQy_GrQXGzSp_PH0eTibmymsM=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.pixel.art.coloring.color.number;Happy Color®;https://play-lh.googleusercontent.com/OKIUc3vQq9bemwOMHYURdp7sD2_arP63f11lHYwzfTM45pAVsQIdYjlZaaygkW5LP4U=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.dywx.larkplayer;com.dywx.larkplayer;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.halo.wifikey.wifilocating;WiFi Master;https://play-lh.googleusercontent.com/l_M4WND2sQbVuB-WAhOcHxuVkK7sblNHRF3P2r3NZi9gZrq2EZC7K2gDEnl2S8QzJg=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.kabam.marvelbattle;com.kabam.marvelbattle;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.kakao.talk;com.kakao.talk;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.amazon.kindle;com.amazon.kindle;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+deezer.android.app;deezer.android.app;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.naver.linewebtoon;WEBTOON;https://play-lh.googleusercontent.com/96JNm8WSKYZP4TKBV94uz-COb0tJv_Ud8S1etZUaRCOp227tkTTCb9yPp_ZfNLTIWMs=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.facebook.pages.app;Meta Business Suite;https://play-lh.googleusercontent.com/j1OseAaAgXiTFAMEuZcXEj6Kp9O3s0Xxr23B7znf3xJSL2i7IWPxEaAK4Fb8h4tUOJk=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.topfreegames.bikeracefreeworld;com.topfreegames.bikeracefreeworld;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.youmusic.magictiles;Magic Tiles 3;https://play-lh.googleusercontent.com/roGkhpU3GfmHjgGr3xfbyEInDmUNYZloBgLdfA9gOCAnlOejqWozqPUaEY26nGlzVxE=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.gamedevltd.wwh;World War Heroes — WW2 PvP FPS;https://play-lh.googleusercontent.com/QF54EK3wNCc1DNV4_rvHjRC0Dj3Ef1OtiWxWf9ldch65RQJeUuXz7zMCnXAKy3CK-g=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.fugo.wow;Words of Wonders;https://play-lh.googleusercontent.com/8Zc2SWYy3t70pvIdX9PeuaHpZZIP8sJybKiBUH2vkdxx9R2rypcIE-rN9_fbt-G7rWQ=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+org.iggymedia.periodtracker;org.iggymedia.periodtracker;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.global.foodpanda.android;com.global.foodpanda.android;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.craftsman.go;com.craftsman.go;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.gameloft.android.ANMP.GloftDOHM;com.gameloft.android.ANMP.GloftDOHM;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.rubygames.assassin;com.rubygames.assassin;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.netmarble.mherosgb;com.netmarble.mherosgb;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+co.brainly;co.brainly;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.miniclip.footballstrike;com.miniclip.footballstrike;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.midasplayer.apps.bubblewitchsaga2;com.midasplayer.apps.bubblewitchsaga2;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+musicplayer.musicapps.music.mp3player;musicplayer.musicapps.music.mp3player;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.mojang.minecrafttrialpe;com.mojang.minecrafttrialpe;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.disney.disneyplus;com.disney.disneyplus;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.hp.android.printservice;com.hp.android.printservice;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.microblink.photomath;com.microblink.photomath;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.paypal.android.p2pmobile;PayPal;https://play-lh.googleusercontent.com/bDCkDV64ZPT38q44KBEWgicFt2gDHdYPgCHbA3knlieeYpNqbliEqBI90Wr6Tu8YOw=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.jb.gosms;GO SMS Pro;https://play-lh.googleusercontent.com/FmpyPzDDi7unF9-GOruljrh-1zVjatcvEOmnanlVRKsoExiiwFK_H5JuJEia9QgWcbo=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;0;0;1;1;1;0;Success
+com.avito.android;Авито;https://play-lh.googleusercontent.com/Yv8ioqLmbvrBV0L6uH8NC7fVXRTJQZImZgzI6sRuvV4o2X9d9XXknDGQktyaR3dG4Nw=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.apps.youtube.mango;YouTube Go;https://play-lh.googleusercontent.com/3-GqbAOsTa__WI4MYNJYD9lo6k_RwDuJE2kA0GhWRkdZQFBt89aDbm9B--bUEgvxko3c=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.google.earth;Google Earth;https://play-lh.googleusercontent.com/9ORDOmn8l9dh-j4Sg3_S7CLcy0RRAI_wWt5jZtJOPztwnEkQ4y7mmGgoSYqbFR5jTc3m=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.amazon.mp3;Amazon Music;https://play-lh.googleusercontent.com/7CJqz69aGFnVCov8jv5rfvHDb19pK1KSycv3cFPPNuG9mPIqMiMkxgCVDhQUV2LwlpBj=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.biglime.cookingmadness;com.biglime.cookingmadness;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+fb.video.downloader;fb.video.downloader;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.bsb.hike;com.bsb.hike;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.maleo.bussimulatorid;com.maleo.bussimulatorid;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.weather.Weather;The Weather Channel;https://play-lh.googleusercontent.com/RV3DftXlA7WUV7w-BpE8zM0X7Y4RQd2vBvZVv6A01DEGb_eXFRjLmUhSqdbqrEl9klI=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.FDGEntertainment.redball4.gp;Red Ball 4;https://play-lh.googleusercontent.com/_2RsmTzfPHkBeSmDVOzgKaSQGLNqYep9mRsuYErzIcQslzAt_0hQDgoP4wJCwvMJkizT=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.wildspike.wormszone;com.wildspike.wormszone;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+home.solo.launcher.free;home.solo.launcher.free;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.reddit.frontpage;Reddit;https://play-lh.googleusercontent.com/nlptFyxNsb8J0g8ZLux6016kunduV4jCxIrOJ7EEy-IobSN1RCDXAJ6DTGP81z7rr5Zq=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;1;0;1;1;1;1;0;1;Success
+com.tv.v18.viola;Voot;https://play-lh.googleusercontent.com/70qBcFj4OSFhN2rPIiXadUvtSRSvSy4AAVvgWkKS3_PeUEabtIKL8gsDKbvjhSBa4UI=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;1;1;0;Success
+com.olx.southasia;OLX;https://play-lh.googleusercontent.com/tYdcwxICaq7q-Qe_jmQ-2YIMfZ011Tap8PtWLOOpLx23LJLvqr_YziUqek9nBEdVJE8=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;0;1;1;1;1;0;0;0;Success
+com.nu.production;Nubank;https://play-lh.googleusercontent.com/NPkx0aiwABB31gBw_CuZO9Rwukhir-BwemxfNlAVjT6smwk6QgUbb3XrmsSSClfzk0dY=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.ixigo.train.ixitrain;ixigo Train Status Book Ticket;https://play-lh.googleusercontent.com/hqBIT_YHJYDbNtsiL79ai6CQtgblYjT7bAVrPO0idwyHOKdZUAD_hzTGqniM6l6rbRY=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.xiaomi.hm.health;Zepp Life;https://play-lh.googleusercontent.com/d8zaApuDxb7MniMcSPpEXIKW8gnA_-JY26psf-HYxFNdPHsVKxQW5wDw85PZubA2aw=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+photoeditor.layout.collagemaker;photoeditor.layout.collagemaker;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.noxgroup.app.cleaner;Nox Cleaner;https://play-lh.googleusercontent.com/uwo4E7ll24g5n_qnwoPlQlIVThGfMHVO4U2LpzTdwVb0pongufKZBl_Y5Na1sIKGpwU=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.zeptolab.ctr.ads;Cut the Rope;https://play-lh.googleusercontent.com/lCbn5iYc9wRgsyoJwgxsbE-Ho3tPLLi_94-HaRZ2Zs2mXotvBuYj5nFAJZPCVXF7chFO=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.fungames.flightpilot;Flight Pilot;https://play-lh.googleusercontent.com/OzySMdpnSNBtwOgvk305JsryZBbcVsubgO1j3UiyGB_BE0jGGZpjM8BhAWZB-JoUczA=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.amazon.dee.app;Amazon Alexa;https://play-lh.googleusercontent.com/X24ol80nJS3F_nUg3HlqWWzSxEnDHeAI34quN8rTjILQOoebd0Be3ZFBQrKAtMX2XyE=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.bigwinepot.nwdn.international;Remini;https://play-lh.googleusercontent.com/xDh13mMPU9Z0cuPybhWla8k8LsjhgMmDi7XSKKFjyazb0Rohn3EDXNq9blytK-dVfDQw=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+homeworkout.homeworkouts.noequipment;Home Workout;https://play-lh.googleusercontent.com/Mxu4YhAr45fbX_iBwi4LiRuSDn9G8R-C_i6PF4Oqys6TqQab2Jl7U5w4WGDtoPwhpTk=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.creativemobile.DragRacing;Drag Racing;https://play-lh.googleusercontent.com/op4zONG7gh0CmarLFVYm8-HGpMtJouxS6MRz1V8uSHibrnI_F4glMLFrJp3XnBf93sZU=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+ru.ok.android;OK;https://play-lh.googleusercontent.com/AmPk1bWSXcrQw6IOvLyfNZFhB_f_TH-PEBQjW0H7eiF538X3LHO7HlpFWaDOP-p__Q=w240-h480-rw;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.king.bubblewitch3;Bubble Witch 3 Saga;https://play-lh.googleusercontent.com/0G0GOM5B7xXuWU_A38iGjrWiQD9E0wB9KobpKHUJowU4EBdfw62IoKqj3XmiXeq2BA=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;Success
+com.gameloft.android.ANMP.GloftA9HM;Asphalt 9;https://play-lh.googleusercontent.com/rE0uqFE6fsv0i9ag6cfQGK0BBN-d1n9N_e-K5SSjkfTtoDWQs-uEJBNFy6q-ED23Wig=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.superking.parchisi.star;Parchisi STAR Online;https://play-lh.googleusercontent.com/NdUWMwj7j8PED3UVxRX_2Qo9qeDD6SNooMFTLJCCHAO0YnsyKWkgAzfHN1VZARaEBdMO=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;1;1;0;1;0;Success
+com.maxgames.stickwarlegacy;Stick War;https://play-lh.googleusercontent.com/sITxnGaUxYVzTDkVAjRSKM8JKehWTuseE4hF8937sWVattKHEAirl7uZw93gqad_fQg6=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;1;0;1;Success
+app.source.getcontact;Getcontact;https://play-lh.googleusercontent.com/EVzr5ggqyw-960UKByM2fdMk9HVV2y7MKQ3VbI9jNSNhDNzckpxJZU8F8ZN1g0X26KnN=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;0;1;Success
+com.jb.gokeyboard;GO Keyboard Lite;https://play-lh.googleusercontent.com/7uOepJc8lw0oNbxYfNl0_xmlltZ10PWcPt1pXd4r6DEnui87D78ePWfcP7HAWP9uE3E=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;0;1;0;0;0;Success
+com.playmini.miniworld;Mini World;https://play-lh.googleusercontent.com/p8Avtk6jNHHfYqOByu5Y91rh76svjKgyimKucqhn8iCStbx_oOcStBlIWLNlfWhQxA=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.linkedin.android;LinkedIn;https://play-lh.googleusercontent.com/kMofEFLjobZy_bCuaiDogzBcUT-dz3BBbOrIEjJ-hqOabjK8ieuevGe6wlTD15QzOqw=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;0;1;1;Success
+com.microsoft.office.officehubrow;Microsoft 365;https://play-lh.googleusercontent.com/94uR6O49JmqiMMMsrfoDlWvWkqLf6rfE25zOH2BWnuzozzlfY1qnKaNzuQbUcupcpX9L=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.outfit7.movingeye.swampattack;Swamp Attack;https://play-lh.googleusercontent.com/gs2_V84raMPoPwyLGsqGsXD6uEduM42BZijzBPtoTEkiS1EH_uEZtyLhtM4fcQvLC4WV=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;Success
+jp.garud.ssimulator;SAKURA School Simulator;https://play-lh.googleusercontent.com/kE2hDKCtPcpI8nR0UAGZ7x0tHJQXooY-54bMyar5H2G_Y8-1-VxpB111tAqVCxNn8g=w240-h480-rw;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.myfitnesspal.android;MyFitnessPal;https://play-lh.googleusercontent.com/RSu_Yble-5MgqnXbuqaYdj9r97Wv3yE0ICX2vDGAw2QCZPF4wZLA71Q1cEndjR1WpDM=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.appstar.callrecorder;Automatic Call Recorder;https://play-lh.googleusercontent.com/50lZtknqq4EhJK2LBinrCn2VYk5E7LJDw_zhQQWaw0gBVIPCyTIWNJ48MqXqvUHZzQw=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.outfit7.talkingtom;Talking Tom Cat;https://play-lh.googleusercontent.com/_qGRXGGZa7k5W7Az2k1aF3zS5MHeY8lNhu1wfOxvpVqpFcW_dVTLeO7IOl3WlJahyCig=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;0;1;1;1;0;1;1;Success
+com.vectorunit.purple.googleplay;Beach Buggy Racing;https://play-lh.googleusercontent.com/ZQXNGxMGyXurnCTHHj5JQh52_fWEjXUwYGeJi3VKWOwrEeUjGAvcdCJSySmMGxvZujI=w240-h480-rw;1;1;1;1;1;0;1;1;0;1;1;1;1;0;1;0;0;0;Success
+com.touchtao.soccerkinggoogle;World Soccer League;https://play-lh.googleusercontent.com/6KPq0FnZb7MO5Q0qmE0u8uZXyo1p6djpzOGBW-jfF-ao5afbTK9n4noRyZoprTuvYZc=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;1;0;1;0;1;0;1;1;Success
+com.ea.gp.nbamobile;NBA LIVE Mobile Basketball;https://play-lh.googleusercontent.com/LSNNEr_f-M5oFDn-pPGyTBYK8os8aVzI7M3lKMT66f6Q4ojYQb0HIMfEt6mBNAEBHcU=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;1;1;Success
+com.emoji.coolkeyboard;Emoji keyboard;https://play-lh.googleusercontent.com/X4fUXR-GwCPLpZ801BBHPhkKEjjjHfFcs4HqsL8Pf8gPHrkkHbIaV38rt0QJ6vqRFw=w240-h480-rw;1;1;1;1;1;0;1;1;0;1;0;0;1;0;0;0;0;0;Success
+com.piriform.ccleaner;CCleaner – Phone Cleaner;https://play-lh.googleusercontent.com/b2QyF7_JRYIlkjRMJJvxWOjrYjGurpTxSzknNe7TgFlvSWsnSFVT0vv9xpxgFl6xsg=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.fungames.blockcraft;Block Craft 3D：Building Game;https://play-lh.googleusercontent.com/YOtXpivwnbn07ufEnrcX6W--s4FOK6qVMmxvhKkYZhQZzgjxAzy10DgvwlHhYzbHaF1Q=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;0;1;1;1;1;0;1;Success
+ru.mail.mailapp;Mail.ru;https://play-lh.googleusercontent.com/V6xcc6DfohWSBch_RyGUJUFuwm4hBH3N0VVf5QzERlMqzB2PAXCZOWZsO3vTDWCsCFI=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.slippy.linerusher;Fun Race 3D;https://play-lh.googleusercontent.com/cCFIYdSvfkyA-VWF1TayAXK4NgM2yZOYJ4ZKJEDpxJBeWuyOUFaBLhWTGbEcgA0zht0=w240-h480-rw;1;1;1;1;1;0;1;0;1;1;0;0;1;0;1;0;0;0;Success
+kik.android;Kik — Messaging & Chat App;https://play-lh.googleusercontent.com/SNVv2wJbBPWXll7MYovG8KfIwKjMHnMBiVZvDYzp9sFKNqTkF6Dq8xzTkigw8uos7LU=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.cyworld.camera;Cymera;https://play-lh.googleusercontent.com/7Zy-tLXcGSmbwA2nW7fNzO9ixXcXNJ1465MsJEHMAknd4TNTKmCgVS3N3xWEbdoYFIXy=w240-h480-rw;1;1;1;1;1;0;1;1;0;0;0;0;0;0;1;0;1;1;Success
+com.snapdeal.main;Snapdeal;https://play-lh.googleusercontent.com/mus3LmDNKHikDOJHIoyaOuYO_K_TgasrHKKKWLQCvksn6vRN32rNN9PYhwptrFWwmnc=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;1;1;Success
+com.generagames.resistance;Cover Fire;https://play-lh.googleusercontent.com/wA3ND-Z4EQ5S7DKsH3_Pz-aP4OY3OHobUvxwGjlGnaGM71D0jtwyL-lo9I_I0ZyuRyoT=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.apps.youtube.kids;YouTube Kids;https://play-lh.googleusercontent.com/S4wylkvt2jz16hnG9IG0pAZosbB82nWWy8P-rQkb54uH-SCVd5L2j7z7x1Vz5pZvIRc=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.theonegames.gunshipbattle;GUNSHIP BATTLE;https://play-lh.googleusercontent.com/Ne4huf6UpBZiIWqOwq_amXia2pWm_lg5POpIZoJmHJEKTyYR3NVWVK-394ZPC_8c4i4=w240-h480-rw;1;1;1;1;1;0;1;1;0;0;1;0;0;1;1;0;0;1;Success
+tunein.player;TuneIn Radio;https://play-lh.googleusercontent.com/KLI43egHmMQhCvDTH-EDWDdtxxPODJk6YO56Fa5cmmiYRd5LfBAXrVZmHcRCQ5j9_rZD=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;0;1;1;1;1;1;1;Success
+com.alien.shooter.galaxy.attack;Galaxy Attack;https://play-lh.googleusercontent.com/0VU1tELbaW2f8vgJYqW_RyZF6DrWY177bYFPt8oXT5esZzFl4V2c39zWlxhDWKo5Mtc=w240-h480-rw;1;1;1;1;0;1;1;1;0;0;0;0;1;1;1;0;0;1;Success
+com.taxis99;99;https://play-lh.googleusercontent.com/kZ9pwXneW4EAWtGNMsCL6bWQe5m7RDEYbGd8inBQgpuA-EkBl9nqapdcIq3eqPGBp-w=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.ogqcorp.bgh;Backgrounds HD;https://play-lh.googleusercontent.com/MDwwtLfE1hSkt6vIxAqvoUjAO0it9KDg63cLkyOYSlFnQYRCLxWITMyOI82ZrGWah7w=w240-h480-rw;1;1;1;1;1;0;1;1;0;0;0;0;1;0;1;0;0;0;Success
+com.yandex.browser;Yandex Browser with Protect;https://play-lh.googleusercontent.com/CAlpsF5mchuTP6mrEOZW2zXzJKBsVDYWc21K4XiaQKKoEuMhiABJjKWJBc3S6Ux-rY4=w240-h480-rw;0;1;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.cam001.selfie;Sweet Selfie;https://play-lh.googleusercontent.com/7RkfF4aOXuPzp5h7tyIjbJSoGaOEuPM3dwed3PBW4hymqSVcmija9QGtqHoBqJAPq8E=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+io.wifimap.wifimap;WiFi Map®;https://play-lh.googleusercontent.com/CEoPSY7njjihg2gYGoW2rTWYtRnfartCBOccCm5bwzCUUBbaVrCG6kFKqsQA3GpuSPI=w240-h480-rw;1;1;1;1;0;1;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.microsoft.office.powerpoint;Microsoft PowerPoint;https://play-lh.googleusercontent.com/6pTX4OILXTxazqad66oiVfG4x2KpYn4kIPgdzOe173tT0oHr2ThwpBhMyzzzxWq_r6M=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.zeptolab.ctr2.f2p.google;Cut the Rope 2;https://play-lh.googleusercontent.com/mcTuR3TnaIY8OMD1kGgUhrI2Q-xH8YXu6zPS78pimfnh_RlpxhiPmph7DbmuF62Zdw=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;0;1;Success
+com.miui.player;Mi Music;https://play-lh.googleusercontent.com/gmN7w6h4vr8C-Z0hsomy_5kWguSnxqshI-eT8VhjJzzbfbn22OSvRWuo2ZtinyA0IdA=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.vng.g6.a.zombie;Dead Target;https://play-lh.googleusercontent.com/JK4CEJ9k5f0aOTjv0EDdI_qkppqI5FsnWuLlu_2yNf7Pfo-FpIqI1z_BGkb8TUqCuw=w240-h480-rw;1;1;1;1;1;0;1;1;0;0;0;0;1;0;0;0;1;1;Success
+jp.ne.ibis.ibispaintx.app;ibis Paint X;https://play-lh.googleusercontent.com/QcfhlXm32JDnj3WM2-TSL78ad99x4slovX4OzCSLSPU3uRN-mGXpKyM_yeXiewhz0Lk=w240-h480-rw;1;1;1;1;0;1;0;1;0;1;1;0;1;0;1;0;1;1;Success
+com.google.android.videos;Google TV;https://play-lh.googleusercontent.com/qaXTXjbeuD0m-JDrJ2Y76_5Ghr_UDGQOJRmuYfLGekbMK0s5VXkGFjNCHS4tUJxumQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.gamma.scan;QR & Barcode Scanner;https://play-lh.googleusercontent.com/nJcgTrETflv8liaA-3zrv7po7NyfKDMpMswbazxx6oWGnNAzT4D1mPniyX0nOrE-YnaV=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;1;1;1;0;1;1;0;1;Success
+com.europosit.pixelcoloring;Pixel Art;https://play-lh.googleusercontent.com/k1unc_C1I-uqc5uNdjQLX6q2X45gf53PVSv9JBd2Pf6kRKw1pDGLc3BoqBtOiRuyXlg=w240-h480-rw;1;0;1;1;0;0;1;1;1;0;0;0;0;0;0;0;0;0;Success
+com.google.android.calendar;Google Calendar;https://play-lh.googleusercontent.com/Jsbb0EeesKUbDTl3UyDKO6sNz45RCMh7gnoI6giQcQz1f5Mj0J4TRh7Psyu53vShh-qm=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.ovelin.guitartuna;GuitarTuna;https://play-lh.googleusercontent.com/fncHoaxMdpJoXVs61jdTSugZDtyPL_gqA2TxcwkKXvr80ixqw-cSgO8Bwq9zltH4CObC=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;0;1;Success
+com.samsung.android.email.provider;Samsung Email;https://play-lh.googleusercontent.com/MaRCSacmqLlbSST5m_sJUb_tE9pTresHYgwpd4gInpcj_NVGbjLCnTe96Yx5zz893bA=w240-h480-rw;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+org.thoughtcrime.securesms;Signal Private Messenger;https://play-lh.googleusercontent.com/jCln_XT8Ruzp7loH1S6yM-ZzzpLP1kZ3CCdXVEo0tP2w5HNtWQds6lo6aLxLIjiW_X8=w240-h480-rw;1;1;1;1;1;0;1;1;0;0;0;0;1;1;0;0;0;0;Success
+com.eterno;Dailyhunt;https://play-lh.googleusercontent.com/hob_fdd8pV3AI8K2rv49MumzgdqmBcYW8BfuquYzGtFpsDu-JabZmvZhxm8oNNIX3bg=w240-h480-rw;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.matchington.mansion;Matchington Mansion;https://play-lh.googleusercontent.com/FXDuTE9O4v8h4hX3Qj9TtcI0R8V5RHOHXcOVNvoqPbELK9XaXzr3net8NP7oHQhkIJGy=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.dropbox.android;Dropbox;https://play-lh.googleusercontent.com/SichvTsd1IeQrAXwrPWxbpQjkE3fHH0__vYILizZ7qPmorxjuskcE2fWyTz1KcgX1e4=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;1;1;Success
+com.transsion.phonemaster;Phone Master–Junk Clean Master;https://play-lh.googleusercontent.com/7klO68Wk18LKxo7CQBVtWJP-JyWOemFvhoJXCW_YXHza9WTghV3GOkCd8fCa1duM5i4=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;0;1;Success
+com.olacabs.customer;Ola;https://play-lh.googleusercontent.com/FEloWOGywfRkEZL_i26Yb-yxr4efIe_xXD2ZIF3seR0OQ0B-Z1FXSamCv4XrwdrW8N4=w240-h480-rw;1;1;1;1;0;0;1;0;0;1;0;1;1;1;0;0;0;0;Success
+com.google.android.apps.books;Google Play Books & Audiobooks;https://play-lh.googleusercontent.com/KaGCIO38uDGXwAwLLChf67nHDWtUPei2eFdphhsvHWJdsXZFzZm_HmEuUywMeI0g7A=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.zuuks.bus.simulator.ultimate;Bus Simulator;https://play-lh.googleusercontent.com/vs4nOeJ_kPDLImyOuf07ZOmZv0_6zRjY7uBStFCQpPLFYl40Bk7OrsTAqK9RQZd8doQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;Success
+com.google.android.apps.meetings;Google Meet;https://play-lh.googleusercontent.com/DjOehhj7NQVdm1dmBAGdmxgoNR76IxZPG5lHoDx0EAKv8NGgvgxm4GuzQ-iTOk1nMQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.disney.wheresmywater2_goo;Where's My Water? 2;https://play-lh.googleusercontent.com/xAsBzQpt4GTBx3Clu-Fwrwu5CeZuKjLBpe69s1BnuwKKs6_TEkyj0AjtD4TmULio2Ww=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.teacapps.barcodescanner;QR & Barcode Reader;https://play-lh.googleusercontent.com/-CvY0c-MmYQf2xaJQ6TVj_PZO4lpKG3T-i78UOolkpMxwlUen3KsakPA7I8OOwjOx_Q=w240-h480-rw;1;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;1;Success
+me.zepeto.main;ZEPETO;https://play-lh.googleusercontent.com/jMtHecKZIxAomjynUXHjxj4QXrtRn7aoSLiFOzawZ8-UEZvOf-J77fulOohHMoZlDpTI=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.mambet.tv;BOOYAH!;https://play-lh.googleusercontent.com/5tr9mZGNH4DvjC5w1RwSeyjh_g2Nle7C1VvOA9zaSqO80xCKaoi0kHqsJMh3mg9T0Zw=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.lyrebirdstudio.montagenscolagem;com.lyrebirdstudio.montagenscolagem;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.instabridge.android;com.instabridge.android;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.alibaba.intl.android.apps.poseidon;com.alibaba.intl.android.apps.poseidon;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.masomo.headball2;com.masomo.headball2;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.playgendary.tom;com.playgendary.tom;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.studiosol.palcomp3;com.studiosol.palcomp3;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.playgendary.tanks;com.playgendary.tanks;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.outfit7.talkingangelafree;Talking Angela;https://play-lh.googleusercontent.com/gLGRqUe6_jVV3qKCqdI0vKiCGtTcDCuijqiLrSQqO0yTYGlu3WxoRw7RxjrKM-Uf4SY=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.nintendo.zaka;com.nintendo.zaka;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.olzhas.carparking.multyplayer;com.olzhas.carparking.multyplayer;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.ubisoft.hungrysharkworld;com.ubisoft.hungrysharkworld;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.zing.zalo;com.zing.zalo;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+fi.twomenandadog.zombiecatchers;Zombie Catchers;https://play-lh.googleusercontent.com/voHkJov0A6_3rSeZqX1D85KtKQ8pbyInBfsTq5VCUbBok_asWHn1bszJXLg0WYd3dj0Y=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+bubbleshooter.orig;bubbleshooter.orig;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.cyberlink.youperfect;YouCam Perfect;https://play-lh.googleusercontent.com/8jhL1FZPyaXf6u4l9yAfrqqVHzm3z9QDaV1mFbQWmCxS2b0_vPCIR3z8T9ijK9TygV4=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;TimeoutException
+com.explorationbase.ExplorationLite;com.explorationbase.ExplorationLite;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.frontrow.vlog;com.frontrow.vlog;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.freeplay.runandfight;com.freeplay.runandfight;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+sixpack.sixpackabs.absworkout;sixpack.sixpackabs.absworkout;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.hitrock.hideonline;com.hitrock.hideonline;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.xiaomi.midrop;com.xiaomi.midrop;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.google.ar.lens;Google Lens;https://play-lh.googleusercontent.com/Lf4wqYukj9swF-Gl2wvbus6cGoOoCylxbXTVmCO-6-eHWfhPNK78PngENEsWhEBiBw=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.apps.magazines;com.google.android.apps.magazines;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;WebDriverException
+com.google.android.apps.docs.editors.docs;Google Docs;https://play-lh.googleusercontent.com/emmbClh_hm0WpWZqJ0X59B8Pz1mKoB9HVLkYMktxhGE6_-30SdGoa-BmYW73RJ8MGZQ=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.samsung.android.app.watchmanager;Galaxy Wearable;https://play-lh.googleusercontent.com/oEMWkrKNoqb8qkrCgX-HQ1bCM0com8W5rRwQYURBJtDo7h8awSKzfHyN-_PIdC4mpA=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.keep;Google Keep;https://play-lh.googleusercontent.com/9bJoeaPbGTB8Tz_h4N-p-6ReRd8vSS-frZb2tmJulaGIoTKElKj3zpmcFJvnS96ANZP5=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.sec.android.app.shealth;Samsung Health;https://play-lh.googleusercontent.com/EoiTA0z1LdQHV2huvNc2NxXVquqAlOrwweONKMYjTYNYPK2KMQMOBR253NC6WsFm-dZl=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.sec.spp.push;Samsung Push Service;https://play-lh.googleusercontent.com/qEnoLjjRHkumpyJzVSseMwb2rEkprflJ_E9hI9IJ4euoVl2_XK6dSNk4rcauYshikq19=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+flipboard.app;Flipboard;https://play-lh.googleusercontent.com/Z5WroTW4KmTB3mvUhZMLwgFD2VymNypnEVVxoueXPPCKEFrnUAiZVl0684t1RFEOPqzB=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.apps.walletnfcrel;Google Wallet;https://play-lh.googleusercontent.com/DHBlQKvUNbopIS-VjQb3fUKQ_QH0Em-Q66AwG6LwD1Sach3lUvEWDb6hh8xNvKGmctU=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.ims;Carrier Services;https://play-lh.googleusercontent.com/979xjmpI6JBOlxNXQrXuyPRuW7jPOg9258hrKZ6HLXJqskTx8thI8c7EZr_rzlKUBLQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.samsung.android.voc;Samsung Members;https://play-lh.googleusercontent.com/5MlRrSa9Wm47Ig9kd9mDD9J3ekq_Pj1LXqeEJ3korTCsrc2d68HBWJYNYs6_p_fMBw=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.google.android.contacts;Contacts;https://play-lh.googleusercontent.com/fvhPW8dpGXM42Y-6aQU8Yl25L1l_mVgeoM-n08FxAkM7umAHkNs8wcs4MA49E67a7WVt=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.apps.searchlite;Google Go;https://play-lh.googleusercontent.com/RZ5luCUwc5QtJP9xDn-ZCwEutT160GVyoh5K1eu4YJ5fD7v4LP5ptVdgR9mz4Hnr7A=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.miui.weather2;Weather;https://play-lh.googleusercontent.com/sAZ2AZ16r5ThHiYCTWg8x1UUNQOhsxexRaDrDZKDlUy1hoZlggen6QogpJmQk8BwmgI=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.microsoft.office.onenote;Microsoft OneNote;https://play-lh.googleusercontent.com/3Wr_nlhRHjIGfPd-BNUbgffLfxPPqNW8GFPscqnQ4t2aPRyKlFMuXT4yhb-PSMsHgss=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+com.google.android.apps.docs.editors.sheets;Google Sheets;https://play-lh.googleusercontent.com/keE2gN0Hqh8-Tsf_RYZ_-yS2uo6ToqYVyRBv_UZaLXsgeeHBd2YPcEUWEF4DEtfGyb1h=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.samsung.android.oneconnect;SmartThings;https://play-lh.googleusercontent.com/zbO2ggF6K2YVII3qOfr0Knj3P0H7OdtTjZAcGBo3kK0vJppGoYsG4TMZINqyPlLa9vI=w240-h480-rw;0;0;1;1;0;0;1;1;0;1;0;0;0;1;0;0;0;0;Success
+com.google.android.apps.wellbeing;Digital Wellbeing;https://play-lh.googleusercontent.com/d74zkuWfVBFWjyhWXz9R2d6wh-WCBWoNB4M0x8iIXHvDOvdYbXJA4ivUQBWTkUjKMso=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.apps.googleassistant;Google Assistant;https://play-lh.googleusercontent.com/ORzWxi-sIo_hCgSa6uzVvBUE4osKUqRVzHnniUUxA2WXD7BnZ95BNVpWFLUTKRyJRdU=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.miui.videoplayer;Mi Video;https://play-lh.googleusercontent.com/xYG4H8EhTORclKqmQD5n09Y6krXPqXanQCnNBvyJsA6dQPcEhTSygvpq8i5wNfbZMnbC=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;EmptyPolicyException
+com.sec.android.app.music;Samsung Music;https://play-lh.googleusercontent.com/olj6n0kCUo_x3lNfgvzdGR5k_NEsz2D9PuC8evI0hYCHLSQHBhKY-cQwZ4EtWnac28o=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.sec.android.app.popupcalculator;Samsung Calculator;https://play-lh.googleusercontent.com/Z5BA3DYVKalnbCW8CGlIM3bN699i6QwRs5oE5kr_1-OYApm2cLPSlOP6mbdUJunXtw=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.microsoft.appmanager;Link to Windows;https://play-lh.googleusercontent.com/z5YSgrDgdBbVQejCzipNpUkLnRLYVUrHDLFpe4ZDz9lLZ-dM0XaUaYyv2X9gwzV-iEU=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;Success
+flipboard.boxer.app;Briefing;https://play-lh.googleusercontent.com/on_D7UBmdelc0c0shg1izfzYnMGv-kSLsdZEB2djnj2VU_6Mt-GO-57VSqHoIrQtgcc=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;0;1;1;Success
+com.mi.globalbrowser;Mi Browser;https://play-lh.googleusercontent.com/1I1wpAs1qIbX9pHnKjjIAv4piTZjKAMjvTCK6367HgjR2nwBRT2j5IOPttymGi6jXbc=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.google.android.apps.podcasts;Google Podcasts;https://play-lh.googleusercontent.com/BQUYd1Th9Z_XI5wtklPQDHmiNkSOzBakOnpk-Ni8CBTyHb0E7UM5LpyjRW9BWs4fUuVD=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.mi.android.globalminusscreen;App Vault;https://play-lh.googleusercontent.com/_YoICOdAS2_VRdQJcUVjxduBZgl2OVzHevNpFoEU9-fP4oPrdbpIfhspBP2KoVMtog=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;1;1;Success
+com.google.ar.core;Google Play Services for AR;https://play-lh.googleusercontent.com/ugEBVDcghA1x9fVldH8oz3aEQnMLki0pEc5xfpaZTi9SQGEbQqM-Cbzb60MU4fLM9bIv=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.apps.docs.editors.slides;Google Slides;https://play-lh.googleusercontent.com/DG-zbXPr8LItYD8F2nD4aR_SK_jpkipLBK77YWY-F0cdJt67VFgCHZtRtjsakzTw3EM=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.huawei.hwid;Huawei Mobile Services;https://play-lh.googleusercontent.com/YNB7QJU1nIJMly9SCPjKJiRflY_ZfwcPzKeHaU6VCueTACfii_9GalPYBQwGKaP0bwAA=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;1;0;Success
+com.google.android.deskclock;Clock;https://play-lh.googleusercontent.com/k-K6mdmZJZrJiuMJCHILReDGjMl_2ljzFIz3QLULfKL1q0tWtTcAkc0RDsjg9QEuXYw=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.calculator;Calculator;https://play-lh.googleusercontent.com/POgn4x_Jrz18VxrjbZC88ijwZJwmOjs2flX1KC0Kz7IF1oncFoKOMsWfFKntJjc20BRJ=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.samsung.android.lool;Device Care;https://play-lh.googleusercontent.com/dK6NyiPP4Z2S429GOzSqmTNlsfv-Z7Fxwjv2Ksf_TOn5y5A4EkWqR-8zk3HKg5Jamc4=w240-h480-rw;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.apps.restore;Data Restore Tool;https://play-lh.googleusercontent.com/7vcafwoxDSOI87n4F9kFCeeS11F9hujbl2EEqXNSH_3uWR6t8ofsQxLMOv05x1WazQ=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.sec.app.samsungprintservice;Samsung Print Service Plugin;https://play-lh.googleusercontent.com/CdIos6mrIKCe3-wBkz0FOJnCuCkFWWzSeCotm1CEBAwgy-dUY0K6vHfE_VbCa-Sbaedg=w240-h480-rw;0;0;1;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;Success
+com.google.android.apps.subscriptions.red;Google One;https://play-lh.googleusercontent.com/B5AENJqFOd91t5cWZLTQbVUm7iDWzYVM1n0Pe2RI_46dhlWMtVAUBioUvy4YMXWdwA=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.sec.android.app.myfiles;Samsung My Files;https://play-lh.googleusercontent.com/lnpKvMilxwIke9dyR1y87hbQ-J3av7kUaHspJHrsE46oYJg-Uy6I90XAHuyaO1j15Q=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.apps.assistant;Google Assistant Go;https://play-lh.googleusercontent.com/IO9Ygb0FTLzvT91cPcd1iSy4brbuZimoV11VWKx6EUhUkZxDKEEr3waBu7_PqROmfPs=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.dsi.ant.service.socket;ANT Radio Service;https://play-lh.googleusercontent.com/tcREqZGBts5gQL_L8uXdk80YnCkOrVFmFFLNfjqb6VpvYEDd-KkJprvkkqnWa4Y9tQ=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.google.android.apps.navlite;Navigation for Google Maps Go;https://play-lh.googleusercontent.com/3PSQmZ0QImgp4yLhpezISlGst1qdiXDHGS9V2w86SDXn_hLIiL5x1cYKTjHBeTtn1Lh6=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.policydm;Samsung Security Policy Update;https://play-lh.googleusercontent.com/qmKKojzGsv7QCdLm3QM24f3_XExjfp_P0-0ZZ1a3tZPvrFbGTCCctGX8JSmgYu8bHxPb=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.dsi.ant.plugins.antplus;ANT+ Plugins Service;https://play-lh.googleusercontent.com/KJVH-4BbsRxmaJm6oTbtzXkb8p2pVcpa_8ouzcNv_AlRGkyQjDy2VBmy9tGCR9PX2Ps=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;0;0;1;0;1;0;0;0;Success
+com.miui.calculator;Calculator;https://play-lh.googleusercontent.com/xXatgEchGxq0QXNMN0xYCCV5uPMwQqFV8YPDE7WDoonuaaamRotO-qFoGHi4tg0hgWM=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;0;1;Success
+com.sec.android.app.launcher;Samsung One UI Home;https://play-lh.googleusercontent.com/TUofHfRQ-996L9Jzdb6LrTFF8wJ9lZ3cWP_UV0Uk_zX6JBZuaBJz2lzfbR0QyXMqsDM=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.samsung.knox.securefolder;Secure Folder;https://play-lh.googleusercontent.com/1EjZ4I1xWdQNN44skn8tJLcsynQotyIbmVi9ZX53fMgGNP95G2PQ3EgqeQXzUOXNmTk=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.google.android.apps.mapslite;Google Maps Go;https://play-lh.googleusercontent.com/0uRNRSe4iS6nhvfbBcoScHcBTx1PMmxkCx8rrEsI2UQcQeZ5ByKz8fkhwRqR3vttOg=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.google.android.apps.wallpaper;Wallpapers;https://play-lh.googleusercontent.com/2aJfB6trLglywvIh6MSN58qh-r2b-_2GoXk4dWL5fIZmMAWdTN3f98Ugpi6U_glIm0w=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.sec.android.app.voicenote;Samsung Voice Recorder;https://play-lh.googleusercontent.com/EaHQ7KJNn6ZAICf0kEVwKunD4hZd-59oggNErDPDKTaK20sXXfVUN0AYJP70-x8UjQ=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;0;0;1;0;Success
+com.vivo.easyshare;EasyShare;https://play-lh.googleusercontent.com/S5x2zCnIUx7AzFU5WRIvr8uaMhHXyONGQeuN37hvIcTDt8oyzlT1srs-N_wK980e9SU=w240-h480-rw;0;0;1;1;0;0;1;0;0;0;0;0;0;1;0;0;0;0;Success
+com.google.android.apps.photosgo;Gallery;https://play-lh.googleusercontent.com/pmEnTOeRvosC1yOXFVwo15zS2uAdB9nijugU93NbrmFBYt61IVCZBzg7EZ00YTqmLw=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.sec.android.app.clockpackage;Clock;https://play-lh.googleusercontent.com/BHOff71v26SuyW6EKHIEcwX89j2vm_f9AeWHBYqe6v7Onq786hU5VYx27h6o_FJo8hQ=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;0;0;1;0;Success
+com.samsung.sree;Samsung Global Goals;https://play-lh.googleusercontent.com/B3WhuEaz4WH4jgJKEF0uZnhmy3yiSFr3cW-UKJ3qM3jC-IPF_s3w3-GalvOaDIueC1U=w240-h480-rw;1;1;1;1;0;1;1;1;0;1;0;0;1;0;1;1;0;1;Success
+com.sec.pcw;Samsung Link;https://play-lh.googleusercontent.com/w78tfgGGrh_m66KDopz1rq7Qr4kL4eIi5OBhXZze0DFenEKZUnI6Z4adcbKnE8684dE=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;NoPolicyException.
+com.huawei.KoBackup;Huawei Backup;https://play-lh.googleusercontent.com/3gnbtSE-oEVVs93adqeVB6Ooiagt7c4dqKeBhCQYs0BEsFQCmQc34Ij7hCWcGP14Y-Y=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;1;0;Success
+com.gallery20;AI Gallery;https://play-lh.googleusercontent.com/mlR3AHmDvRYxBLf2Vwr8gy6C7wU6Uj9JrudQ2tUT9JrYbLL0zDiPBszvArZmPgNYUwM=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;1;0;1;0;1;1;1;0;Success
+com.google.android.gm.lite;Gmail Go;https://play-lh.googleusercontent.com/qWPdFvazDmlmJospzE3zESXvwJx7SKpgjO3BNIYyD21sfiXjsnjz8t822eBiAYWSo7Yt=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.hicloud.android.clone;Phone Clone;https://play-lh.googleusercontent.com/fCyp9UHnTiK6cG9JctGc1WuMhtQLntUe4jUKgGoTpcWs0_wfMwV3Zb3G4vvYzUJjTh4=w240-h480-rw;1;1;1;1;1;1;1;1;0;1;0;0;1;1;1;0;1;0;Success
+com.google.audio.hearing.visualization.accessibility.scribe;Live Transcribe & Notification;https://play-lh.googleusercontent.com/WGL-NJweVl14emnMqC8d8HRj0rm00jbA0lwOMA9uX2U_cHceLWAOctreTWD4iLDCdRk=w240-h480-rw;1;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;0;1;Success
+com.motorola.actions;Moto Actions;https://play-lh.googleusercontent.com/KCsL-wMWbwEFkq1mSLY9g65LXmvvgf0qh4UHP6yifDq8gjojF7gfPjRx9uwvE1_wug=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;1;0;1;Success
+com.xiaomi.calendar;Mi Calendar;https://play-lh.googleusercontent.com/ZcCJmPWLJgpWutPle2eUsDuYS89TdZBDJileSj86DdV2g5oEo3xdVvRppLSvaaf4WrU=w240-h480-rw;1;1;1;1;1;1;1;1;1;1;1;0;1;1;1;1;0;1;Success
+com.motorola.fmplayer;FM Radio;https://play-lh.googleusercontent.com/lOCdPFpwZrLv1UISCoXerHdvt6mAuSXQ1SreTOWpLGPCd4iE8TqPHnCCYZK-Dx5z5hg=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;1;0;1;Success
+com.motorola.motodisplay;Moto Display;https://play-lh.googleusercontent.com/7VUEzqGg6W0l7N5X8MROD606kUNi1zo3IJg4Z4s0cZoTdfVNWkmoZbWVkdJoCeMvhMM=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;1;0;1;Success
+com.motorola.genie;Device Help;https://play-lh.googleusercontent.com/yrL3NQO1uWgn39jgzZUgLbry-vUlaJWzX-BWqFtp2S3KqmZHEzWJr-Ad5SwWUdcbMg=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.vivo.website;vivo;https://play-lh.googleusercontent.com/n3nFwmnQIqxD2vyf9bW6inoyNukkDDnm22vpEMznDXvo9yH_WcudyC2wT_eB1gdq8Pif=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.motorola.ccc.notification;Motorola Notifications;https://play-lh.googleusercontent.com/3BJzxTpBD99kq16Kbhuxd7asc9idHB1-O7uPMu9PMwrL20_rtQcgxmYz-YGq8rVM6ZY=w240-h480-rw;1;1;1;1;1;1;1;1;0;0;1;0;1;1;1;1;0;1;Success
+com.bbk.theme;Themes;https://play-lh.googleusercontent.com/ZB58iOdGlw8ReIKd6gpPDdzR7cijVMSTy9CeICMXr8ElEQwqDHZhsRAhxaAtlC2BRA=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;LanguageException
+com.miui.cleaner;Cleaner;https://play-lh.googleusercontent.com/i2bYfiTIh-_ZK6kKWYHH-6c1utRssi4EOfRll8x0G1g4pLvMehlKHuCc_8lUAJ4USg=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.samsung.android.uds;Ultra data saving;https://play-lh.googleusercontent.com/x7Tke7zxcrBbmSo35meu_Tz_OdZ7NlSydXMW7nda8eboIDtI_bKW4OstztReTGNjy6vB=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.samsung.memorysaver;Storage Saver;https://play-lh.googleusercontent.com/00W6fMiYFm9odU1Jp251Fj2gmiW8gPegPwZfSSFPfkmnwR2MAtdGiT2dvkjISRszKQ=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.motorola.timeweatherwidget;Moto Widget;https://play-lh.googleusercontent.com/RyqhLiAXxWqB-fO71jOwI6CXOcmRWg6FovBXoLH-FvPuG05zwidWMJBhbsLZ9sIjPUPq=w240-h480-rw;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;Success
+com.heytap.pictorial;Heytap Pictorial;https://play-lh.googleusercontent.com/ETfcSgOsML-20jxqFDvcFCq05BnfSJ8g5IboN1RRNtzx4pV2T-Tg7-lLr1mT6rXppfrb=w240-h480-rw;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;Success
+com.samsung.android.scloud;Samsung Cloud for Wear OS;https://play-lh.googleusercontent.com/8mL9VZddaE9gfQxPAgefd3mbSNh1QsCHp9ENuSVzTJP2yUrnsSKASUPIRN4MWDg3b9n3=w240-h480-rw;0;0;1;1;0;1;1;0;0;0;0;0;0;1;0;0;0;0;Success

@@ -1,3 +1,7 @@
+"""
+The script contains classes and functions for managing Android apps and constant values stored in dictionaries.
+"""
+
 class AndroidApp:
     """
     Represents an Android app.
@@ -85,6 +89,15 @@ CATEGORIES = {
     "Game Trivia": "?category=GAME_TRIVIA",
     "Game Word": "?category=GAME_WORD"
 }
+"""
+Dictionary mapping category keys to query parameters for androidrank.com.
+
+This constant provides a mapping between category keys and their corresponding query parameters for the androidrank.com website.
+Each key-value pair in this dictionary represents a category key and its corresponding query parameter.
+
+The query parameter is used to filter the apps on the website based on the specified category.
+
+"""
 
 ZERO_SCORES = {
     'Data Recipients': 0,
@@ -106,6 +119,34 @@ ZERO_SCORES = {
     'DPO Contact': 0,
     'Adequacy Decision': 0
 }
+"""
+Dictionary representing zero scores for all privacy categories.
+
+This constant contains key-value pairs where the keys represent different categories
+and the values represent the corresponding zero scores. These scores are associated
+with a privacy policy.
+
+The categories included in this dictionary are:
+- Data Recipients
+- Safeguards Copy
+- Processing Purpose
+- Data Categories
+- Source of Data
+- Right to Erase
+- Right to Restrict
+- Right to Access
+- Right to Object
+- Withdraw Consent
+- Right to Portability
+- Profiling
+- Controller Contact
+- Provision Requirement
+- Storage Period
+- Lodge Complaint
+- DPO Contact
+- Adequacy Decision
+
+"""
 
 LANGUAGE_DICT = {
     'af': 'Afrikaans',
@@ -164,3 +205,12 @@ LANGUAGE_DICT = {
     'zh-cn': 'Chinese (Simplified)',
     'zh-tw': 'Chinese (Traditional)'
 }
+"""
+Dictionary mapping language codes to language names.
+
+This constant provides a mapping between language codes and their corresponding language names.
+It is primarily used by the langdetect library for identifying the language based on the language code.
+
+Each key-value pair in this dictionary represents a language code and its corresponding language name.
+
+"""

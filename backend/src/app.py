@@ -1,14 +1,18 @@
+"""
+The script initializes and runs the flask app. Furthermore, it provides the app routes and orchestrates functions from the nlp and webcrawling modules.
+"""
+
 from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from selenium import webdriver
-from webcrawling.app_db_crawler import crawl_db
-from webcrawling.playstore_crawler import get_name_logo_url_policy_by_id
-from webcrawling.androidrank_crawler import get_ids_for_category
-from NLP.NLPPredictor.predictor import predictor
-from models import AndroidApp, ZERO_SCORES
+from src.webcrawling.app_db_crawler import crawl_db
+from src.webcrawling.playstore_crawler import get_name_logo_url_policy_by_id
+from src.webcrawling.androidrank_crawler import get_ids_for_category
+from src.NLP.NLPPredictor.predictor import predictor
+from src.models import AndroidApp, ZERO_SCORES
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the Flask app
@@ -19,7 +23,13 @@ app.config['DEBUG'] = True
 
 @app.route('/')
 def index():
-    """API endpoint for the root URL."""
+    """
+    API endpoint for the root URL.
+
+    Returns:
+        tuple: A tuple containing the JSON response data and the HTTP status code.
+
+    """
     data = {"key": "value"}
     print(data)
     return jsonify(data), 500
@@ -97,7 +107,7 @@ def get_db():
 
     """
     try:
-        with open('/app/db.json', 'r') as file:
+        with open('/app/src/db.json', 'r') as file:
             data = file.read()
             return jsonify(data), 200
     except FileNotFoundError:
@@ -165,6 +175,9 @@ def get_apps_by_ids(ids):
 
     Returns:
         str: JSON string containing the app information.
+
+    Raises:
+        Exception: If an error occurs during the process.
 
     """
     try:

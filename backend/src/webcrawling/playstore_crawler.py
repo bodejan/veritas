@@ -1,3 +1,50 @@
+"""
+This module provides functions to scrape privacy policy information from the Google Play Store page of an app.
+
+Functions:
+- get_name_logo_url_policy_by_id(id: str) -> Tuple[str, str, str]
+    Extracts the app name, logo URL, and privacy policy URL from the Google Play Store page of an app.
+    Raises various exceptions for different scenarios.
+
+- extract_policy_from_driver(driver: WebDriver) -> str
+    Extract the policy text from the driver's current page.
+
+- export_policy_txt(policy: str, id: str) -> None
+    Export the policy text to a text file.
+
+- export_policy_html(page_source: str, id: str) -> None
+    Export the page source to an HTML file.
+
+- add_playstore_link_to_policy(policy: str, id: str) -> str
+    Add the Google Play Store link to the policy text.
+
+- create_error_message(error_type: str, error_description: str, id: str, policy: str) -> str
+    Create an error message with the given error type, description, app ID, and policy.
+
+- extract_policy_from_page_bs4(page_source: str) -> str
+    Extract the policy text from the page source using BeautifulSoup.
+
+- extract_name_logo_url_from_page(page_source: str, id: str) -> Tuple[str, str]
+    Extract the app name and logo URL from the page source.
+
+- slice_app_name(name: str) -> str
+    Slice the app name to remove unnecessary parts.
+
+- detect_language(text: str) -> str
+    Detect the language of the given text.
+
+- forwarding_notice_present(page_source: str) -> bool
+    Check if a forwarding notice is present on the page.
+
+Custom Exceptions:
+- PDFFileException: Exception raised when a PDF file is encountered instead of a web page.
+- LanguageException: Exception raised when the language of the web page is not English.
+- NotInPlayStoreException: Exception raised when the app is not found in the Google Play Store.
+- EmptyPolicyException: Exception raised when the privacy policy is empty.
+- AccessDeniedException: Exception raised when access to the web page is denied.
+- NoPolicyException: Exception raised when no privacy policy is found on the web page.
+"""
+
 import time
 import re
 from bs4 import BeautifulSoup
@@ -9,26 +56,43 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from langdetect import detect
 
-from models import LANGUAGE_DICT as language_dict
+from src.models import LANGUAGE_DICT as language_dict
 
 
 # Custom exception classes
 class PDFFileException(Exception):
+    """Exception raised when a PDF file is encountered instead of a web page."""
+
     pass
+
 
 class LanguageException(Exception):
+    """Exception raised when the language of the web page is not English."""
+
     pass
+
 
 class NotInPlayStoreException(Exception):
+    """Exception raised when the app is not found in the Google Play Store."""
+
     pass
+
 
 class EmptyPolicyException(Exception):
+    """Exception raised when the privacy policy is empty."""
+
     pass
+
 
 class AccessDeniedException(Exception):
+    """Exception raised when access to the web page is denied."""
+
     pass
 
+
 class NoPolicyException(Exception):
+    """Exception raised when no privacy policy is found on the web page."""
+
     pass
 
 def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str, str, str]:
