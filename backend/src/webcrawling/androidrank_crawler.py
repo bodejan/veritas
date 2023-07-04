@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from models import CATEGORIES
+from src.models import CATEGORIES
 
 categories = CATEGORIES
 

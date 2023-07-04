@@ -21,4 +21,8 @@ EXPOSE 8000
 
 ENV FLASK_DEBUG=1
 
-CMD flask run -h 0.0.0.0 -p 8000 --reload
+# Set the FLASK_APP environment variable to the module's name
+ENV FLASK_APP=src.app
+
+# Run the Flask app
+CMD ["flask", "run", "-h", "0.0.0.0", "-p", "8000", "--reload"]

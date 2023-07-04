@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from langdetect import detect
 
-from models import LANGUAGE_DICT as language_dict
+from src.models import LANGUAGE_DICT as language_dict
 
 
 # Custom exception classes

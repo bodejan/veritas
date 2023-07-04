@@ -8,8 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from webcrawling.androidrank_crawler import click_next_page
-from models import CATEGORIES
+from src.webcrawling.androidrank_crawler import click_next_page
+from src.models import CATEGORIES
 
 categories = CATEGORIES
 number_apps_per_category = 20
@@ -34,14 +34,14 @@ def crawl_db():
     # Sort the array alphabetically by the "name" key, putting numbers after "z"
     final_data.sort(key=lambda x: (x['name'][0].isdigit(), x['name'][0].isalpha(), x['name']))
 
-    temp_file_path = "temp_db.json"
+    temp_file_path = "src/temp_db.json"
     with open(temp_file_path, "w") as outfile:
         json.dump(final_data, outfile, indent=4)
 
     try:
-        if os.path.exists("db.json"):
-            os.remove("db.json")
-        os.rename(temp_file_path, "db.json")
+        if os.path.exists("src/db.json"):
+            os.remove("src/db.json")
+        os.rename(temp_file_path, "src/db.json")
         print("Database refreshed successfully.")
     except Exception as e:
         print("An error occurred while refreshing the database.")

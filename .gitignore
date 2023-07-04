@@ -4,6 +4,6 @@ geckodriver.log
 .vscode/settings.json
 /node_modules
 /frontend/node_modules
-backend/webcrawling/eval/**
+backend/src/webcrawling/eval/**
 /frontend/junit.xml
 junit.xml
