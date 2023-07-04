@@ -94,7 +94,7 @@ This will start the Frontend and Backend services as defined in the `docker-comp
 ### Frontend
 
 ### Backend
-The documentation for the backend is automatically created based on docstrings using [pdoc3](https://github.com/pdoc3/pdoc) (see [backend docs](backend/docs/src/index.html)).
+The documentation for the backend is automatically created based on docstrings using [pdoc3](https://github.com/pdoc3/pdoc). <br> (See [backend docs](backend/docs/src/index.html)).
 
 To update the documentation using pdoc3:
 
@@ -113,7 +113,15 @@ pdoc --html --output-dir docs --force src
 3. Open ```/backend/docs/src/index.html``` in your web-browser of choice.
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+1. Install frontend and backend following the installation guide.
+2. Access ```http://localhost:3000``` in your web-browser of choice.
+3. Generate a score for the completenes of an android apps' privacy policy via.:
+
+    3.1. The apps' category
+
+    3.2. The apps' id
+
+    3.3. The apps' name
 
 ## Troubleshooting
 1. Recreate the frontend and backend container using the installation guide.
@@ -126,7 +134,7 @@ For contributions please open a pull-request. Future features may include:
 1. Multi-class prediction of privacy policy categories.
 2. Text highlighting and matching of sentences with the privacy policies and their corresponding categories.
 3. Crawler robustness improvements e.g., creation of variables for crucial html elements for better maintainability. 
-4. ...
+4. There is no limit! Test the application, expand and improve it as you please.
 
 ## Authors and Acknowledgment
 The tool has been developed by master students at TU Berlin at School IV - Electrical Engineering and Computer Science: Department of Telecommunication Systems (Chair of Service-centric Networking).
