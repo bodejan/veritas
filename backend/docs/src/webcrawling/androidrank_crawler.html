@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
 <title>src.webcrawling.androidrank_crawler API documentation</title>
-<meta name="description" content="" />
+<meta name="description" content="This script contains functions to retrieve the top app IDs for a given category using web scraping with Selenium …" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -22,11 +22,32 @@
 <h1 class="title">Module <code>src.webcrawling.androidrank_crawler</code></h1>
 </header>
 <section id="section-intro">
+<p>This script contains functions to retrieve the top app IDs for a given category using web scraping with Selenium.</p>
+<p>The script utilizes the Selenium WebDriver to navigate the AndroidRank website and extract app IDs based on the specified category and number of IDs to retrieve.</p>
+<p>The main functions in this script are:
+- get_ids_for_category: Retrieves the top app IDs for a given category.
+- get_ids_on_page: Retrieves the app IDs on the current page.
+- click_next_page: Clicks the "Next" button to navigate to the next page.</p>
+<p>Note: This script requires the Selenium library and a running Selenium WebDriver server.</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import re
+<pre><code class="python">&#34;&#34;&#34;
+This script contains functions to retrieve the top app IDs for a given category using web scraping with Selenium.
+
+The script utilizes the Selenium WebDriver to navigate the AndroidRank website and extract app IDs based on the specified category and number of IDs to retrieve.
+
+The main functions in this script are:
+- get_ids_for_category: Retrieves the top app IDs for a given category.
+- get_ids_on_page: Retrieves the app IDs on the current page.
+- click_next_page: Clicks the &#34;Next&#34; button to navigate to the next page.
+
+Note: This script requires the Selenium library and a running Selenium WebDriver server.
+
+&#34;&#34;&#34;
+
+import re
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -48,6 +69,9 @@ def get_ids_for_category(category, number):
 
     Returns:
         list: The list of app IDs.
+
+    Raises:
+        Exception: If an error occurs while crawling the IDs.
 
     &#34;&#34;&#34;
     print(f&#39;Getting top {number} IDs for {category}&#39;)
@@ -109,6 +133,9 @@ def get_ids_on_page(ids, driver, number):
     Returns:
         list: The updated list of app IDs.
 
+    Raises:
+        Exception: If an error occurs while finding the IDs.
+
     &#34;&#34;&#34;
     # Get all &#39;a&#39; tags with links that hold app names from one page
     try:
@@ -141,6 +168,9 @@ def click_next_page(driver):
 
     Returns:
         webdriver or None: The updated WebDriver instance if successful, None otherwise.
+
+    Raises:
+        Exception: If an error occurs while clicking the &#34;Next&#34; button.
 
     &#34;&#34;&#34;
     try:
@@ -197,6 +227,11 @@ def click_next_page(driver):
 <dl>
 <dt><code>webdriver</code> or <code>None</code></dt>
 <dd>The updated WebDriver instance if successful, None otherwise.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>Exception</code></dt>
+<dd>If an error occurs while clicking the "Next" button.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -211,6 +246,9 @@ def click_next_page(driver):
 
     Returns:
         webdriver or None: The updated WebDriver instance if successful, None otherwise.
+
+    Raises:
+        Exception: If an error occurs while clicking the &#34;Next&#34; button.
 
     &#34;&#34;&#34;
     try:
@@ -262,6 +300,11 @@ def click_next_page(driver):
 <dl>
 <dt><code>list</code></dt>
 <dd>The list of app IDs.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>Exception</code></dt>
+<dd>If an error occurs while crawling the IDs.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -277,6 +320,9 @@ def click_next_page(driver):
 
     Returns:
         list: The list of app IDs.
+
+    Raises:
+        Exception: If an error occurs while crawling the IDs.
 
     &#34;&#34;&#34;
     print(f&#39;Getting top {number} IDs for {category}&#39;)
@@ -344,6 +390,11 @@ def click_next_page(driver):
 <dl>
 <dt><code>list</code></dt>
 <dd>The updated list of app IDs.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>Exception</code></dt>
+<dd>If an error occurs while finding the IDs.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -360,6 +411,9 @@ def click_next_page(driver):
 
     Returns:
         list: The updated list of app IDs.
+
+    Raises:
+        Exception: If an error occurs while finding the IDs.
 
     &#34;&#34;&#34;
     # Get all &#39;a&#39; tags with links that hold app names from one page

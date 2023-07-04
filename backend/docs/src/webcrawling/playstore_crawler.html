@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
 <title>src.webcrawling.playstore_crawler API documentation</title>
-<meta name="description" content="" />
+<meta name="description" content="This module provides functions to scrape privacy policy information from the Google Play Store page of an app …" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -22,11 +22,112 @@
 <h1 class="title">Module <code>src.webcrawling.playstore_crawler</code></h1>
 </header>
 <section id="section-intro">
+<p>This module provides functions to scrape privacy policy information from the Google Play Store page of an app.</p>
+<p>Functions:
+- get_name_logo_url_policy_by_id(id: str) -&gt; Tuple[str, str, str]
+Extracts the app name, logo URL, and privacy policy URL from the Google Play Store page of an app.
+Raises various exceptions for different scenarios.</p>
+<ul>
+<li>
+<p>extract_policy_from_driver(driver: WebDriver) -&gt; str
+Extract the policy text from the driver's current page.</p>
+</li>
+<li>
+<p>export_policy_txt(policy: str, id: str) -&gt; None
+Export the policy text to a text file.</p>
+</li>
+<li>
+<p>export_policy_html(page_source: str, id: str) -&gt; None
+Export the page source to an HTML file.</p>
+</li>
+<li>
+<p>add_playstore_link_to_policy(policy: str, id: str) -&gt; str
+Add the Google Play Store link to the policy text.</p>
+</li>
+<li>
+<p>create_error_message(error_type: str, error_description: str, id: str, policy: str) -&gt; str
+Create an error message with the given error type, description, app ID, and policy.</p>
+</li>
+<li>
+<p>extract_policy_from_page_bs4(page_source: str) -&gt; str
+Extract the policy text from the page source using BeautifulSoup.</p>
+</li>
+<li>
+<p>extract_name_logo_url_from_page(page_source: str, id: str) -&gt; Tuple[str, str]
+Extract the app name and logo URL from the page source.</p>
+</li>
+<li>
+<p>slice_app_name(name: str) -&gt; str
+Slice the app name to remove unnecessary parts.</p>
+</li>
+<li>
+<p>detect_language(text: str) -&gt; str
+Detect the language of the given text.</p>
+</li>
+<li>
+<p>forwarding_notice_present(page_source: str) -&gt; bool
+Check if a forwarding notice is present on the page.</p>
+</li>
+</ul>
+<p>Custom Exceptions:
+- PDFFileException: Exception raised when a PDF file is encountered instead of a web page.
+- LanguageException: Exception raised when the language of the web page is not English.
+- NotInPlayStoreException: Exception raised when the app is not found in the Google Play Store.
+- EmptyPolicyException: Exception raised when the privacy policy is empty.
+- AccessDeniedException: Exception raised when access to the web page is denied.
+- NoPolicyException: Exception raised when no privacy policy is found on the web page.</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import time
+<pre><code class="python">&#34;&#34;&#34;
+This module provides functions to scrape privacy policy information from the Google Play Store page of an app.
+
+Functions:
+- get_name_logo_url_policy_by_id(id: str) -&gt; Tuple[str, str, str]
+    Extracts the app name, logo URL, and privacy policy URL from the Google Play Store page of an app.
+    Raises various exceptions for different scenarios.
+
+- extract_policy_from_driver(driver: WebDriver) -&gt; str
+    Extract the policy text from the driver&#39;s current page.
+
+- export_policy_txt(policy: str, id: str) -&gt; None
+    Export the policy text to a text file.
+
+- export_policy_html(page_source: str, id: str) -&gt; None
+    Export the page source to an HTML file.
+
+- add_playstore_link_to_policy(policy: str, id: str) -&gt; str
+    Add the Google Play Store link to the policy text.
+
+- create_error_message(error_type: str, error_description: str, id: str, policy: str) -&gt; str
+    Create an error message with the given error type, description, app ID, and policy.
+
+- extract_policy_from_page_bs4(page_source: str) -&gt; str
+    Extract the policy text from the page source using BeautifulSoup.
+
+- extract_name_logo_url_from_page(page_source: str, id: str) -&gt; Tuple[str, str]
+    Extract the app name and logo URL from the page source.
+
+- slice_app_name(name: str) -&gt; str
+    Slice the app name to remove unnecessary parts.
+
+- detect_language(text: str) -&gt; str
+    Detect the language of the given text.
+
+- forwarding_notice_present(page_source: str) -&gt; bool
+    Check if a forwarding notice is present on the page.
+
+Custom Exceptions:
+- PDFFileException: Exception raised when a PDF file is encountered instead of a web page.
+- LanguageException: Exception raised when the language of the web page is not English.
+- NotInPlayStoreException: Exception raised when the app is not found in the Google Play Store.
+- EmptyPolicyException: Exception raised when the privacy policy is empty.
+- AccessDeniedException: Exception raised when access to the web page is denied.
+- NoPolicyException: Exception raised when no privacy policy is found on the web page.
+&#34;&#34;&#34;
+
+import time
 import re
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -42,21 +143,38 @@ from src.models import LANGUAGE_DICT as language_dict
 
 # Custom exception classes
 class PDFFileException(Exception):
+    &#34;&#34;&#34;Exception raised when a PDF file is encountered instead of a web page.&#34;&#34;&#34;
+
     pass
+
 
 class LanguageException(Exception):
+    &#34;&#34;&#34;Exception raised when the language of the web page is not English.&#34;&#34;&#34;
+
     pass
+
 
 class NotInPlayStoreException(Exception):
+    &#34;&#34;&#34;Exception raised when the app is not found in the Google Play Store.&#34;&#34;&#34;
+
     pass
+
 
 class EmptyPolicyException(Exception):
+    &#34;&#34;&#34;Exception raised when the privacy policy is empty.&#34;&#34;&#34;
+
     pass
+
 
 class AccessDeniedException(Exception):
+    &#34;&#34;&#34;Exception raised when access to the web page is denied.&#34;&#34;&#34;
+
     pass
 
+
 class NoPolicyException(Exception):
+    &#34;&#34;&#34;Exception raised when no privacy policy is found on the web page.&#34;&#34;&#34;
+
     pass
 
 def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -&gt; tuple[str, str, str, str]:
@@ -1165,12 +1283,14 @@ def forwarding_notice_present(page_source):
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<div class="desc"><p>Exception raised when access to the web page is denied.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class AccessDeniedException(Exception):
+    &#34;&#34;&#34;Exception raised when access to the web page is denied.&#34;&#34;&#34;
+
     pass</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -1184,12 +1304,14 @@ def forwarding_notice_present(page_source):
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<div class="desc"><p>Exception raised when the privacy policy is empty.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class EmptyPolicyException(Exception):
+    &#34;&#34;&#34;Exception raised when the privacy policy is empty.&#34;&#34;&#34;
+
     pass</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -1203,12 +1325,14 @@ def forwarding_notice_present(page_source):
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<div class="desc"><p>Exception raised when the language of the web page is not English.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class LanguageException(Exception):
+    &#34;&#34;&#34;Exception raised when the language of the web page is not English.&#34;&#34;&#34;
+
     pass</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -1222,12 +1346,14 @@ def forwarding_notice_present(page_source):
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<div class="desc"><p>Exception raised when no privacy policy is found on the web page.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class NoPolicyException(Exception):
+    &#34;&#34;&#34;Exception raised when no privacy policy is found on the web page.&#34;&#34;&#34;
+
     pass</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -1241,12 +1367,14 @@ def forwarding_notice_present(page_source):
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<div class="desc"><p>Exception raised when the app is not found in the Google Play Store.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class NotInPlayStoreException(Exception):
+    &#34;&#34;&#34;Exception raised when the app is not found in the Google Play Store.&#34;&#34;&#34;
+
     pass</code></pre>
 </details>
 <h3>Ancestors</h3>
@@ -1260,12 +1388,14 @@ def forwarding_notice_present(page_source):
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<div class="desc"><p>Exception raised when a PDF file is encountered instead of a web page.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class PDFFileException(Exception):
+    &#34;&#34;&#34;Exception raised when a PDF file is encountered instead of a web page.&#34;&#34;&#34;
+
     pass</code></pre>
 </details>
 <h3>Ancestors</h3>

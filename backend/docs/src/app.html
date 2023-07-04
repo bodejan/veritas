@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
 <title>src.app API documentation</title>
-<meta name="description" content="" />
+<meta name="description" content="The script initializes and runs the flask app. Furthermore, it provides the app routes and orchestrates functions from the nlp and webcrawling modules." />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -22,11 +22,16 @@
 <h1 class="title">Module <code>src.app</code></h1>
 </header>
 <section id="section-intro">
+<p>The script initializes and runs the flask app. Furthermore, it provides the app routes and orchestrates functions from the nlp and webcrawling modules.</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from concurrent.futures import ThreadPoolExecutor
+<pre><code class="python">&#34;&#34;&#34;
+The script initializes and runs the flask app. Furthermore, it provides the app routes and orchestrates functions from the nlp and webcrawling modules.
+&#34;&#34;&#34;
+
+from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 from flask import Flask, jsonify, request
@@ -47,7 +52,13 @@ app.config[&#39;DEBUG&#39;] = True
 
 @app.route(&#39;/&#39;)
 def index():
-    &#34;&#34;&#34;API endpoint for the root URL.&#34;&#34;&#34;
+    &#34;&#34;&#34;
+    API endpoint for the root URL.
+
+    Returns:
+        tuple: A tuple containing the JSON response data and the HTTP status code.
+
+    &#34;&#34;&#34;
     data = {&#34;key&#34;: &#34;value&#34;}
     print(data)
     return jsonify(data), 500
@@ -193,6 +204,9 @@ def get_apps_by_ids(ids):
 
     Returns:
         str: JSON string containing the app information.
+
+    Raises:
+        Exception: If an error occurs during the process.
 
     &#34;&#34;&#34;
     try:
@@ -360,6 +374,11 @@ def db_refresh():
 <dl>
 <dt><code>str</code></dt>
 <dd>JSON string containing the app information.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>Exception</code></dt>
+<dd>If an error occurs during the process.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -374,6 +393,9 @@ def db_refresh():
 
     Returns:
         str: JSON string containing the app information.
+
+    Raises:
+        Exception: If an error occurs during the process.
 
     &#34;&#34;&#34;
     try:
@@ -496,14 +518,25 @@ def id():
 <span>def <span class="ident">index</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>API endpoint for the root URL.</p></div>
+<div class="desc"><p>API endpoint for the root URL.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>A tuple containing the JSON response data and the HTTP status code.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@app.route(&#39;/&#39;)
 def index():
-    &#34;&#34;&#34;API endpoint for the root URL.&#34;&#34;&#34;
+    &#34;&#34;&#34;
+    API endpoint for the root URL.
+
+    Returns:
+        tuple: A tuple containing the JSON response data and the HTTP status code.
+
+    &#34;&#34;&#34;
     data = {&#34;key&#34;: &#34;value&#34;}
     print(data)
     return jsonify(data), 500</code></pre>

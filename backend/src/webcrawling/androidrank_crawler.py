@@ -1,3 +1,17 @@
+"""
+This script contains functions to retrieve the top app IDs for a given category using web scraping with Selenium.
+
+The script utilizes the Selenium WebDriver to navigate the AndroidRank website and extract app IDs based on the specified category and number of IDs to retrieve.
+
+The main functions in this script are:
+- get_ids_for_category: Retrieves the top app IDs for a given category.
+- get_ids_on_page: Retrieves the app IDs on the current page.
+- click_next_page: Clicks the "Next" button to navigate to the next page.
+
+Note: This script requires the Selenium library and a running Selenium WebDriver server.
+
+"""
+
 import re
 import time
 from selenium import webdriver
@@ -20,6 +34,9 @@ def get_ids_for_category(category, number):
 
     Returns:
         list: The list of app IDs.
+
+    Raises:
+        Exception: If an error occurs while crawling the IDs.
 
     """
     print(f'Getting top {number} IDs for {category}')
@@ -81,6 +98,9 @@ def get_ids_on_page(ids, driver, number):
     Returns:
         list: The updated list of app IDs.
 
+    Raises:
+        Exception: If an error occurs while finding the IDs.
+
     """
     # Get all 'a' tags with links that hold app names from one page
     try:
@@ -113,6 +133,9 @@ def click_next_page(driver):
 
     Returns:
         webdriver or None: The updated WebDriver instance if successful, None otherwise.
+
+    Raises:
+        Exception: If an error occurs while clicking the "Next" button.
 
     """
     try:

@@ -1,3 +1,15 @@
+"""
+This script contains functions to crawl app data from the AndroidRank website, export the data to a JSON file, and refresh the database.
+
+The main functions in this script are:
+- crawl_db: Refreshes the app data for all categories, exports the data to a JSON file, and refreshes the database.
+- remove_duplicates: Removes duplicate dictionaries from a given list of dictionaries.
+- get_app_data: Retrieves the app data for a given category.
+
+Note: This script requires the Selenium library and a running Selenium WebDriver server.
+
+"""
+
 import json
 import os
 import re
@@ -16,7 +28,10 @@ number_apps_per_category = 20
 
 def crawl_db():
     """
-    Refresh the app data for all categories, export the data to a JSON file, and refresh the database.
+    Refreshes the app data for all categories, exports the data to a JSON file, and refreshes the database.
+
+    Raises:
+        Exception: If less than 75% of the expected app data is crawled.
     """
     final_data = []
 
@@ -52,7 +67,7 @@ def crawl_db():
 
 def remove_duplicates(arr):
     """
-    Remove duplicate dictionaries from the given list of dictionaries.
+    Removes duplicate dictionaries from the given list of dictionaries.
 
     Args:
         arr (list): The list of dictionaries.
@@ -67,7 +82,7 @@ def remove_duplicates(arr):
 
 def get_app_data(category, number):
     """
-    Get the app data for the given category.
+    Retrieves the app data for the given category.
 
     Args:
         category (str): The category for which to retrieve the app data.

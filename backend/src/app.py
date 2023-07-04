@@ -1,3 +1,7 @@
+"""
+The script initializes and runs the flask app. Furthermore, it provides the app routes and orchestrates functions from the nlp and webcrawling modules.
+"""
+
 from concurrent.futures import ThreadPoolExecutor
 import json
 import os
@@ -19,7 +23,13 @@ app.config['DEBUG'] = True
 
 @app.route('/')
 def index():
-    """API endpoint for the root URL."""
+    """
+    API endpoint for the root URL.
+
+    Returns:
+        tuple: A tuple containing the JSON response data and the HTTP status code.
+
+    """
     data = {"key": "value"}
     print(data)
     return jsonify(data), 500
@@ -165,6 +175,9 @@ def get_apps_by_ids(ids):
 
     Returns:
         str: JSON string containing the app information.
+
+    Raises:
+        Exception: If an error occurs during the process.
 
     """
     try:
