@@ -104,13 +104,13 @@ To update the documentation using pdoc3:
 cd ../backend
 ```
 
-2. Run pdoc3:
+2. Generate docs in ```/backend/docs/src```:
 
 ```bash
 pdoc --html --output-dir docs --force src
 ```
 
-Docs will be created in ```/backend/docs/src```.
+3. Open ```/backend/docs/src/index.html``` in your web-browser of choice.
 
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
