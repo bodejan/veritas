@@ -6,7 +6,7 @@ import {
   rem,
   Title,
 } from '@mantine/core';
-
+import React from 'react';
 import NavigationItem from './NavigationItem';
 
 // Define the styles for the component using Mantine's createStyles function
@@ -36,7 +36,7 @@ interface NavigationItemProps {
 }
 
 // Navigation component
-export function Navigation({links}: NavigationItemProps) {
+export default function Navigation({links}: NavigationItemProps) {
   const { classes, theme } = useStyles();
 
   return (

@@ -21,6 +21,5 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-, "tests/CheckCategory.test.tsx", "tests/CheckList.test.tsx"  ]
+    "src", "tests/CheckCategory.test.tsx", "tests/CheckList.test.tsx", "tests/Navigation.test.tsx" ]
 }

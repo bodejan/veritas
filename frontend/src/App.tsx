@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigation } from './Components/Navigation';
+import  Navigation  from './Components/Navigation';
 import { BrowserRouter } from 'react-router-dom';
 import { Vocabulary, Search, ListCheck, Category } from 'tabler-icons-react';
 import { Grid, ScrollArea } from '@mantine/core';

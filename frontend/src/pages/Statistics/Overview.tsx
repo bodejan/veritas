@@ -98,6 +98,8 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     return Number(averageScore.toFixed(decimalPlaces));
   }
 
+  const score = calculateAverageScore(appData, 2).toString().replace(/^(0.)+/, '')
+
   return (
     <>
       <Stack p={20}>
@@ -120,13 +122,13 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
               <Flex justify="center" align="center">
                 {/* Display the average score as a ring progress */}
                 <RingProgress
-                  sections={[{ value: calculateAverageScore(appData, 2) * 100, color: theme.colors.teal[7] }]}
+                  sections={[{ value: Number(score), color: theme.colors.teal[7] }]}
                   size={280}
                   thickness={17}
                   roundCaps
                   label={
                     <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                      {calculateAverageScore(appData, 2) * 100} %
+                      {score} %
                     </Text>
                   }
                 />

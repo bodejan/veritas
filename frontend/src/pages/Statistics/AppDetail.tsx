@@ -48,6 +48,8 @@ export default function AppDetail({ currentApp }: OverviewProps) {
     return average;
   };
 
+  const score = (Number(calculateScoreAverage(currentApp.scores).toFixed(2))).toString().replace(/^(0.)+/, '')
+
   // Render component
   return (
     <>
@@ -73,13 +75,13 @@ export default function AppDetail({ currentApp }: OverviewProps) {
               <Flex justify="center">
                 {/* RingProgress component to display the score average */}
                 <RingProgress
-                  sections={[{ value: calculateScoreAverage(currentApp.scores) * 100, color: theme.colors.teal[7] }]}
+                  sections={[{ value: Number(score), color: theme.colors.teal[7] }]}
                   size={280}
                   thickness={17}
                   roundCaps
                   label={
                     <Text color={theme.colors.teal[7]} weight={700} align="center" size="40px">
-                      {Number(calculateScoreAverage(currentApp.scores).toFixed(2)) * 100} %
+                      {score} %
                     </Text>
                   }
                 />
