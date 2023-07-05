@@ -79,11 +79,14 @@ pdoc --html --output-dir docs --force src
 
     3.3. The apps' name
 
+To monitor the crawlers that are using Selenium, you can access the monitoring dashboard by visiting ```http://localhost:4444/ui#/sessions```. 
+
 ## Troubleshooting
 1. Recreate the frontend and backend container using the installation guide.
-2. Check your internet connection. The web-crawler heavily rely on a stable internet connection to access webpages from androidrank and the google play store.
-3. Analyze the logs within the docker container.
-4. Check if the structure or links of web-pages has changed. To do so, inspect the ```driver.find_element()``` functions in the source code. 
+2. Make sure that the ports: 3000, 8000, 5900 and 4444 are not used by another service. 
+3. Check your internet connection. The web-crawler heavily rely on a stable internet connection to access webpages from androidrank and the google play store.
+4. Analyze the logs within the docker container.
+5. Check if the structure or links of web-pages has changed. To do so, inspect the ```driver.find_element()``` functions in the source code. 
 
 ## Contributing
 For contributions please open a pull-request. Future features may include: 
