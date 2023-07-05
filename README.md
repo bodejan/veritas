@@ -1,77 +1,35 @@
 # Evaluating Privacy Policies of Android Apps (IOSL ST 23)
 
-Description here .....
 
+## Description
+This software artifacts allows researchers and privacy-aware individuals to automatically check and evaluate the completeness of privacy policies from apps listed in the google play store. 
 
-The project consists of a Frontend (React), and a Backend (Python Flask webcrawler and NLP).
+The frontend allows users to check apps' completeness by category, id, or name and returns a completeness score based on multiple gdpr relevant categories <sup>1</sup>.
 
+The flask-app handles corresponding api calls and orchestrates functions from the submodules webcrawling and nlp. The webcrawling module is responsible for crawling relevant information (id, name, logo_url, privacy_policy) from openly available web-sources. Last, the nlp module receives the privacy policy as an input and returns a score fore each category (1, if the category is present, else 0).
+
+<sup>1</sup> The gdpr-relevant categories and labeled training data are based on: <br>
+Rahat, T. A., Long, M., & Tian, Y. (2022, November). Is Your Policy Compliant? A Deep Learning-based Empirical Study of Privacy Policies' Compliance with GDPR. In *Proceedings of the 21st Workshop on Privacy in the Electronic Society* (pp. 89-102).
 
 ```
 App
 │
-├── Frontend
-├── Backend
-│   ├── webcrawling
-│   ├── NLP_predictor
-│   └── app.py
-└── docker-compose.yml
+├── frontend
+│   ├── react
+├── backend
+    ├── flask
+        ├── webcrawling
+        └── nlp
+
 ```
+Fig. 1: Simplified architecture. 
+
 ## Badges
 On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
 
 ## Visuals
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-
-
-## Installation from Source
-
-### Frontend
-
-1. Navigate to the Frontend directory:
-
-```bash
-cd frontend
-```
-
-2. Install the necessary packages:
-
-```bash
-npm install
-```
-
-3. Start the server:
-
-```bash
-npm start
-```
-
-### Backend
-
-1. Navigate to the Backend directory:
-
-```bash
-cd ../backend
-```
-
-2. Create a virtual environment:
-
-```bash
-python3 -m venv env
-source env/bin/activate
-```
-
-3. Install the necessary packages:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Run the Flask application:
-
-```bash
-python app.py
-```
 
 ## Installation using Docker Compose
 
@@ -150,5 +108,26 @@ The following authors contributed to this project:
 The project was closely supervised and evaluated by Thomas Cory and Prof. Dr. Axel Küpper.
 
 ## License
-MIT.
+MIT License
+
+Copyright (c) 2023 Heimdall
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 
