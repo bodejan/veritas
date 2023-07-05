@@ -106,13 +106,11 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     <>
       <Stack p={20}>
         <section>
-          <Title>Check privacy policies by app category</Title>
+          <Title>Overview</Title>
           <Text>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          On this page, you can find an overview of how well your selected apps fulfill the requirements of a privacy policy. If you want to check which specific requirements are fulfilled by a particular app, simply click on "More info."
+
+          Additionally, you have the option to export the data by clicking on the "Export" button. This allows you to customize the information included in the export according to your preferences.
           </Text>
         </section>
 
