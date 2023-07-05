@@ -24,11 +24,8 @@ App
 ```
 Fig. 1: Simplified architecture. 
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
 ## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+The demo shows how a users checks the top 10 apps from the category _dating_ for gdpr compliance.
 
 ![Demo](example/demo.gif)
 
