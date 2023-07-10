@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Flex, Grid, RingProgress, Stack, Text, Title, createStyles } from '@mantine/core';
+import React, { useState } from 'react';
+import { Box, Flex, Grid, RingProgress, Stack, Text, Title, createStyles, Modal, Paper, Slider, NumberInput, Button  } from '@mantine/core';
 import { CircleCheck, CircleX } from 'tabler-icons-react';
 import ExportData from './ExportData';
 
@@ -39,17 +39,55 @@ export default function AppDetail({ currentApp }: OverviewProps) {
   // Get the classes and theme from the useStyles hook
   const { classes, theme } = useStyles();
 
-  // Function to calculate the average score from the scores object
-  const calculateScoreAverage = (scores: Policy): number => {
-    const scoreValues = Object.values(scores);
-    const sum = scoreValues.reduce((acc, score) => acc + score, 0);
-    const average = sum / scoreValues.length;
+  const [modalVisible, setModalVisible] = useState(false);
+  const [policyWeights, setPolicyWeights] = useState<Policy>(
+    Object.keys(currentApp.scores).reduce((obj, item) => ({ ...obj, [item]: 1 }), {})
+  );
 
-    return average;
+
+  const calculateAverageScore = (appData: PolicyObject[], policyWeights: Policy): number => {
+    let totalWeightedSum = 0;
+    let totalWeight = 0;
+
+    for (let i = 0; i < appData.length; i++) {
+      const scores = appData[i].scores;
+      const policyCount = Object.keys(scores).length;
+
+      let weightedSum = 0;
+      let weightSum = 0;
+
+      for (const key in scores) {
+        if (typeof scores[key] === 'number' && policyWeights[key]) {
+          weightedSum += scores[key] * policyWeights[key];
+          weightSum += policyWeights[key];
+        }
+      }
+
+      const appWeightedAverage = weightSum > 0 ? weightedSum / weightSum : 0;
+      totalWeightedSum += appWeightedAverage * policyCount;
+      totalWeight += policyCount;
+    }
+
+    const averageScore = totalWeight > 0 ? totalWeightedSum / totalWeight : 0;
+    return averageScore;
   };
 
-  //const score = (Number(calculateScoreAverage(currentApp.scores).toFixed(2))).toString().replace(/^(0.)+/, '')
-  const score = (calculateScoreAverage(currentApp.scores) * 100).toFixed(2)
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleSliderChange = (policy: string, value: number) => {
+    setPolicyWeights((prevWeights) => ({
+      ...prevWeights,
+      [policy]: value,
+    }));
+  };
+
+  const score = (calculateAverageScore([currentApp], policyWeights) * 100).toFixed(2);
   // Render component
   return (
     <>
@@ -64,9 +102,49 @@ export default function AppDetail({ currentApp }: OverviewProps) {
           </Text>
         </section>
 
+        <Grid>
+        <Grid.Col span={9}></Grid.Col>
+        <Grid.Col span={3} sx={{ justifyContent: 'end', display: 'flex' }}>
+          <Stack >
         {/* ExportData component */}
         <ExportData appData={[currentApp]} />
 
+        <Button variant="filled" color="cyan" onClick={openModal}>
+        Adjust Weights
+      </Button>
+
+      </Stack>
+
+      </Grid.Col>
+      </Grid>
+
+        <Modal opened={modalVisible} onClose={closeModal} title="Adjust Weights">
+        <Paper p="lg">
+          <Title order={6}>Adjust the weights for each policy:</Title>
+          {Object.keys(policyWeights).map((policy) => (
+            <div key={policy}>
+              <Grid>
+                <Grid.Col span={8}>
+                  <Title order={6}>{policy}</Title>
+                </Grid.Col>
+                <Grid.Col span={4}>
+                  <NumberInput
+                    defaultValue={policyWeights[policy]}
+                    min={0}
+                    max={1}
+                    step={0.05}
+                    precision={2}
+                    onChange={(value) => handleSliderChange(policy, Number(value))}
+                  />
+                </Grid.Col>
+              </Grid>
+            </div>
+          ))}
+          <Button fullWidth onClick={closeModal} mt="md">
+            Apply
+          </Button>
+        </Paper>
+      </Modal>
         <section>
           <Grid>
             <Grid.Col xs={12} lg={5}>

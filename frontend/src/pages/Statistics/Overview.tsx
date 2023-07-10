@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Flex, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles } from '@mantine/core';
+import { Avatar, Box, Button, Flex, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles,  Modal, Paper, Slider, NumberInput  } from '@mantine/core';
 import React, { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ExportData from './ExportData';
@@ -38,6 +38,9 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
   const navigate = useNavigate();
   const combinedPolicies = combinePolicies(appData);
 
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [policyWeights, setPolicyWeights] = React.useState<Policy>(Object.keys(appData[0].scores).reduce((obj, item) => ({ ...obj, [item]: 1 }), {}));
+
   // Function for combining the policy scores of all apps
   function combinePolicies(arr: PolicyObject[]): Policy {
     const combinedPolicies: Policy = {};
@@ -64,7 +67,6 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     return combinedPolicies;
   }
 
-  // Function to calculate the sum of policy scores
   function calculateSumOfPolicies(scores: Policy) {
     let sum = 0;
     for (const key in scores) {
@@ -74,6 +76,33 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
     }
     return sum;
   }
+  
+  function calculateAverageScore(appData: PolicyObject[], policyWeights: Policy): number {
+    let totalWeightedSum = 0;
+    let totalWeight = 0;
+  
+    for (let i = 0; i < appData.length; i++) {
+      const scores = appData[i].scores;
+      const policyCount = Object.keys(scores).length;
+  
+      let weightedSum = 0;
+      let weightSum = 0;
+  
+      for (const key in scores) {
+        if (typeof scores[key] === 'number' && policyWeights[key]) {
+          weightedSum += scores[key] * policyWeights[key];
+          weightSum += policyWeights[key];
+        }
+      }
+  
+      const appWeightedAverage = weightSum > 0 ? weightedSum / weightSum : 0;
+      totalWeightedSum += appWeightedAverage * policyCount;
+      totalWeight += policyCount;
+    }
+  
+    const averageScore = totalWeight > 0 ? totalWeightedSum / totalWeight : 0;
+    return averageScore;
+  }
 
   // Function to calculate the progress value for an app
   const getProgressValue = (value: PolicyObject) => {
@@ -82,25 +111,30 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
   };
 
   // Function to calculate the average score of all apps
-  function calculateAverageScore(appData: PolicyObject[]): number {
-    let totalSum = 0;
-    let totalCount = 0;
-
-    for (let i = 0; i < appData.length; i++) {
-      const sumOfPolicies = calculateSumOfPolicies(appData[i].scores);
-      const policyCount = Object.keys(appData[i].scores).length;
-
-      totalSum += sumOfPolicies;
-      totalCount += policyCount;
-    }
-
-    const averageScore = totalCount > 0 ? totalSum / totalCount : 0;
-    return averageScore;
-  }
-
-  const score = (calculateAverageScore(appData) * 100).toFixed(2)
+  
+  //const weights = Object.keys(appData[0].scores).reduce((obj, item) => ({ ...obj, [item]: 1 }), {});
+  const weights = policyWeights;
+  const score = (calculateAverageScore(appData, weights) * 100).toFixed(2)
 
   //.toFixed(2)
+
+
+const openModal = () => {
+  setModalVisible(true);
+};
+
+const closeModal = () => {
+  setModalVisible(false);
+};
+
+const handleSliderChange = (policy: string, value: number) => {
+  setPolicyWeights((prevWeights) => ({
+    ...prevWeights,
+    [policy]: value,
+  }));
+};
+
+
 
   return (
     <>
@@ -114,7 +148,54 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
           </Text>
         </section>
 
-        <ExportData appData={appData} />
+        <Grid>
+        <Grid.Col span={9}></Grid.Col>
+        <Grid.Col span={3} sx={{ justifyContent: 'end', display: 'flex' }}>
+          <Stack >
+            <ExportData appData={appData} />
+
+            <Button variant="filled" color="cyan" onClick={openModal}>
+              Adjust Weights
+            </Button>
+         </Stack>
+
+        </Grid.Col>
+      </Grid>
+
+<Modal opened={modalVisible} onClose={closeModal} title="Adjust Weights">
+  <Paper p="lg">
+    <Title order={6}>Adjust the weights for each policy:</Title>
+    {Object.keys(policyWeights).map((policy) => (
+      <div key={policy}>
+        <Grid>
+          <Grid.Col span={8} > 
+          
+              <Title order={6}>{policy}</Title>
+           
+          </Grid.Col>
+          <Grid.Col span={4}>
+            <NumberInput
+            defaultValue={0.05}
+            precision={2}
+            min={0}
+            max={1}
+            step={0.05}
+            value={policyWeights[policy]}
+            onChange={(value) => handleSliderChange(policy, Number(value))}
+          />
+          </Grid.Col>
+        </Grid>
+       
+
+       
+      </div>
+    ))}
+    <Button fullWidth onClick={closeModal} mt="md">
+      Apply
+    </Button>
+  </Paper>
+</Modal>
+
 
         <section>
           <Grid>
