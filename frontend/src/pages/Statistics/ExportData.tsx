@@ -121,15 +121,13 @@ export default function ExportData({ appData }: ExportDataProps) {
   // Render component
   return (
     <>
-      <Grid>
-        <Grid.Col span={9}></Grid.Col>
-        <Grid.Col span={3} sx={{ justifyContent: 'end', display: 'flex' }}>
+     
+        
           {/* Button to open the modal for selecting headers */}
           <Button color="dark" onClick={() => open()}>
             Export data
           </Button>
-        </Grid.Col>
-      </Grid>
+
 
       <Modal
         opened={opened}
