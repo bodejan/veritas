@@ -4,7 +4,9 @@
 ## Description
 This software artifacts allows researchers and privacy-aware individuals to automatically check and evaluate the completeness of privacy policies from apps listed in the google play store. 
 
-The frontend allows users to check apps' completeness by category, id, or name and returns a completeness score based on multiple gdpr relevant categories <sup>1</sup>.
+The frontend allows users to check apps' completeness by category, id, or name and returns a completeness score based on multiple gdpr relevant categories <sup>1</sup>. 
+
+It further allows users to trigger a crawling process to update the database file. Per default, the database crawler crawls the top 20 apps for each category; the corresponding variable _number_apps_per_category_ can be adjusted in ```IOSL-ST-23/backend/src/webcrawling/app_db_crawler.py```.
 
 The flask-app handles corresponding api calls and orchestrates functions from the submodules webcrawling and nlp. The webcrawling module is responsible for crawling relevant information (id, name, logo_url, privacy_policy) from openly available web-sources. Last, the nlp module receives the privacy policy as an input and returns a score fore each category (1, if the category is present, else 0).
 
