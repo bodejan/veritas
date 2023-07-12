@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Flex, Grid, RingProgress, Stack, Text, Title, createStyles, Modal, Paper, Slider, NumberInput, Button  } from '@mantine/core';
 import { CircleCheck, CircleX } from 'tabler-icons-react';
-import ExportData from './ExportData';
+import ExportData from '../../Components/ExportData';
 
 // Interfaces
 
