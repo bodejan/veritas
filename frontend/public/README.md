@@ -4,11 +4,12 @@
 ## Description
 This software artifacts allows researchers and privacy-aware individuals to automatically check and evaluate the completeness of privacy policies from apps listed in the google play store. 
 
-The frontend allows users to check apps' completeness by category, id, or name and returns a completeness score based on multiple gdpr relevant categories <sup>1</sup>.
+The frontend allows users to check apps' completeness by category, id, or name and returns a completeness score based on multiple gdpr relevant categories.
 
 The flask-app handles corresponding api calls and orchestrates functions from the submodules webcrawling and nlp. The webcrawling module is responsible for crawling relevant information (id, name, logo_url, privacy_policy) from openly available web-sources. Last, the nlp module receives the privacy policy as an input and returns a score fore each category (1, if the category is present, else 0).
 
-<sup>1</sup> The gdpr-relevant categories and labeled training data are based on: <br>
+The gdpr-relevant categories and labeled training data are based on:
+\
 Rahat, T. A., Long, M., & Tian, Y. (2022, November). Is Your Policy Compliant? A Deep Learning-based Empirical Study of Privacy Policies' Compliance with GDPR. In *Proceedings of the 21st Workshop on Privacy in the Electronic Society* (pp. 89-102).
 
 ```
@@ -50,7 +51,7 @@ This will start the Frontend and Backend services as defined in the `docker-comp
 ### Frontend
 
 ### Backend
-The documentation for the backend is automatically created based on docstrings using [pdoc3](https://github.com/pdoc3/pdoc). <br> (See [backend docs](backend/docs/src/index.html)).
+The documentation for the backend is automatically created based on docstrings using [pdoc3](https://github.com/pdoc3/pdoc). \ (See [backend docs](backend/docs/src/index.html)).
 
 To update the documentation using pdoc3:
 

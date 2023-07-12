@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Flex, Grid, Progress, RingProgress, ScrollArea, Stack, Text, Title, createStyles,  Modal, Paper, Slider, NumberInput  } from '@mantine/core';
 import React, { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ExportData from './ExportData';
+import ExportData from '../../Components/ExportData';
 
 // Interface for defining the structure of the policy scores
 interface Policy {
