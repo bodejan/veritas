@@ -5,6 +5,7 @@ The script initializes and runs the flask app. Furthermore, it provides the app 
 from concurrent.futures import ThreadPoolExecutor
 import json
 import os
+import time
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from selenium import webdriver
@@ -54,9 +55,12 @@ def category():
     data = request.get_json()
 
     try:
+        start_time = time.time()
         category = data.get('category')
         number = int(data.get('number'))
         ids = get_ids_for_category(category, number)
+        end_time = time.time()
+        print(f'Androidrank Crawler: Crawled {number} apps in {end_time-start_time}s')
         return get_apps_by_ids(ids)
 
     except ValueError:
@@ -134,7 +138,10 @@ def db_refresh():
 
     """
     try:
+        start_time = time.time()
         crawl_db()
+        end_time = time.time()
+        print(f'DB Crawler: Refreshed db in {end_time-start_time}s')
         return jsonify({'message': 'Database refreshed'}), 200
     except Exception as e:
         error_message = 'An error occurred.'
@@ -182,6 +189,7 @@ def get_apps_by_ids(ids):
     """
     try:
         apps = []
+        start_time = time.time()
 
         def process_id(id):
             name, logo_url, policy, status = get_name_logo_url_policy_by_id(id)
@@ -203,6 +211,8 @@ def get_apps_by_ids(ids):
                     print(f"An error occurred: {str(e)}")
 
         json_apps = json.dumps(apps)
+        end_time = time.time()
+        print(f'Playstore Crawler: Crawled {len(apps)} apps in {end_time-start_time}s')
         return json_apps
 
     except Exception as e:

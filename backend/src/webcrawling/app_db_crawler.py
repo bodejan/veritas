@@ -129,7 +129,7 @@ def get_app_data(category, number):
                 results.append(result_even)
 
             driver = click_next_page(driver)
-            time.sleep(0.5)
+            time.sleep(1.5)
 
             if driver is None:
                 print(f'Crawled {len(results)} out of {number}')
