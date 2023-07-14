@@ -7,26 +7,38 @@ import gensim
 import pickle
 import keras
 from keras_preprocessing.sequence import pad_sequences
+from ..preprocessing import preprocessing_functions
 
 
 def preprocess_nlp(text):
     """
+    Preprocesses the given text for natural language processing (NLP) tasks.
 
-    :param text: plain text
-    :return:  preprocessed text
+    Args:
+        text (str): The input text to be preprocessed.
+
+    Returns:
+        csv: A list of sentences, where each sentence is a list of words.
+
+    Example:
+        >>> text = "This is a sample text."
+        >>> preprocess_nlp(text)
+        [['this', 'is', 'a', 'sample', 'text']]
     """
-    text = text.replace("\n", ". ")
-    # tokenize the text
-    tokens = word_tokenize(text.lower())
-    # remove stop words
-    stop_words = set(stopwords.words('english'))
-    tokens = [t for t in tokens if t not in stop_words]
-    # remove special chars and punctuation
-    tokens = [t for t in tokens if t.isalnum()]
-    # Remove numbers
-    tokens = [t for t in tokens if not t.isdigit()]
-    # join the tokens back into a string
-    return ' '.join(tokens)
+    output_text = preprocessing_functions.remove_newlines_tabs(text)
+    output_text = preprocessing_functions.remove_links(output_text)
+    output_text = preprocessing_functions.lower_casing_text(output_text)
+    output_text = preprocessing_functions.reducing_incorrect_character_repetition(output_text)
+    output_text = preprocessing_functions.expand_contractions(output_text)
+    output_text = preprocessing_functions.removing_special_characters(output_text)
+
+    # turn a list of words into a list of sentences where each sentence is a list of words
+    csv = preprocessing_functions.manual_words_to_sentences(output_text)
+
+    # remove empty list entries
+    csv = list(filter(None, csv))
+
+    return csv
 
 
 def process_split_words(text):
@@ -42,6 +54,7 @@ def process_split_words(text):
         words = sentence.split()
         result.append(words)
     return result
+
 
 def predictor(text):
     """
