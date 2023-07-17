@@ -113,7 +113,7 @@ The project was closely supervised and evaluated by Thomas Cory and Prof. Dr. Ax
 ## License
 MIT License
 
-Copyright (c) 2023 Heimdall
+Copyright (c) 2023 Veritas
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
