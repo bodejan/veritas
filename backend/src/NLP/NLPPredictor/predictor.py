@@ -7,7 +7,7 @@ import gensim
 import pickle
 import keras
 from keras_preprocessing.sequence import pad_sequences
-import preprocessing_functions
+from src.NLP.NLPPredictor.preprocessing_functions import *
 import csv
 
 
@@ -26,21 +26,21 @@ def preprocess_nlp(text):
         >>> preprocess_nlp(text)
         [['this', 'is', 'a', 'sample', 'text']]
     """
-    output_text = preprocessing_functions.remove_newlines_tabs(text)
-    output_text = preprocessing_functions.strip_html_tags(output_text)
-    output_text = preprocessing_functions.remove_links(output_text)
-    output_text = preprocessing_functions.expand_contractions(output_text)
-    output_text = preprocessing_functions.remove_whitespace(output_text)
-    output_text = preprocessing_functions.lower_casing_text(output_text)
-    output_text = preprocessing_functions.reducing_incorrect_character_repetition(output_text)
-    output_text = preprocessing_functions.removing_special_characters(output_text)
+    output_text = remove_newlines_tabs(text)
+    output_text = strip_html_tags(output_text)
+    output_text = remove_links(output_text)
+    output_text = expand_contractions(output_text)
+    output_text = remove_whitespace(output_text)
+    output_text = lower_casing_text(output_text)
+    output_text = reducing_incorrect_character_repetition(output_text)
+    output_text = removing_special_characters(output_text)
 
     # string to list of strings
     if isinstance(output_text, str):
         output_text = output_text.split()
 
     # turn a list of words into a list of sentences where each sentence is a list of words
-    output_list = preprocessing_functions.manual_words_to_sentences(output_text)
+    output_list = manual_words_to_sentences(output_text)
 
     # remove empty list entries
     output_list = list(filter(None, output_list))
