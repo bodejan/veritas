@@ -6,6 +6,9 @@ Functions:
     Extracts the app name, logo URL, and privacy policy URL from the Google Play Store page of an app.
     Raises various exceptions for different scenarios.
 
+- accept_all_cookies(driver: WebDriver) --> None
+    Accept cookies if present.
+
 - extract_policy_from_driver(driver: WebDriver) -> str
     Extract the policy text from the driver's current page.
 
@@ -43,11 +46,13 @@ Custom Exceptions:
 - EmptyPolicyException: Exception raised when the privacy policy is empty.
 - AccessDeniedException: Exception raised when access to the web page is denied.
 - NoPolicyException: Exception raised when no privacy policy is found on the web page.
+- PageNotFoundException: Exception raised when no page is found.
 """
 
 import time
 import re
 from bs4 import BeautifulSoup
+import requests
 from selenium import webdriver
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
@@ -95,6 +100,11 @@ class NoPolicyException(Exception):
 
     pass
 
+class PageNotFoundException(Exception):
+    """Exception raised when no page is found (404)."""
+
+    pass
+
 def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str, str, str]:
     """Get the app name, logo URL, and privacy policy text for the given app ID.
 
@@ -117,31 +127,38 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
         EmptyPolicyException: If no text can be extracted from the developer's website.
         Exception: If an unknown exception occurs.
     """
-    print(f'Getting data for {id}')
     name = id
     logo_url = ''
     policy = ''
     driver = None
     status = 'Success'
+    response_code = 200
+    start_time = time.time()
     try:
         # Start driver
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--lang=en-US')  # Set browser language to English
         chrome_options.add_experimental_option('prefs', {'profile.default_content_setting_values.cookies': 0})
+        chrome_options.add_argument("--cookie-policy=accept-all")
         chrome_options.add_argument("--enable-javascript")
+        chrome_options.add_argument("--disable-popup-blocking")
+        chrome_options.add_argument("--disable-infobars")
+        # Disable images
+        chrome_options.add_argument("--blink-settings=imagesEnabled=false")
         # Set the Accept-Language header
         chrome_options.add_argument("--accept-language=en,*")  # Set Accept-Language to accept all English languages
         driver = webdriver.Remote('http://chrome:4444/wd/hub',options=chrome_options)
         driver.set_page_load_timeout(30)
-        driver.implicitly_wait(30)
 
         # Open play store for the given app package name
         url = "https://play.google.com/store/apps/details?id="
-        wait = WebDriverWait(driver, 30)
+        wait = WebDriverWait(driver, 10)
         driver.get(f'{url}{id}')
 
         # Wait for page to load and find logo_url and app name 
         wait.until(EC.visibility_of_element_located((By.TAG_NAME, "body")))
+        if 'the requested URL was not found on this server' in driver.page_source:
+            raise NotInPlayStoreException
         name, logo_url = extract_name_logo_url_from_page(driver.page_source, id)
 
         # Expand the developers contact section
@@ -187,26 +204,56 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
             # Wait for next page to load
             wait.until(EC.visibility_of_element_located((By.TAG_NAME, 'body')))
 
+        # Accept all cookies
+        accept_all_cookies(driver)
+
+        # Get the current URL
+        url = driver.current_url
+        # Retrieve the response code using requests library
+        try:
+            response = requests.get(url, cookies=driver.get_cookies())
+        except Exception:
+            pass
+
         time.sleep(2 + retries)  # Necessary as some content takes longer to load even after 'body' is visible
+
+        try:
+            response_code = response.status_code
+        except Exception:
+            pass
+
+        # Extract policy
         page = driver.page_source
         policy_bs4 = extract_policy_from_page_bs4(page)
         if policy_bs4:
             policy = policy_bs4
         else:
-            print('Fallback to driver body extractor')
-            time.sleep(2)
+            time.sleep(1)
             policy = extract_policy_from_driver(driver)
+        
+        # Error handling
+        language_code = detect_language(policy)
         if policy == '':
             raise EmptyPolicyException
-        language_code = detect_language(policy)
-        if language_code != 'en':
+        elif language_code != 'en':
             raise LanguageException
-        if "We're sorry, the requested URL was not found on this server." in page:
-            raise NotInPlayStoreException
-        if "Access denied" in page:
-            raise AccessDeniedException
+        elif response_code == 404:
+            raise PageNotFoundException
+        elif response_code == 403:
+            # Catch false access denied response codes
+            if 'access denied' in policy.lower():
+                raise AccessDeniedException
+            else:
+                response_code = 200
+        elif response_code != 200:
+            # 406 might occur, if headers cannot be accepted, e.g., language requirements
+            if response_code == 406: 
+                pass
+            else: 
+                raise Exception
+        
         policy = add_playstore_link_to_policy(policy, id)
-        print('id:', id, 'name:', name, 'logo_url:', logo_url, 'status:', status)
+        print(status.upper(),'id:', id, 'name:', name, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except AccessDeniedException as e:
@@ -214,8 +261,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
         error_type = 'AccessDeniedException'
         error_description = 'The developer\'s website refused to respond; access denied.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except NoPolicyException as e:
@@ -223,8 +270,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
         error_type = 'NoPolicyException.'
         error_description = 'The developer does not provide a privacy policy.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except NotInPlayStoreException as e:
@@ -232,8 +279,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
         error_type = 'NotInPlayStoreException'
         error_description = 'The requested policy could not be found in the Google Play Store.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except LanguageException as e:
@@ -241,8 +288,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
         error_type = 'LanguageException'
         error_description = f'The requested policy is not in English, therefore it receives a score of 0 across all categories.<br>Detected language: {language_dict[language_code]}.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except PDFFileException as e:
@@ -250,8 +297,8 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
         error_type = 'PDFFileException'
         error_description = 'The requested policy is a PDF file. Unfortunately, we cannot handle PDF files.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except TimeoutException as e:
@@ -259,21 +306,19 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
             retries += 1
             print(f'Retrying id {id}')
             return get_name_logo_url_policy_by_id(id, retries=retries)
-        else:
-            print('Retries exhausted.')
         error_type = 'TimeoutException'
         error_description = 'A timeout occurred while loading the privacy policy.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except NoSuchElementException as e:
         error_type = 'NoSuchElementException'
         error_description = 'Could not extract text from the developer\'s website.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except WebDriverException as e:
@@ -281,34 +326,68 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
             retries += 1
             print(f'Retrying id {id}')
             return get_name_logo_url_policy_by_id(id, retries=retries)
-        else:
-            print('Retries exhausted.')
         error_type = 'WebDriverException'
         error_description = 'Cannot determine loading status from the developer\'s website.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's', e)
         return name, logo_url, policy, status
 
     except EmptyPolicyException as e:
+        if retries < 2:
+            retries += 1
+            print(f'Retrying id {id}')
+            return get_name_logo_url_policy_by_id(id, retries=retries)
         error_type = 'EmptyPolicyException'
         error_description = 'Could not extract text from the developer\'s website. The website is empty.'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(error_type, error_description, id,  '\n', e)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
+        return name, logo_url, policy, status
+    
+    except PageNotFoundException as e:
+        error_type = 'PageNotFoundException'
+        error_description = 'Could not find page (404).'
+        policy = create_error_message(error_type, error_description, id, policy)
+        status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     except Exception as e:
-        error_type = 'UnknownException'
-        error_description = f'An unknown exception occurred: ({type(e)}). Error log: {e}'
+        error_type = 'Exception'
+        error_description = f'An exception occurred: ({type(e)}). Error log: {e}. Response code: {response_code}'
         policy = create_error_message(error_type, error_description, id, policy)
-        print(type(e), error_type, error_description, id)
         status = error_type
+        print(status.upper(),'id:', id, 'in:', time.time() - start_time, 's')
         return name, logo_url, policy, status
 
     finally:
         if driver is not None:
             driver.quit()
+
+def accept_all_cookies(driver):
+    try:
+        # Find the cookie banner element
+        cookie_banner = driver.find_element(By.XPATH, '//div[contains(@class, "cookie") or contains(@id, "banner") or contains(@class, "banner") or contains(@id, "banner") or contains(@class, "consent") or contains(@id, "consent") or contains(@class, "notice") or contains(@class, "policy") or contains(@class, "message") or contains(@class, "modal") or contains(@class, "popup") or contains(@id, "popup") or contains(@class, "accept") or contains(@id, "accept")]')
+
+        # Try to find and click an "Accept" button
+        accept_button = None
+        try:
+            accept_button = cookie_banner.find_element(By.XPATH, './/button[contains(text(), "Accept")]')
+        except:
+            pass
+        try:
+            accept_button = cookie_banner.find_element(By.XPATH, './/button[contains(text(), "Akzeptieren")]')
+        except:
+            pass
+
+        if accept_button is not None:
+            accept_button.click()
+        else:
+            # Dismiss the cookie banner by clicking outside or scrolling
+            driver.execute_script("arguments[0].scrollIntoView(true);", cookie_banner)
+    except Exception as e:
+        pass
 
 def extract_policy_from_driver(driver):
     """
@@ -385,6 +464,7 @@ def create_error_message(error_type, error_description, id, policy):
     """
     head = f'<br><strong>WARNING:</strong> An error occurred during the crawling process.<br>Type: {error_type}. <br><br>'
     links = 'Please visit <a href="https://play.google.com/store/apps/details?id=' + id + '">https://play.google.com/store/apps/details?id=' + id + '</a> for more information.<br><br><br>'
+    if error_type == 'NotInPlayStoreException': links = ''
     error_message = head + error_description + '<br><br>    ' + links + policy
     return error_message
 
@@ -431,8 +511,7 @@ def extract_policy_from_page_bs4(page_source):
             raise Exception
         return body.text
     except Exception as e:
-        print(f'An error occurred while extracting policy from text via bs4: {type(e)}')
-        print(e)
+        print(f'An error occurred while extracting policy from text via bs4: {type(e)}. Fallback to page source extractor')
         return None
 
 def extract_name_logo_url_from_page(page_source, id):
@@ -507,7 +586,6 @@ def forwarding_notice_present(page_source):
     soup = BeautifulSoup(page_source, 'html.parser')
     forwarding_notice = soup.find('div', class_='aXgaGb')
     if forwarding_notice:
-        print(forwarding_notice.text)
         return True
     else:
         return False

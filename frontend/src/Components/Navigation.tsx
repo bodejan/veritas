@@ -45,7 +45,7 @@ export default function Navigation({links}: NavigationItemProps) {
       <Navbar.Section className={classes.section} p={10}>
         <Group position="apart">
           {/* Logo */}
-          <Title order={1} color={theme.colors.dark[4]} sx={{ fontWeight: 700 }}>Heimdall</Title>
+          <Title order={1} color={theme.colors.dark[4]} sx={{ fontWeight: 700 }}>Veritas</Title>
           {/* Version */}
           <Code sx={{ fontWeight: 700 }} color={theme.colors.gray[2]}>v1</Code>
         </Group>

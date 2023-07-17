@@ -1,0 +1,21 @@
+Androidrank Crawler: Crawled 500 apps in 65.91750621795654s
+Playstore Crawler: Crawled 498 apps in 1950.843079328537s # All
+Playstore Crawler: Crawled 500 apps in 1869.1121153831482s # Music and Audio
+CRAWL_DB_RESULT: Crawled 1040 out of 1040
+DB Crawler: Refreshed db in 425.22599506378174s
+
+```networkquality -v```
+
+==== SUMMARY ====
+Uplink capacity: 4.455 Mbps (Accuracy: High)
+Downlink capacity: 101.431 Mbps (Accuracy: High)
+Responsiveness: Low (65 RPM) (Accuracy: High)
+Idle Latency: 59.292 milliseconds (Accuracy: High)
+Interface: en0
+Uplink bytes transferred: 9.875 MB
+Downlink bytes transferred: 136.000 MB
+Uplink Flow count: 8
+Downlink Flow count: 16
+Start: 14.07.23, 19:17:13
+End: 14.07.23, 19:17:24
+OS Version: Version 13.3.1 (a) (Build 22E772610a)
