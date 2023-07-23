@@ -31,8 +31,8 @@ def preprocess_nlp(text):
     output_text = remove_links(output_text)
     output_text = expand_contractions(output_text)
     output_text = remove_whitespace(output_text)
-    output_text = lower_casing_text(output_text)
     output_text = reducing_incorrect_character_repetition(output_text)
+    output_text = lower_casing_text(output_text)
     output_text = removing_special_characters(output_text)
 
     # string to list of strings

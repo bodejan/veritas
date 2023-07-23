@@ -141,7 +141,7 @@ def reducing_incorrect_character_repetition(text):
     # Pattern matching for all case alphabets
     pattern_alpha = re.compile(r"([A-Za-z])\1{1,}", re.DOTALL)
 
-    # Limiting all the  repetition to two characters.
+    # Limiting all the repetition to two characters.
     formatted_text = pattern_alpha.sub(r"\1\1", text)
 
     # Pattern matching for all the punctuations that can occur
@@ -203,7 +203,7 @@ def removing_special_characters(text):
         Input : Hello, K-a-j-a-l. Thi*s is $100.05 : the payment that you will receive! (Is this okay?)
         Output :  Hello, Kajal. This is $100.05 : the payment that you will receive! Is this okay?
     """
-    # The formatted text after removing not necessary punctuations.
+    # The formatted text after removing unnecessary characters.
     formatted_text = re.sub(r"[^a-zA-Z0-9$%.?!§äöüÄÖÜ]+", ' ', text)
     # The above regex expression provides a necessary set of punctuations that are frequent in this particular dataset.
     return formatted_text
