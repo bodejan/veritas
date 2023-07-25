@@ -41,68 +41,90 @@ export default function Overview({ appData, setCurrentApp }: OverviewProps) {
   const [modalVisible, setModalVisible] = React.useState(false);
   const [policyWeights, setPolicyWeights] = React.useState<Policy>(Object.keys(appData[0].scores).reduce((obj, item) => ({ ...obj, [item]: 1 }), {}));
 
-  // Function for combining the policy scores of all apps
-  function combinePolicies(arr: PolicyObject[]): Policy {
-    const combinedPolicies: Policy = {};
+ // Function for combining the policy scores of all apps
+ function combinePolicies(arr: PolicyObject[]): Policy {
+  // Initialize an empty object to store combined policy scores
+  const combinedPolicies: Policy = {};
 
-    for (let i = 0; i < arr.length; i++) {
-      const scores = arr[i].scores;
-      const policyKeys = Object.keys(scores);
+  // Loop through each app in the appData array
+  for (let i = 0; i < arr.length; i++) {
+    const scores = arr[i].scores;
+    const policyKeys = Object.keys(scores);
 
-      for (let j = 0; j < policyKeys.length; j++) {
-        const key = policyKeys[j];
-        const value = scores[key];
+    // Loop through each policy (key) in the scores object of the app
+    for (let j = 0; j < policyKeys.length; j++) {
+      const key = policyKeys[j];
+      const value = scores[key];
 
-        // Check if the combinedPolicies object already has the policy key
-        if (combinedPolicies.hasOwnProperty(key)) {
-          // If it exists, add the value to the existing score
-          combinedPolicies[key] += value;
-        } else {
-          // If it doesn't exist, initialize it with the value
-          combinedPolicies[key] = value;
-        }
+      // Check if the combinedPolicies object already has the policy key
+      if (combinedPolicies.hasOwnProperty(key)) {
+        // If it exists, add the value to the existing score
+        combinedPolicies[key] += value;
+      } else {
+        // If it doesn't exist, initialize it with the value
+        combinedPolicies[key] = value;
       }
     }
-
-    return combinedPolicies;
   }
 
-  function calculateSumOfPolicies(scores: Policy) {
-    let sum = 0;
+  // Return the combined policy scores object
+  return combinedPolicies;
+}
+
+// Function to calculate the sum of policy scores for a single app
+function calculateSumOfPolicies(scores: Policy) {
+  let sum = 0;
+  // Loop through each policy score in the scores object
+  for (const key in scores) {
+    // Check if the score is a number and add it to the sum
+    if (typeof scores[key] === 'number') {
+      sum += scores[key];
+    }
+  }
+  return sum;
+}
+  
+  // Function to calculate the average score based on appData and policyWeights
+function calculateAverageScore(appData: PolicyObject[], policyWeights: Policy): number {
+  // Initialize variables to store the total weighted sum and total weight
+  let totalWeightedSum = 0;
+  let totalWeight = 0;
+
+  // Loop through each app in the appData array
+  for (let i = 0; i < appData.length; i++) {
+    // Get the scores object and the number of policies for the current app
+    const scores = appData[i].scores;
+    const policyCount = Object.keys(scores).length;
+
+    // Initialize variables to store the weighted sum and weight sum for the current app
+    let weightedSum = 0;
+    let weightSum = 0;
+
+    // Loop through each policy (key) in the scores object of the current app
     for (const key in scores) {
-      if (typeof scores[key] === 'number') {
-        sum += scores[key];
+      // Check if the score for the policy is a number and if the policy has a weight assigned
+      if (typeof scores[key] === 'number' && policyWeights[key]) {
+        // If both conditions are true, calculate the weighted sum and weight sum
+        weightedSum += scores[key] * policyWeights[key]; // Multiply the score by the policy weight and add to the weighted sum
+        weightSum += policyWeights[key]; // Add the policy weight to the weight sum
       }
     }
-    return sum;
+
+    // Calculate the app's weighted average score based on the weight sum
+    const appWeightedAverage = weightSum > 0 ? weightedSum / weightSum : 0;
+
+    // Update the total weighted sum and total weight with the app's weighted average
+    totalWeightedSum += appWeightedAverage * policyCount; // Multiply the app's weighted average by the policy count and add to the total weighted sum
+    totalWeight += policyCount; // Add the policy count to the total weight
   }
-  
-  function calculateAverageScore(appData: PolicyObject[], policyWeights: Policy): number {
-    let totalWeightedSum = 0;
-    let totalWeight = 0;
-  
-    for (let i = 0; i < appData.length; i++) {
-      const scores = appData[i].scores;
-      const policyCount = Object.keys(scores).length;
-  
-      let weightedSum = 0;
-      let weightSum = 0;
-  
-      for (const key in scores) {
-        if (typeof scores[key] === 'number' && policyWeights[key]) {
-          weightedSum += scores[key] * policyWeights[key];
-          weightSum += policyWeights[key];
-        }
-      }
-  
-      const appWeightedAverage = weightSum > 0 ? weightedSum / weightSum : 0;
-      totalWeightedSum += appWeightedAverage * policyCount;
-      totalWeight += policyCount;
-    }
-  
-    const averageScore = totalWeight > 0 ? totalWeightedSum / totalWeight : 0;
-    return averageScore;
-  }
+
+  // Calculate the overall average score based on the total weight
+  const averageScore = totalWeight > 0 ? totalWeightedSum / totalWeight : 0;
+
+  // Return the calculated average score
+  return averageScore;
+}
+
 
   // Function to calculate the progress value for an app
   const getProgressValue = (value: PolicyObject) => {
@@ -134,8 +156,6 @@ const handleSliderChange = (policy: string, value: number) => {
   }));
 };
 
-
-
   return (
     <>
       <Stack p={20}>
@@ -153,48 +173,42 @@ const handleSliderChange = (policy: string, value: number) => {
         <Grid.Col span={3} sx={{ justifyContent: 'end', display: 'flex' }}>
           <Stack >
             <ExportData appData={appData} />
-
             <Button variant="filled" color="cyan" onClick={openModal}>
               Adjust Weights
             </Button>
          </Stack>
-
         </Grid.Col>
       </Grid>
 
-<Modal opened={modalVisible} onClose={closeModal} title="Adjust Weights">
-  <Paper p="lg">
-    <Title order={6}>Adjust the weights for each policy:</Title>
-    {Object.keys(policyWeights).map((policy) => (
-      <div key={policy}>
-        <Grid>
-          <Grid.Col span={8} > 
-          
-              <Title order={6}>{policy}</Title>
-           
-          </Grid.Col>
-          <Grid.Col span={4}>
-            <NumberInput
-            defaultValue={0.05}
-            precision={2}
-            min={0}
-            max={1}
-            step={0.05}
-            value={policyWeights[policy]}
-            onChange={(value) => handleSliderChange(policy, Number(value))}
-          />
-          </Grid.Col>
-        </Grid>
-       
-
-       
-      </div>
-    ))}
-    <Button fullWidth onClick={closeModal} mt="md">
-      Apply
-    </Button>
-  </Paper>
-</Modal>
+        <Modal opened={modalVisible} onClose={closeModal} title="Adjust Weights">
+          <Paper p="lg">
+            <Title order={6}>Adjust the weights for each policy:</Title>
+            {Object.keys(policyWeights).map((policy) => (
+              <div key={policy}>
+                <Grid>
+                  <Grid.Col span={8}> 
+                      <Title order={6}>{policy}</Title>
+                  </Grid.Col>
+                  <Grid.Col span={4}>
+                    <NumberInput
+                    defaultValue={0.05}
+                    precision={2}
+                    min={0}
+                    max={1}
+                    step={0.05}
+                    value={policyWeights[policy]}
+                    onChange={(value) => handleSliderChange(policy, Number(value))}
+                  />
+                  </Grid.Col>
+                </Grid>
+              
+              </div>
+            ))}
+            <Button fullWidth onClick={closeModal} mt="md">
+              Apply
+            </Button>
+          </Paper>
+        </Modal>
 
 
         <section>
