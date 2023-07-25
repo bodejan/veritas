@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Flex, Grid, RingProgress, Stack, Text, Title, createStyles, Modal, Paper, Slider, NumberInput, Button  } from '@mantine/core';
+import { Box, Flex, Grid, RingProgress, Stack, Text, Title, createStyles, Modal, Paper, NumberInput, Button  } from '@mantine/core';
 import { CircleCheck, CircleX } from 'tabler-icons-react';
 import ExportData from '../../Components/ExportData';
 
@@ -39,38 +39,54 @@ export default function AppDetail({ currentApp }: OverviewProps) {
   // Get the classes and theme from the useStyles hook
   const { classes, theme } = useStyles();
 
+  // State to manage the visibility of the modal
   const [modalVisible, setModalVisible] = useState(false);
+
+  // State to manage the weights for each policy in the currentApp
   const [policyWeights, setPolicyWeights] = useState<Policy>(
     Object.keys(currentApp.scores).reduce((obj, item) => ({ ...obj, [item]: 1 }), {})
   );
 
+// Function to calculate the average score based on appData and policyWeights
+const calculateAverageScore = (appData: PolicyObject[], policyWeights: Policy): number => {
+  // Initialize variables to store the total weighted sum and total weight
+  let totalWeightedSum = 0;
+  let totalWeight = 0;
 
-  const calculateAverageScore = (appData: PolicyObject[], policyWeights: Policy): number => {
-    let totalWeightedSum = 0;
-    let totalWeight = 0;
+  // Loop through each app in the appData array
+  for (let i = 0; i < appData.length; i++) {
+    // Get the scores object and the number of policies for the current app
+    const scores = appData[i].scores;
+    const policyCount = Object.keys(scores).length;
 
-    for (let i = 0; i < appData.length; i++) {
-      const scores = appData[i].scores;
-      const policyCount = Object.keys(scores).length;
+    // Initialize variables to store the weighted sum and weight sum for the current app
+    let weightedSum = 0;
+    let weightSum = 0;
 
-      let weightedSum = 0;
-      let weightSum = 0;
-
-      for (const key in scores) {
-        if (typeof scores[key] === 'number' && policyWeights[key]) {
-          weightedSum += scores[key] * policyWeights[key];
-          weightSum += policyWeights[key];
-        }
+    // Loop through each policy (key) in the scores object
+    for (const key in scores) {
+      // Check if the score for the policy is a number and if the policy has a weight assigned
+      if (typeof scores[key] === 'number' && policyWeights[key]) {
+        // If both conditions are true, calculate the weighted sum and weight sum
+        weightedSum += scores[key] * policyWeights[key]; // Multiply the score by the policy weight and add to the weighted sum
+        weightSum += policyWeights[key]; // Add the policy weight to the weight sum
       }
-
-      const appWeightedAverage = weightSum > 0 ? weightedSum / weightSum : 0;
-      totalWeightedSum += appWeightedAverage * policyCount;
-      totalWeight += policyCount;
     }
 
-    const averageScore = totalWeight > 0 ? totalWeightedSum / totalWeight : 0;
-    return averageScore;
-  };
+    // Calculate the app's weighted average score based on the weight sum
+    const appWeightedAverage = weightSum > 0 ? weightedSum / weightSum : 0;
+
+    // Update the total weighted sum and total weight with the app's weighted average
+    totalWeightedSum += appWeightedAverage * policyCount; // Multiply the app's weighted average by the policy count and add to the total weighted sum
+    totalWeight += policyCount; // Add the policy count to the total weight
+  }
+
+  // Calculate the overall average score based on the total weight
+  const averageScore = totalWeight > 0 ? totalWeightedSum / totalWeight : 0;
+
+  // Return the calculated average score
+  return averageScore;
+};
 
   const openModal = () => {
     setModalVisible(true);
@@ -80,14 +96,16 @@ export default function AppDetail({ currentApp }: OverviewProps) {
     setModalVisible(false);
   };
 
-  const handleSliderChange = (policy: string, value: number) => {
-    setPolicyWeights((prevWeights) => ({
-      ...prevWeights,
-      [policy]: value,
-    }));
-  };
+// Function to handle slider changes and update policyWeights state
+const handleSliderChange = (policy: string, value: number) => {
+  setPolicyWeights((prevWeights) => ({
+    ...prevWeights,
+    [policy]: value,
+  }));
+};
 
-  const score = (calculateAverageScore([currentApp], policyWeights) * 100).toFixed(2);
+// Calculate the average score based on the currentApp data and policyWeights, and convert it to a percentage
+const score = (calculateAverageScore([currentApp], policyWeights) * 100).toFixed(2);
   // Render component
   return (
     <>
