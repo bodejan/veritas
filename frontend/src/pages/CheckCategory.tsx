@@ -4,15 +4,18 @@ import React, { Dispatch, ReactElement, SetStateAction } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { useNavigate } from "react-router-dom";
 
-interface FormData  {
+// Define interface for form data
+interface FormData {
   category: string;
   numApps: number;
-};
+}
 
+// Define interface for the policy scores
 interface Policy {
   [key: string]: number;
 }
 
+// Define interface for the app object
 interface PolicyObject {
   id: string;
   name: string;
@@ -22,11 +25,14 @@ interface PolicyObject {
   status: string;
 }
 
-interface CheckCategoryProps{
-  setAppData: Dispatch<SetStateAction<PolicyObject[]>>,
+// Define props interface for the CheckCategory component
+interface CheckCategoryProps {
+  setAppData: Dispatch<SetStateAction<PolicyObject[]>>;
 }
 
-export default function CheckCategory({setAppData}: CheckCategoryProps): ReactElement<CheckCategoryProps> {
+// CheckCategory component
+export default function CheckCategory({ setAppData }: CheckCategoryProps): ReactElement<CheckCategoryProps> {
+  // Initialize form state and create form using the useForm hook from Mantine
   const form = useForm<FormData>({
     initialValues: {
       category: '',
@@ -34,11 +40,16 @@ export default function CheckCategory({setAppData}: CheckCategoryProps): ReactEl
     },
   });
 
+  // Initialize the navigate function from react-router-dom to enable page navigation
   const navigate = useNavigate();
+
+  // Initialize the visible state and toggle function using the useDisclosure hook from Mantine
   const [visible, { toggle }] = useDisclosure(false);
+
+  // Extract errors and input props from the form state
   const { errors, getInputProps } = form;
 
-
+// App categories from Androidrank
   const categories = JSON.parse(JSON.stringify({
     "Select category": "",
     "All": "",
@@ -98,35 +109,43 @@ export default function CheckCategory({setAppData}: CheckCategoryProps): ReactEl
 }))
 
 
-function handleSubmit(): void {
-  if (form.values.category && form.values.numApps >= 1) {
-    var categoryObject = { category: form.values.category, number: form.values.numApps };
 
-    console.log(categoryObject);
+  // Function to handle form submission
+  function handleSubmit(): void {
+    // Check if the form has a valid category and the number of apps is greater than or equal to 1
+    if (form.values.category && form.values.numApps >= 1) {
+      // Create a categoryObject with the selected category and number of apps
+      var categoryObject = { category: form.values.category, number: form.values.numApps };
 
-    toggle();
+      // Log the categoryObject
+      console.log(categoryObject);
 
-    // Send the POST request
-    fetch('http://127.0.0.1:8000/category', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(categoryObject),
-    })
-      .then(response => response.json())
-      .then(data => {
-        setAppData(data);
-        //setTimeout(() => { navigate("./overview"); }, 7000);
-        navigate("./overview")
-        console.log(data)
+      // Toggle the loading overlay to show loading state
+      toggle();
+
+      // Send a POST request to the backend API to retrieve data based on the selected category and number of apps
+      fetch('http://127.0.0.1:8000/category', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(categoryObject),
       })
-      .catch(error => {
-        // Handle error if the request fails
-        console.error('Error:', error);
-      });
+        .then(response => response.json())
+        .then(data => {
+          // Once the data is retrieved, update the app data state with the new data
+          setAppData(data);
+          // Navigate to the "overview" page to display the results
+          navigate("./overview");
+          // Log the received data
+          console.log(data);
+        })
+        .catch(error => {
+          // Handle error if the request fails
+          console.error('Error:', error);
+        });
+    }
   }
-}
   return (
     <>
       <Stack p={20}>
