@@ -1,4 +1,4 @@
-import { Button, Checkbox, Flex, Grid, Modal } from '@mantine/core';
+import { Button, Checkbox, Flex, Modal } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import React, { useState } from 'react';
 
@@ -24,8 +24,8 @@ interface ExportDataProps {
   appData: PolicyObject[];
 }
 
-// ExportData component
-
+// Component for exporting data as a CSV;
+// Components requires an Array with policyObjects
 export default function ExportData({ appData }: ExportDataProps) {
 
   // open and close the modal
