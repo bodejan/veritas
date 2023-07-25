@@ -1,0 +1,20 @@
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+Copyright (C) 2023 Veritas
+
+Everyone is permitted to copy and distribute verbatim or modified copies of this license document, and changing it is allowed as long as the name is changed.
+
+TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION, AND MODIFICATION
+
+1. You are granted the freedom to run, study, modify, and distribute the software (hereinafter referred to as "the Program") and any modified versions of the Program. The distribution of the Program may be made under the terms of this GNU General Public License version 3 or any later version published by the Free Software Foundation.
+
+2. If you distribute the Program, you must provide the recipients with a copy of this license document along with the Program. You must also make available the corresponding source code for the Program. If the Program is dynamically linked to libraries, you must provide the recipients with the necessary object files or library files allowing them to modify the Program and link it with the modified libraries.
+
+3. If you modify the Program and distribute it, you must release it under the terms of this License, and you must prominently offer anyone who interacts with the Program, in return for a fee, to give them a copy of the Program, as well as the corresponding source code. You must also provide a written offer valid for any third party to make copies of the Program's source code upon request.
+
+4. You are not allowed to add any additional terms or conditions to the Program, its modifications, or any part thereof when distributing or conveying it to others. The terms of this License will govern the distribution and modification of the Program and any derivative works created from it.
+
+5. This Program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this Program. If not, see http://www.gnu.org/licenses/ for more information.
