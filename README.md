@@ -49,26 +49,42 @@ This will start the Frontend and Backend services as defined in the `docker-comp
 
 ## Documentation
 
-### Frontend
-
 ### Backend
 The documentation for the backend is automatically created based on docstrings using [pdoc3](https://github.com/pdoc3/pdoc). <br> (See [backend docs](backend/docs/src/index.html)).
 
 To update the documentation using pdoc3:
 
-1. Navigate to the Backend directory:
+1. Create virtual environment:
 
 ```bash
-cd ../backend
+python3 -m venv venv
 ```
 
-2. Generate docs in ```/backend/docs/src```:
+2. Activate virtual environment:
+
+    a. Mac: ```source venv/bin/activate```
+    b. Windows: ```venv\Scripts\activate```
+
+
+3. Navigate to the Backend directory:
+
+```bash
+cd backend
+```
+
+4. Install requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Generate docs in ```/backend/docs/src```:
 
 ```bash
 pdoc --html --output-dir docs --force src
 ```
 
-3. Open ```/backend/docs/src/index.html``` in your web-browser of choice.
+6. Open ```/backend/docs/src/index.html``` in your web-browser of choice.
 
 ## Usage
 1. Install frontend and backend following the installation guide.
@@ -111,26 +127,24 @@ The following authors contributed to this project:
 The project was closely supervised and evaluated by Thomas Cory and Prof. Dr. Axel Küpper.
 
 ## License
-MIT License
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
 
-Copyright (c) 2023 Veritas
+Copyright (C) 2023 Veritas
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Everyone is permitted to copy and distribute verbatim or modified copies of this license document, and changing it is allowed as long as the name is changed.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION, AND MODIFICATION
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. You are granted the freedom to run, study, modify, and distribute the software (hereinafter referred to as "the Program") and any modified versions of the Program. The distribution of the Program may be made under the terms of this GNU General Public License version 3 or any later version published by the Free Software Foundation.
 
+2. If you distribute the Program, you must provide the recipients with a copy of this license document along with the Program. You must also make available the corresponding source code for the Program. If the Program is dynamically linked to libraries, you must provide the recipients with the necessary object files or library files allowing them to modify the Program and link it with the modified libraries.
+
+3. If you modify the Program and distribute it, you must release it under the terms of this License, and you must prominently offer anyone who interacts with the Program, in return for a fee, to give them a copy of the Program, as well as the corresponding source code. You must also provide a written offer valid for any third party to make copies of the Program's source code upon request.
+
+4. You are not allowed to add any additional terms or conditions to the Program, its modifications, or any part thereof when distributing or conveying it to others. The terms of this License will govern the distribution and modification of the Program and any derivative works created from it.
+
+5. This Program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this Program. If not, see http://www.gnu.org/licenses/ for more information.
 

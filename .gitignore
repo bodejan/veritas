@@ -7,3 +7,4 @@ geckodriver.log
 **eval/**
 /frontend/junit.xml
 junit.xml
+venv/**

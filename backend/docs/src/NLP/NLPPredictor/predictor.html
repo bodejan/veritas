@@ -35,26 +35,45 @@ import gensim
 import pickle
 import keras
 from keras_preprocessing.sequence import pad_sequences
+from src.NLP.NLPPredictor.preprocessing_functions import *
+import csv
 
 
 def preprocess_nlp(text):
     &#34;&#34;&#34;
+    Preprocesses the given text for natural language processing (NLP) tasks.
 
-    :param text: plain text
-    :return:  preprocessed text
+    Args:
+        text (str): The input text to be preprocessed.
+
+    Returns:
+        csv: A list of sentences, where each sentence is a list of words.
+
+    Example:
+        &gt;&gt;&gt; text = &#34;This is a sample text.&#34;
+        &gt;&gt;&gt; preprocess_nlp(text)
+        [[&#39;this&#39;, &#39;is&#39;, &#39;a&#39;, &#39;sample&#39;, &#39;text&#39;]]
     &#34;&#34;&#34;
-    text = text.replace(&#34;\n&#34;, &#34;. &#34;)
-    # tokenize the text
-    tokens = word_tokenize(text.lower())
-    # remove stop words
-    stop_words = set(stopwords.words(&#39;english&#39;))
-    tokens = [t for t in tokens if t not in stop_words]
-    # remove special chars and punctuation
-    tokens = [t for t in tokens if t.isalnum()]
-    # Remove numbers
-    tokens = [t for t in tokens if not t.isdigit()]
-    # join the tokens back into a string
-    return &#39; &#39;.join(tokens)
+    output_text = remove_newlines_tabs(text)
+    output_text = strip_html_tags(output_text)
+    output_text = remove_links(output_text)
+    output_text = expand_contractions(output_text)
+    output_text = remove_whitespace(output_text)
+    output_text = reducing_incorrect_character_repetition(output_text)
+    output_text = lower_casing_text(output_text)
+    output_text = removing_special_characters(output_text)
+
+    # string to list of strings
+    if isinstance(output_text, str):
+        output_text = output_text.split()
+
+    # turn a list of words into a list of sentences where each sentence is a list of words
+    output_list = manual_words_to_sentences(output_text)
+
+    # remove empty list entries
+    output_list = list(filter(None, output_list))
+
+    return output_list
 
 
 def process_split_words(text):
@@ -71,6 +90,7 @@ def process_split_words(text):
         result.append(words)
     return result
 
+
 def predictor(text):
     &#34;&#34;&#34;
 
@@ -80,13 +100,13 @@ def predictor(text):
     result = process_split_words(text)
     # Load the tokenizer
     # Try abs path if it does not work 
-    with open(&#39;/app/src/NLP/NLPPredictor/tokenizer.pkl&#39;, &#39;rb&#39;) as f:
+    with open(&#39;/app/src/NLP/NLPPredictor/f_tokenizer.pkl&#39;, &#39;rb&#39;) as f:
     #with open(&#39;tokenizer.pkl&#39;, &#39;rb&#39;) as f:
         tokenizer = pickle.load(f)
     sequences = tokenizer.texts_to_sequences(result)
-    pad_rev = pad_sequences(sequences, maxlen=102, padding=&#39;post&#39;)
+    pad_rev = pad_sequences(sequences, maxlen=192, padding=&#39;post&#39;)
     # Try abs path if it does not work
-    lstm_model = keras.models.load_model(&#39;/app/src/NLP/NLPPredictor/Bidirectional_LSTM_Model.h5&#39;)
+    lstm_model = keras.models.load_model(&#39;/app/src/NLP/NLPPredictor/f_bi_lstm_model.h5&#39;)
     #lstm_model = keras.models.load_model(&#39;Bidirectional_LSTM_Model.h5&#39;)
     preds = lstm_model.predict(pad_rev)
     classes = []
@@ -110,10 +130,32 @@ def predictor(text):
     return result
 
 
+def save_list_as_csv(data_list, filename):
+    with open(filename, &#39;w&#39;, newline=&#39;&#39;) as file:
+        writer = csv.writer(file)
+
+        # Write each sentence as a row in the CSV file
+        for elem in data_list:
+            writer.writerow(elem)
+
+
+def text_file_to_csv_file(file_path):
+    # Open the file in read mode
+    file = open(file_path, &#34;r&#34;, encoding=&#34;utf-8&#34;)
+
+    # Read the entire content of the file
+    input_text = file.read()
+
+    text = preprocess_nlp(input_text)
+
+    save_list_as_csv(text, &#39;output.csv&#39;)
+
+
 if __name__ == &#39;__main__&#39;:
-    #preds = process_split_words(&#34;sd asd awd  awfawf  saffaw. awda awd s d wad ? adwuidandnwda adina dawd, awdjajwd.&#34;)
-    preds = predictor(&#34;We may provide our analysis and certain non-personal information to third parties who may in turn use this information to provide advertisements tailored to your interests. We seek to maintain the integrity and security of your Personal Information. In order to improve guest online and mobile shopping experiences, help with fraud identification. These contracts give your personal data the same protection it has in the EEA. We may share some or all of your personal data with our affiliates.&#34;)
-    print(preds)</code></pre>
+    text_file_to_csv_file(&#34;example_policy.txt&#34;)
+    # preds = process_split_words(&#34;sd asd awd  awfawf  saffaw. awda awd s d wad ? adwuidandnwda adina dawd, awdjajwd.&#34;)
+    # preds = predictor(&#34;We may provide our analysis and certain non-personal information to third parties who may in turn use this information to provide advertisements tailored to your interests. We seek to maintain the integrity and security of your Personal Information. In order to improve guest online and mobile shopping experiences, help with fraud identification. These contracts give your personal data the same protection it has in the EEA. We may share some or all of your personal data with our affiliates.&#34;)
+    # print(preds)</code></pre>
 </details>
 </section>
 <section>
@@ -142,13 +184,13 @@ if __name__ == &#39;__main__&#39;:
     result = process_split_words(text)
     # Load the tokenizer
     # Try abs path if it does not work 
-    with open(&#39;/app/src/NLP/NLPPredictor/tokenizer.pkl&#39;, &#39;rb&#39;) as f:
+    with open(&#39;/app/src/NLP/NLPPredictor/f_tokenizer.pkl&#39;, &#39;rb&#39;) as f:
     #with open(&#39;tokenizer.pkl&#39;, &#39;rb&#39;) as f:
         tokenizer = pickle.load(f)
     sequences = tokenizer.texts_to_sequences(result)
-    pad_rev = pad_sequences(sequences, maxlen=102, padding=&#39;post&#39;)
+    pad_rev = pad_sequences(sequences, maxlen=192, padding=&#39;post&#39;)
     # Try abs path if it does not work
-    lstm_model = keras.models.load_model(&#39;/app/src/NLP/NLPPredictor/Bidirectional_LSTM_Model.h5&#39;)
+    lstm_model = keras.models.load_model(&#39;/app/src/NLP/NLPPredictor/f_bi_lstm_model.h5&#39;)
     #lstm_model = keras.models.load_model(&#39;Bidirectional_LSTM_Model.h5&#39;)
     preds = lstm_model.predict(pad_rev)
     classes = []
@@ -176,31 +218,61 @@ if __name__ == &#39;__main__&#39;:
 <span>def <span class="ident">preprocess_nlp</span></span>(<span>text)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>:param text: plain text
-:return:
-preprocessed text</p></div>
+<div class="desc"><p>Preprocesses the given text for natural language processing (NLP) tasks.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>text</code></strong> :&ensp;<code>str</code></dt>
+<dd>The input text to be preprocessed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>csv</code></dt>
+<dd>A list of sentences, where each sentence is a list of words.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; text = &quot;This is a sample text.&quot;
+&gt;&gt;&gt; preprocess_nlp(text)
+[['this', 'is', 'a', 'sample', 'text']]
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def preprocess_nlp(text):
     &#34;&#34;&#34;
+    Preprocesses the given text for natural language processing (NLP) tasks.
 
-    :param text: plain text
-    :return:  preprocessed text
+    Args:
+        text (str): The input text to be preprocessed.
+
+    Returns:
+        csv: A list of sentences, where each sentence is a list of words.
+
+    Example:
+        &gt;&gt;&gt; text = &#34;This is a sample text.&#34;
+        &gt;&gt;&gt; preprocess_nlp(text)
+        [[&#39;this&#39;, &#39;is&#39;, &#39;a&#39;, &#39;sample&#39;, &#39;text&#39;]]
     &#34;&#34;&#34;
-    text = text.replace(&#34;\n&#34;, &#34;. &#34;)
-    # tokenize the text
-    tokens = word_tokenize(text.lower())
-    # remove stop words
-    stop_words = set(stopwords.words(&#39;english&#39;))
-    tokens = [t for t in tokens if t not in stop_words]
-    # remove special chars and punctuation
-    tokens = [t for t in tokens if t.isalnum()]
-    # Remove numbers
-    tokens = [t for t in tokens if not t.isdigit()]
-    # join the tokens back into a string
-    return &#39; &#39;.join(tokens)</code></pre>
+    output_text = remove_newlines_tabs(text)
+    output_text = strip_html_tags(output_text)
+    output_text = remove_links(output_text)
+    output_text = expand_contractions(output_text)
+    output_text = remove_whitespace(output_text)
+    output_text = reducing_incorrect_character_repetition(output_text)
+    output_text = lower_casing_text(output_text)
+    output_text = removing_special_characters(output_text)
+
+    # string to list of strings
+    if isinstance(output_text, str):
+        output_text = output_text.split()
+
+    # turn a list of words into a list of sentences where each sentence is a list of words
+    output_list = manual_words_to_sentences(output_text)
+
+    # remove empty list entries
+    output_list = list(filter(None, output_list))
+
+    return output_list</code></pre>
 </details>
 </dd>
 <dt id="src.NLP.NLPPredictor.predictor.process_split_words"><code class="name flex">
@@ -228,6 +300,45 @@ preprocessed text</p></div>
     return result</code></pre>
 </details>
 </dd>
+<dt id="src.NLP.NLPPredictor.predictor.save_list_as_csv"><code class="name flex">
+<span>def <span class="ident">save_list_as_csv</span></span>(<span>data_list, filename)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_list_as_csv(data_list, filename):
+    with open(filename, &#39;w&#39;, newline=&#39;&#39;) as file:
+        writer = csv.writer(file)
+
+        # Write each sentence as a row in the CSV file
+        for elem in data_list:
+            writer.writerow(elem)</code></pre>
+</details>
+</dd>
+<dt id="src.NLP.NLPPredictor.predictor.text_file_to_csv_file"><code class="name flex">
+<span>def <span class="ident">text_file_to_csv_file</span></span>(<span>file_path)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def text_file_to_csv_file(file_path):
+    # Open the file in read mode
+    file = open(file_path, &#34;r&#34;, encoding=&#34;utf-8&#34;)
+
+    # Read the entire content of the file
+    input_text = file.read()
+
+    text = preprocess_nlp(input_text)
+
+    save_list_as_csv(text, &#39;output.csv&#39;)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -249,6 +360,8 @@ preprocessed text</p></div>
 <li><code><a title="src.NLP.NLPPredictor.predictor.predictor" href="#src.NLP.NLPPredictor.predictor.predictor">predictor</a></code></li>
 <li><code><a title="src.NLP.NLPPredictor.predictor.preprocess_nlp" href="#src.NLP.NLPPredictor.predictor.preprocess_nlp">preprocess_nlp</a></code></li>
 <li><code><a title="src.NLP.NLPPredictor.predictor.process_split_words" href="#src.NLP.NLPPredictor.predictor.process_split_words">process_split_words</a></code></li>
+<li><code><a title="src.NLP.NLPPredictor.predictor.save_list_as_csv" href="#src.NLP.NLPPredictor.predictor.save_list_as_csv">save_list_as_csv</a></code></li>
+<li><code><a title="src.NLP.NLPPredictor.predictor.text_file_to_csv_file" href="#src.NLP.NLPPredictor.predictor.text_file_to_csv_file">text_file_to_csv_file</a></code></li>
 </ul>
 </li>
 </ul>

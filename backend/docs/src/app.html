@@ -34,6 +34,7 @@ The script initializes and runs the flask app. Furthermore, it provides the app 
 from concurrent.futures import ThreadPoolExecutor
 import json
 import os
+import time
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from selenium import webdriver
@@ -83,9 +84,12 @@ def category():
     data = request.get_json()
 
     try:
+        start_time = time.time()
         category = data.get(&#39;category&#39;)
         number = int(data.get(&#39;number&#39;))
         ids = get_ids_for_category(category, number)
+        end_time = time.time()
+        print(f&#39;Androidrank Crawler: Crawled {number} apps in {end_time-start_time}s&#39;)
         return get_apps_by_ids(ids)
 
     except ValueError:
@@ -163,7 +167,10 @@ def db_refresh():
 
     &#34;&#34;&#34;
     try:
+        start_time = time.time()
         crawl_db()
+        end_time = time.time()
+        print(f&#39;DB Crawler: Refreshed db in {end_time-start_time}s&#39;)
         return jsonify({&#39;message&#39;: &#39;Database refreshed&#39;}), 200
     except Exception as e:
         error_message = &#39;An error occurred.&#39;
@@ -211,6 +218,7 @@ def get_apps_by_ids(ids):
     &#34;&#34;&#34;
     try:
         apps = []
+        start_time = time.time()
 
         def process_id(id):
             name, logo_url, policy, status = get_name_logo_url_policy_by_id(id)
@@ -232,6 +240,8 @@ def get_apps_by_ids(ids):
                     print(f&#34;An error occurred: {str(e)}&#34;)
 
         json_apps = json.dumps(apps)
+        end_time = time.time()
+        print(f&#39;Playstore Crawler: Crawled {len(apps)} apps in {end_time-start_time}s&#39;)
         return json_apps
 
     except Exception as e:
@@ -296,9 +306,12 @@ def category():
     data = request.get_json()
 
     try:
+        start_time = time.time()
         category = data.get(&#39;category&#39;)
         number = int(data.get(&#39;number&#39;))
         ids = get_ids_for_category(category, number)
+        end_time = time.time()
+        print(f&#39;Androidrank Crawler: Crawled {number} apps in {end_time-start_time}s&#39;)
         return get_apps_by_ids(ids)
 
     except ValueError:
@@ -349,7 +362,10 @@ def db_refresh():
 
     &#34;&#34;&#34;
     try:
+        start_time = time.time()
         crawl_db()
+        end_time = time.time()
+        print(f&#39;DB Crawler: Refreshed db in {end_time-start_time}s&#39;)
         return jsonify({&#39;message&#39;: &#39;Database refreshed&#39;}), 200
     except Exception as e:
         error_message = &#39;An error occurred.&#39;
@@ -400,6 +416,7 @@ def db_refresh():
     &#34;&#34;&#34;
     try:
         apps = []
+        start_time = time.time()
 
         def process_id(id):
             name, logo_url, policy, status = get_name_logo_url_policy_by_id(id)
@@ -421,6 +438,8 @@ def db_refresh():
                     print(f&#34;An error occurred: {str(e)}&#34;)
 
         json_apps = json.dumps(apps)
+        end_time = time.time()
+        print(f&#39;Playstore Crawler: Crawled {len(apps)} apps in {end_time-start_time}s&#39;)
         return json_apps
 
     except Exception as e:
