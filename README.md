@@ -33,13 +33,23 @@ The demo shows how a users checks the top 10 apps from the category _dating_ for
 
 ## Installation using Docker Compose
 
-1. Navigate to the root directory:
+### Prerequisites
+* [Docker](https://www.docker.com)
+
+### Installation
+1. Clone the repository:
+
+```bash
+git clone git@git.tu-berlin.de:heimdall/IOSL-ST-23.git
+```
+
+2. Navigate to the root directory:
 
 ```bash
 cd IOSL-ST-23
 ```
 
-2. Build and run the Docker containers:
+3. Build and run the Docker containers:
 
 ```bash
 docker-compose up --build
