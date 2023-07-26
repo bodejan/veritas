@@ -178,15 +178,11 @@ def get_name_logo_url_policy_by_id(id: str, retries: int = 0) -> tuple[str, str,
         button_policy = driver.find_element(By.XPATH, xpath_policy)
         # Check if developer provides a policy, else throw exception
         if 'Privacy policy' in button_policy.text:
-            button_policy.click()
+            link_to_privacy_policy = button_policy.get_attribute('href')
+            driver.execute_script("window.open('" + link_to_privacy_policy + "', '_blank');")
+            driver.switch_to.window(driver.window_handles[-1])
         else:
             raise NoPolicyException
-
-        # Loop through until we find a new window handle and switch the driver to the new window
-        for window_handle in driver.window_handles:
-            if window_handle != original_window:
-                driver.switch_to.window(window_handle)
-                break
 
         # Handle pdf policies
         is_pdf = driver.current_url.endswith(".pdf")
