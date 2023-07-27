@@ -6,7 +6,7 @@ This software artifacts allows researchers and privacy-aware individuals to auto
 
 The frontend allows users to check apps' completeness by category, id, or name and returns a completeness score based on multiple gdpr relevant categories. 
 
-It further allows users to trigger a crawling process to update the database file. Per default, the database crawler crawls the top 20 apps for each category; the corresponding variable _number_apps_per_category_ can be adjusted in ```IOSL-ST-23/backend/src/webcrawling/app_db_crawler.py```.
+It further allows users to trigger a crawling process to update the database file. Per default, the database crawler crawls the top 20 apps for each category; the corresponding variable _number_apps_per_category_ can be adjusted in ```veritas/backend/src/webcrawling/app_db_crawler.py```.
 
 The flask-app handles corresponding api calls and orchestrates functions from the submodules webcrawling and nlp. The webcrawling module is responsible for crawling relevant information (id, name, logo_url, privacy_policy) from openly available web-sources. Last, the nlp module receives the privacy policy as an input and returns a score fore each category (1, if the category is present, else 0).
 
@@ -36,7 +36,7 @@ The demo shows how a users checks the top 10 apps from the category _dating_ for
 1. Navigate to the root directory:
 
 ```bash
-cd IOSL-ST-23
+cd veritas
 ```
 
 2. Build and run the Docker containers:
